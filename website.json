@@ -1,0 +1,27 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "Azure Standard Website",
+    "description": "The public API behind Azure's website",
+    "contact": {
+      "name": "Azure Standard Customer Service",
+      "email": "info@azurestandard.com",
+      "url": "https://azurestandard.com/customer-service"
+    }
+  },
+  "host": "api.azurestandard.com",
+  "basePath": "",
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+  }
+}
