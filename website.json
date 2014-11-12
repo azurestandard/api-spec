@@ -27,6 +27,9 @@
       "get": {
         "description": "Returns all drops from the system that the user has access to",
         "operationId": "findDrops",
+        "tags": [
+          "drop"
+        ],
         "parameters": [
           {
             "name": "limit",
@@ -60,6 +63,9 @@
       "get": {
         "description": "Returns a drop based on a single ID, if the user has access to the drop",
         "operationId": "findDropById",
+        "tags": [
+          "drop"
+        ],
         "parameters": [
           {
             "name": "id",
