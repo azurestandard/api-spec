@@ -25,7 +25,7 @@
   "paths": {
     "/drops": {
       "get": {
-        "description": "Returns all drops from the system that the user has access to",
+        "summary": "Returns all drops from the system that the user has access to",
         "operationId": "findDrops",
         "tags": [
           "drop"
@@ -61,7 +61,7 @@
     },
     "/drop/{id}": {
       "get": {
-        "description": "Returns a drop based on a single ID, if the user has access to the drop",
+        "summary": "Returns a drop based on a single ID, if the user has access to the drop",
         "operationId": "findDropById",
         "tags": [
           "drop"
