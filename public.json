@@ -2,7 +2,7 @@
   "swagger": "2.0",
   "info": {
     "version": "1.0.0",
-    "title": "Azure Standard Website",
+    "title": "Azure Standard Public API",
     "description": "The public API behind Azure's website",
     "contact": {
       "name": "Azure Standard Customer Service",
