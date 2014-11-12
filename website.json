@@ -23,6 +23,39 @@
     "application/json"
   ],
   "paths": {
+    "/drops": {
+      "get": {
+        "description": "Returns all drops from the system that the user has access to",
+        "operationId": "findDrops",
+        "parameters": [
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "maximum number of results to return",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "drop response",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/drop"
+              }
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "schema": {
+              "$ref": "#/definitions/errorModel"
+            }
+          }
+        }
+      }
+    }
   },
   "definitions": {
     "drop": {
