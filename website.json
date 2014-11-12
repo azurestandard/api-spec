@@ -23,5 +23,30 @@
     "application/json"
   ],
   "paths": {
+  },
+  "definitions": {
+    "drop": {
+      "description": "an order-delivery location",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "name": {
+          "type": "string"
+        },
+        "address": {
+          "$ref": "http://json-schema.org/address"
+        },
+        "geo": {
+          "$ref": "http://json-schema.org/geo"
+        }
+      },
+      "required": [
+        "id",
+        "name"
+      ]
+    }
   }
 }
