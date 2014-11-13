@@ -8,6 +8,10 @@
       "name": "Azure Standard Customer Service",
       "email": "info@azurestandard.com",
       "url": "https://azurestandard.com/customer-service"
+    },
+    "license": {
+      "name": "MIT",
+      "url": "http://opensource.org/licenses/MIT"
     }
   },
   "host": "api.azurestandard.com",
