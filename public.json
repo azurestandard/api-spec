@@ -114,6 +114,14 @@
         },
         "geo": {
           "$ref": "http://json-schema.org/geo"
+        },
+        "exclusivity": {
+          "type": "string",
+          "enum": [
+            "open",
+            "semi-open",
+            "closed"
+          ]
         }
       },
       "required": [
