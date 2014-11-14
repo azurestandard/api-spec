@@ -58,6 +58,18 @@
             "collectionFormat": "csv"
           },
           {
+            "name": "person",
+            "in": "query",
+            "description": "person ids to filter by",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "collectionFormat": "csv"
+          },
+          {
             "name": "limit",
             "in": "query",
             "description": "maximum number of results to return",
