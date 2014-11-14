@@ -94,6 +94,74 @@
           }
         }
       }
+    },
+    "/routes": {
+      "get": {
+        "summary": "Returns all routes from the system that the user has access to",
+        "operationId": "findRoutes",
+        "tags": [
+          "route"
+        ],
+        "parameters": [
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "maximum number of results to return",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "route response",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/route"
+              }
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "schema": {
+              "$ref": "#/definitions/errorModel"
+            }
+          }
+        }
+      }
+    },
+    "/route/{name}": {
+      "get": {
+        "summary": "Returns a route based on a single ID, if the user has access to the route",
+        "operationId": "findRouteById",
+        "tags": [
+          "route"
+        ],
+        "parameters": [
+          {
+            "name": "name",
+            "in": "path",
+            "description": "name of route to fetch",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "route response",
+            "schema": {
+              "$ref": "#/definitions/route"
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "schema": {
+              "$ref": "#/definitions/errorModel"
+            }
+          }
+        }
+      }
     }
   },
   "definitions": {
