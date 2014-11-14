@@ -240,6 +240,30 @@
         "cutoff-frequency"
       ]
     },
+    "trip": {
+      "description": "a truck delivering orders along a route",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "route": {
+          "description": "name of the followed route",
+          "type": "string"
+        },
+        "cutoff": {
+          "description": "cutoff for placing orders on this trip",
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "id",
+        "route",
+        "cutoff"
+      ]
+    },
     "errorModel": {
       "required": [
         "code",
