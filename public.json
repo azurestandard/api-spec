@@ -35,6 +35,17 @@
         ],
         "parameters": [
           {
+            "name": "route",
+            "in": "query",
+            "description": "route names to filter by",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "csv"
+          },
+          {
             "name": "limit",
             "in": "query",
             "description": "maximum number of results to return",
