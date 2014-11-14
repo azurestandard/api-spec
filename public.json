@@ -48,7 +48,7 @@
           {
             "name": "trip",
             "in": "query",
-            "description": "trip ids to filter by",
+            "description": "trip IDs to filter by",
             "required": false,
             "type": "array",
             "items": {
@@ -60,7 +60,7 @@
           {
             "name": "person",
             "in": "query",
-            "description": "person ids to filter by",
+            "description": "person IDs to filter by",
             "required": false,
             "type": "array",
             "items": {
@@ -141,7 +141,7 @@
           {
             "name": "drop",
             "in": "query",
-            "description": "drop ids to filter by",
+            "description": "drop IDs to filter by",
             "required": false,
             "type": "array",
             "items": {
@@ -232,7 +232,7 @@
           {
             "name": "drop",
             "in": "query",
-            "description": "drop ids to filter by",
+            "description": "drop IDs to filter by",
             "required": false,
             "type": "array",
             "items": {
@@ -313,7 +313,7 @@
           {
             "name": "drop",
             "in": "query",
-            "description": "drop ids to filter by",
+            "description": "drop IDs to filter by",
             "required": false,
             "type": "array",
             "items": {
