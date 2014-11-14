@@ -510,6 +510,34 @@
             }
           }
         }
+      },
+      "delete": {
+        "summary": "Delete an address based on a single ID",
+        "operationId": "deleteAddressById",
+        "tags": [
+          "address"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of address to delete",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "address deleted"
+          },
+          "default": {
+            "description": "unexpected error",
+            "schema": {
+              "$ref": "#/definitions/errorModel"
+            }
+          }
+        }
       }
     }
   },
