@@ -473,6 +473,43 @@
             }
           }
         }
+      },
+      "put": {
+        "summary": "Update an address based on a single ID",
+        "operationId": "updateAddressById",
+        "tags": [
+          "address"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of address to update",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "address",
+            "in": "body",
+            "description": "New address values",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/address"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "new value accepted"
+          },
+          "default": {
+            "description": "unexpected error",
+            "schema": {
+              "$ref": "#/definitions/errorModel"
+            }
+          }
+        }
       }
     }
   },
