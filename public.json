@@ -368,6 +368,27 @@
         "cutoff"
       ]
     },
+    "person": {
+      "description": "a person (customer, vendor, employee, ...)",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "name": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string",
+          "format": "email"
+        }
+      },
+      "required": [
+        "id",
+        "name"
+      ]
+    },
     "address": {
       "description": "an address following the convention of http://microformats.org/wiki/hcard",
       "type": "object",
