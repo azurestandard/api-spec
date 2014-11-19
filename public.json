@@ -408,6 +408,22 @@
             "semi-open",
             "closed"
           ]
+        },
+        "order-frequency": {
+          "description": "order counts for this drop over the past year",
+          "type": "object",
+          "properties": {
+            "orders": {
+              "description": "count of orders for this route-trip-drop",
+              "type": "integer",
+              "format": "int32"
+            },
+            "cutoff": {
+              "description": "cutoff date for this route-trip",
+              "type": "string",
+              "format": "date"
+            }
+          }
         }
       },
       "required": [
