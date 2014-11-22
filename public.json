@@ -381,6 +381,29 @@
           }
         }
       }
+    },
+    "/person": {
+      "get": {
+        "summary": "Returns the authenticated person (yourself)",
+        "operationId": "findPersonByAuth",
+        "tags": [
+          "person"
+        ],
+        "responses": {
+          "200": {
+            "description": "person response",
+            "schema": {
+              "$ref": "#/definitions/person"
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "schema": {
+              "$ref": "#/definitions/errorModel"
+            }
+          }
+        }
+      }
     }
   },
   "definitions": {
