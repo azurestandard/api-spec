@@ -302,6 +302,85 @@
         }
       }
     },
+    "/products": {
+      "get": {
+        "summary": "Returns all products from the system that the user has access to",
+        "operationId": "findProducts",
+        "tags": [
+          "product"
+        ],
+        "parameters": [
+          {
+            "name": "brand",
+            "in": "query",
+            "description": "brand IDs to filter by",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "csv"
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "maximum number of results to return",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "product response",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/product"
+              }
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "schema": {
+              "$ref": "#/definitions/errorModel"
+            }
+          }
+        }
+      }
+    },
+    "/product/{code}": {
+      "get": {
+        "summary": "Returns a product based on a single ID, if the user has access to the product",
+        "operationId": "findProductById",
+        "tags": [
+          "product"
+        ],
+        "parameters": [
+          {
+            "name": "code",
+            "in": "path",
+            "description": "code of product to fetch",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "product response",
+            "schema": {
+              "$ref": "#/definitions/product"
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "schema": {
+              "$ref": "#/definitions/errorModel"
+            }
+          }
+        }
+      }
+    },
     "/people": {
       "get": {
         "summary": "Returns all people from the system that the user has access to",
@@ -497,6 +576,91 @@
         "id",
         "route",
         "cutoff"
+      ]
+    },
+    "product": {
+      "description": "a product available for sale",
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string"
+        },
+        "name": {
+          "description": "sentence-length product name",
+          "type": "string"
+        },
+        "description": {
+          "description": "long-form product description",
+          "type": "string"
+        },
+        "brand": {
+          "$ref": "#/definitions/brand"
+        },
+        "size": {
+          "description": "size of the product (e.g. 12 oz., or 6x12 oz.)",
+          "type": "string"
+        },
+        "price": {
+          "description": "price of the product in dollars",
+          "type": "number",
+          "format": "float"
+        },
+        "discount": {
+          "description": "text for the discount (e.g. \"12%\", or \"$3.50\"",
+          "type": "string"
+        },
+        "stock": {
+          "description": "amount of stock available for purchase",
+          "type": "integer",
+          "format": "int32"
+        },
+        "favorites": {
+          "description": "number of customers who've marked this product as a favorite",
+          "type": "integer",
+          "format": "int32"
+        },
+        "images": {
+          "type": "array",
+          "items": {
+            "description": "URL for a picture of this product",
+            "type": "string"
+          }
+        },
+        "repackaged": {
+          "description": "product codes for alternative packaging",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "code",
+        "name",
+        "size",
+        "price"
+      ]
+    },
+    "brand": {
+      "description": "a brand which may be associated with several products",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "name": {
+          "type": "string"
+        },
+        "url": {
+          "description": "homepage for the brand",
+          "type": "string",
+          "format": "url"
+        }
+      },
+      "required": [
+        "id",
+        "name"
       ]
     },
     "person": {
