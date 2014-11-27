@@ -601,13 +601,7 @@
           "type": "string"
         },
         "price": {
-          "description": "price of the product in dollars",
-          "type": "number",
-          "format": "float"
-        },
-        "discount": {
-          "description": "text for the discount (e.g. \"12%\", or \"$3.50\"",
-          "type": "string"
+          "#ref": "#/definitions/price"
         },
         "stock": {
           "description": "amount of stock available for purchase",
@@ -661,6 +655,28 @@
       "required": [
         "id",
         "name"
+      ]
+    },
+    "price": {
+      "description": "product price information",
+      "type": "object",
+      "properties": {
+        "dollars": {
+          "description": "price of the product in dollars",
+          "type": "number",
+          "format": "float"
+        },
+        "per-pound": {
+          "description": "whether the price is per-pound or per-unit",
+          "type": "boolean"
+        },
+        "discount": {
+          "description": "text for the discount (e.g. \"12%\", or \"$3.50\"",
+          "type": "string"
+        }
+      },
+      "required": [
+        "dollars"
       ]
     },
     "person": {
