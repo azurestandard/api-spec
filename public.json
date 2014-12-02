@@ -317,7 +317,8 @@
             "required": false,
             "type": "array",
             "items": {
-              "type": "string"
+              "type": "integer",
+              "format": "int64"
             },
             "collectionFormat": "csv"
           },
@@ -488,7 +489,8 @@
             "required": false,
             "type": "array",
             "items": {
-              "type": "string"
+              "type": "integer",
+              "format": "int64"
             },
             "collectionFormat": "csv"
           },
