@@ -474,6 +474,139 @@
         }
       }
     },
+    "/orders": {
+      "get": {
+        "summary": "Returns all orders from the system that the user has access to",
+        "operationId": "findOrders",
+        "tags": [
+          "order"
+        ],
+        "parameters": [
+          {
+            "name": "drop",
+            "in": "query",
+            "description": "drop IDs to filter by",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "collectionFormat": "csv"
+          },
+          {
+            "name": "trip",
+            "in": "query",
+            "description": "trip IDs to filter by",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "collectionFormat": "csv"
+          },
+          {
+            "name": "product",
+            "in": "query",
+            "description": "product codes to filter by",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "csv"
+          },
+          {
+            "name": "person",
+            "in": "query",
+            "description": "person IDs to filter by",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "collectionFormat": "csv"
+          },
+          {
+            "name": "status",
+            "in": "query",
+            "description": "order-status string to filter by",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "cart",
+                "placed",
+                "shipped",
+                "lost"
+              ]
+            },
+            "collectionFormat": "csv"
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "maximum number of results to return",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "order response",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/order"
+              }
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "schema": {
+              "$ref": "#/definitions/errorModel"
+            }
+          }
+        }
+      }
+    },
+    "/order/{id}": {
+      "get": {
+        "summary": "Returns a order based on a single ID",
+        "operationId": "findOrderById",
+        "tags": [
+          "order"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of order to fetch",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "order response",
+            "schema": {
+              "$ref": "#/definitions/order"
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "schema": {
+              "$ref": "#/definitions/errorModel"
+            }
+          }
+        }
+      }
+    },
     "/people": {
       "get": {
         "summary": "Returns all people from the system that the user has access to",
@@ -805,6 +938,50 @@
       "required": [
         "id",
         "name"
+      ]
+    },
+    "order": {
+      "description": "an order placed by a customer",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "customer": {
+          "description": "customer making the order",
+          "type": "integer",
+          "format": "int64"
+        },
+        "status": {
+          "description": "order's lifecycle stage",
+          "type": "string",
+          "enum": [
+            "cart",
+            "placed",
+            "shipped",
+            "lost"
+          ]
+        },
+        "drop": {
+          "description": "drop the order is destined for (unset for UPS orders)",
+          "type": "integer",
+          "format": "int64"
+        },
+        "trip": {
+          "description": "trip delivering the order (unset for UPS orders)",
+          "type": "integer",
+          "format": "int64"
+        },
+        "address": {
+          "description": "UPS delivery location (unset for truck orders)",
+          "$ref": "#/definitions/address"
+        }
+      },
+      "required": [
+        "id",
+        "customer",
+        "status"
       ]
     },
     "person": {
