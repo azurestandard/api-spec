@@ -607,6 +607,98 @@
         }
       }
     },
+    "/order-lines": {
+      "get": {
+        "summary": "Returns all order-lines from the system that the user has access to",
+        "operationId": "findOrderLines",
+        "tags": [
+          "order-line"
+        ],
+        "parameters": [
+          {
+            "name": "order",
+            "in": "query",
+            "description": "order IDs to filter by",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "collectionFormat": "csv"
+          },
+          {
+            "name": "product",
+            "in": "query",
+            "description": "product codes to filter by",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "csv"
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "maximum number of results to return",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "order-line response",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/orderLine"
+              }
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "schema": {
+              "$ref": "#/definitions/errorModel"
+            }
+          }
+        }
+      }
+    },
+    "/order-line/{id}": {
+      "get": {
+        "summary": "Returns a order-line based on a single ID",
+        "operationId": "findOrderLineById",
+        "tags": [
+          "order-line"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of order-line to fetch",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "order-line response",
+            "schema": {
+              "$ref": "#/definitions/orderLine"
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "schema": {
+              "$ref": "#/definitions/errorModel"
+            }
+          }
+        }
+      }
+    },
     "/people": {
       "get": {
         "summary": "Returns all people from the system that the user has access to",
@@ -982,6 +1074,52 @@
         "id",
         "customer",
         "status"
+      ]
+    },
+    "orderLine": {
+      "description": "a per-product entry in an order",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "order": {
+          "description": "order that the order-line belongs to",
+          "type": "integer",
+          "format": "int64"
+        },
+        "product": {
+          "description": "product code that is being ordered",
+          "type": "string"
+        },
+        "quantity-ordered": {
+          "description": "number of product instances requested",
+          "type": "integer",
+          "format": "int32"
+        },
+        "quantity-shipped": {
+          "description": "number of product instances delivered",
+          "type": "integer",
+          "format": "int32"
+        },
+        "weight": {
+          "description": "weight of the shipped products in pounds (estimated until picking time)",
+          "type": "integer",
+          "format": "float"
+        },
+        "price": {
+          "description": "per-product price (currently locked in when you place the order)",
+          "$ref": "#/definitions/price"
+        }
+      },
+      "required": [
+        "id",
+        "order",
+        "product",
+        "quantity-ordered",
+        "weight",
+        "price"
       ]
     },
     "person": {
