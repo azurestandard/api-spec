@@ -916,6 +916,8 @@
       "required": [
         "id",
         "name",
+        "geo",
+        "exclusivity",
         "members"
       ]
     },
