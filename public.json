@@ -842,6 +842,11 @@
             "closed"
           ]
         },
+        "members": {
+          "description": "number of customers on this drop",
+          "type": "integer",
+          "format": "int32"
+        },
         "order-frequency": {
           "description": "order counts for this drop over the past year",
           "type": "object",
@@ -861,7 +866,8 @@
       },
       "required": [
         "id",
-        "name"
+        "name",
+        "members"
       ]
     },
     "route": {
