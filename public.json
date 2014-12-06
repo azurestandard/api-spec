@@ -835,6 +835,34 @@
           }
         }
       }
+    },
+    "/session": {
+      "get": {
+        "summary": "Returns information about the current cookie-based session",
+        "operationId": "findSessionByAuth",
+        "tags": [
+          "session"
+        ],
+        "security": [
+          {
+            "sessionCookie": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "session response",
+            "schema": {
+              "$ref": "#/definitions/session"
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "schema": {
+              "$ref": "#/definitions/errorModel"
+            }
+          }
+        }
+      }
     }
   },
   "definitions": {
@@ -1231,6 +1259,22 @@
         "latitude",
         "longitude"
       ]
+    },
+    "session": {
+      "description": "session cookie information",
+      "type": "object",
+      "properties": {
+        "person": {
+          "description": "person ID for the session owner (unset for anonymous sessions)",
+          "type": "integer",
+          "format": "int64"
+        },
+        "expires": {
+          "description": "current expiration date for this session (http://tools.ietf.org/html/rfc6265#section-5.3, covering both Max-Age and Expires representations, unset if the session expires at browser-close)",
+          "type": "string",
+          "format": "date-time"
+        }
+      }
     },
     "errorModel": {
       "required": [
