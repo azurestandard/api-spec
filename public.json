@@ -36,7 +36,6 @@
   },
   "host": "api.azurestandard.com",
   "schemes": [
-    "http",
     "https"
   ],
   "consumes": [
