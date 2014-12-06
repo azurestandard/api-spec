@@ -14,6 +14,26 @@
       "url": "http://opensource.org/licenses/MIT"
     }
   },
+  "security": [
+    {
+      "basic": []
+    },
+    {
+      "sessionCookie": []
+    }
+  ],
+  "securityDefinitions": {
+    "basic": {
+      "type": "basic",
+      "description": "Basic authentication (http://tools.ietf.org/html/rfc2617#section-2)"
+    },
+    "sessionCookie": {
+      "type": "apiKey",
+      "in": "header",
+      "name": "cookie",
+      "description": "Session cookie (http://tools.ietf.org/html/rfc6265)"
+    }
+  },
   "host": "api.azurestandard.com",
   "schemes": [
     "http",
@@ -413,6 +433,7 @@
         "tags": [
           "category"
         ],
+        "security": [],
         "parameters": [
           {
             "name": "product",
@@ -460,6 +481,7 @@
         "tags": [
           "category"
         ],
+        "security": [],
         "parameters": [
           {
             "name": "id",
