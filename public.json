@@ -891,6 +891,9 @@
             "closed"
           ]
         },
+        "fees": {
+          "$fees": "#definitions/dropFees"
+        },
         "members": {
           "description": "number of customers on this drop",
           "type": "integer",
@@ -919,6 +922,34 @@
         "geo",
         "exclusivity",
         "members"
+      ]
+    },
+    "dropFees": {
+      "description": "additional costs for members receiving at a drop",
+      "type": "object",
+      "properties": {
+        "medium": {
+          "description": "payment medium (nothing, volunteer time, or a monetary payment)",
+          "type": "string",
+          "enum": [
+            null,
+            "volunteer",
+            "payment"
+          ]
+        },
+        "condition": {
+          "description": "fee trigger (never, only when orders are held, or for every order)",
+          "type": "string",
+          "enum": [
+            null,
+            "held",
+            "order"
+          ]
+        }
+      },
+      "required": [
+        "type",
+        "condition"
       ]
     },
     "route": {
