@@ -1185,8 +1185,7 @@
         "order",
         "product",
         "quantity-ordered",
-        "weight",
-        "price"
+        "weight"
       ]
     },
     "person": {
