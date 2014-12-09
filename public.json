@@ -891,6 +891,17 @@
             "closed"
           ]
         },
+        "parking": {
+          "description": "parking location ownership for this drop",
+          "type": "string",
+          "enum": [
+            null,
+            "home",
+            "business",
+            "non-profit",
+            "public"
+          ]
+        },
         "fees": {
           "$fees": "#definitions/dropFees"
         },
