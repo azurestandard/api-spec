@@ -902,6 +902,19 @@
             "public"
           ]
         },
+        "storage": {
+          "description": "storage facilities available at this drop",
+          "type": "array",
+          "items": {
+            "description": "facility name",
+            "type": "string",
+            "enum": [
+              "dry",
+              "refregerator",
+              "freezer"
+            ]
+          }
+        },
         "accept-cash-on-delivery": {
           "description": "does this drop accept COD orders?",
           "type": "boolean"
