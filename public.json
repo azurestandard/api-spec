@@ -929,6 +929,10 @@
               "format": "date"
             }
           }
+        },
+        "notes": {
+          "description": "free-form Markdown notes for any drop information that doesn't fit into an existing field",
+          "type": "string"
         }
       },
       "required": [
