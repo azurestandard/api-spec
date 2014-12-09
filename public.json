@@ -902,6 +902,10 @@
             "public"
           ]
         },
+        "accept-cash-on-delivery": {
+          "description": "does this drop accept COD orders?",
+          "type": "boolean"
+        },
         "fees": {
           "$fees": "#definitions/dropFees"
         },
