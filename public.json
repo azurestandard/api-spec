@@ -262,6 +262,14 @@
             "collectionFormat": "csv"
           },
           {
+            "name": "cutoff-after",
+            "in": "query",
+            "description": "only return trips with cutoffs after this date",
+            "required": false,
+            "type": "string",
+            "format": "date-time"
+          },
+          {
             "name": "limit",
             "in": "query",
             "description": "maximum number of results to return.  Use negative numbers to limit from the end of the result list.",
