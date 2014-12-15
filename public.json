@@ -91,7 +91,7 @@
           {
             "name": "limit",
             "in": "query",
-            "description": "maximum number of results to return",
+            "description": "maximum number of results to return.  Use negative numbers to limit from the end of the result list.",
             "required": false,
             "type": "integer",
             "format": "int32"
@@ -172,7 +172,7 @@
           {
             "name": "limit",
             "in": "query",
-            "description": "maximum number of results to return",
+            "description": "maximum number of results to return.  Use negative numbers to limit from the end of the result list.",
             "required": false,
             "type": "integer",
             "format": "int32"
@@ -232,6 +232,7 @@
     "/trips": {
       "get": {
         "summary": "Returns all trips from the system that the user has access to",
+        "description": "Trips are ordered for decreasing cutoff time",
         "operationId": "findTrips",
         "tags": [
           "trip"
@@ -261,9 +262,17 @@
             "collectionFormat": "csv"
           },
           {
+            "name": "cutoff-after",
+            "in": "query",
+            "description": "only return trips with cutoffs after this date",
+            "required": false,
+            "type": "string",
+            "format": "date-time"
+          },
+          {
             "name": "limit",
             "in": "query",
-            "description": "maximum number of results to return",
+            "description": "maximum number of results to return.  Use negative numbers to limit from the end of the result list.",
             "required": false,
             "type": "integer",
             "format": "int32"
@@ -368,7 +377,7 @@
           {
             "name": "limit",
             "in": "query",
-            "description": "maximum number of results to return",
+            "description": "maximum number of results to return.  Use negative numbers to limit from the end of the result list.",
             "required": false,
             "type": "integer",
             "format": "int32"
@@ -448,7 +457,7 @@
           {
             "name": "limit",
             "in": "query",
-            "description": "maximum number of results to return",
+            "description": "maximum number of results to return.  Use negative numbers to limit from the end of the result list.",
             "required": false,
             "type": "integer",
             "format": "int32"
@@ -582,7 +591,7 @@
           {
             "name": "limit",
             "in": "query",
-            "description": "maximum number of results to return",
+            "description": "maximum number of results to return.  Use negative numbers to limit from the end of the result list.",
             "required": false,
             "type": "integer",
             "format": "int32"
@@ -674,7 +683,7 @@
           {
             "name": "limit",
             "in": "query",
-            "description": "maximum number of results to return",
+            "description": "maximum number of results to return.  Use negative numbers to limit from the end of the result list.",
             "required": false,
             "type": "integer",
             "format": "int32"
@@ -755,7 +764,7 @@
           {
             "name": "limit",
             "in": "query",
-            "description": "maximum number of results to return",
+            "description": "maximum number of results to return.  Use negative numbers to limit from the end of the result list.",
             "required": false,
             "type": "integer",
             "format": "int32"
