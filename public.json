@@ -232,6 +232,7 @@
     "/trips": {
       "get": {
         "summary": "Returns all trips from the system that the user has access to",
+        "description": "Trips are ordered for decreasing cutoff time",
         "operationId": "findTrips",
         "tags": [
           "trip"
