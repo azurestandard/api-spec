@@ -1039,12 +1039,52 @@
           "description": "cutoff for placing orders on this trip",
           "type": "string",
           "format": "date-time"
+        },
+        "stops": {
+          "description": "location and timing for each stop on the trip",
+          "type": "array",
+          "items": {
+            "description": "a single stop",
+            "$ref": "#/definitions/stop"
+          }
         }
       },
       "required": [
         "id",
         "route",
-        "cutoff"
+        "cutoff",
+        "stops"
+      ]
+    },
+    "stop": {
+      "description": "a trip stop or waypoint",
+      "type": "object",
+      "properties": {
+        "drop": {
+          "description": "drop ID for the stop",
+          "type": "integer",
+          "format": "int64"
+        },
+        "target-time": {
+          "description": "planned stop time (fixed before the trip starts)",
+          "type": "string",
+          "format": "date-time"
+        },
+        "estimated-time": {
+          "description": "estimated stop time (updated after the trip starts until the stop is reached)",
+          "type": "string",
+          "format": "date-time"
+        },
+        "time": {
+          "description": "actual stop time (set after the stop is reached)",
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "drop",
+        "target-time",
+        "estimated-time"
       ]
     },
     "product": {
