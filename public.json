@@ -886,6 +886,15 @@
         "name": {
           "type": "string"
         },
+        "coordinators": {
+          "description": "coordinators for this drop.  The first entry is the primary contact",
+          "type": "array",
+          "items": {
+            "description": "person ID for this coordinator",
+            "type": "integer",
+            "format": "int32"
+          }
+        },
         "address": {
           "$ref": "#/definitions/address"
         },
