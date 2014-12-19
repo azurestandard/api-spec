@@ -362,6 +362,42 @@
             }
           }
         }
+      },
+      "put": {
+        "summary": "Update an existing route",
+        "operationId": "updateRoute",
+        "tags": [
+          "route"
+        ],
+        "parameters": [
+          {
+            "name": "name",
+            "in": "path",
+            "description": "name of route to update",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "route",
+            "in": "body",
+            "description": "Updated route parameters (can optionally include 'name')",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/route"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "update successful"
+          },
+          "default": {
+            "description": "unexpected error",
+            "schema": {
+              "$ref": "#/definitions/errorModel"
+            }
+          }
+        }
       }
     },
     "/trips": {
