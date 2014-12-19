@@ -114,6 +114,41 @@
             }
           }
         }
+      },
+      "post": {
+        "summary": "Create a new drop",
+        "operationId": "addDrop",
+        "tags": [
+          "drop"
+        ],
+        "parameters": [
+          {
+            "name": "drop",
+            "in": "body",
+            "description": "Drop to add",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/newDrop"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "drop response",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/drop"
+              }
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "schema": {
+              "$ref": "#/definitions/errorModel"
+            }
+          }
+        }
       }
     },
     "/drop/{id}": {
@@ -973,6 +1008,9 @@
         "exclusivity",
         "members"
       ]
+    },
+    "newDrop": {
+      "$ref": "drop"
     },
     "dropFees": {
       "description": "additional costs for members receiving at a drop",
