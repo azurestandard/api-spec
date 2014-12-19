@@ -295,6 +295,41 @@
             }
           }
         }
+      },
+      "post": {
+        "summary": "Create a new route",
+        "operationId": "addRoute",
+        "tags": [
+          "route"
+        ],
+        "parameters": [
+          {
+            "name": "route",
+            "in": "body",
+            "description": "Route to add",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/newRoute"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "route response",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/route"
+              }
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "schema": {
+              "$ref": "#/definitions/errorModel"
+            }
+          }
+        }
       }
     },
     "/route/{name}": {
@@ -1125,6 +1160,9 @@
         "name",
         "cutoff-frequency"
       ]
+    },
+    "newRoute": {
+      "$ref": "route"
     },
     "trip": {
       "description": "a truck delivering orders along a route",
