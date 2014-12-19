@@ -219,6 +219,34 @@
             }
           }
         }
+      },
+      "delete": {
+        "summary": "Delete an existing drop",
+        "operationId": "deleteDrop",
+        "tags": [
+          "drop"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of drop to delete",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "delete successful"
+          },
+          "default": {
+            "description": "unexpected error",
+            "schema": {
+              "$ref": "#/definitions/errorModel"
+            }
+          }
+        }
       }
     },
     "/routes": {
