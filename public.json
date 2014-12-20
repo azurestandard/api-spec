@@ -295,6 +295,41 @@
             }
           }
         }
+      },
+      "post": {
+        "summary": "Create a new route",
+        "operationId": "addRoute",
+        "tags": [
+          "route"
+        ],
+        "parameters": [
+          {
+            "name": "route",
+            "in": "body",
+            "description": "Route to add",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/newRoute"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "route response",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/route"
+              }
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "schema": {
+              "$ref": "#/definitions/errorModel"
+            }
+          }
+        }
       }
     },
     "/route/{name}": {
@@ -319,6 +354,69 @@
             "schema": {
               "$ref": "#/definitions/route"
             }
+          },
+          "default": {
+            "description": "unexpected error",
+            "schema": {
+              "$ref": "#/definitions/errorModel"
+            }
+          }
+        }
+      },
+      "put": {
+        "summary": "Update an existing route",
+        "operationId": "updateRoute",
+        "tags": [
+          "route"
+        ],
+        "parameters": [
+          {
+            "name": "name",
+            "in": "path",
+            "description": "name of route to update",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "route",
+            "in": "body",
+            "description": "Updated route parameters (can optionally include 'name')",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/route"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "update successful"
+          },
+          "default": {
+            "description": "unexpected error",
+            "schema": {
+              "$ref": "#/definitions/errorModel"
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete an existing route",
+        "operationId": "deleteRoute",
+        "tags": [
+          "route"
+        ],
+        "parameters": [
+          {
+            "name": "name",
+            "in": "path",
+            "description": "name of route to delete",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "delete successful"
           },
           "default": {
             "description": "unexpected error",
@@ -1125,6 +1223,9 @@
         "name",
         "cutoff-frequency"
       ]
+    },
+    "newRoute": {
+      "$ref": "route"
     },
     "trip": {
       "description": "a truck delivering orders along a route",
