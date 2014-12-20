@@ -398,6 +398,33 @@
             }
           }
         }
+      },
+      "delete": {
+        "summary": "Delete an existing route",
+        "operationId": "deleteRoute",
+        "tags": [
+          "route"
+        ],
+        "parameters": [
+          {
+            "name": "name",
+            "in": "path",
+            "description": "name of route to delete",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "delete successful"
+          },
+          "default": {
+            "description": "unexpected error",
+            "schema": {
+              "$ref": "#/definitions/errorModel"
+            }
+          }
+        }
       }
     },
     "/trips": {
