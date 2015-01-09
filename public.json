@@ -642,6 +642,18 @@
         "security": [],
         "parameters": [
           {
+            "name": "parent",
+            "in": "query",
+            "description": "category IDs to filter by",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "collectionFormat": "csv"
+          },
+          {
             "name": "product",
             "in": "query",
             "description": "product codes to filter by",
