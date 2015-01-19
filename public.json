@@ -105,6 +105,14 @@
               "items": {
                 "$ref": "#/definitions/drop"
               }
+            },
+            "headers": {
+              "Count": {
+                "description": "total number of matching results (how many you'd get if you didn't set `limit`)",
+                "type": "integer",
+                "format": "int32",
+                "minimum": 0
+              }
             }
           },
           "default": {
@@ -285,6 +293,14 @@
               "type": "array",
               "items": {
                 "$ref": "#/definitions/route"
+              }
+            },
+            "headers": {
+              "Count": {
+                "description": "total number of matching results (how many you'd get if you didn't set `limit`)",
+                "type": "integer",
+                "format": "int32",
+                "minimum": 0
               }
             }
           },
@@ -484,6 +500,14 @@
               "items": {
                 "$ref": "#/definitions/trip"
               }
+            },
+            "headers": {
+              "Count": {
+                "description": "total number of matching results (how many you'd get if you didn't set `limit`)",
+                "type": "integer",
+                "format": "int32",
+                "minimum": 0
+              }
             }
           },
           "default": {
@@ -601,6 +625,14 @@
               "items": {
                 "$ref": "#/definitions/product"
               }
+            },
+            "headers": {
+              "Count": {
+                "description": "total number of matching results (how many you'd get if you didn't set `limit`)",
+                "type": "integer",
+                "format": "int32",
+                "minimum": 0
+              }
             }
           },
           "default": {
@@ -692,6 +724,14 @@
               "type": "array",
               "items": {
                 "$ref": "#/definitions/category"
+              }
+            },
+            "headers": {
+              "Count": {
+                "description": "total number of matching results (how many you'd get if you didn't set `limit`)",
+                "type": "integer",
+                "format": "int32",
+                "minimum": 0
               }
             }
           },
@@ -827,6 +867,14 @@
               "items": {
                 "$ref": "#/definitions/order"
               }
+            },
+            "headers": {
+              "Count": {
+                "description": "total number of matching results (how many you'd get if you didn't set `limit`)",
+                "type": "integer",
+                "format": "int32",
+                "minimum": 0
+              }
             }
           },
           "default": {
@@ -919,6 +967,14 @@
               "items": {
                 "$ref": "#/definitions/orderLine"
               }
+            },
+            "headers": {
+              "Count": {
+                "description": "total number of matching results (how many you'd get if you didn't set `limit`)",
+                "type": "integer",
+                "format": "int32",
+                "minimum": 0
+              }
             }
           },
           "default": {
@@ -999,6 +1055,14 @@
               "type": "array",
               "items": {
                 "$ref": "#/definitions/person"
+              }
+            },
+            "headers": {
+              "Count": {
+                "description": "total number of matching results (how many you'd get if you didn't set `limit`)",
+                "type": "integer",
+                "format": "int32",
+                "minimum": 0
               }
             }
           },
