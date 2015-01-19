@@ -144,10 +144,7 @@
           "200": {
             "description": "drop response",
             "schema": {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/drop"
-              }
+              "$ref": "#/definitions/drop"
             }
           },
           "default": {
@@ -333,10 +330,7 @@
           "200": {
             "description": "route response",
             "schema": {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/route"
-              }
+              "$ref": "#/definitions/route"
             }
           },
           "default": {
