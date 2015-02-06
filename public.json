@@ -478,6 +478,14 @@
             "format": "date-time"
           },
           {
+            "name": "cutoff-before",
+            "in": "query",
+            "description": "only return trips with cutoffs before this date",
+            "required": false,
+            "type": "string",
+            "format": "date-time"
+          },
+          {
             "name": "limit",
             "in": "query",
             "description": "maximum number of results to return.  Use negative numbers to limit from the end of the result list.",
