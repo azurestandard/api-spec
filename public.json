@@ -472,7 +472,7 @@
           {
             "name": "cutoff-after",
             "in": "query",
-            "description": "only return trips with cutoffs after this date",
+            "description": "only return trips with cutoffs after or on this date",
             "required": false,
             "type": "string",
             "format": "date-time"
