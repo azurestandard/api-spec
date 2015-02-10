@@ -1740,8 +1740,9 @@
       },
       "required": [
         "id",
-        "customer",
-        "status"
+        "person",
+        "amount",
+        "date"
       ]
     },
     "person": {
