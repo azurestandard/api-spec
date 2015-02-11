@@ -1126,6 +1126,96 @@
         }
       }
     },
+    "/addresses": {
+      "get": {
+        "summary": "Returns all addresses from the system that the user has access to",
+        "description": "Addresses associated with a person are ordered by decreasing preference.  The ordering between addresses associated with different people is undefined.",
+        "operationId": "findAddresses",
+        "tags": [
+          "address"
+        ],
+        "parameters": [
+          {
+            "name": "person",
+            "in": "query",
+            "description": "person IDs to filter by",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "collectionFormat": "csv"
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "maximum number of results to return.  Use negative numbers to limit from the end of the result list.",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "address response",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/address"
+              }
+            },
+            "headers": {
+              "Count": {
+                "description": "total number of matching results (how many you'd get if you didn't set `limit`)",
+                "type": "integer",
+                "format": "int32",
+                "minimum": 0
+              }
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "schema": {
+              "$ref": "#/definitions/errorModel"
+            }
+          }
+        }
+      }
+    },
+    "/address/{id}": {
+      "get": {
+        "summary": "Returns a address based on a single ID",
+        "operationId": "findAddressById",
+        "tags": [
+          "address"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of address to fetch",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "address response",
+            "schema": {
+              "$ref": "#/definitions/address"
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "schema": {
+              "$ref": "#/definitions/errorModel"
+            }
+          }
+        }
+      }
+    },
     "/people": {
       "get": {
         "summary": "Returns all people from the system that the user has access to",
