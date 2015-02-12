@@ -1808,11 +1808,11 @@
           "format": "int64"
         },
         "name": {
-          "description": "a word or two naming the category",
+          "description": "A phrase naming the category.  This should be understandable (but not necessarily unique) without any further context.  It must be unique for categories sharing a given parent.",
           "type": "string"
         },
-        "description": {
-          "description": "long-form category description",
+        "short-name": {
+          "description": "A word or two naming the category.  A shortened version of the full name that drops any words already contained in the category's ancestors' short names.  This will be used in places where the ancestor short names are in close proximity (e.g. URL slugs) to avoid having the same word many times.",
           "type": "string"
         },
         "images": {
