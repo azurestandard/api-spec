@@ -214,8 +214,11 @@
           }
         ],
         "responses": {
-          "204": {
-            "description": "update successful"
+          "200": {
+            "description": "drop response",
+            "schema": {
+              "$ref": "#/definitions/drop"
+            }
           },
           "default": {
             "description": "unexpected error",
@@ -398,8 +401,11 @@
           }
         ],
         "responses": {
-          "204": {
-            "description": "update successful"
+          "200": {
+            "description": "route response",
+            "schema": {
+              "$ref": "#/definitions/route"
+            }
           },
           "default": {
             "description": "unexpected error",
