@@ -605,6 +605,17 @@
             "collectionFormat": "csv"
           },
           {
+            "name": "packaged-product",
+            "in": "query",
+            "description": "packaged product codes to filter by",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "csv"
+          },
+          {
             "name": "person",
             "in": "query",
             "description": "person IDs to filter by (selects their favorite products)",
@@ -652,7 +663,7 @@
         }
       }
     },
-    "/product/{code}": {
+    "/product/{id}": {
       "get": {
         "summary": "Returns a product based on a single ID, if the user has access to the product",
         "operationId": "findProductById",
@@ -661,9 +672,9 @@
         ],
         "parameters": [
           {
-            "name": "code",
+            "name": "id",
             "in": "path",
-            "description": "code of product to fetch",
+            "description": "ID of product to fetch",
             "required": true,
             "type": "string"
           }
@@ -673,6 +684,142 @@
             "description": "product response",
             "schema": {
               "$ref": "#/definitions/product"
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "schema": {
+              "$ref": "#/definitions/errorModel"
+            }
+          }
+        }
+      }
+    },
+    "/packaged-products": {
+      "get": {
+        "summary": "Returns all packaged products from the system that the user has access to",
+        "operationId": "findPackagedProduct",
+        "tags": [
+          "product"
+        ],
+        "parameters": [
+          {
+            "name": "product",
+            "in": "query",
+            "description": "product IDs to filter by",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "collectionFormat": "csv"
+          },
+          {
+            "name": "brand",
+            "in": "query",
+            "description": "brand IDs to filter by",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "collectionFormat": "csv"
+          },
+          {
+            "name": "category",
+            "in": "query",
+            "description": "category IDs to filter by (for products directly associated with the categories)",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "collectionFormat": "csv"
+          },
+          {
+            "name": "ancestor-category",
+            "in": "query",
+            "description": "category IDs to filter by (for packaged products associated with the categories or their descendants)",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "collectionFormat": "csv"
+          },
+          {
+            "name": "person",
+            "in": "query",
+            "description": "person IDs to filter by (selects their favorite packaged products)",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "collectionFormat": "csv"
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "maximum number of results to return.  Use negative numbers to limit from the end of the result list.",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "packaged product response",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/packagedProduct"
+              }
+            },
+            "headers": {
+              "Count": {
+                "description": "total number of matching results (how many you'd get if you didn't set `limit`)",
+                "type": "integer",
+                "format": "int32",
+                "minimum": 0
+              }
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "schema": {
+              "$ref": "#/definitions/errorModel"
+            }
+          }
+        }
+      }
+    },
+    "/packaged-product/{code}": {
+      "get": {
+        "summary": "Returns a packaged product based on a single ID, if the user has access to the packaged product",
+        "operationId": "findPackagedProductById",
+        "tags": [
+          "product"
+        ],
+        "parameters": [
+          {
+            "name": "code",
+            "in": "path",
+            "description": "code of the packaged product to fetch",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "product response",
+            "schema": {
+              "$ref": "#/definitions/packagedProduct"
             }
           },
           "default": {
@@ -708,7 +855,19 @@
           {
             "name": "product",
             "in": "query",
-            "description": "product codes to filter by",
+            "description": "product IDs to filter by",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "collectionFormat": "csv"
+          },
+          {
+            "name": "packaged-product",
+            "in": "query",
+            "description": "packaged product codes to filter by",
             "required": false,
             "type": "array",
             "items": {
@@ -821,7 +980,19 @@
           {
             "name": "product",
             "in": "query",
-            "description": "product codes to filter by",
+            "description": "product IDs to filter by",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "collectionFormat": "csv"
+          },
+          {
+            "name": "packaged-product",
+            "in": "query",
+            "description": "packaged product codes to filter by",
             "required": false,
             "type": "array",
             "items": {
@@ -950,7 +1121,19 @@
           {
             "name": "product",
             "in": "query",
-            "description": "product codes to filter by",
+            "description": "product IDs to filter by",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "collectionFormat": "csv"
+          },
+          {
+            "name": "packaged-product",
+            "in": "query",
+            "description": "packaged product codes to filter by",
             "required": false,
             "type": "array",
             "items": {
@@ -1704,23 +1887,12 @@
         "estimated-time"
       ]
     },
-    "product": {
-      "description": "a product available for sale",
+    "packagedProduct": {
+      "description": "a particular packaged form of a product",
       "type": "object",
       "properties": {
         "code": {
           "type": "string"
-        },
-        "name": {
-          "description": "sentence-length product name",
-          "type": "string"
-        },
-        "description": {
-          "description": "long-form product description",
-          "type": "string"
-        },
-        "brand": {
-          "$ref": "#/definitions/brand"
         },
         "size": {
           "description": "size of the product (e.g. 12 oz., or 6x12 oz.)",
@@ -1735,30 +1907,62 @@
           "format": "int32"
         },
         "favorites": {
-          "description": "number of customers who've marked this product as a favorite",
+          "description": "number of customers who've marked this packaged product as a favorite",
           "type": "integer",
           "format": "int32"
         },
         "images": {
           "type": "array",
           "items": {
-            "description": "URL for a picture of this product",
-            "type": "string"
-          }
-        },
-        "repackaged": {
-          "description": "product codes for alternative packaging",
-          "type": "array",
-          "items": {
+            "description": "URL for a picture of this packaged product",
             "type": "string"
           }
         }
       },
       "required": [
         "code",
-        "name",
         "size",
         "price"
+      ]
+    },
+    "product": {
+      "description": "a product available for sale (independent of packaging)",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "name": {
+          "description": "sentence-length product name",
+          "type": "string"
+        },
+        "description": {
+          "description": "long-form product description",
+          "type": "string"
+        },
+        "brand": {
+          "$ref": "#/definitions/brand"
+        },
+        "favorites": {
+          "description": "number of customers who've marked this product as a favorite",
+          "type": "integer",
+          "format": "int32"
+        },
+        "packaging": {
+          "description": "packaged versions of this product",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/packagedProduct"
+          }
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "size",
+        "price",
+        "packaging"
       ]
     },
     "brand": {
@@ -1896,8 +2100,8 @@
           "type": "integer",
           "format": "int64"
         },
-        "product": {
-          "description": "product code that is being ordered",
+        "package-product": {
+          "description": "packaged product code that is being ordered",
           "type": "string"
         },
         "quantity-ordered": {
