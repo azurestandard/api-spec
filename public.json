@@ -91,7 +91,7 @@
           {
             "name": "limit",
             "in": "query",
-            "description": "maximum number of results to return.  Use negative numbers to limit from the end of the result list.",
+            "description": "maximum number of results to return",
             "required": false,
             "type": "integer",
             "format": "int32"
@@ -280,7 +280,7 @@
           {
             "name": "limit",
             "in": "query",
-            "description": "maximum number of results to return.  Use negative numbers to limit from the end of the result list.",
+            "description": "maximum number of results to return",
             "required": false,
             "type": "integer",
             "format": "int32"
@@ -494,7 +494,7 @@
           {
             "name": "limit",
             "in": "query",
-            "description": "maximum number of results to return.  Use negative numbers to limit from the end of the result list.",
+            "description": "maximum number of results to return",
             "required": false,
             "type": "integer",
             "format": "int32"
@@ -637,7 +637,7 @@
           {
             "name": "limit",
             "in": "query",
-            "description": "maximum number of results to return.  Use negative numbers to limit from the end of the result list.",
+            "description": "maximum number of results to return",
             "required": false,
             "type": "integer",
             "format": "int32"
@@ -773,7 +773,7 @@
           {
             "name": "limit",
             "in": "query",
-            "description": "maximum number of results to return.  Use negative numbers to limit from the end of the result list.",
+            "description": "maximum number of results to return",
             "required": false,
             "type": "integer",
             "format": "int32"
@@ -885,7 +885,7 @@
           {
             "name": "limit",
             "in": "query",
-            "description": "maximum number of results to return.  Use negative numbers to limit from the end of the result list.",
+            "description": "maximum number of results to return",
             "required": false,
             "type": "integer",
             "format": "int32"
@@ -1039,7 +1039,7 @@
           {
             "name": "limit",
             "in": "query",
-            "description": "maximum number of results to return.  Use negative numbers to limit from the end of the result list.",
+            "description": "maximum number of results to return",
             "required": false,
             "type": "integer",
             "format": "int32"
@@ -1151,7 +1151,7 @@
           {
             "name": "limit",
             "in": "query",
-            "description": "maximum number of results to return.  Use negative numbers to limit from the end of the result list.",
+            "description": "maximum number of results to return",
             "required": false,
             "type": "integer",
             "format": "int32"
@@ -1256,7 +1256,7 @@
           {
             "name": "limit",
             "in": "query",
-            "description": "maximum number of results to return.  Use negative numbers to limit from the end of the result list.",
+            "description": "maximum number of results to return",
             "required": false,
             "type": "integer",
             "format": "int32"
@@ -1346,7 +1346,7 @@
           {
             "name": "limit",
             "in": "query",
-            "description": "maximum number of results to return.  Use negative numbers to limit from the end of the result list.",
+            "description": "maximum number of results to return",
             "required": false,
             "type": "integer",
             "format": "int32"
@@ -1468,7 +1468,7 @@
           {
             "name": "limit",
             "in": "query",
-            "description": "maximum number of results to return.  Use negative numbers to limit from the end of the result list.",
+            "description": "maximum number of results to return",
             "required": false,
             "type": "integer",
             "format": "int32"
@@ -1557,7 +1557,7 @@
           {
             "name": "limit",
             "in": "query",
-            "description": "maximum number of results to return.  Use negative numbers to limit from the end of the result list.",
+            "description": "maximum number of results to return",
             "required": false,
             "type": "integer",
             "format": "int32"
