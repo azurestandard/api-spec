@@ -95,6 +95,14 @@
             "required": false,
             "type": "integer",
             "format": "int32"
+          },
+          {
+            "name": "start",
+            "in": "query",
+            "description": "offset to the first result to return.  Use negative numbers to offset from the end of the result list.",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
           }
         ],
         "responses": {
@@ -281,6 +289,14 @@
             "name": "limit",
             "in": "query",
             "description": "maximum number of results to return",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "start",
+            "in": "query",
+            "description": "offset to the first result to return.  Use negative numbers to offset from the end of the result list.",
             "required": false,
             "type": "integer",
             "format": "int32"
@@ -498,6 +514,14 @@
             "required": false,
             "type": "integer",
             "format": "int32"
+          },
+          {
+            "name": "start",
+            "in": "query",
+            "description": "offset to the first result to return.  Use negative numbers to offset from the end of the result list.",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
           }
         ],
         "responses": {
@@ -641,6 +665,14 @@
             "required": false,
             "type": "integer",
             "format": "int32"
+          },
+          {
+            "name": "start",
+            "in": "query",
+            "description": "offset to the first result to return.  Use negative numbers to offset from the end of the result list.",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
           }
         ],
         "responses": {
@@ -777,6 +809,14 @@
             "required": false,
             "type": "integer",
             "format": "int32"
+          },
+          {
+            "name": "start",
+            "in": "query",
+            "description": "offset to the first result to return.  Use negative numbers to offset from the end of the result list.",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
           }
         ],
         "responses": {
@@ -886,6 +926,14 @@
             "name": "limit",
             "in": "query",
             "description": "maximum number of results to return",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "start",
+            "in": "query",
+            "description": "offset to the first result to return.  Use negative numbers to offset from the end of the result list.",
             "required": false,
             "type": "integer",
             "format": "int32"
@@ -1043,6 +1091,14 @@
             "required": false,
             "type": "integer",
             "format": "int32"
+          },
+          {
+            "name": "start",
+            "in": "query",
+            "description": "offset to the first result to return.  Use negative numbers to offset from the end of the result list.",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
           }
         ],
         "responses": {
@@ -1155,6 +1211,14 @@
             "required": false,
             "type": "integer",
             "format": "int32"
+          },
+          {
+            "name": "start",
+            "in": "query",
+            "description": "offset to the first result to return.  Use negative numbers to offset from the end of the result list.",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
           }
         ],
         "responses": {
@@ -1260,6 +1324,14 @@
             "required": false,
             "type": "integer",
             "format": "int32"
+          },
+          {
+            "name": "start",
+            "in": "query",
+            "description": "offset to the first result to return.  Use negative numbers to offset from the end of the result list.",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
           }
         ],
         "responses": {
@@ -1347,6 +1419,14 @@
             "name": "limit",
             "in": "query",
             "description": "maximum number of results to return",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "start",
+            "in": "query",
+            "description": "offset to the first result to return.  Use negative numbers to offset from the end of the result list.",
             "required": false,
             "type": "integer",
             "format": "int32"
@@ -1472,6 +1552,14 @@
             "required": false,
             "type": "integer",
             "format": "int32"
+          },
+          {
+            "name": "start",
+            "in": "query",
+            "description": "offset to the first result to return.  Use negative numbers to offset from the end of the result list.",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
           }
         ],
         "responses": {
@@ -1558,6 +1646,14 @@
             "name": "limit",
             "in": "query",
             "description": "maximum number of results to return",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "start",
+            "in": "query",
+            "description": "offset to the first result to return.  Use negative numbers to offset from the end of the result list.",
             "required": false,
             "type": "integer",
             "format": "int32"
