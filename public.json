@@ -2296,8 +2296,7 @@
         },
         "address": {
           "description": "billing address associated with this credit card",
-          "type": "integer",
-          "format": "int64"
+          "$ref": "#/definitions/address"
         },
         "last-four": {
           "description": "last four digits of the card number for identification",
