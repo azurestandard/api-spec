@@ -2300,8 +2300,7 @@
         },
         "last-four": {
           "description": "last four digits of the card number for identification",
-          "type": "integer",
-          "format": "int32"
+          "type": "string",
         },
         "expiration": {
           "description": "expiration date.  We only use the month and year; the day will always be '01'.",
@@ -2347,13 +2346,11 @@
         },
         "number": {
           "description": "card number",
-          "type": "integer",
-          "format": "int32"
+          "type": "string",
         },
         "security-code": {
           "description": "security code (also known as the verification value)",
-          "type": "integer",
-          "format": "int32"
+          "type": "string",
         },
         "expiration": {
           "description": "expiration date.  We only use the month and year and ignore the day (which you should set to '01').",
