@@ -1318,6 +1318,13 @@
             "format": "date"
           },
           {
+            "name": "balance",
+            "in": "query",
+            "description": "add the balance field to returned entries",
+            "required": false,
+            "type": "boolean",
+          },
+          {
             "name": "limit",
             "in": "query",
             "description": "maximum number of results to return",
@@ -2261,6 +2268,11 @@
         "notes": {
           "description": "a line of Markdown identifying the entry (e.g. \"charge for order 123\" or \"payed with card ending in 0123\").",
           "type": "string"
+        },
+        "balance": {
+          "description": "account balance after this account entry",
+          "type": "number",
+          "format": "float"
         }
       },
       "required": [
