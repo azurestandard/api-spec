@@ -647,6 +647,17 @@
             "collectionFormat": "csv"
           },
           {
+            "name": "tag",
+            "in": "query",
+            "description": "tags to filter by",
+            "required": false,
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/packagedProductTag"
+            },
+            "collectionFormat": "csv"
+          },
+          {
             "name": "person",
             "in": "query",
             "description": "person IDs to filter by (selects their favorite products)",
