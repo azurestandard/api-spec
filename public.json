@@ -1322,7 +1322,7 @@
             "in": "query",
             "description": "add the balance field to returned entries",
             "required": false,
-            "type": "boolean",
+            "type": "boolean"
           },
           {
             "name": "limit",
