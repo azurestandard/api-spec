@@ -647,6 +647,17 @@
             "collectionFormat": "csv"
           },
           {
+            "name": "tag",
+            "in": "query",
+            "description": "tags to filter by",
+            "required": false,
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/packagedProductTag"
+            },
+            "collectionFormat": "csv"
+          },
+          {
             "name": "person",
             "in": "query",
             "description": "person IDs to filter by (selects their favorite products)",
@@ -787,6 +798,17 @@
             "items": {
               "type": "integer",
               "format": "int64"
+            },
+            "collectionFormat": "csv"
+          },
+          {
+            "name": "tag",
+            "in": "query",
+            "description": "tags to filter by",
+            "required": false,
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/packagedProductTag"
             },
             "collectionFormat": "csv"
           },
@@ -2027,12 +2049,29 @@
             "description": "URL for a picture of this packaged product",
             "type": "string"
           }
+        },
+        "tags": {
+          "description": "Mark types for this packaged product",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/packagedProductTag"
+          }
         }
       },
       "required": [
         "code",
         "size",
-        "price"
+        "price",
+        "tags"
+      ]
+    },
+    "packagedProductTag": {
+      "description": "a type of packaged product or other boolean marker",
+      "type": "string",
+      "enum": [
+        "new",
+        "overstock",
+        "bargain-bin"
       ]
     },
     "product": {
