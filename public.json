@@ -2349,6 +2349,10 @@
           "description": "billing address associated with this credit card",
           "$ref": "#/definitions/address"
         },
+        "issuer": {
+          "description": "provider network.  You can determine this from the leading digits of the card number, but we don't store those digits",
+          "type": "string"
+        },
         "last-four": {
           "description": "last four digits of the card number for identification",
           "type": "string"
