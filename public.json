@@ -54,6 +54,13 @@
         ],
         "parameters": [
           {
+            "name": "active",
+            "in": "query",
+            "description": "only return (in)active drops",
+            "required": false,
+            "type": "boolean"
+          },
+          {
             "name": "route",
             "in": "query",
             "description": "route names to filter by",
