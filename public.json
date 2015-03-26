@@ -1834,6 +1834,10 @@
         "geo": {
           "$ref": "#/definitions/geo"
         },
+        "active": {
+          "description": "whether or not this drop is actively ordering",
+          "type": "boolean"
+        },
         "exclusivity": {
           "type": "string",
           "enum": [
@@ -1903,6 +1907,7 @@
         "id",
         "name",
         "geo",
+        "active",
         "exclusivity",
         "members"
       ]
