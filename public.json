@@ -2148,6 +2148,11 @@
           "type": "integer",
           "format": "int64"
         },
+        "trip": {
+          "description": "trip ID for the stop",
+          "type": "integer",
+          "format": "int64"
+        },
         "drop": {
           "description": "drop ID for the stop",
           "type": "integer",
@@ -2171,6 +2176,7 @@
       },
       "required": [
         "id",
+        "trip",
         "drop",
         "target-time",
         "estimated-time"
