@@ -603,6 +603,115 @@
         }
       }
     },
+    "/route-stops": {
+      "get": {
+        "summary": "Returns all route-stops from the system that the user has access to",
+        "description": "Route-stops are ordered for increasing offset from the route's trip cutoff",
+        "operationId": "findRouteStops",
+        "tags": [
+          "stop"
+        ],
+        "parameters": [
+          {
+            "name": "route",
+            "in": "query",
+            "description": "route names to filter by",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "csv"
+          },
+          {
+            "name": "drop",
+            "in": "query",
+            "description": "drop IDs to filter by",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "collectionFormat": "csv"
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "maximum number of results to return",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "start",
+            "in": "query",
+            "description": "offset to the first result to return.  Use negative numbers to offset from the end of the result list.",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "route-stop response",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/routeStop"
+              }
+            },
+            "headers": {
+              "Count": {
+                "description": "total number of matching results (how many you'd get if you didn't set `limit`)",
+                "type": "integer",
+                "format": "int32",
+                "minimum": 0
+              }
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "schema": {
+              "$ref": "#/definitions/errorModel"
+            }
+          }
+        }
+      }
+    },
+    "/route-stop/{id}": {
+      "get": {
+        "summary": "Returns a route-stop based on a single ID, if the user has access to the route-stop",
+        "operationId": "findRouteStopById",
+        "tags": [
+          "stop"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of route-stop to fetch",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "route-stop response",
+            "schema": {
+              "$ref": "#/definitions/routeStop"
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "schema": {
+              "$ref": "#/definitions/errorModel"
+            }
+          }
+        }
+      }
+    },
     "/stops": {
       "get": {
         "summary": "Returns all stops from the system that the user has access to",
@@ -2106,11 +2215,17 @@
           "description": "number of days between cutoffs",
           "type": "integer",
           "format": "int32"
+        },
+        "delivery-offset": {
+          "description": "number of days after cutoff before the first stop",
+          "type": "integer",
+          "format": "int32"
         }
       },
       "required": [
         "name",
-        "cutoff-frequency"
+        "cutoff-frequency",
+        "delivery-offset"
       ]
     },
     "newRoute": {
@@ -2132,16 +2247,53 @@
           "description": "cutoff for placing orders on this trip",
           "type": "string",
           "format": "date-time"
+        },
+        "delivery-start": {
+          "description": "day of the first stop (in stop-local time)",
+          "type": "string",
+          "format": "date"
         }
       },
       "required": [
         "id",
         "route",
-        "cutoff"
+        "cutoff",
+        "delivery-start"
+      ]
+    },
+    "routeStop": {
+      "description": "a template used to create stops when a trip is verified",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "route": {
+          "description": "route name for the route-stop",
+          "type": "string"
+        },
+        "drop": {
+          "description": "drop ID for the route-stop",
+          "type": "integer",
+          "format": "int64"
+        },
+        "delivery-offset": {
+          "description": "offset from midnight on the morning of the trips's delivery start until the usual delivery time for this drop",
+          "type": "string",
+          "format": "duration"
+        }
+      },
+      "required": [
+        "id",
+        "route",
+        "drop",
+        "target-time",
+        "estimated-time"
       ]
     },
     "stop": {
-      "description": "a trip stop or waypoint",
+      "description": "a trip stop or waypoint on a verified trip",
       "type": "object",
       "properties": {
         "id": {
