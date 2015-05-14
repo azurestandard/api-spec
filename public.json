@@ -2770,9 +2770,13 @@
       ]
     },
     "address": {
-      "description": "an address following the convention of http://microformats.org/wiki/hcard",
+      "description": "an address following the convention of http://microformats.org/wiki/h-adr and https://tools.ietf.org/html/rfc6350#section-6.3.1, with an additional \"name\" property",
       "type": "object",
       "properties": {
+        "name": {
+          "description": "contact name for this address (e.g. \"Mr. John Q. Public, Esq.\")",
+          "type": "string"
+        },
         "post-office-box": {
           "type": "string"
         },
