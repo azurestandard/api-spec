@@ -2063,6 +2063,45 @@
           }
         }
       }
+    },
+    "/login": {
+      "get": {
+        "summary": "Authenticate and receive a session cookie",
+        "operationId": "login",
+        "tags": [
+          "session"
+        ],
+        "parameters": [
+          {
+            "name": "username",
+            "in": "body",
+            "description": "Username for authorization",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "password",
+            "in": "body",
+            "description": "Password for authorization",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "session response",
+            "schema": {
+              "$ref": "#/definitions/session"
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "schema": {
+              "$ref": "#/definitions/errorModel"
+            }
+          }
+        }
+      }
     }
   },
   "definitions": {
