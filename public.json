@@ -2249,9 +2249,9 @@
           "format": "date-time"
         },
         "delivery-start": {
-          "description": "day of the first stop (in stop-local time)",
+          "description": "estimated stop-time for the first stop",
           "type": "string",
-          "format": "date"
+          "format": "date-time"
         }
       },
       "required": [
