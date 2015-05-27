@@ -2102,6 +2102,34 @@
           }
         }
       }
+    },
+    "/logout": {
+      "get": {
+        "summary": "Clears the current cookie-based session",
+        "operationId": "logout",
+        "tags": [
+          "session"
+        ],
+        "security": [
+          {
+            "sessionCookie": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "session response",
+            "schema": {
+              "$ref": "#/definitions/session"
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "schema": {
+              "$ref": "#/definitions/errorModel"
+            }
+          }
+        }
+      }
     }
   },
   "definitions": {
