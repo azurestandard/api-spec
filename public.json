@@ -84,7 +84,7 @@
             "collectionFormat": "csv"
           },
           {
-            "name": "person",
+            "name": "filter-person",
             "in": "query",
             "description": "person IDs to filter by",
             "required": false,
@@ -923,7 +923,7 @@
             "collectionFormat": "csv"
           },
           {
-            "name": "person",
+            "name": "filter-person",
             "in": "query",
             "description": "person IDs to filter by (selects their favorite products)",
             "required": false,
@@ -933,6 +933,14 @@
               "format": "int64"
             },
             "collectionFormat": "csv"
+          },
+          {
+            "name": "annotate-person",
+            "in": "query",
+            "description": "person ID for associating additional metadata with results (e.g. whether this person has favorited a given packaged-product).  If unset and you're authenticated, defaults to your authenticated ID",
+            "required": false,
+            "type": "integer",
+            "format": "int64"
           },
           {
             "name": "limit",
@@ -1078,7 +1086,7 @@
             "collectionFormat": "csv"
           },
           {
-            "name": "person",
+            "name": "filter-person",
             "in": "query",
             "description": "person IDs to filter by (selects their favorite packaged products)",
             "required": false,
@@ -1088,6 +1096,14 @@
               "format": "int64"
             },
             "collectionFormat": "csv"
+          },
+          {
+            "name": "annotate-person",
+            "in": "query",
+            "description": "person ID for associating additional metadata with results (e.g. whether this person has favorited a given packaged-product).  If unset and you're authenticated, defaults to your authenticated ID",
+            "required": false,
+            "type": "integer",
+            "format": "int64"
           },
           {
             "name": "limit",
@@ -1343,7 +1359,7 @@
             "collectionFormat": "csv"
           },
           {
-            "name": "person",
+            "name": "filter-person",
             "in": "query",
             "description": "person IDs to filter by",
             "required": false,
@@ -1577,7 +1593,7 @@
         ],
         "parameters": [
           {
-            "name": "person",
+            "name": "filter-person",
             "in": "query",
             "description": "person IDs to filter by",
             "required": false,
@@ -1698,7 +1714,7 @@
         ],
         "parameters": [
           {
-            "name": "person",
+            "name": "filter-person",
             "in": "query",
             "description": "person IDs to filter by",
             "required": false,
@@ -1828,7 +1844,7 @@
         ],
         "parameters": [
           {
-            "name": "person",
+            "name": "filter-person",
             "in": "query",
             "description": "person IDs to filter by",
             "required": false,
@@ -2420,8 +2436,12 @@
           "type": "integer",
           "format": "int32"
         },
+        "favorite": {
+          "description": "if the annotate-person you associated with the request has favorited this packaged product",
+          "type": "boolean"
+        },
         "favorites": {
-          "description": "number of customers who've marked this packaged product as a favorite",
+          "description": "number of people who've marked this packaged product as a favorite",
           "type": "integer",
           "format": "int32"
         },
@@ -2476,7 +2496,7 @@
           "$ref": "#/definitions/brand"
         },
         "favorites": {
-          "description": "number of customers who've marked this product as a favorite",
+          "description": "number of people who've marked this product as a favorite",
           "type": "integer",
           "format": "int32"
         },
