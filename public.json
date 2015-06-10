@@ -2091,7 +2091,7 @@
           {
             "name": "username",
             "in": "body",
-            "description": "Username for authorization.  Instead of your username, you could also use one of your associated email addresses here",
+            "description": "Username for authorization.  Instead of your username, you could also use one of your associated email addresses or your person ID here",
             "required": true,
             "type": "string"
           },
