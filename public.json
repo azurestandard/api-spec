@@ -2337,6 +2337,110 @@
           }
         }
       }
+    },
+    "/notifications": {
+      "get": {
+        "summary": "Returns all notifications from the system that the user has access to",
+        "operationId": "findNotifications",
+        "tags": [
+          "notification"
+        ],
+        "parameters": [
+          {
+            "name": "active",
+            "in": "query",
+            "description": "only return (in)active notifications",
+            "required": false,
+            "type": "boolean"
+          },
+          {
+            "name": "filter-person",
+            "in": "query",
+            "description": "person IDs to filter by",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "collectionFormat": "csv"
+          },
+          {
+            "name": "annotate-person",
+            "in": "query",
+            "description": "add a boolean dismissed field to the results with whether or not the annotate-person has dismissed this notification, required with dismissed",
+            "required": false,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "dismissed",
+            "in": "query",
+            "description": "only return notifications that are (not) dismissed by the annotate-person",
+            "required": false,
+            "type": "boolean"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "notification response",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/notification"
+              }
+            },
+            "headers": {
+              "Count": {
+                "description": "total number of matching results (how many you'd get if you didn't set `limit`)",
+                "type": "integer",
+                "format": "int32",
+                "minimum": 0
+              }
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "schema": {
+              "$ref": "#/definitions/errorModel"
+            }
+          }
+        }
+      }
+    },
+    "/notification-dismissals": {
+      "post": {
+        "summary": "Create a notification dismissal (a user may only dismiss notifications for himself)",
+        "operationId": "addNotificationDismissal",
+        "tags": [
+          "notification"
+        ],
+        "parameters": [
+          {
+            "name": "notification-dismissal",
+            "in": "body",
+            "description": "Notification dismissal to add",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/notificationDismissal"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "notification dismissal response",
+            "schema": {
+              "$ref": "#/definitions/notificationDismissal"
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "schema": {
+              "$ref": "#/definitions/errorModel"
+            }
+          }
+        }
+      }
     }
   },
   "definitions": {
@@ -3181,6 +3285,52 @@
           "format": "date-time"
         }
       }
+    },
+    "notification": {
+      "description": "a notification to display on the website",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "message": {
+          "type": "string"
+        },
+        "active": {
+          "type": "boolean"
+        },
+        "dismissed": {
+          "type": "boolean",
+          "description": "if annotate-person is specified in the request, this field will note if the notification has been dismissed"
+        }
+      },
+      "required": [
+        "id",
+        "message"
+      ]
+    },
+    "notificationDismissal": {
+      "description": "a dismissal used to hide a read notification",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "notification": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "person": {
+          "type": "integer",
+          "format": "int64"
+        }
+      },
+      "required": [
+        "notification",
+        "person"
+      ]
     },
     "errorModel": {
       "required": [
