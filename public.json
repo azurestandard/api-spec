@@ -2146,6 +2146,49 @@
           }
         }
       }
+    },
+    "/notifications": {
+      "get": {
+        "summary": "Returns all notifications from the system that the user has access to",
+        "operationId": "findNotifications",
+        "tags": [
+          "notification"
+        ],
+        "parameters": [
+          {
+            "name": "active",
+            "in": "query",
+            "description": "only return (in)active notifications",
+            "required": false,
+            "type": "boolean"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "notification response",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/notification"
+              }
+            },
+            "headers": {
+              "Count": {
+                "description": "total number of matching results (how many you'd get if you didn't set `limit`)",
+                "type": "integer",
+                "format": "int32",
+                "minimum": 0
+              }
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "schema": {
+              "$ref": "#/definitions/errorModel"
+            }
+          }
+        }
+      }
     }
   },
   "definitions": {
@@ -2925,6 +2968,26 @@
           "format": "date-time"
         }
       }
+    },
+    "notification": {
+      "description": "a notification to display on the website",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "message": {
+          "type": "string"
+        },
+        "active": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "id",
+        "message"
+      ]
     },
     "errorModel": {
       "required": [
