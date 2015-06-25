@@ -2147,29 +2147,29 @@
         }
       }
     },
-    "/customer-notifications": {
+    "/notifications": {
       "get": {
-        "summary": "Returns all customer notifications from the system that the user has access to",
-        "operationId": "findCustomerNotifications",
+        "summary": "Returns all notifications from the system that the user has access to",
+        "operationId": "findNotifications",
         "tags": [
-          "customer-notification"
+          "notification"
         ],
         "parameters": [
           {
             "name": "active",
             "in": "query",
-            "description": "only return (in)active customer notifications",
+            "description": "only return (in)active notifications",
             "required": false,
             "type": "boolean"
           }
         ],
         "responses": {
           "200": {
-            "description": "customer-notification response",
+            "description": "notification response",
             "schema": {
               "type": "array",
               "items": {
-                "$ref": "#/definitions/customerNotification"
+                "$ref": "#/definitions/notification"
               }
             },
             "headers": {
@@ -2969,8 +2969,8 @@
         }
       }
     },
-    "customerNotification": {
-      "description": "a customer notification to display on the website",
+    "notification": {
+      "description": "a notification to display on the website",
       "type": "object",
       "properties": {
         "id": {
@@ -2986,8 +2986,7 @@
       },
       "required": [
         "id",
-        "message",
-        "active"
+        "message"
       ]
     },
     "errorModel": {
