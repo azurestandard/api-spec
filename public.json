@@ -2173,6 +2173,163 @@
           }
         }
       }
+    },
+    "/registration/register": {
+      "post": {
+        "summary": "Register a new person",
+        "description": "The API implementation will by sending the registrant a confirmation email.  That email will contain a confirmation URL with a registration token.  Following that URL will (possibly indirectly) send the token to this API's confirmation endpoint which completes the registration.  Since customers are unlikely to enjoy hitting the JSON confirmation endpoint directly, we recommend clients set base-url to something like `http://example.com/activation?token=` and have that page send a request to this API's confirmation endpoint and display the result returned by the API.  On success, this endpoint will also return a resend token (not the same as the confirmation token emailed to the registrant), which can be used by the client to trigger confirmation email resends.",
+        "operationsId": "registerPerson",
+        "tags": [
+          "registration"
+        ],
+        "parameters": [
+          {
+            "name": "base-url",
+            "in": "body",
+            "description": "Redirect URL for the confirmation UI.  The confirmation email points customers at {base-url}{confirmation-token} to confirm their registration.",
+            "description": "The registrant's email address",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "name",
+            "in": "body",
+            "description": "The registrant's full name",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "password",
+            "in": "body",
+            "description": "The registrant's password",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "email",
+            "in": "body",
+            "description": "The registrant's email address",
+            "required": true,
+            "type": "string",
+            "format": "email"
+          },
+          {
+            "name": "can-email",
+            "in": "body",
+            "description": "Set to false if you do not wish to be contacted via email after completing registration (assumed true)",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "address",
+            "in": "body",
+            "description": "The registrant's mailing address (required if the've set 'catalog' or unset 'can-email')",
+            "required": false,
+            "type": "object",
+            "schema": {
+              "$ref": "#/definitions/address"
+            }
+          },
+          {
+            "name": "telephone",
+            "in": "body",
+            "description": "The registrant's telephone numbers (currently only supports 'voice' and 'text' types)",
+            "required": false,
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/telephone"
+            }
+          },
+          {
+            "name": "drop",
+            "in": "body",
+            "description": "The registrant's chosen drop ID (if any)",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "catalog",
+            "in": "body",
+            "description": "Set to true to receive the product catalog",
+            "required": false,
+            "type": "boolean"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "resend token (registration successfully initiated and confirmation email sent)",
+            "type": "string"
+          },
+          "default": {
+            "description": "unexpected error",
+            "schema": {
+              "$ref": "#/definitions/errorModel"
+            }
+          }
+        }
+      }
+    },
+    "/registration/confirm": {
+      "post": {
+        "summary": "Complete an in-progress registration",
+        "operationId": "confirmRegistration",
+        "tags": [
+          "registration"
+        ],
+        "parameters": [
+          {
+            "name": "token",
+            "in": "body",
+            "description": "The registrant's confirmation token",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "person response",
+            "schema": {
+              "$ref": "#/definitions/person"
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "schema": {
+              "$ref": "#/definitions/errorModel"
+            }
+          }
+        }
+      }
+    },
+    "/registration/resend": {
+      "post": {
+        "summary": "Resend the confirmation email to the user",
+        "operationId": "resendRegistrationEmail",
+        "tags": [
+          "registration"
+        ],
+        "parameters": [
+          {
+            "name": "token",
+            "in": "body",
+            "description": "The new person's resend token",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Confirmation email resent",
+            "schema": {}
+          },
+          "default": {
+            "description": "unexpected error",
+            "schema": {
+              "$ref": "#/definitions/errorModel"
+            }
+          }
+        }
+      }
     }
   },
   "definitions": {
