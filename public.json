@@ -2862,6 +2862,47 @@
         "newCreditCard"
       ]
     },
+    "telephone": {
+      "description": "A telephone number",
+      "type": "object",
+      "properties": {
+        "pref": {
+          "description": "Mark a preferred-use telephone number (assumed false)",
+          "type": "boolean"
+        },
+        "type": {
+          "description": "An array of properties for this number",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/telephoneType"
+          }
+        },
+        "number": {
+          "description": "E.123 telephone number",
+          "type": "string",
+          "format": "telephone"
+        }
+      },
+      "required": [
+        "type",
+        "number"
+      ]
+    },
+    "telephoneType": {
+      "description": "a property of a telephone number",
+      "type": "string",
+      "enum": [
+        "text",
+        "voice",
+        "video",
+        "fax",
+        "pager",
+        "textphone",
+        "cell",
+        "home",
+        "work"
+      ]
+    },
     "person": {
       "description": "a person (customer, vendor, employee, ...)",
       "type": "object",
