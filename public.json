@@ -272,6 +272,33 @@
         }
       }
     },
+    "/drops/locations": {
+      "get": {
+        "summary": "Returns an array of locations for all active drops that the user has access to.",
+        "description": "For example, you can use this to draw markers on map.",
+        "operationId": "findDropLocations",
+        "tags": [
+          "drop"
+        ],
+        "responses": {
+          "200": {
+            "description": "drop locations response",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/location"
+              }
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "schema": {
+              "$ref": "#/definitions/errorModel"
+            }
+          }
+        }
+      }
+    },
     "/routes": {
       "get": {
         "summary": "Returns all routes from the system that the user has access to",
@@ -2890,6 +2917,30 @@
         "locality",
         "region",
         "country-name"
+      ]
+    },
+    "location": {
+      "description": "a named geographic coordinate with an enumerated label",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "name": {
+          "type": "string"
+        },
+        "geo": {
+          "$ref": "#/definitions/geo"
+        },
+        "label": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "geo"
       ]
     },
     "geo": {
