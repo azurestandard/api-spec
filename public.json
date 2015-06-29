@@ -2315,6 +2315,13 @@
             "description": "The new person's resend token",
             "required": true,
             "type": "string"
+          },
+          {
+            "name": "base-url",
+            "in": "body",
+            "description": "Redirect URL for the confirmation UI.  The confirmation email points customers at {base-url}{confirmation-token} to confirm their registration.",
+            "required": true,
+            "type": "string"
           }
         ],
         "responses": {
