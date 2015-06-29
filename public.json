@@ -2161,6 +2161,14 @@
             "description": "only return (in)active notifications",
             "required": false,
             "type": "boolean"
+          },
+          {
+            "name": "person",
+            "in": "query",
+            "description": "person ID to filter by (exclude notifications dismissed by this person)",
+            "required": false,
+            "type": "integer",
+            "format": "int64"
           }
         ],
         "responses": {
