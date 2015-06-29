@@ -2197,6 +2197,40 @@
           }
         }
       }
+    },
+    "/notification-dismissals": {
+      "post": {
+        "summary": "Create a notification dismissal",
+        "operationId": "addNotificationDismissal",
+        "tags": [
+          "notification-dismissal"
+        ],
+        "parameters": [
+          {
+            "name": "notification-dismissal",
+            "in": "body",
+            "description": "Notification dismissal to add",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/notificationDismissal"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "notification dismissal response",
+            "schema": {
+              "$ref": "#/definitions/notificationDismissal"
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "schema": {
+              "$ref": "#/definitions/errorModel"
+            }
+          }
+        }
+      }
     }
   },
   "definitions": {
@@ -2995,6 +3029,28 @@
       "required": [
         "id",
         "message"
+      ]
+    },
+    "notificationDismissal": {
+      "description": "a dismissal used to hide a read notification",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "notification": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "person": {
+          "type": "integer",
+          "format": "int64"
+        }
+      },
+      "required": [
+        "notification",
+        "person"
       ]
     },
     "errorModel": {
