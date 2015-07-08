@@ -2486,7 +2486,6 @@
           "description": "parking location ownership for this drop",
           "type": "string",
           "enum": [
-            null,
             "home",
             "business",
             "non-profit",
@@ -2559,7 +2558,6 @@
           "description": "payment medium (nothing, volunteer time, or a monetary payment)",
           "type": "string",
           "enum": [
-            null,
             "volunteer",
             "payment"
           ]
@@ -2568,16 +2566,11 @@
           "description": "fee trigger (never, only when orders are held, or for every order)",
           "type": "string",
           "enum": [
-            null,
             "held",
             "order"
           ]
         }
-      },
-      "required": [
-        "type",
-        "condition"
-      ]
+      }
     },
     "route": {
       "description": "an order-delivery truck route",
