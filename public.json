@@ -1496,7 +1496,7 @@
         "summary": "Returns all order-lines from the system that the user has access to",
         "operationId": "findOrderLines",
         "tags": [
-          "order-line"
+          "order"
         ],
         "parameters": [
           {
@@ -1583,7 +1583,7 @@
         "summary": "Returns a order-line based on a single ID",
         "operationId": "findOrderLineById",
         "tags": [
-          "order-line"
+          "order"
         ],
         "parameters": [
           {
