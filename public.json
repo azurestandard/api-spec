@@ -2163,12 +2163,31 @@
             "type": "boolean"
           },
           {
-            "name": "person",
+            "name": "filter-person",
             "in": "query",
-            "description": "person ID to filter by (exclude notifications dismissed by this person)",
+            "description": "person IDs to filter by",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "collectionFormat": "csv"
+          },
+          {
+            "name": "annotate-person",
+            "in": "query",
+            "description": "add a boolean dismissed field to the results with whether or not the annotate-person has dismissed this notification, required with dismissed",
             "required": false,
             "type": "integer",
             "format": "int64"
+          },
+          {
+            "name": "dismissed",
+            "in": "query",
+            "description": "only return notifications that are (not) dismissed by the annotate-person",
+            "required": false,
+            "type": "boolean"
           }
         ],
         "responses": {
@@ -2203,7 +2222,7 @@
         "summary": "Create a notification dismissal",
         "operationId": "addNotificationDismissal",
         "tags": [
-          "notification-dismissal"
+          "notification"
         ],
         "parameters": [
           {
@@ -3024,6 +3043,10 @@
         },
         "active": {
           "type": "boolean"
+        },
+        "dismissed": {
+          "type": "boolean",
+          "description": "if annotate-person is specified in the request, this field will note if the notification has been dismissed"
         }
       },
       "required": [
