@@ -2219,7 +2219,7 @@
     },
     "/notification-dismissals": {
       "post": {
-        "summary": "Create a notification dismissal",
+        "summary": "Create a notification dismissal (a user may only dismiss notifications for himself)",
         "operationId": "addNotificationDismissal",
         "tags": [
           "notification"
