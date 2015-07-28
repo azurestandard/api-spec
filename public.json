@@ -2106,6 +2106,53 @@
             }
           }
         }
+      },
+      "put": {
+        "summary": "Update an existing person",
+        "operationId": "updatePerson",
+        "tags": [
+          "person"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of person to update",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "person",
+            "in": "body",
+            "description": "Person to update",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/updatePerson"
+            }
+          },
+          {
+            "name": "user-password",
+            "in": "body",
+            "description": "The authenticated person's password, required when changing person.password or person.email",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "person response",
+            "schema": {
+              "$ref": "#/definitions/person"
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "schema": {
+              "$ref": "#/definitions/errorModel"
+            }
+          }
+        }
       }
     },
     "/person": {
@@ -2114,6 +2161,45 @@
         "operationId": "findPersonByAuth",
         "tags": [
           "person"
+        ],
+        "responses": {
+          "200": {
+            "description": "person response",
+            "schema": {
+              "$ref": "#/definitions/person"
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "schema": {
+              "$ref": "#/definitions/errorModel"
+            }
+          }
+        }
+      },
+      "put": {
+        "summary": "Update the authenticated person (yourself)",
+        "operationId": "updatePersonByAuth",
+        "tags": [
+          "person"
+        ],
+        "parameters": [
+          {
+            "name": "person",
+            "in": "body",
+            "description": "Person to update",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/updatePerson"
+            }
+          },
+          {
+            "name": "user-password",
+            "in": "body",
+            "description": "The authenticated person's password, required when changing person.password or person.email",
+            "required": false,
+            "type": "string"
+          }
         ],
         "responses": {
           "200": {
