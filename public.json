@@ -2243,38 +2243,19 @@
             "type": "string"
           },
           {
-            "name": "name",
+            "name": "person",
             "in": "body",
-            "description": "The registrant's full name",
+            "description": "The registrant's personal information.",
             "required": true,
-            "type": "string"
-          },
-          {
-            "name": "password",
-            "in": "body",
-            "description": "The registrant's password",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "email",
-            "in": "body",
-            "description": "The registrant's email address",
-            "required": true,
-            "type": "string",
-            "format": "email"
-          },
-          {
-            "name": "can-email",
-            "in": "body",
-            "description": "Set to false if you do not wish to be contacted via email after completing registration (assumed true)",
-            "required": false,
-            "type": "string"
+            "type": "object",
+            "schema": {
+              "$ref": "#/definitions/updatePerson"
+            }
           },
           {
             "name": "address",
             "in": "body",
-            "description": "The registrant's mailing address (required if the've set 'catalog' or unset 'can-email')",
+            "description": "The registrant's mailing address (required if they've set person.catalog).",
             "required": false,
             "type": "object",
             "schema": {
@@ -2297,13 +2278,6 @@
             "description": "The registrant's chosen drop ID (if any)",
             "required": false,
             "type": "string"
-          },
-          {
-            "name": "catalog",
-            "in": "body",
-            "description": "Set to true to receive the product catalog",
-            "required": false,
-            "type": "boolean"
           }
         ],
         "responses": {
@@ -3249,12 +3223,53 @@
         "email": {
           "type": "string",
           "format": "email"
+        },
+        "can-email": {
+          "description": "Can Azure contact this person for reasons other than registration",
+          "type": "boolean"
+        },
+        "catalog": {
+          "description": "Set to true to receive the product catalog",
+          "type": "boolean"
+        },
+        "company": {
+          "description": "Employer name",
+          "type": "string"
         }
       },
       "required": [
         "id",
         "name"
       ]
+    },
+    "updatePerson": {
+      "description": "a person (customer, vendor, employee, ...)",
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "password": {
+          "description": "Password for authentication",
+          "type": "string"
+        },
+        "email": {
+          "type": "string",
+          "format": "email"
+        },
+        "can-email": {
+          "description": "Can Azure contact this person for reasons other than registration",
+          "type": "boolean"
+        },
+        "catalog": {
+          "description": "Subscribed to receive the product catalog",
+          "type": "boolean"
+        },
+        "company": {
+          "description": "Employer name",
+          "type": "string"
+        }
+      }
     },
     "address": {
       "description": "an address following the convention of http://microformats.org/wiki/h-adr and https://tools.ietf.org/html/rfc6350#section-6.3.1, with an additional \"name\" property",
