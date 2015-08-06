@@ -2905,6 +2905,21 @@
             "lost"
           ]
         },
+        "placed": {
+          "description": "when the order was placed",
+          "type": "string",
+          "format": "date-time"
+        },
+        "shipped": {
+          "description": "when the order was shipped",
+          "type": "string",
+          "format": "date-time"
+        },
+        "delivered": {
+          "description": "when the order was delivered",
+          "type": "string",
+          "format": "date-time"
+        },
         "drop": {
           "description": "drop the order is destined for (unset for UPS orders)",
           "type": "integer",
