@@ -2187,7 +2187,6 @@
             "name": "base-url",
             "in": "body",
             "description": "Redirect URL for the confirmation UI.  The confirmation email points customers at {base-url}{confirmation-token} to confirm their registration.",
-            "description": "The registrant's email address",
             "required": true,
             "type": "string"
           },
