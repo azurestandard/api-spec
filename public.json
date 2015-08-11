@@ -945,7 +945,7 @@
             "required": false,
             "type": "array",
             "items": {
-              "$ref": "#/definitions/packagedProductTag"
+              "type": "string"
             },
             "collectionFormat": "csv"
           },
@@ -1108,7 +1108,7 @@
             "required": false,
             "type": "array",
             "items": {
-              "$ref": "#/definitions/packagedProductTag"
+              "type": "string"
             },
             "collectionFormat": "csv"
           },
@@ -1197,6 +1197,58 @@
             "description": "product response",
             "schema": {
               "$ref": "#/definitions/packagedProduct"
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "schema": {
+              "$ref": "#/definitions/errorModel"
+            }
+          }
+        }
+      }
+    },
+    "/packaged-product-tags": {
+      "get": {
+        "summary": "Returns all packaged product tags from the system that the user has access to",
+        "operationId": "findPackagedProductTag",
+        "tags": [
+          "product"
+        ],
+        "parameters": [
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "maximum number of results to return",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "start",
+            "in": "query",
+            "description": "offset to the first result to return.  Use negative numbers to offset from the end of the result list.",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "packaged product tag response",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/packagedProductTag"
+              }
+            },
+            "headers": {
+              "Count": {
+                "description": "total number of matching results (how many you'd get if you didn't set `limit`)",
+                "type": "integer",
+                "format": "int32",
+                "minimum": 0
+              }
             }
           },
           "default": {
@@ -2743,7 +2795,7 @@
           "description": "Mark types for this packaged product",
           "type": "array",
           "items": {
-            "$ref": "#/definitions/packagedProductTag"
+            "type": "string"
           }
         }
       },
@@ -2756,12 +2808,17 @@
     },
     "packagedProductTag": {
       "description": "a type of packaged product or other boolean marker",
-      "type": "string",
-      "enum": [
-        "new",
-        "overstock",
-        "bargain-bin"
-      ]
+      "type": "object",
+      "properties": {
+        "slug": {
+          "description": "code used as the primary key for tags",
+          "type": "string"
+        },
+        "name": {
+          "description": "human-readable tag name",
+          "type": "string"
+        }
+      }
     },
     "product": {
       "description": "a product available for sale (independent of packaging)",
