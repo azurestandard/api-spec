@@ -1213,7 +1213,7 @@
         "summary": "Returns all packaged product tags from the system that the user has access to",
         "operationId": "findPackagedProductTag",
         "tags": [
-          "product"
+          "packaged-product-tag"
         ],
         "parameters": [
           {
@@ -1250,6 +1250,134 @@
                 "minimum": 0
               }
             }
+          },
+          "default": {
+            "description": "unexpected error",
+            "schema": {
+              "$ref": "#/definitions/errorModel"
+            }
+          }
+        }
+      }
+    },
+    "/packaged-product-tag-associations": {
+      "get": {
+        "summary": "Return packaged product tag filter preferences for a person",
+        "operationId": "findPackagedProductTagAssociations",
+        "tags": [
+          "packaged-product-tag"
+        ],
+        "parameters": [
+          {
+            "name": "person",
+            "in": "query",
+            "description": "person to find saved filter preferences for",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "maximum number of results to return",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "start",
+            "in": "query",
+            "description": "offset to the first result to return.  Use negative numbers to offset from the end of the result list.",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "packaged product tag association response",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/packagedProductTagAssociation"
+              }
+            },
+            "headers": {
+              "Count": {
+                "description": "total number of matching results (how many you'd get if you didn't set `limit`)",
+                "type": "integer",
+                "format": "int32",
+                "minimum": 0
+              }
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "schema": {
+              "$ref": "#/definitions/errorModel"
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Add a tag to a person's packaged product tag filter preferences",
+        "operationId": "addPackagedProductTagAssociation",
+        "tags": [
+          "packaged-product-tag"
+        ],
+        "parameters": [
+          {
+            "name": "tag",
+            "in": "body",
+            "description": "slug of packaged product tag to add to saved filter preferences",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "person",
+            "in": "body",
+            "description": "person to add saved filter preferences for",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "packaged product tag association response",
+            "schema": {
+              "$ref": "#/definitions/packagedProductTagAssociation"
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "schema": {
+              "$ref": "#/definitions/errorModel"
+            }
+          }
+        }
+      }
+    },
+    "/packaged-product-tag-association/{id}": {
+      "delete": {
+        "summary": "Delete a packaged product tag association from a person's filter preferences",
+        "operationId": "deletePackagedProductTagAssociation",
+        "tags": [
+          "packaged-product-tag"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "packaged product tag association ID to delete",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "delete successful"
           },
           "default": {
             "description": "unexpected error",
@@ -2879,6 +3007,28 @@
           "type": "string"
         }
       }
+    },
+    "packagedProductTagAssociation": {
+      "description": "a packaged product tag representing a saved filter for a person",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "person": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "tag": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "person",
+        "tag"
+      ]
     },
     "product": {
       "description": "a product available for sale (independent of packaging)",
