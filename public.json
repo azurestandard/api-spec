@@ -2450,48 +2450,13 @@
         ],
         "parameters": [
           {
-            "name": "base-url",
+            "name": "registration",
             "in": "body",
-            "description": "Redirect URL for the confirmation UI.  The confirmation email points customers at {base-url}{confirmation-token} to confirm their registration.",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "person",
-            "in": "body",
-            "description": "The registrant's personal information.",
             "required": true,
             "type": "object",
             "schema": {
-              "$ref": "#/definitions/updatePerson"
+              "$ref": "#/definitions/registration"
             }
-          },
-          {
-            "name": "address",
-            "in": "body",
-            "description": "The registrant's mailing address (required if they've set person.catalog).",
-            "required": false,
-            "type": "object",
-            "schema": {
-              "$ref": "#/definitions/address"
-            }
-          },
-          {
-            "name": "telephone",
-            "in": "body",
-            "description": "The registrant's telephone numbers (currently only supports 'voice' and 'text' types)",
-            "required": false,
-            "type": "array",
-            "items": {
-              "$ref": "#/definitions/telephone"
-            }
-          },
-          {
-            "name": "drop",
-            "in": "body",
-            "description": "The registrant's chosen drop ID (if any)",
-            "required": false,
-            "type": "string"
           }
         ],
         "responses": {
@@ -3402,6 +3367,47 @@
     "newPaymentMethod": {
       "anyOf": [
         "newCreditCard"
+      ]
+    },
+    "registration": {
+      "description": "A request for registering a new person",
+      "type": "object",
+      "properties": {
+        "base-url": {
+          "description": "Redirect URL for the confirmation UI.  The confirmation email points customers at {base-url}{confirmation-token} to confirm their registration.",
+          "type": "string",
+          "format": "url"
+        },
+        "person": {
+          "description": "The registrant's personal information.",
+          "type": "object",
+          "schema": {
+            "$ref": "#/definitions/updatePerson"
+          }
+        },
+        "address": {
+          "description": "The registrant's mailing address (required if they've set person.catalog).",
+          "type": "object",
+          "schema": {
+            "$ref": "#/definitions/address"
+          }
+        },
+        "telephone": {
+          "description": "The registrant's telephone numbers (currently only supports 'voice' and 'text' types)",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/telephone"
+          }
+        },
+        "drop": {
+          "description": "The registrant's chosen drop",
+          "type": "integer",
+          "format": "int64"
+        }
+      },
+      "required": [
+        "base-url",
+        "person"
       ]
     },
     "telephone": {
