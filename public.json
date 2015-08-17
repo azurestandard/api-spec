@@ -2500,18 +2500,12 @@
         ],
         "parameters": [
           {
-            "name": "token",
+            "name": "resend",
             "in": "body",
-            "description": "The new person's resend token",
             "required": true,
-            "type": "string"
-          },
-          {
-            "name": "base-url",
-            "in": "body",
-            "description": "Redirect URL for the confirmation UI.  The confirmation email points customers at {base-url}{confirmation-token} to confirm their registration.",
-            "required": true,
-            "type": "string"
+            "schema": {
+              "$ref": "#/definitions/resendRegistrationEmail"
+            }
           }
         ],
         "responses": {
@@ -3394,6 +3388,25 @@
       "required": [
         "base-url",
         "person"
+      ]
+    },
+    "resendRegistrationEmail": {
+      "description": "A request for another registration email",
+      "type": "object",
+      "properties": {
+        "base-url": {
+          "description": "Redirect URL for the confirmation UI.  The confirmation email points customers at {base-url}{confirmation-token} to confirm their registration.",
+          "type": "string",
+          "format": "url"
+        },
+        "token": {
+          "description": "The registrant's resend token",
+          "type": "string"
+        }
+      },
+      "required": [
+        "base-url",
+        "token"
       ]
     },
     "telephone": {
