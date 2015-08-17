@@ -2376,18 +2376,24 @@
         ],
         "parameters": [
           {
-            "name": "username",
+            "name": "login",
             "in": "body",
-            "description": "Username for authorization.  Instead of your username, you could also use one of your associated email addresses or your person ID here",
             "required": true,
-            "type": "string"
-          },
-          {
-            "name": "password",
-            "in": "body",
-            "description": "Password for authorization",
-            "required": true,
-            "type": "string"
+            "type": "object",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "username": {
+                  "description": "Username for authentication.  Instead of your username, you could also use one of your associated email addresses or your person ID here",
+                  "type": "string"
+                },
+                "password": {
+                  "description": "Password for authentication",
+                  "required": true,
+                  "type": "string"
+                }
+              }
+            }
           }
         ],
         "responses": {
