@@ -2250,15 +2250,8 @@
             "description": "Person to update",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/updatePerson"
+              "$ref": "#/definitions/updatePersonUserPassword"
             }
-          },
-          {
-            "name": "user-password",
-            "in": "body",
-            "description": "The authenticated person's password, required when changing person.password or person.email",
-            "required": false,
-            "type": "string"
           }
         ],
         "responses": {
@@ -2312,15 +2305,8 @@
             "description": "Person to update",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/updatePerson"
+              "$ref": "#/definitions/updatePersonUserPassword"
             }
-          },
-          {
-            "name": "user-password",
-            "in": "body",
-            "description": "The authenticated person's password, required when changing person.password or person.email",
-            "required": false,
-            "type": "string"
           }
         ],
         "responses": {
@@ -3509,6 +3495,39 @@
         },
         "company": {
           "description": "Employer name",
+          "type": "string"
+        }
+      }
+    },
+    "updatePersonUserPassword": {
+      "description": "a person (customer, vendor, employee, ...) with the logged in user's password",
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "password": {
+          "description": "Password for authentication",
+          "type": "string"
+        },
+        "email": {
+          "type": "string",
+          "format": "email"
+        },
+        "can-email": {
+          "description": "Can Azure contact this person for reasons other than registration",
+          "type": "boolean"
+        },
+        "catalog": {
+          "description": "Subscribed to receive the product catalog",
+          "type": "boolean"
+        },
+        "company": {
+          "description": "Employer name",
+          "type": "string"
+        },
+        "user-password": {
+          "description": "The authenticated person's password, required when changing password or email",
           "type": "string"
         }
       }
