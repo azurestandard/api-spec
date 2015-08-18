@@ -1327,19 +1327,13 @@
         ],
         "parameters": [
           {
-            "name": "tag",
+            "name": "packaged-product-tag-assocation",
             "in": "body",
-            "description": "slug of packaged product tag to add to saved filter preferences",
+            "description": "Packaged-product tag association to add",
             "required": true,
-            "type": "string"
-          },
-          {
-            "name": "person",
-            "in": "body",
-            "description": "person to add saved filter preferences for",
-            "required": true,
-            "type": "integer",
-            "format": "int64"
+            "schema": {
+              "$ref": "#/definitions/packagedProductTagAssociation"
+            }
           }
         ],
         "responses": {
@@ -2256,15 +2250,8 @@
             "description": "Person to update",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/updatePerson"
+              "$ref": "#/definitions/updatePersonUserPassword"
             }
-          },
-          {
-            "name": "user-password",
-            "in": "body",
-            "description": "The authenticated person's password, required when changing person.password or person.email",
-            "required": false,
-            "type": "string"
           }
         ],
         "responses": {
@@ -2318,15 +2305,8 @@
             "description": "Person to update",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/updatePerson"
+              "$ref": "#/definitions/updatePersonUserPassword"
             }
-          },
-          {
-            "name": "user-password",
-            "in": "body",
-            "description": "The authenticated person's password, required when changing person.password or person.email",
-            "required": false,
-            "type": "string"
           }
         ],
         "responses": {
@@ -2382,18 +2362,24 @@
         ],
         "parameters": [
           {
-            "name": "username",
+            "name": "login",
             "in": "body",
-            "description": "Username for authorization.  Instead of your username, you could also use one of your associated email addresses or your person ID here",
             "required": true,
-            "type": "string"
-          },
-          {
-            "name": "password",
-            "in": "body",
-            "description": "Password for authorization",
-            "required": true,
-            "type": "string"
+            "type": "object",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "username": {
+                  "description": "Username for authentication.  Instead of your username, you could also use one of your associated email addresses or your person ID here",
+                  "type": "string"
+                },
+                "password": {
+                  "description": "Password for authentication",
+                  "required": true,
+                  "type": "string"
+                }
+              }
+            }
           }
         ],
         "responses": {
@@ -2450,48 +2436,13 @@
         ],
         "parameters": [
           {
-            "name": "base-url",
+            "name": "registration",
             "in": "body",
-            "description": "Redirect URL for the confirmation UI.  The confirmation email points customers at {base-url}{confirmation-token} to confirm their registration.",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "person",
-            "in": "body",
-            "description": "The registrant's personal information.",
             "required": true,
             "type": "object",
             "schema": {
-              "$ref": "#/definitions/updatePerson"
+              "$ref": "#/definitions/registration"
             }
-          },
-          {
-            "name": "address",
-            "in": "body",
-            "description": "The registrant's mailing address (required if they've set person.catalog).",
-            "required": false,
-            "type": "object",
-            "schema": {
-              "$ref": "#/definitions/address"
-            }
-          },
-          {
-            "name": "telephone",
-            "in": "body",
-            "description": "The registrant's telephone numbers (currently only supports 'voice' and 'text' types)",
-            "required": false,
-            "type": "array",
-            "items": {
-              "$ref": "#/definitions/telephone"
-            }
-          },
-          {
-            "name": "drop",
-            "in": "body",
-            "description": "The registrant's chosen drop ID (if any)",
-            "required": false,
-            "type": "string"
           }
         ],
         "responses": {
@@ -2549,18 +2500,12 @@
         ],
         "parameters": [
           {
-            "name": "token",
+            "name": "resend",
             "in": "body",
-            "description": "The new person's resend token",
             "required": true,
-            "type": "string"
-          },
-          {
-            "name": "base-url",
-            "in": "body",
-            "description": "Redirect URL for the confirmation UI.  The confirmation email points customers at {base-url}{confirmation-token} to confirm their registration.",
-            "required": true,
-            "type": "string"
+            "schema": {
+              "$ref": "#/definitions/resendRegistrationEmail"
+            }
           }
         ],
         "responses": {
@@ -3404,6 +3349,66 @@
         "newCreditCard"
       ]
     },
+    "registration": {
+      "description": "A request for registering a new person",
+      "type": "object",
+      "properties": {
+        "base-url": {
+          "description": "Redirect URL for the confirmation UI.  The confirmation email points customers at {base-url}{confirmation-token} to confirm their registration.",
+          "type": "string",
+          "format": "url"
+        },
+        "person": {
+          "description": "The registrant's personal information.",
+          "type": "object",
+          "schema": {
+            "$ref": "#/definitions/updatePerson"
+          }
+        },
+        "address": {
+          "description": "The registrant's mailing address (required if they've set person.catalog).",
+          "type": "object",
+          "schema": {
+            "$ref": "#/definitions/address"
+          }
+        },
+        "telephone": {
+          "description": "The registrant's telephone numbers (currently only supports 'voice' and 'text' types)",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/telephone"
+          }
+        },
+        "drop": {
+          "description": "The registrant's chosen drop",
+          "type": "integer",
+          "format": "int64"
+        }
+      },
+      "required": [
+        "base-url",
+        "person"
+      ]
+    },
+    "resendRegistrationEmail": {
+      "description": "A request for another registration email",
+      "type": "object",
+      "properties": {
+        "base-url": {
+          "description": "Redirect URL for the confirmation UI.  The confirmation email points customers at {base-url}{confirmation-token} to confirm their registration.",
+          "type": "string",
+          "format": "url"
+        },
+        "token": {
+          "description": "The registrant's resend token",
+          "type": "string"
+        }
+      },
+      "required": [
+        "base-url",
+        "token"
+      ]
+    },
     "telephone": {
       "description": "A telephone number",
       "type": "object",
@@ -3503,6 +3508,39 @@
         },
         "company": {
           "description": "Employer name",
+          "type": "string"
+        }
+      }
+    },
+    "updatePersonUserPassword": {
+      "description": "a person (customer, vendor, employee, ...) with the logged in user's password",
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "password": {
+          "description": "Password for authentication",
+          "type": "string"
+        },
+        "email": {
+          "type": "string",
+          "format": "email"
+        },
+        "can-email": {
+          "description": "Can Azure contact this person for reasons other than registration",
+          "type": "boolean"
+        },
+        "catalog": {
+          "description": "Subscribed to receive the product catalog",
+          "type": "boolean"
+        },
+        "company": {
+          "description": "Employer name",
+          "type": "string"
+        },
+        "user-password": {
+          "description": "The authenticated person's password, required when changing password or email",
           "type": "string"
         }
       }
