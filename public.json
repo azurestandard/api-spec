@@ -2930,6 +2930,10 @@
           "items": {
             "type": "string"
           }
+        },
+        "bargain-bin-notes": {
+          "description": "Bargain-bin notes for this packaged product",
+          "type": "string"
         }
       },
       "required": [
