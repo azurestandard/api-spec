@@ -3444,14 +3444,7 @@
       "type": "string",
       "enum": [
         "text",
-        "voice",
-        "video",
-        "fax",
-        "pager",
-        "textphone",
-        "cell",
-        "home",
-        "work"
+        "voice"
       ]
     },
     "person": {
