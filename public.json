@@ -3363,7 +3363,7 @@
           "format": "url"
         },
         "person": {
-          "description": "The registrant's personal information.",
+          "description": "The registrant's personal information.  Name, email, and password are required.",
           "type": "object",
           "schema": {
             "$ref": "#/definitions/updatePerson"
