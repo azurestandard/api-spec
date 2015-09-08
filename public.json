@@ -3478,6 +3478,15 @@
         "name": {
           "description": "human-readable tag name",
           "type": "string"
+        },
+        "category": {
+          "description": "category code describing the type of tag",
+          "type": "string",
+          "enum": [
+            "status",
+            "price-level",
+            "characteristic"
+          ]
         }
       }
     },
