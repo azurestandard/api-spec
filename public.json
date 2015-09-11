@@ -3643,7 +3643,7 @@
         "preference": {
           "description": "ordering precedence for the findAddresses.  Defaults to zero.",
           "type": "integer",
-          "format": "int32",
+          "format": "int32"
         }
       },
       "required": [
