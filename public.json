@@ -2077,7 +2077,7 @@
     "/addresses": {
       "get": {
         "summary": "Returns all addresses from the system that the user has access to",
-        "description": "Addresses associated with a person are ordered by decreasing preference.  The ordering between addresses associated with different people is undefined.",
+        "description": "Addresses associated with a person are ordered by decreasing preference.  The ordering between addresses associated with different people or (for the same person) with the same preference value is undefined.",
         "operationId": "findAddresses",
         "tags": [
           "address"
@@ -3639,6 +3639,11 @@
         },
         "country-name": {
           "type": "string"
+        },
+        "preference": {
+          "description": "ordering precedence for the findAddresses.  Defaults to zero.",
+          "type": "integer",
+          "format": "int32",
         }
       },
       "required": [
