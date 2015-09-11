@@ -1217,6 +1217,13 @@
         ],
         "parameters": [
           {
+            "name": "internal",
+            "in": "query",
+            "description": "if true, only return internal tags (that the user has access to).  If false, only return public tags (regardless of the user's access to internal tags).  If unset, don't filter based on the tag visibility",
+            "required": false,
+            "type": "boolean"
+          },
+          {
             "name": "limit",
             "in": "query",
             "description": "maximum number of results to return",
