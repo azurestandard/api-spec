@@ -1870,6 +1870,45 @@
             }
           }
         }
+      },
+      "post": {
+        "summary": "Create a new payment (settled immediately)",
+        "operationId": "addPayment",
+        "tags": [
+          "payment"
+        ],
+        "parameters": [
+          {
+            "name": "payment-method",
+            "in": "query",
+            "description": "Payment method to use",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "amount",
+            "in": "query",
+            "description": "Amount to charge",
+            "required": true,
+            "type": "number",
+            "format": "float"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "account entry response",
+            "schema": {
+              "$ref": "#/definitions/accountEntry"
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "schema": {
+              "$ref": "#/definitions/errorModel"
+            }
+          }
+        }
       }
     },
     "/account-entry/{id}": {
