@@ -3576,11 +3576,11 @@
           "format": "email"
         },
         "can-email": {
-          "description": "Can Azure contact this person for reasons other than registration",
+          "description": "Can Azure contact this person for reasons other than registration?  Defaults to true when creating a person",
           "type": "boolean"
         },
         "catalog": {
-          "description": "Subscribed to receive the product catalog",
+          "description": "Subscribed to receive the product catalog?  Defaults to false when creating a person",
           "type": "boolean"
         },
         "company": {
@@ -3588,7 +3588,7 @@
           "type": "string"
         },
         "allow-social-media": {
-          "description": "Does this person want social media links to display",
+          "description": "Does this person want social media links to display?  Defaults to true when creating a person",
           "type": "boolean"
         }
       }
