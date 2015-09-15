@@ -3549,6 +3549,10 @@
         "company": {
           "description": "Employer name",
           "type": "string"
+        },
+        "allow-social-media": {
+          "description": "Does this person want social media links to display",
+          "type": "boolean"
         }
       },
       "required": [
@@ -3582,6 +3586,10 @@
         "company": {
           "description": "Employer name",
           "type": "string"
+        },
+        "allow-social-media": {
+          "description": "Does this person want social media links to display",
+          "type": "boolean"
         }
       }
     },
@@ -3611,6 +3619,10 @@
         "company": {
           "description": "Employer name",
           "type": "string"
+        },
+        "allow-social-media": {
+          "description": "Does this person want social media links to display",
+          "type": "boolean"
         },
         "user-password": {
           "description": "The authenticated person's password, required when changing password or email",
