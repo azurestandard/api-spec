@@ -3137,7 +3137,7 @@
           "type": "boolean"
         },
         "discount": {
-          "description": "text for the discount (e.g. \"12%\", or \"$3.50\"",
+          "description": "text for the discount (e.g. \"12%\", or \"$3.50\")",
           "type": "string"
         }
       },
