@@ -2776,7 +2776,6 @@
           "description": "the minimum total order value (in dollars) required to ship a particular trip to this drop.  For example, if the minimum is $400 and there are three $100 orders placed for a stop, that stop will be under-minimum, and the orders will not be shipped.  If, on the other hand, there were four $100 orders placed for a stop, that stop would be (just) over-minimum, and the orders would be shipped.",
           "type": "number",
           "format": "float"
-          }
         },
         "members": {
           "description": "number of customers on this drop",
