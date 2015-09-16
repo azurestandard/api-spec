@@ -3122,8 +3122,8 @@
         "name"
       ]
     },
-    "price": {
-      "description": "product price information",
+    "_price": {
+      "description": "a helper object for 'price'",
       "type": "object",
       "properties": {
         "dollars": {
@@ -3143,6 +3143,32 @@
       "required": [
         "dollars"
       ]
+    },
+    "priceLevel": {
+      "description": "a customer property to pick the right price from 'price'",
+      "type": "string",
+      "enum": [
+        "retail",
+        "wholesale"
+      ]
+    },
+    "price": {
+      "description": "product price information",
+      "type": "object",
+      "properties": {
+        "retail": {
+          "description": "pricing for retail customers",
+          "schema": {
+            "$ref": "#/definitions/_price"
+          }
+        },
+        "wholesale": {
+          "description": "pricing for retail customers",
+          "schema": {
+            "$ref": "#/definitions/_price"
+          }
+        }
+      }
     },
     "category": {
       "description": "a category available for sale",
@@ -3558,6 +3584,13 @@
         "allow-social-media": {
           "description": "Does this person want social media links to display",
           "type": "boolean"
+        },
+        "price-level": {
+          "description": "Which 'price' entry applies to this person",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/priceLevel"
+          }
         }
       },
       "required": [
