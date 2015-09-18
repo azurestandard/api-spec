@@ -3295,6 +3295,11 @@
           "type": "integer",
           "format": "float"
         },
+        "volume": {
+          "description": "volume of the shipped products in cubic feet (estimated until picking time)",
+          "type": "integer",
+          "format": "float"
+        },
         "price": {
           "description": "per-product price (currently locked in when you place the order)",
           "$ref": "#/definitions/price"
@@ -3305,7 +3310,8 @@
         "order",
         "product",
         "quantity-ordered",
-        "weight"
+        "weight",
+        "volume"
       ]
     },
     "accountEntry": {
