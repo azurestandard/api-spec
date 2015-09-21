@@ -1877,7 +1877,42 @@
             }
           }
         }
-      },
+      }
+    },
+    "/account-entry/{id}": {
+      "get": {
+        "summary": "Returns a credit or debit based on a single ID",
+        "operationId": "findAccountEntryById",
+        "tags": [
+          "account"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of account entry to fetch",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "account entry response",
+            "schema": {
+              "$ref": "#/definitions/accountEntry"
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "schema": {
+              "$ref": "#/definitions/errorModel"
+            }
+          }
+        }
+      }
+    },
+    "/payments": {
       "post": {
         "summary": "Create a new payment (settled immediately)",
         "operationId": "addPayment",
@@ -1900,39 +1935,6 @@
             "required": true,
             "type": "number",
             "format": "float"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "account entry response",
-            "schema": {
-              "$ref": "#/definitions/accountEntry"
-            }
-          },
-          "default": {
-            "description": "unexpected error",
-            "schema": {
-              "$ref": "#/definitions/errorModel"
-            }
-          }
-        }
-      }
-    },
-    "/account-entry/{id}": {
-      "get": {
-        "summary": "Returns a credit or debit based on a single ID",
-        "operationId": "findAccountEntryById",
-        "tags": [
-          "account"
-        ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "description": "ID of account entry to fetch",
-            "required": true,
-            "type": "integer",
-            "format": "int64"
           }
         ],
         "responses": {
