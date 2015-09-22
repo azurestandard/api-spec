@@ -1276,9 +1276,9 @@
         ],
         "parameters": [
           {
-            "name": "person",
+            "name": "filter-person",
             "in": "query",
-            "description": "person to find saved filter preferences for",
+            "description": "person ID to filter by",
             "required": true,
             "type": "integer",
             "format": "int64"
