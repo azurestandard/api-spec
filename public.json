@@ -2858,12 +2858,25 @@
           "description": "number of days after cutoff before the first stop",
           "type": "integer",
           "format": "int32"
+        },
+        "internal": {
+          "description": "Is the route for internal use? This controls whether customers can access the route via the API (they can't if internal is true).",
+          "type": "boolean"
+        },
+        "backhaul-cost-per-pound": {
+          "description": "route backhaul cost per pound",
+          "type": "string"
+        },
+        "backhaul-cost-per-pickup": {
+          "description": "route backhaul cost per pickup",
+          "type": "string"
         }
       },
       "required": [
         "name",
         "cutoff-frequency",
-        "delivery-offset"
+        "delivery-offset",
+        "internal"
       ]
     },
     "newRoute": {
