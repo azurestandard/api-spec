@@ -3419,6 +3419,13 @@
           "description": "before shipping, the customer can use this to associate a payment-method with the order.  After shipping, it contains information about the charged payment",
           "$ref": "#/definitions/payment"
         },
+        "fees": {
+          "description": "additional charges beyond the order-line items themselves (estimated until picking time)",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/orderFee"
+          }
+        },
         "drop": {
           "description": "drop the order is destined for (unset for UPS orders)",
           "type": "integer",
@@ -3490,6 +3497,47 @@
         "quantity-ordered",
         "weight",
         "volume"
+      ]
+    },
+    "orderFee": {
+      "description": "An additional charge associated with an order.",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "order": {
+          "description": "Order that the fee belongs to",
+          "type": "integer",
+          "format": "int64"
+        },
+        "type": {
+          "description": "An array of properties for this number",
+          "$ref": "#/definitions/orderFeeType"
+        },
+        "amount": {
+          "description": "Dollar value for the fee",
+          "type": "number",
+          "format": "float"
+        },
+        "notes": {
+          "description": "Additional information about the reason or amount for the fee",
+          "type": "string"
+        }
+      },
+      "required": [
+        "order",
+        "type",
+        "amount"
+      ]
+    },
+    "orderFeeType": {
+      "description": "A property for an order fee",
+      "type": "string",
+      "enum": [
+        "shipping",
+        "small-order"
       ]
     },
     "accountEntry": {
