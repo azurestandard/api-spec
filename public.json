@@ -1921,20 +1921,13 @@
         ],
         "parameters": [
           {
-            "name": "payment-method",
-            "in": "query",
-            "description": "Payment method to use",
+            "name": "payment",
+            "in": "body",
+            "description": "Payment to create.  Amount and payment-method are both required.",
             "required": true,
-            "type": "integer",
-            "format": "int64"
-          },
-          {
-            "name": "amount",
-            "in": "query",
-            "description": "Amount to charge",
-            "required": true,
-            "type": "number",
-            "format": "float"
+            "schema": {
+              "$ref": "#definitions/payment"
+            }
           }
         ],
         "responses": {
@@ -3422,6 +3415,10 @@
           "type": "string",
           "format": "date-time"
         },
+        "checkout-payment": {
+          "description": "before shipping, the customer can use this to associate a payment-method with the order.  After shipping, it contains information about the charged payment",
+          "$ref": "#/definitions/payment"
+        },
         "drop": {
           "description": "drop the order is destined for (unset for UPS orders)",
           "type": "integer",
@@ -3644,6 +3641,29 @@
     "newPaymentMethod": {
       "anyOf": [
         "newCreditCard"
+      ]
+    },
+    "payment": {
+      "description": "A payment instance where an amount will be (or has been) charged via a payment-method.",
+      "type": "object",
+      "properties": {
+        "payment-method": {
+          "description": "Payment-method ID to use (or which was used)",
+          "type": "integer",
+          "format": "int64"
+        },
+        "amount": {
+          "description": "Amount to charge (or which was charged) in dollars",
+          "type": "number",
+          "format": "float"
+        },
+        "paid": {
+          "description": "Has the payment been charged?",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "payment-method"
       ]
     },
     "registration": {
