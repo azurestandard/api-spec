@@ -1921,20 +1921,13 @@
         ],
         "parameters": [
           {
-            "name": "payment-method",
-            "in": "query",
-            "description": "Payment method to use",
+            "name": "payment",
+            "in": "body",
+            "description": "Payment to create.  Amount and payment-method are both required.",
             "required": true,
-            "type": "integer",
-            "format": "int64"
-          },
-          {
-            "name": "amount",
-            "in": "query",
-            "description": "Amount to charge",
-            "required": true,
-            "type": "number",
-            "format": "float"
+            "schema": {
+              "$ref": "#definitions/payment"
+            }
           }
         ],
         "responses": {
@@ -3644,6 +3637,25 @@
     "newPaymentMethod": {
       "anyOf": [
         "newCreditCard"
+      ]
+    },
+    "payment": {
+      "description": "A payment instance where an amount will be charged via a payment-method.",
+      "type": "object",
+      "properties": {
+        "payment-method": {
+          "description": "Payment-method ID to use",
+          "type": "integer",
+          "format": "int64"
+        },
+        "amount": {
+          "description": "Amount to charge in dollars",
+          "type": "number",
+          "format": "float"
+        }
+      },
+      "required": [
+        "payment-method"
       ]
     },
     "registration": {
