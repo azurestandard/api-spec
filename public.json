@@ -3481,8 +3481,9 @@
           "format": "float"
         },
         "price": {
-          "description": "per-product price (currently locked in when you place the order)",
-          "$ref": "#/definitions/price"
+          "description": "the total price for this line in dollars (estimated until picking time).  The per-unit price used to calculate this total is currently locked in when you place the order.",
+          "type": "number",
+          "format": "float"
         }
       },
       "required": [
