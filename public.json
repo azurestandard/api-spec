@@ -3589,7 +3589,6 @@
     },
     "newCreditCard": {
       "description": "Azure does not store much credit card information internally (we use an external card processor), but we do need all of the information for the initial upload so we can pass it along to the external processor.",
-      "description": "a credit card (one of our supported payment methods)",
       "type": "object",
       "properties": {
         "type": {
