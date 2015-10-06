@@ -443,10 +443,10 @@
           {
             "name": "route",
             "in": "body",
-            "description": "Updated route parameters (can optionally include 'name')",
+            "description": "update route parameters",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/route"
+              "$ref": "#/definitions/updateRoute"
             }
           }
         ],
@@ -3032,6 +3032,44 @@
       },
       "required": [
         "name",
+        "cutoff-frequency",
+        "delivery-offset",
+        "internal"
+      ]
+    },
+    "updateRoute": {
+      "description": "an order-delivery truck route's updated values",
+      "type": "object",
+      "properties": {
+        "description": {
+          "type": "string"
+        },
+        "cutoff-frequency": {
+          "description": "number of days between cutoffs",
+          "type": "integer",
+          "format": "int32"
+        },
+        "delivery-offset": {
+          "description": "number of days after cutoff before the first stop",
+          "type": "integer",
+          "format": "int32"
+        },
+        "internal": {
+          "description": "Is the route for internal use? This controls whether customers can access the route via the API (they can't if internal is true).",
+          "type": "boolean"
+        },
+        "backhaul-cost-per-pound": {
+          "description": "route backhaul cost per pound",
+          "type": "number",
+          "format": "float"
+        },
+        "backhaul-cost-per-pickup": {
+          "description": "route backhaul cost per pickup",
+          "type": "number",
+          "format": "float"
+        }
+      },
+      "required": [
         "cutoff-frequency",
         "delivery-offset",
         "internal"
