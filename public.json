@@ -3635,12 +3635,12 @@
     },
     "paymentMethod": {
       "anyOf": [
-        "creditCard"
+        {"$ref": "#definitions/creditCard"}
       ]
     },
     "newPaymentMethod": {
       "anyOf": [
-        "newCreditCard"
+        {"$ref": "#definitions/newCreditCard"}
       ]
     },
     "payment": {
