@@ -3153,6 +3153,11 @@
           "type": "integer",
           "format": "int64"
         },
+        "pickup": {
+          "description": "pickup ID for the stop",
+          "type": "integer",
+          "format": "int64"
+        },
         "target-time": {
           "description": "planned stop time (fixed before the trip starts)",
           "type": "string",
@@ -3172,7 +3177,6 @@
       "required": [
         "id",
         "trip",
-        "drop",
         "target-time",
         "estimated-time"
       ]
