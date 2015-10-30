@@ -3506,6 +3506,16 @@
           "type": "string",
           "format": "date-time"
         },
+        "target-delivery": {
+          "description": "planned delivery time (fixed before the trip starts, and unset for UPS orders)",
+          "type": "string",
+          "format": "date-time"
+        },
+        "estimated-delivery": {
+          "description": "estimated delivery time (updated after the trip starts until the order is delivered, and unset for UPS orders)",
+          "type": "string",
+          "format": "date-time"
+        },
         "delivered": {
           "description": "when the order was delivered",
           "type": "string",
