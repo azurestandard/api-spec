@@ -3945,6 +3945,11 @@
           "type": "string",
           "format": "date-time"
         },
+        "shipped": {
+          "description": "approximately when the truck left the warehouse.  This will always be set after the truck has left, and will be unset until then.",
+          "type": "string",
+          "format": "date-time"
+        },
         "delivery-start": {
           "description": "estimated stop-time for the first stop",
           "type": "string",
