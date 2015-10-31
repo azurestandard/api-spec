@@ -2084,6 +2084,148 @@
         }
       }
     },
+    "/purchases": {
+      "get": {
+        "summary": "Returns all purchases from the system that the user has access to",
+        "description": "Purchases are ordered for increasing ID (creation time)",
+        "operationId": "findPurchases",
+        "tags": [
+          "purchase"
+        ],
+        "parameters": [
+          {
+            "name": "vendor",
+            "in": "query",
+            "description": "vendor IDs to filter by",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "collectionFormat": "csv"
+          },
+          {
+            "name": "pickup",
+            "in": "query",
+            "description": "pickup IDs to filter by",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "collectionFormat": "csv"
+          },
+          {
+            "name": "trip",
+            "in": "query",
+            "description": "trip IDs to filter by",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "collectionFormat": "csv"
+          },
+          {
+            "name": "status",
+            "in": "query",
+            "description": "purchase-status string to filter by",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "open",
+                "submitted",
+                "confirmed",
+                "shipped",
+                "delivered",
+                "reconciled",
+                "paid"
+              ]
+            },
+            "collectionFormat": "csv"
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "maximum number of results to return",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "start",
+            "in": "query",
+            "description": "offset to the first result to return.  Use negative numbers to offset from the end of the result list.",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "purchase response",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/purchase"
+              }
+            },
+            "headers": {
+              "Count": {
+                "description": "total number of matching results (how many you'd get if you didn't set `limit`)",
+                "type": "integer",
+                "format": "int32",
+                "minimum": 0
+              }
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "schema": {
+              "$ref": "#/definitions/errorModel"
+            }
+          }
+        }
+      }
+    },
+    "/purchase/{id}": {
+      "get": {
+        "summary": "Returns a purchase based on a single ID",
+        "operationId": "findPurchaseById",
+        "tags": [
+          "purchase"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of purchase to fetch",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "purchase response",
+            "schema": {
+              "$ref": "#/definitions/purchase"
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "schema": {
+              "$ref": "#/definitions/errorModel"
+            }
+          }
+        }
+      }
+    },
     "/orders": {
       "get": {
         "summary": "Returns all orders from the system that the user has access to",
@@ -4800,6 +4942,74 @@
       "required": [
         "id",
         "name"
+      ]
+    },
+    "purchase": {
+      "description": "a purchase order placed by Azure",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "vendor": {
+          "description": "vendor supplying the order",
+          "type": "integer",
+          "format": "int64"
+        },
+        "status": {
+          "description": "purchase's lifecycle stage",
+          "type": "string",
+          "enum": [
+            "open",
+            "submitted",
+            "confirmed",
+            "shipped",
+            "delivered",
+            "labeled",
+            "reconciled",
+            "paid"
+          ]
+        },
+        "submitted": {
+          "description": "when the purchase was submitted",
+          "type": "string",
+          "format": "date-time"
+        },
+        "confirmed": {
+          "description": "when the purchase was confirmed",
+          "type": "string",
+          "format": "date-time"
+        },
+        "delivered": {
+          "description": "when the purchase was delivered",
+          "type": "string",
+          "format": "date-time"
+        },
+        "reconciled": {
+          "description": "when the purchase was reconciled",
+          "type": "string",
+          "format": "date-time"
+        },
+        "pickup": {
+          "description": "drop the purchase is destined for (only set for backhaul purchases)",
+          "type": "integer",
+          "format": "int64"
+        },
+        "trip": {
+          "description": "trip delivering the purchase (only set for backhaul purchases)",
+          "type": "integer",
+          "format": "int64"
+        },
+        "notes": {
+          "description": "free-form Markdown notes for any purchase information that doesn't fit into an existing field",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "vendor",
+        "status"
       ]
     },
     "order": {
