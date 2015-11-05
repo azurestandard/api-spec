@@ -2646,6 +2646,123 @@
         }
       }
     },
+    "/vendors": {
+      "get": {
+        "summary": "Returns all vendors from the system that the user has access to",
+        "description": "Vendors are ordered for increasing ID (creation time)",
+        "operationId": "findVendors",
+        "tags": [
+          "vendor"
+        ],
+        "parameters": [
+          {
+            "name": "active",
+            "in": "query",
+            "description": "only return (in)active vendors",
+            "required": false,
+            "type": "boolean"
+          },
+          {
+            "name": "manager",
+            "in": "query",
+            "description": "person IDs to filter by, selecting vendors that these vendor employees manage",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "collectionFormat": "csv"
+          },
+          {
+            "name": "buyer",
+            "in": "query",
+            "description": "person IDs to filter by, selecting vendors that these Azure employees buy from",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "collectionFormat": "csv"
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "maximum number of results to return",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "start",
+            "in": "query",
+            "description": "offset to the first result to return.  Use negative numbers to offset from the end of the result list.",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "vendor response",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/vendor"
+              }
+            },
+            "headers": {
+              "Count": {
+                "description": "total number of matching results (how many you'd get if you didn't set `limit`)",
+                "type": "integer",
+                "format": "int32",
+                "minimum": 0
+              }
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "schema": {
+              "$ref": "#/definitions/errorModel"
+            }
+          }
+        }
+      }
+    },
+    "/vendor/{id}": {
+      "get": {
+        "summary": "Returns a vendor based on a single ID",
+        "operationId": "findVendorById",
+        "tags": [
+          "vendor"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of vendor to fetch",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "vendor response",
+            "schema": {
+              "$ref": "#/definitions/vendor"
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "schema": {
+              "$ref": "#/definitions/errorModel"
+            }
+          }
+        }
+      }
+    },
     "/account-entries": {
       "get": {
         "summary": "Returns all credits and debits from the system that the user has access to",
@@ -5354,6 +5471,37 @@
       "enum": [
         "shipping",
         "small-order"
+      ]
+    },
+    "vendor": {
+      "description": "a company that sells products to Azure",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "name": {
+          "type": "string"
+        },
+        "active": {
+          "description": "whether or not this vendor is actively supplying purchases",
+          "type": "boolean"
+        },
+        "url": {
+          "description": "homepage for the vendor",
+          "type": "string",
+          "format": "url"
+        },
+        "account": {
+          "description": "vendor's identifier for Azure",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "active"
       ]
     },
     "accountEntry": {
