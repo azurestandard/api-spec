@@ -1670,6 +1670,46 @@
             }
           }
         }
+      },
+      "put": {
+        "summary": "Update an existing order",
+        "operationId": "updateOrderById",
+        "tags": [
+          "order"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of order to update",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "order",
+            "in": "body",
+            "description": "Updated order parameters (can optionally include 'id')",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/order"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "order response",
+            "schema": {
+              "$ref": "#/definitions/order"
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "schema": {
+              "$ref": "#/definitions/errorModel"
+            }
+          }
+        }
       }
     },
     "/order-lines": {
