@@ -1673,6 +1673,7 @@
       },
       "put": {
         "summary": "Update an existing order",
+        "description": "If you update shipping information, the server may remove order lines, adjust price estimates, etc.  Use updateOrderShipmentById (instead of this endpoint) for changing shipment information if you want to hear about any removals (although you can also query findOrderLines before and after and compare the results).",
         "operationId": "updateOrderById",
         "tags": [
           "order"
@@ -1701,6 +1702,52 @@
             "description": "order response",
             "schema": {
               "$ref": "#/definitions/order"
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "schema": {
+              "$ref": "#/definitions/errorModel"
+            }
+          }
+        }
+      }
+    },
+    "/order/{id}/shipment": {
+      "post": {
+        "summary": "Update an order's shipment information (drop, trip, or address)",
+        "description": "Because changing these can trigger order-line removal.  Use updateOrderById to update other properties.",
+        "operationId": "updateOrderShipmentById",
+        "tags": [
+          "order"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of order to update",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "order",
+            "in": "body",
+            "description": "Updated order parameters (can optionally include 'id')",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/order"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "removed order lines",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/removedOrderLine"
+              }
             }
           },
           "default": {
@@ -3636,6 +3683,24 @@
         "quantity-ordered",
         "weight",
         "volume"
+      ]
+    },
+    "removedOrderLine": {
+      "description": "a note about a removed order line (e.g. we won't ship highly-perishable produce on a long trip)",
+      "type": "object",
+      "properties": {
+        "line": {
+          "description": "the line that was removed (its ID will no longer be meaningful in the API, but may be useful for cleaning client state)",
+          "$ref": "#/definitions/orderLine"
+        },
+        "reason": {
+          "description": "a line of Markdown describing why the line was removed",
+          "type": "string"
+        }
+      },
+      "required": [
+        "line",
+        "reason"
       ]
     },
     "accountEntry": {
