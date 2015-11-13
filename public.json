@@ -2547,7 +2547,7 @@
     },
     "/order/{id}": {
       "get": {
-        "summary": "Returns a order based on a single ID",
+        "summary": "Returns an order based on a single ID",
         "operationId": "findOrderById",
         "tags": [
           "order"
@@ -2711,7 +2711,7 @@
     },
     "/order-line/{id}": {
       "get": {
-        "summary": "Returns a order-line based on a single ID",
+        "summary": "Returns an order-line based on a single ID",
         "operationId": "findOrderLineById",
         "tags": [
           "order"
