@@ -3029,6 +3029,109 @@
         }
       }
     },
+    "/password/reset": {
+      "post": {
+        "summary": "Initiate a password reset, to be completed by a call to /password/confirm",
+        "operationId": "resetPasswordRequest",
+        "tags": [
+          "password"
+        ],
+        "parameters": [
+          {
+            "name": "reset",
+            "in": "body",
+            "required": true,
+            "type": "object",
+            "schema": {
+              "$ref": "#/definitions/passwordResetRequest"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Password-reset email sent (if the registration email corresponded to an existing person.  Otherwise, you'll still get a 204 to avoid leaking information about member email addresses)"
+          },
+          "default": {
+            "description": "unexpected error",
+            "schema": {
+              "$ref": "#/definitions/errorModel"
+            }
+          }
+        }
+      }
+    },
+    "/password/confirm": {
+      "get": {
+        "summary": "Complete an in-progress password reset",
+        "operationId": "passwordResetGet",
+        "tags": [
+          "password"
+        ],
+        "parameters": [
+          {
+            "name": "token",
+            "in": "query",
+            "description": "The password-reset confirmation token",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "password",
+            "in": "query",
+            "description": "The new password",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "person response",
+            "schema": {
+              "$ref": "#/definitions/person"
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "schema": {
+              "$ref": "#/definitions/errorModel"
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Complete an in-progress password reset",
+        "operationId": "passwordResetConfirmation",
+        "tags": [
+          "password"
+        ],
+        "parameters": [
+          {
+            "name": "reset",
+            "in": "body",
+            "description": "The registrant's confirmation token",
+            "required": true,
+            "type": "object",
+            "schema": {
+              "$ref": "#/definitions/passwordResetConfirmation"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "person response",
+            "schema": {
+              "$ref": "#/definitions/person"
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "schema": {
+              "$ref": "#/definitions/errorModel"
+            }
+          }
+        }
+      }
+    },
     "/notifications": {
       "get": {
         "summary": "Returns all notifications from the system that the user has access to",
@@ -4884,6 +4987,44 @@
       "required": [
         "base-url",
         "token"
+      ]
+    },
+    "passwordResetRequest": {
+      "description": "A request for a password-reset token",
+      "type": "object",
+      "properties": {
+        "base-url": {
+          "description": "Redirect URL for the password reset UI.  The password reset email points customers at {base-url}{confirmation-token} to confirm their password reset.",
+          "type": "string",
+          "format": "url"
+        },
+        "email": {
+          "description": "The email address for the person whose password will be reset",
+          "type": "string",
+          "format": "email"
+        }
+      },
+      "required": [
+        "base-url",
+        "email"
+      ]
+    },
+    "passwordResetConfirmation": {
+      "description": "A request to reset a password using a password-reset token",
+      "type": "object",
+      "properties": {
+        "token": {
+          "description": "The password-reset confirmation token",
+          "type": "string"
+        },
+        "password": {
+          "description": "The new password",
+          "type": "string"
+        }
+      },
+      "required": [
+        "token",
+        "password"
       ]
     },
     "notificationChannel": {
