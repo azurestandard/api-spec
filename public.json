@@ -595,6 +595,38 @@
             }
           }
         }
+      },
+      "post": {
+        "summary": "Creates a trip for a route, if the user has permissions",
+        "operationId": "addTrip",
+        "tags": [
+          "trip"
+        ],
+        "parameters": [
+          {
+            "name": "trip",
+            "in": "body",
+            "description": "Trip to create",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/updateTrip"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "trip response",
+            "schema": {
+              "$ref": "#/definitions/trip"
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "schema": {
+              "$ref": "#/definitions/errorModel"
+            }
+          }
+        }
       }
     },
     "/trip/{id}": {
@@ -620,6 +652,74 @@
             "schema": {
               "$ref": "#/definitions/trip"
             }
+          },
+          "default": {
+            "description": "unexpected error",
+            "schema": {
+              "$ref": "#/definitions/errorModel"
+            }
+          }
+        }
+      },
+      "put": {
+        "summary": "Updates a trip for a route, if the user has permissions",
+        "operationId": "updateTrip",
+        "tags": [
+          "trip"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of trip to update",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "trip",
+            "in": "body",
+            "description": "Trip to update",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/updateTrip"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "trip response",
+            "schema": {
+              "$ref": "#/definitions/trip"
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "schema": {
+              "$ref": "#/definitions/errorModel"
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "Deletes a trip for a route, if the user has permissions",
+        "operationId": "deleteTrip",
+        "tags": [
+          "trip"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of trip to delete",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "delete successful"
           },
           "default": {
             "description": "unexpected error",
@@ -3149,8 +3249,33 @@
           "type": "string",
           "format": "date-time"
         },
+        "pick-date": {
+          "description": "date that orders for this trip should be picked",
+          "type": "string",
+          "format": "date-time"
+        },
         "delivery-start": {
           "description": "estimated stop-time for the first stop",
+          "type": "string",
+          "format": "date-time"
+        },
+        "delivery-end": {
+          "description": "estimated stop-time for the last stop",
+          "type": "string",
+          "format": "date-time"
+        },
+        "backhaul-start": {
+          "description": "estimated date for the first backhaul",
+          "type": "string",
+          "format": "date-time"
+        },
+        "backhaul-end": {
+          "description": "estimated date for the last backhaul",
+          "type": "string",
+          "format": "date-time"
+        },
+        "warehouse-arrival": {
+          "description": "estimated date for warehouse arrival",
           "type": "string",
           "format": "date-time"
         }
@@ -3160,6 +3285,55 @@
         "route",
         "cutoff",
         "delivery-start"
+      ]
+    },
+    "updateTrip": {
+      "description": "a truck delivering orders along a route to be updated",
+      "type": "object",
+      "properties": {
+        "route": {
+          "description": "name of the followed route",
+          "type": "string"
+        },
+        "cutoff": {
+          "description": "cutoff for placing orders on this trip",
+          "type": "string",
+          "format": "date-time"
+        },
+        "pick-date": {
+          "description": "date that orders for this trip should be picked",
+          "type": "string",
+          "format": "date-time"
+        },
+        "delivery-start": {
+          "description": "estimated stop-time for the first stop",
+          "type": "string",
+          "format": "date-time"
+        },
+        "delivery-end": {
+          "description": "estimated stop-time for the last stop",
+          "type": "string",
+          "format": "date-time"
+        },
+        "backhaul-start": {
+          "description": "estimated date for the first backhaul",
+          "type": "string",
+          "format": "date-time"
+        },
+        "backhaul-end": {
+          "description": "estimated date for the last backhaul",
+          "type": "string",
+          "format": "date-time"
+        },
+        "warehouse-arrival": {
+          "description": "estimated date for warehouse arrival",
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "route",
+        "cutoff"
       ]
     },
     "routeStop": {
