@@ -3458,6 +3458,12 @@
         "bargain-bin-notes": {
           "description": "Bargain-bin notes for this packaged product",
           "type": "string"
+        },
+        "product": {
+          "description": "the name and brand of the product that this packaged-product is associated with",
+          "schema": {
+            "$ref": "#/definitions/packagedProductProduct"
+          }
         }
       },
       "required": [
@@ -3466,6 +3472,22 @@
         "price",
         "tags"
       ]
+    },
+    "packagedProductProduct": {
+      "description": "the name and brand of a product that a packaged-product is associated with",
+      "type": "object",
+      "properties": {
+        "name": {
+          "description": "the product name",
+          "type": "string",
+        },
+        "brand": {
+          "description": "the brand that this product is associated with",
+          "schema": {
+            "$ref": "#/definitions/brand"
+          }
+        }
+      }
     },
     "packagedProductTag": {
       "description": "a type of packaged product or other boolean marker",
