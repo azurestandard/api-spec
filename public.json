@@ -1190,6 +1190,18 @@
             "collectionFormat": "csv"
           },
           {
+            "name": "primary-category",
+            "in": "query",
+            "description": "primary-category IDs to filter by (for products directly associated with the categories)",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "collectionFormat": "csv"
+          },
+          {
             "name": "ancestor-category",
             "in": "query",
             "description": "category IDs to filter by (for packaged products associated with the categories or their descendants)",
