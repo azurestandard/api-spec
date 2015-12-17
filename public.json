@@ -3479,7 +3479,7 @@
       "properties": {
         "name": {
           "description": "the product name",
-          "type": "string",
+          "type": "string"
         },
         "brand": {
           "description": "the brand that this product is associated with",
