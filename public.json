@@ -3679,6 +3679,13 @@
         "active": {
           "description": "denotes if this category is active",
           "type": "boolean"
+        },
+        "keywords": {
+          "type": "array",
+          "items": {
+            "description": "a keyword for this category",
+            "type": "string"
+          }
         }
       },
       "required": [
