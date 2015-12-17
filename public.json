@@ -1016,6 +1016,18 @@
             "collectionFormat": "csv"
           },
           {
+            "name": "primary-category",
+            "in": "query",
+            "description": "primary-category IDs to filter by (for products directly associated with the categories)",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "collectionFormat": "csv"
+          },
+          {
             "name": "ancestor-category",
             "in": "query",
             "description": "category IDs to filter by (for products associated with the categories or their descendants)",
@@ -1181,6 +1193,18 @@
             "name": "category",
             "in": "query",
             "description": "category IDs to filter by (for products directly associated with the categories)",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "collectionFormat": "csv"
+          },
+          {
+            "name": "primary-category",
+            "in": "query",
+            "description": "primary-category IDs to filter by (for products directly associated with the categories)",
             "required": false,
             "type": "array",
             "items": {
@@ -3464,6 +3488,11 @@
           "schema": {
             "$ref": "#/definitions/packagedProductProduct"
           }
+        },
+        "primary-category": {
+          "description": "the id of the primary category for this packaged-product",
+          "type": "integer",
+          "format": "int64"
         }
       },
       "required": [
@@ -3671,6 +3700,21 @@
           "description": "category ID for the parent category",
           "type": "integer",
           "format": "int64"
+        },
+        "primary": {
+          "description": "denotes if this is a primary category",
+          "type": "boolean"
+        },
+        "active": {
+          "description": "denotes if this category is active",
+          "type": "boolean"
+        },
+        "keywords": {
+          "type": "array",
+          "items": {
+            "description": "a keyword for this category",
+            "type": "string"
+          }
         }
       },
       "required": [
