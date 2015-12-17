@@ -3671,6 +3671,10 @@
           "description": "category ID for the parent category",
           "type": "integer",
           "format": "int64"
+        },
+        "primary": {
+          "description": "denotes if this is a primary category",
+          "type": "boolean"
         }
       },
       "required": [
