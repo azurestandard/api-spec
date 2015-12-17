@@ -3675,6 +3675,10 @@
         "primary": {
           "description": "denotes if this is a primary category",
           "type": "boolean"
+        },
+        "active": {
+          "description": "denotes if this category is active",
+          "type": "boolean"
         }
       },
       "required": [
