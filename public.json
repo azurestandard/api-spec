@@ -3464,6 +3464,11 @@
           "schema": {
             "$ref": "#/definitions/packagedProductProduct"
           }
+        },
+        "primary-category": {
+          "description": "the id of the primary category for this packaged-product",
+          "type": "integer",
+          "format": "int64"
         }
       },
       "required": [
