@@ -3588,6 +3588,9 @@
           "type": "integer",
           "format": "int32"
         },
+        "nutrition-facts": {
+          "$ref": "#/definitions/nutritionFacts"
+        },
         "packaging": {
           "description": "packaged versions of this product",
           "type": "array",
@@ -3602,6 +3605,49 @@
         "size",
         "price",
         "packaging"
+      ]
+    },
+    "nutritionFacts": {
+      "description": "nutrition facts",
+      "type": "object",
+      "properties": {
+        "headers": {
+          "description": "nutrition-fact headers (e.g. \"Serving Size 1 cake (19g)\" or \"Calories 60\")",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "daily-values": {
+          "description": "nutrition facts daily values",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/nutritionFactsDailyValue"
+          }
+        }
+      }
+    },
+    "nutritionFactsDailyValue": {
+      "description": "a nutrition facts daily value",
+      "type": "object",
+      "properties": {
+        "indent": {
+          "description": "if true, this label should be indented (e.g. an indented \"Dietary Fiber\" entry might follow a non-indented \"Total Carbohydrate\" entry)",
+          "type": "boolean"
+        },
+        "label": {
+          "description": "daily value label (e.g. \"Total Carbohydrate 14g\", \"Calcium\")",
+          "type": "string"
+        },
+        "percentage": {
+          "description": "daily value percentage (e.g., \"10\" or \"<1\")",
+          "type": "string"
+        }
+      },
+      "required": [
+        "indent",
+        "label",
+        "percentage"
       ]
     },
     "brand": {
