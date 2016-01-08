@@ -3286,6 +3286,78 @@
           "description": "whether or not this drop is actively ordering",
           "type": "boolean"
         },
+        "accounts-payable-contact": {
+          "description": "name of the drop employee Azure's accounts-payable should contact, if different from the primary contact",
+          "type": "string"
+        },
+        "after-hours-phone": {
+          "description": "E.123 telephone number Azure should call if we need to contact the drop after business hours",
+          "type": "string"
+        },
+        "business-hours": {
+          "description": "regular business hours for the drop (e.g. \"8:30-6 Mon-Fri, 9-5 Sat, closed Sun\")",
+          "type": "string"
+        },
+        "business-type": {
+          "description": "what type of business do you run?",
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "clinics-practitioner",
+              "manufacturing-business",
+              "online-store",
+              "restaurant",
+              "retail-store",
+              "seasonal",
+              "wholesale-distributor"
+            ]
+          }
+        },
+        "buyer": {
+          "description": "name of the drop employee who usually places orders for this drop, if different from the primary contact",
+          "type": "string"
+        },
+        "pickup-contact": {
+          "description": "do customers need to contact you to pick up their orders?  Retail preference.  Only available when how-members-receive is \"can-hold-sometimes\" or \"can-hold\"",
+          "type": "string",
+          "enum": [
+            "yes",
+            "no",
+            "first-time-only"
+          ]
+        },
+        "contact-person": {
+          "type": "string"
+        },
+        "contact-type": {
+          "description": "how can customers contact you?",
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "phone",
+              "email",
+              "other"
+            ]
+          }
+        },
+        "contact-type-other-notes": {
+          "description": "description of the alternative contact method.  Available when contact-type includes \"other\"",
+          "type": "string"
+        },
+        "contact-type-phone": {
+          "description": "E.123 telephone number customers should call to contact this drop.  Available when contact-type includes \"phone\"",
+          "type": "string"
+        },
+        "directions": {
+          "description": "driving directions for a truck approaching this drop (e.g. avoiding low bridges, tight turns, etc. on more obvious routes)",
+          "type": "string"
+        },
+        "driver-callable-phone": {
+          "description": "E.123 telephone number for a driver approaching this drop",
+          "type": "string"
+        },
         "exclusivity": {
           "type": "string",
           "enum": [
@@ -3294,6 +3366,40 @@
             "closed"
           ]
         },
+        "food-stamps": {
+          "description": "does your drop accept food stamps?  Business preference.",
+          "type": "string",
+          "enum": [
+            "yes",
+            "no",
+            "limited"
+          ]
+        },
+        "food-stamps-limited-notes": {
+          "description": "description of limited food-stamp acceptance.  Business preference.  Only available when food-stamps is \"limited\"",
+          "type": "string"
+        },
+        "hold-time": {
+          "description": "how long will you hold a customer's order?  For example, \"24 hours\", \"three days for dry, frozen by arrangement\", etc.  Retail preference.  Only available when how-members-receive is \"can-hold-sometimes\" or \"can-hold\"",
+          "type": "string"
+        },
+        "how-members-receive": {
+          "description": "how do your members receive their items?  Retail preference",
+          "type": "string",
+          "enum": [
+            "must-show",
+            "can-hold-sometimes",
+            "can-hold"
+          ]
+        },
+        "invoice-always": {
+          "description": "always print paper invoices, regardless of the customer's invoice-delivery preference",
+          "type": "boolean"
+        },
+        "okay-to-text-phone": {
+          "description": "can the driver send text messages to the driver-callable phone?",
+          "type": "boolean"
+        },
         "parking": {
           "description": "parking location ownership for this drop",
           "type": "string",
@@ -3301,8 +3407,13 @@
             "home",
             "business",
             "non-profit",
-            "public"
+            "public",
+            "other-building"
           ]
+        },
+        "special-orders": {
+          "description": "do you take special orders for Azure products from customers?  Wholesale preference",
+          "type": "boolean"
         },
         "storage": {
           "description": "storage facilities available at this drop",
@@ -3349,6 +3460,14 @@
         "notes": {
           "description": "free-form Markdown notes for any drop information that doesn't fit into an existing field",
           "type": "string"
+        },
+        "sells-finished-goods-to-azure": {
+          "description": "do you also sell your finished good to Azure?  Only available if business-type includes \"manufacturing-business\"",
+          "type": "boolean"
+        },
+        "uses-azure-to-drop-ship": {
+          "description": "Do you drop ship Azure orders (have Azure ship directly to your customers)?  Only available if business-type includes \"online-store\"",
+          "type": "boolean"
         }
       },
       "required": [
