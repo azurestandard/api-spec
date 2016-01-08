@@ -2983,6 +2983,173 @@
           }
         }
       }
+    },
+    "/faqs":{
+      "get": {
+        "summary": "Returns a list of frequently asked questions and answers",
+        "operationId": "getFaqs",
+        "tags": [
+          "faq"
+        ],
+        "perameters": [
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "maximum number of results to return",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "start",
+            "in": "query",
+            "description": "offset to the first result to return.  Use negative numbers to offset from the end of the result list.",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "array of faq response",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/faq"
+              }
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "schema": {
+              "$ref": "#/definitions/errorModel"
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Creates and returns a faq",
+        "operationId": "addFaq",
+        "tags": [
+          "faq"
+        ],
+        "parameters": [
+          {
+            "name": "faq",
+            "in": "body",
+            "description": "faq to create",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/updateFaq"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "faq response",
+            "schema": {
+              "$ref": "#/definitions/faq"
+            }
+          }
+        },
+        "default": {
+          "description": "unexpected error",
+          "schema": {
+            "$ref": "#/definitions/errorModel"
+          }
+        }
+      }
+    },
+    "/faq/{id}": {
+      "get": {
+        "summary": "Returns a single faq",
+        "operationId": "getFaqById",
+        "tags": [
+          "faq"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of faq to fetch",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "faq response",
+            "schema": {
+              "$ref": "#/definitions/faq"
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "schema": {
+              "$ref": "#/definitions/errorModel"
+            }
+          }
+        }
+      },
+      "put": {
+        "summary": "Updates and returns a faq",
+        "operationId": "updateFaq",
+        "tags": [
+          "faq"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of faq to update",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "faq",
+            "in": "body",
+            "description": "Faq to update",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/updateFaq"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "faq response",
+            "schema": {
+              "$ref": "#/definitions/faq"
+            }
+          }
+        },
+        "default": {
+          "description": "unexpected error",
+          "schema": {
+            "$ref": "#/definitions/errorModel"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Deletes a faq",
+        "operationId": "deleteFaq",
+        "tags": [
+          "faq"
+        ],
+        "responses": {
+          "204": {
+            "description": "delete successful"
+          }
+        },
+        "default": {
+          "description": "unexpected error",
+          "schema": {
+            "$ref": "#/definitions/errorModel"
+          }
+        }
+      }
     }
   },
   "definitions": {
@@ -4458,6 +4625,61 @@
         "quantity",
         "packaged-product",
         "customer"
+      ]
+    },
+    "faq": {
+      "description": "frequently asked question",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "question": {
+          "description": "a frequently asked question in plain text.",
+          "type": "string"
+        },
+        "answer": {
+          "description": "the answer to the associated question in plain text.",
+          "type": "string"
+        },
+        "order": {
+          "type": "integer",
+          "format": "int64"
+        }
+      },
+      "required": [
+        "id",
+        "question",
+        "answer",
+        "order"
+      ]
+    },
+    "updateFaq": {
+      "description": "frequently asked question",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "question": {
+          "description": "a frequently asked question in plain text.",
+          "type": "string"
+        },
+        "answer": {
+          "description": "the answer to the associated question in plain text.",
+          "type": "string"
+        },
+        "order": {
+          "type": "integer",
+          "format": "int64"
+        }
+      },
+      "required": [
+        "question",
+        "answer",
+        "order"
       ]
     },
     "session": {
