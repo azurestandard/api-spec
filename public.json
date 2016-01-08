@@ -3588,6 +3588,10 @@
           "type": "integer",
           "format": "int32"
         },
+        "ingredients": {
+          "description": "ingredients used in this product (e.g., \"dried cranberries (organic cranberries, organic cane sugar, organic sunflower oil)\")",
+          "type": "string"
+        },
         "nutrition-facts": {
           "$ref": "#/definitions/nutritionFacts"
         },
