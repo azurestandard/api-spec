@@ -3429,6 +3429,10 @@
           "description": "actual stop time (set after the stop is reached)",
           "type": "string",
           "format": "date-time"
+        },
+        "verified": {
+          "description": "whether the stop is verified or not",
+          "type": "boolean"
         }
       },
       "required": [
