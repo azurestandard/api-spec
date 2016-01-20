@@ -3750,6 +3750,10 @@
         "brand": {
           "$ref": "#/definitions/brand"
         },
+        "directions": {
+          "description": "product use directions (e.g., cooking suggestions)",
+          "type": "string"
+        },
         "favorites": {
           "description": "number of people who've marked this product as a favorite",
           "type": "integer",
