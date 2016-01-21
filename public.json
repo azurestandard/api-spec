@@ -976,6 +976,109 @@
         }
       }
     },
+    "/audit/products": {
+      "get": {
+        "summary": "Returns all products and their packaging from the system",
+        "operationId": "findProductAudits",
+        "tags": [
+          "audit",
+          "product"
+        ],
+        "parameters": [
+          {
+            "name": "audited",
+            "in": "query",
+            "description": "filter for products that have been audited or not audited",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "maximum number of results to return",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "start",
+            "in": "query",
+            "description": "offset to the first result to return.  Use negative numbers to offset from the end of the result list.",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "product audit response",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/productAudit"
+              }
+            },
+            "headers": {
+              "Count": {
+                "description": "total number of matching results (how many you'd get if you didn't set `limit`)",
+                "type": "integer",
+                "format": "int32",
+                "minimum": 0
+              }
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "schema": {
+              "$ref": "#/definitions/errorModel"
+            }
+          }
+        }
+      }
+    },
+    "/audit/packaged-product/{code}": {
+      "post": {
+        "summary": "Audit an existing packaged-product",
+        "operationId": "updatePackagedProductAudit",
+        "tags": [
+          "audit",
+          "product"
+        ],
+        "parameters": [
+          {
+            "name": "code",
+            "in": "path",
+            "description": "code of packaged product being audited",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "packaged-product",
+            "in": "body",
+            "description": "packaged product to update",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/updatePackagedProductAudit"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "packaged-product audit response",
+            "schema": {
+              "$ref": "#/definitions/packagedProductAudit"
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "schema": {
+              "$ref": "#/definitions/errorModel"
+            }
+          }
+        }
+      }
+    },
     "/products": {
       "get": {
         "summary": "Returns all products from the system that the user has access to",
@@ -4755,6 +4858,84 @@
       "required": [
         "notification",
         "person"
+      ]
+    },
+    "productAudit": {
+      "description": "an audited or auditable product and its packaging",
+      "type": "object",
+      "properties": {
+        "id": {
+          "description": "the product ID (not unique to the audit process)",
+          "type": "integer",
+          "format": "int64"
+        },
+        "name": {
+          "description": "sentence-length product name.  Copied from `#definitions/product` for easier UI development",
+          "type": "string"
+        },
+        "audited": {
+          "description": "a datetime denoting if and when the product was last audited",
+          "type": "date-time"
+        },
+        "packaging": {
+          "description": "all related audited and/or non-audited packaged versions of this product",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/packagedProductAudit"
+          }
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "packaging",
+        "audited"
+      ]
+    },
+    "packagedProductAudit": {
+      "description": "an audited or auditable packaged-product",
+      "type": "object",
+      "properties": {
+        "code": {
+          "description": "the packaged-product code (not unique to the audit process)",
+          "type": "string"
+        },
+        "size": {
+          "description": "the old size of the product (e.g. \"12 oz.\" or \"6x12 oz.\")",
+          "type": "string"
+        },
+        "packs": {
+          "description": "the new dimensions of package sizes (e.g. \"4\", \"4x32.5\", or \"2x4x32.5\")",
+          "type": "string"
+        },
+        "unit": {
+          "description": "the new unit of measurement.  You can use any string, but the backend will only be able to make automatic comparisons if you use SI prefixes (e.g. \"mm\" for millimeters) and stick to the following base units: pound, ounce, gram, gallon, liter, quart, pint, cup, fluid ounce, yard, and count",
+          "type": "string"
+        }
+      },
+      "required": [
+        "code",
+        "size",
+        "packs",
+        "unit"
+      ]
+    },
+    "updatePackagedProductAudit": {
+      "description": "an update to an audited packaged-product",
+      "type": "object",
+      "properties": {
+        "packs": {
+          "description": "the new dimensions of package sizes (e.g. \"4\", \"4x32.5\", or \"2x4x32.5\")",
+          "type": "string"
+        },
+        "unit": {
+          "description": "the new unit of measurement.  Ideally one of \"\", or \"\", but you can use another unit if none of those fit.",
+          "type": "string"
+        }
+      },
+      "required": [
+        "packs",
+        "unit"
       ]
     },
     "errorModel": {
