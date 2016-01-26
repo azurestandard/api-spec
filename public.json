@@ -3529,7 +3529,7 @@
       ]
     },
     "routeStop": {
-      "description": "a template used to create stops when a trip is verified",
+      "description": "a template used to create stops when a trip is created",
       "type": "object",
       "properties": {
         "id": {
@@ -3560,7 +3560,7 @@
       ]
     },
     "stop": {
-      "description": "a trip stop or waypoint on a verified trip",
+      "description": "a trip stop or waypoint.  Stops are created for all route-stops when a trip is created for that route.  At verification time, stops that will not be visited (e.g. because they missed their order-minimum) are deleted",
       "type": "object",
       "properties": {
         "id": {
