@@ -4090,7 +4090,7 @@
           "format": "int64"
         },
         "type": {
-          "description": "An array of properties for this number",
+          "description": "Fee type slug",
           "$ref": "#/definitions/orderFeeType"
         },
         "amount": {
