@@ -4573,6 +4573,14 @@
         "token"
       ]
     },
+    "notificationChannel": {
+      "description": "channel technology for pushing user notifications",
+      "type": "string",
+      "enum": [
+        "email",
+        "text"
+      ]
+    },
     "telephone": {
       "description": "A telephone number",
       "type": "object",
@@ -4647,11 +4655,15 @@
           "items": {
             "$ref": "#/definitions/priceLevel"
           }
+        },
+        "notifications": {
+          "$ref": "#/definitions/personNotifications"
         }
       },
       "required": [
         "id",
-        "name"
+        "name",
+        "notifications"
       ]
     },
     "updatePerson": {
@@ -4687,6 +4699,9 @@
         },
         "opt-in-beta-site": {
           "type": "boolean"
+        },
+        "notifications": {
+          "$ref": "#/definitions/personNotifications"
         }
       }
     },
@@ -4727,6 +4742,47 @@
         "user-password": {
           "description": "The authenticated person's password, required when changing password or email",
           "type": "string"
+        },
+        "notifications": {
+          "$ref": "#/definitions/personNotifications"
+        }
+      }
+    },
+    "personNotifications": {
+      "description": "configure if and how a user receives per-user notifications",
+      "type": "object",
+      "properties": {
+        "checkout": {
+          "description": "sent after checking out orders.",
+          "format": "array",
+          "items": {
+            "$ref": "#definitions/notificationChannel"
+          }
+        },
+        "delivery": {
+          "description": "sent after order delivery, and after updates to delivery estimates.",
+          "format": "array",
+          "items": {
+            "$ref": "#definitions/notificationChannel"
+          }
+        },
+        "payment": {
+          "description": "sent after Azure processes a payment.",
+          "format": "array",
+          "items": {
+            "$ref": "#definitions/notificationChannel"
+          }
+        },
+        "invoice": {
+          "description": "sent when new invoices are generated",
+          "format": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "paper",
+              "email"
+            ]
+          }
         }
       }
     },
