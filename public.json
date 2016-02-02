@@ -1197,7 +1197,7 @@
           {
             "name": "audited",
             "in": "query",
-            "description": "filter for products that have been audited or not audited",
+            "description": "filter for products that have or haven't been audited.  When set, only products that contain (un)audited packaging are returned, and their packaging array only contains (un)audited packaging.",
             "required": false,
             "type": "string"
           },
@@ -5326,10 +5326,6 @@
           "description": "sentence-length product name.  Copied from `#definitions/product` for easier UI development",
           "type": "string"
         },
-        "audited": {
-          "description": "a datetime denoting if and when the product was last audited",
-          "type": "date-time"
-        },
         "packaging": {
           "description": "all related audited and/or non-audited packaged versions of this product",
           "type": "array",
@@ -5364,6 +5360,10 @@
         "unit": {
           "description": "the new unit of measurement.  You can use any string, but the backend will only be able to make automatic comparisons if you use SI prefixes (e.g. \"mm\" for millimeters) and stick to the following base units: pound, ounce, gram, gallon, liter, quart, pint, cup, fluid ounce, yard, and count",
           "type": "string"
+        },
+        "audited": {
+          "description": "a datetime denoting if and when the packaged-product was last audited",
+          "type": "date-time"
         }
       },
       "required": [
