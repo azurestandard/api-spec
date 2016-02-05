@@ -3838,6 +3838,16 @@
           "description": "size of the product (e.g. 12 oz., or 6x12 oz.)",
           "type": "string"
         },
+        "weight": {
+          "description": "weight of this packaged product in pounds (estimated until picking time)",
+          "type": "integer",
+          "format": "float"
+        },
+        "volume": {
+          "description": "volume of this packaged product in cubic feet",
+          "type": "integer",
+          "format": "float"
+        },
         "price": {
           "#ref": "#/definitions/price"
         },
