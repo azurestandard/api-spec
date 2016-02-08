@@ -2985,17 +2985,17 @@
             "description": "favorite response",
             "schema": {
               "$ref": "#/definitions/favorite"
-              }
-            }
-          },
-          "default": {
-            "description": "unexpected error",
-            "schema": {
-              "$ref": "#/definitions/errorModel"
             }
           }
+        },
+        "default": {
+          "description": "unexpected error",
+          "schema": {
+            "$ref": "#/definitions/errorModel"
+          }
         }
-      },
+      }
+    },
     "/favorite/{id}": {
       "get": {
         "summary": "Returns a single customer favorite",
@@ -3058,8 +3058,8 @@
             "description": "favorite response",
             "schema": {
               "$ref": "#/definitions/favorite"
-              }
             }
+          }
         },
         "default": {
           "description": "unexpected error",
@@ -3087,7 +3087,7 @@
         }
       }
     },
-    "/faqs":{
+    "/faqs": {
       "get": {
         "summary": "Returns a list of frequently asked questions and answers",
         "operationId": "getFaqs",
@@ -4482,12 +4482,16 @@
     },
     "paymentMethod": {
       "anyOf": [
-        {"$ref": "#definitions/creditCard"}
+        {
+          "$ref": "#definitions/creditCard"
+        }
       ]
     },
     "newPaymentMethod": {
       "anyOf": [
-        {"$ref": "#definitions/newCreditCard"}
+        {
+          "$ref": "#definitions/newCreditCard"
+        }
       ]
     },
     "payment": {
@@ -4747,7 +4751,7 @@
         "street-address": {
           "type": "string"
         },
-        "locality":{
+        "locality": {
           "type": "string"
         },
         "region": {
