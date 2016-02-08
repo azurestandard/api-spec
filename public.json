@@ -4928,11 +4928,7 @@
           "type": "boolean"
         },
         "price-level": {
-          "description": "Which 'price' entry applies to this person",
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/priceLevel"
-          }
+          "$ref": "#/definitions/priceLevel"
         },
         "notifications": {
           "$ref": "#/definitions/personNotifications"
