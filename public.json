@@ -5337,8 +5337,7 @@
       "required": [
         "id",
         "name",
-        "packaging",
-        "audited"
+        "packaging"
       ]
     },
     "packagedProductAudit": {
@@ -5370,7 +5369,8 @@
         "code",
         "size",
         "packs",
-        "unit"
+        "unit",
+        "audited"
       ]
     },
     "updatePackagedProductAudit": {
