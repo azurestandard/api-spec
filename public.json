@@ -1150,6 +1150,38 @@
             }
           }
         }
+      },
+      "post": {
+        "summary": "Create a new stop on a trip",
+        "operationId": "addStop",
+        "tags": [
+          "stop"
+        ],
+        "parameters": [
+          {
+            "name": "stop",
+            "in": "body",
+            "description": "stop to add",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/updateStop"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "stop response",
+            "schema": {
+              "$ref": "#/definitions/stop"
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "schema": {
+              "$ref": "#/definitions/errorModel"
+            }
+          }
+        }
       }
     },
     "/stop/{id}": {
