@@ -1183,6 +1183,46 @@
             }
           }
         }
+      },
+      "put": {
+        "summary": "Update an existing stop",
+        "operationId": "updateStop",
+        "tags": [
+          "stop"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of stop to update",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "stop",
+            "in": "body",
+            "description": "stop to update",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/updateStop"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "stop response",
+            "schema": {
+              "$ref": "#/definitions/stop"
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "schema": {
+              "$ref": "#/definitions/errorModel"
+            }
+          }
+        }
       }
     },
     "/audit/products": {
@@ -4410,6 +4450,47 @@
       },
       "required": [
         "id",
+        "trip",
+        "target-time",
+        "estimated-time"
+      ]
+    },
+    "updateStop": {
+      "description": "an update to a trip stop or waypoint",
+      "type": "object",
+      "properties": {
+        "trip": {
+          "description": "trip ID for the stop",
+          "type": "integer",
+          "format": "int64"
+        },
+        "drop": {
+          "description": "drop ID for the stop",
+          "type": "integer",
+          "format": "int64"
+        },
+        "pickup": {
+          "description": "pickup ID for the stop",
+          "type": "integer",
+          "format": "int64"
+        },
+        "target-time": {
+          "description": "planned stop time (fixed before the trip starts)",
+          "type": "string",
+          "format": "date-time"
+        },
+        "estimated-time": {
+          "description": "estimated stop time (updated after the trip starts until the stop is reached)",
+          "type": "string",
+          "format": "date-time"
+        },
+        "time": {
+          "description": "actual stop time (set after the stop is reached)",
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "required": [
         "trip",
         "target-time",
         "estimated-time"
