@@ -1166,6 +1166,13 @@
             "schema": {
               "$ref": "#/definitions/updateStop"
             }
+          },
+          {
+            "name": "persist",
+            "in": "query",
+            "description": "if true, calculate the offset between the trips's delivery start and this stop's estimated time.  For any pre-cutoff trips associated with this stop's trip's route which cutoff later than this stop's trip, create a stop for this location (drop or pickup) if it does not already exist and update that stop's target and estimated times to have the same offset from that stops's trip's delivery start.  Also create a route-stop association, if it does not already exist, for this location on this stop's trip's route and update that route-stop with the same delivery offset.",
+            "required": false,
+            "type": "boolean"
           }
         ],
         "responses": {
@@ -1239,6 +1246,13 @@
             "schema": {
               "$ref": "#/definitions/updateStop"
             }
+          },
+          {
+            "name": "persist",
+            "in": "query",
+            "description": "if true, calculate the offset between the trips's delivery start and this stop's estimated time.  For any pre-cutoff trips associated with this stop's trip's route which cutoff later than this stop's trip, create a stop for this location (drop or pickup) if it does not already exist and update that stop's target and estimated times to have the same offset from that stops's trip's delivery start.  Also create a route-stop association, if it does not already exist, for this location on this stop's trip's route and update that route-stop with the same delivery offset.",
+            "required": false,
+            "type": "boolean"
           }
         ],
         "responses": {
@@ -1270,6 +1284,13 @@
             "required": true,
             "type": "integer",
             "format": "int64"
+          },
+          {
+            "name": "persist",
+            "in": "query",
+            "description": "if true, for any pre-cutoff trips associated with this stop's trip's route which cutoff later than this stop's trip, delete any stops for this location (drop or pickup).  Also delete any route-stop associations for this location on this stop's trip's route.",
+            "required": false,
+            "type": "boolean"
           }
         ],
         "responses": {
