@@ -4377,6 +4377,14 @@
         "wholesale"
       ]
     },
+    "permissions": {
+      "description": "an API authorization or authorization category",
+      "type": "string",
+      "enum": [
+        "staff",
+        "superuser"
+      ]
+    },
     "price": {
       "description": "product price information",
       "type": "object",
@@ -4932,6 +4940,12 @@
         },
         "notifications": {
           "$ref": "#/definitions/personNotifications"
+        "permissions": {
+          "description": "API permissions for this persion",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/permission"
+          }
         }
       },
       "required": [
