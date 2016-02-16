@@ -4576,12 +4576,12 @@
         },
         "weight": {
           "description": "weight of the shipped products in pounds (estimated until picking time)",
-          "type": "integer",
+          "type": "number",
           "format": "float"
         },
         "volume": {
           "description": "volume of the shipped products in cubic feet (estimated until picking time)",
-          "type": "integer",
+          "type": "number",
           "format": "float"
         },
         "price": {
