@@ -4117,13 +4117,25 @@
           "type": "string"
         },
         "weight": {
-          "description": "weight of this packaged product in pounds (estimated until picking time)",
-          "type": "integer",
-          "format": "float"
+          "minimum": {
+            "description": "minimum weight of this packaged product in pounds",
+            "type": "number",
+            "format": "float"
+          },
+          "maximum": {
+            "description": "maximum weight of this packaged product in pounds",
+            "type": "number",
+            "format": "float"
+          },
+          "average": {
+            "description": "an estimate of the average weight of this packaged product in pounds",
+            "type": "number",
+            "format": "float"
+          }
         },
         "volume": {
           "description": "volume of this packaged product in cubic feet",
-          "type": "integer",
+          "type": "number",
           "format": "float"
         },
         "price": {
@@ -4571,12 +4583,12 @@
         },
         "weight": {
           "description": "weight of the shipped products in pounds (estimated until picking time)",
-          "type": "integer",
+          "type": "number",
           "format": "float"
         },
         "volume": {
           "description": "volume of the shipped products in cubic feet (estimated until picking time)",
-          "type": "integer",
+          "type": "number",
           "format": "float"
         },
         "price": {
