@@ -4969,7 +4969,7 @@
           "$ref": "#/definitions/personNotifications"
         },
         "permissions": {
-          "description": "API permissions for this persion",
+          "description": "API permissions for this person",
           "type": "array",
           "items": {
             "$ref": "#/definitions/permission"
