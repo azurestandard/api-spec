@@ -4967,6 +4967,7 @@
         },
         "notifications": {
           "$ref": "#/definitions/personNotifications"
+        },
         "permissions": {
           "description": "API permissions for this persion",
           "type": "array",
