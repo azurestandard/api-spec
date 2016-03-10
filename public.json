@@ -3691,6 +3691,10 @@
           "description": "description of limited food-stamp acceptance.  Business preference.  Only available when food-stamps is \"limited\"",
           "type": "string"
         },
+        "publishable": {
+          "description": "may we publish the name of your drop on our website?",
+          "type": "boolean"
+        },
         "hold-time": {
           "description": "how long will you hold a customer's order?  For example, \"24 hours\", \"three days for dry, frozen by arrangement\", etc.  Retail preference.  Only available when how-members-receive is \"can-hold-sometimes\" or \"can-hold\"",
           "type": "string"
