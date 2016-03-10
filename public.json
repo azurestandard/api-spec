@@ -3871,6 +3871,10 @@
             "held",
             "order"
           ]
+        },
+        "notes": {
+          "description": "fee amount and structure",
+          "type": "string"
         }
       }
     },
