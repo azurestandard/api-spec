@@ -4553,12 +4553,9 @@
           "description": "A word or two naming the category.  A shortened version of the full name that drops any words already contained in the category's ancestors' short names.  This will be used in places where the ancestor short names are in close proximity (e.g. URL slugs) to avoid having the same word many times.",
           "type": "string"
         },
-        "images": {
-          "type": "array",
-          "items": {
-            "description": "URL for a picture of this category",
-            "type": "string"
-          }
+        "image": {
+          "description": "URL for a picture of this category",
+          "type": "string"
         },
         "parent": {
           "description": "category ID for the parent category",
