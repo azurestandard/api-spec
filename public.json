@@ -1911,6 +1911,38 @@
             }
           }
         }
+      },
+      "post": {
+        "summary": "Create a new category",
+        "operationId": "createCategory",
+        "tags": [
+          "category"
+        ],
+        "parameters": [
+          {
+            "name": "category",
+            "in": "body",
+            "description": "Category to create",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/category"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "category response",
+            "schema": {
+              "$ref": "#/definitions/category"
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "schema": {
+              "$ref": "#/definitions/errorModel"
+            }
+          }
+        }
       }
     },
     "/category/{id}": {
@@ -1929,6 +1961,46 @@
             "required": true,
             "type": "integer",
             "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "category response",
+            "schema": {
+              "$ref": "#/definitions/category"
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "schema": {
+              "$ref": "#/definitions/errorModel"
+            }
+          }
+        }
+      },
+      "put": {
+        "summary": "Update a category.",
+        "operationId": "updateCategory",
+        "tags": [
+          "category"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of category to update",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "category",
+            "in": "body",
+            "description": "Category to update",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/category"
+            }
           }
         ],
         "responses": {
@@ -4553,12 +4625,9 @@
           "description": "A word or two naming the category.  A shortened version of the full name that drops any words already contained in the category's ancestors' short names.  This will be used in places where the ancestor short names are in close proximity (e.g. URL slugs) to avoid having the same word many times.",
           "type": "string"
         },
-        "images": {
-          "type": "array",
-          "items": {
-            "description": "URL for a picture of this category",
-            "type": "string"
-          }
+        "image": {
+          "description": "A picture of this category.  Use base64 to upload new images, and leave unset to delete an existing image.  Invalid base64, including URLs containing colons and/or periods, will result in no change.",
+          "type": "string"
         },
         "parent": {
           "description": "category ID for the parent category",
