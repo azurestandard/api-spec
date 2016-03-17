@@ -2202,7 +2202,19 @@
             "required": true,
             "type": "integer",
             "format": "int64"
+          },
+          {
+            "name": "accept",
+            "in": "query",
+            "description": "override the HTTP Accept header to chose the response type.  Empty and unrecognized values will result in application/json.",
+            "required": false,
+            "type": "string"
           }
+        ],
+        "produces": [
+          "application/json",
+          "application/pdf",
+          "text/csv"
         ],
         "responses": {
           "200": {
