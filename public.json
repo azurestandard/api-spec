@@ -3327,6 +3327,13 @@
               "format": "int64"
             },
             "collectionFormat": "csv"
+          },
+          {
+            "name": "active",
+            "in": "query",
+            "description": "only return favorites associated with (in)active packaged products.  For example, we sometimes discontinue products and then pick them back up later.  In this context, \"active\" means \"for sale to at least some customers\".",
+            "required": false,
+            "type": "boolean"
           }
         ],
         "responses": {
