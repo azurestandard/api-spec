@@ -4041,8 +4041,23 @@
           "type": "integer",
           "format": "int32"
         },
+        "pick-offset": {
+          "description": "number of days after cutoff for picking orders",
+          "type": "integer",
+          "format": "int32"
+        },
         "delivery-offset": {
-          "description": "number of days after cutoff before the first stop",
+          "description": "number of days after cutoff for the first delivery stop",
+          "type": "integer",
+          "format": "int32"
+        },
+        "backhaul-offset": {
+          "description": "number of days after cutoff for the first pickup stop",
+          "type": "integer",
+          "format": "int32"
+        },
+        "warehouse-arrival-offset": {
+          "description": "number of days after cutoff for the truck arriving at the warehouse",
           "type": "integer",
           "format": "int32"
         },
@@ -4080,8 +4095,23 @@
           "type": "integer",
           "format": "int32"
         },
+        "pick-offset": {
+          "description": "number of days after cutoff for picking orders",
+          "type": "integer",
+          "format": "int32"
+        },
         "delivery-offset": {
-          "description": "number of days after cutoff before the first stop",
+          "description": "number of days after cutoff for the first delivery stop",
+          "type": "integer",
+          "format": "int32"
+        },
+        "backhaul-offset": {
+          "description": "number of days after cutoff for the first pickup stop",
+          "type": "integer",
+          "format": "int32"
+        },
+        "warehouse-arrival-offset": {
+          "description": "number of days after cutoff for the truck arriving at the warehouse",
           "type": "integer",
           "format": "int32"
         },
