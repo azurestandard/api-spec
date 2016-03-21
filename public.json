@@ -5375,13 +5375,14 @@
         "geo": {
           "$ref": "#/definitions/geo"
         },
-        "label": {
+        "exclusivity": {
           "type": "string"
         }
       },
       "required": [
         "id",
-        "geo"
+        "geo",
+        "exclusivity"
       ]
     },
     "geo": {
