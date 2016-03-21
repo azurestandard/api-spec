@@ -5372,9 +5372,6 @@
           "type": "integer",
           "format": "int64"
         },
-        "name": {
-          "type": "string"
-        },
         "geo": {
           "$ref": "#/definitions/geo"
         },
@@ -5384,7 +5381,6 @@
       },
       "required": [
         "id",
-        "name",
         "geo"
       ]
     },
