@@ -1827,7 +1827,7 @@
     },
     "/categories": {
       "get": {
-        "summary": "Returns all categories from the system",
+        "summary": "Returns all categories from the system, ordered by decreasing 'featured' values",
         "operationId": "findCategories",
         "tags": [
           "category"
@@ -4655,6 +4655,11 @@
             "description": "a keyword for this category",
             "type": "string"
           }
+        },
+        "featured": {
+          "description": "ordering precedence for likely customer interest.  Defaults to zero.",
+          "type": "integer",
+          "format": "int32"
         }
       },
       "required": [
