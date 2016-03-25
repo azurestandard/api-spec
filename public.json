@@ -1245,6 +1245,46 @@
         }
       }
     },
+    "/audit/product/{id}": {
+      "get": {
+        "summary": "Returns a product based on a single ID",
+        "operationId": "findProductAuditById",
+        "tags": [
+          "audit",
+          "product"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of product to fetch",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "audited",
+            "in": "query",
+            "description": "When set, the packaging array only contains (un)audited packaging.",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "product audit response",
+            "schema": {
+              "$ref": "#/definitions/productAudit"
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "schema": {
+              "$ref": "#/definitions/errorModel"
+            }
+          }
+        }
+      }
+    },
     "/audit/packaged-product/{code}": {
       "post": {
         "summary": "Audit an existing packaged-product",
@@ -5648,6 +5688,10 @@
         "unit": {
           "description": "the new unit of measurement.  Ideally one of \"\", or \"\", but you can use another unit if none of those fit.",
           "type": "string"
+        },
+        "clear-audited": {
+          "description": "If true, clear the audited date-time for this packaged-product.  If false (the default), set the audited date-time to the current time.",
+          "type": "boolean"
         }
       },
       "required": [
