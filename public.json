@@ -3049,36 +3049,6 @@
       }
     },
     "/registration/confirm": {
-      "get": {
-        "summary": "Complete an in-progress registration",
-        "operationId": "confirmRegistrationGet",
-        "tags": [
-          "registration"
-        ],
-        "parameters": [
-          {
-            "name": "token",
-            "in": "query",
-            "description": "The registrant's confirmation token",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "person response",
-            "schema": {
-              "$ref": "#/definitions/person"
-            }
-          },
-          "default": {
-            "description": "unexpected error",
-            "schema": {
-              "$ref": "#/definitions/errorModel"
-            }
-          }
-        }
-      },
       "post": {
         "summary": "Complete an in-progress registration",
         "operationId": "confirmRegistration",
@@ -3173,43 +3143,6 @@
       }
     },
     "/password/confirm": {
-      "get": {
-        "summary": "Complete an in-progress password reset",
-        "operationId": "passwordResetGet",
-        "tags": [
-          "password"
-        ],
-        "parameters": [
-          {
-            "name": "token",
-            "in": "query",
-            "description": "The password-reset confirmation token",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "password",
-            "in": "query",
-            "description": "The new password",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "person response",
-            "schema": {
-              "$ref": "#/definitions/person"
-            }
-          },
-          "default": {
-            "description": "unexpected error",
-            "schema": {
-              "$ref": "#/definitions/errorModel"
-            }
-          }
-        }
-      },
       "post": {
         "summary": "Complete an in-progress password reset",
         "operationId": "passwordResetConfirmation",
