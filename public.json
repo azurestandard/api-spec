@@ -4627,7 +4627,8 @@
       "type": "string",
       "enum": [
         "retail",
-        "wholesale"
+        "wholesale",
+        "member"
       ]
     },
     "permission": {
@@ -4650,6 +4651,12 @@
         },
         "wholesale": {
           "description": "pricing for wholesale customers",
+          "schema": {
+            "$ref": "#/definitions/_price"
+          }
+        },
+        "member": {
+          "description": "pricing for member customers",
           "schema": {
             "$ref": "#/definitions/_price"
           }
