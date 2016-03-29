@@ -4649,7 +4649,7 @@
           }
         },
         "wholesale": {
-          "description": "pricing for retail customers",
+          "description": "pricing for wholesale customers",
           "schema": {
             "$ref": "#/definitions/_price"
           }
