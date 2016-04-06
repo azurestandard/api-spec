@@ -1,3 +1,4 @@
 test:
   override:
     - jq . public.json
+    - diff -u public.json <(jq . public.json)
