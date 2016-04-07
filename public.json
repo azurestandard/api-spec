@@ -5037,10 +5037,40 @@
         "expiration"
       ]
     },
+    "payrollDeduction": {
+      "description": "a payroll deduction (one of our supported payment methods)",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "type": {
+          "description": "string identifying this payment model",
+          "type": "string",
+          "enum": [
+            "payroll-deduction"
+          ]
+        },
+        "person": {
+          "description": "person associated with this payroll deduction",
+          "type": "integer",
+          "format": "int64"
+        }
+      },
+      "required": [
+        "id",
+        "type",
+        "person"
+      ]
+    },
     "paymentMethod": {
       "anyOf": [
         {
           "$ref": "#definitions/creditCard"
+        },
+        {
+          "$ref": "#definitions/payrollDeduction"
         }
       ]
     },
