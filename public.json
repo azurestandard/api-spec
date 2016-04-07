@@ -4616,6 +4616,15 @@
         "discount": {
           "description": "text for the discount (e.g. \"12%\", or \"$3.50\")",
           "type": "string"
+        },
+        "dollars-per-unit": {
+          "description": "the per-unit price",
+          "type": "number",
+          "format": "float"
+        },
+        "unit": {
+          "description": "The unit for the dollars-per-unit",
+          "type": "string"
         }
       },
       "required": [
