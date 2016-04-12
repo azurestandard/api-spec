@@ -4622,7 +4622,7 @@
           "format": "float"
         },
         "per-pound": {
-          "description": "whether the price is per-pound or per-unit",
+          "description": "whether the 'dollars' price is per-pound or per-product",
           "type": "boolean"
         },
         "discount": {
