@@ -2955,7 +2955,7 @@
       }
     },
     "/login": {
-      "get": {
+      "post": {
         "summary": "Authenticate and receive a session cookie",
         "operationId": "login",
         "tags": [
@@ -3000,7 +3000,7 @@
       }
     },
     "/logout": {
-      "get": {
+      "post": {
         "summary": "Clears the current cookie-based session",
         "operationId": "logout",
         "tags": [
