@@ -1285,7 +1285,7 @@
         }
       }
     },
-    "/audit/packaged-product/{code}": {
+    "/audit/packaged-product/{id}": {
       "post": {
         "summary": "Audit an existing packaged-product",
         "operationId": "updatePackagedProductAudit",
@@ -1295,9 +1295,9 @@
         ],
         "parameters": [
           {
-            "name": "code",
+            "name": "id",
             "in": "path",
-            "description": "code of packaged product being audited",
+            "description": "id of packaged product being audited",
             "required": true,
             "type": "integer",
             "format": "int64"
@@ -5710,8 +5710,8 @@
       "description": "an audited or auditable packaged-product",
       "type": "object",
       "properties": {
-        "code": {
-          "description": "the packaged-product code (not unique to the audit process)",
+        "id": {
+          "description": "the packaged-product id (not unique to the audit process)",
           "type": "string"
         },
         "size": {
@@ -5732,7 +5732,7 @@
         }
       },
       "required": [
-        "code",
+        "id",
         "size",
         "packs",
         "unit",
