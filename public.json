@@ -123,7 +123,7 @@
             },
             "headers": {
               "Count": {
-                "description": "total number of matching results (how many you'd get if you didn't set `limit`)",
+                "description": "total number of matching results (how many you'd get if you could set an infinite `limit`)",
                 "type": "integer",
                 "format": "int32",
                 "minimum": 0
@@ -359,7 +359,7 @@
             },
             "headers": {
               "Count": {
-                "description": "total number of matching results (how many you'd get if you didn't set `limit`)",
+                "description": "total number of matching results (how many you'd get if you could set an infinite `limit`)",
                 "type": "integer",
                 "format": "int32",
                 "minimum": 0
@@ -556,7 +556,7 @@
             },
             "headers": {
               "Count": {
-                "description": "total number of matching results (how many you'd get if you didn't set `limit`)",
+                "description": "total number of matching results (how many you'd get if you could set an infinite `limit`)",
                 "type": "integer",
                 "format": "int32",
                 "minimum": 0
@@ -790,7 +790,7 @@
             },
             "headers": {
               "Count": {
-                "description": "total number of matching results (how many you'd get if you didn't set `limit`)",
+                "description": "total number of matching results (how many you'd get if you could set an infinite `limit`)",
                 "type": "integer",
                 "format": "int32",
                 "minimum": 0
@@ -999,7 +999,7 @@
             },
             "headers": {
               "Count": {
-                "description": "total number of matching results (how many you'd get if you didn't set `limit`)",
+                "description": "total number of matching results (how many you'd get if you could set an infinite `limit`)",
                 "type": "integer",
                 "format": "int32",
                 "minimum": 0
@@ -1136,7 +1136,7 @@
             },
             "headers": {
               "Count": {
-                "description": "total number of matching results (how many you'd get if you didn't set `limit`)",
+                "description": "total number of matching results (how many you'd get if you could set an infinite `limit`)",
                 "type": "integer",
                 "format": "int32",
                 "minimum": 0
@@ -1229,7 +1229,7 @@
             },
             "headers": {
               "Count": {
-                "description": "total number of matching results (how many you'd get if you didn't set `limit`)",
+                "description": "total number of matching results (how many you'd get if you could set an infinite `limit`)",
                 "type": "integer",
                 "format": "int32",
                 "minimum": 0
@@ -1461,7 +1461,7 @@
             },
             "headers": {
               "Count": {
-                "description": "total number of matching results (how many you'd get if you didn't set `limit`)",
+                "description": "total number of matching results (how many you'd get if you could set an infinite `limit`)",
                 "type": "integer",
                 "format": "int32",
                 "minimum": 0
@@ -1636,7 +1636,7 @@
             },
             "headers": {
               "Count": {
-                "description": "total number of matching results (how many you'd get if you didn't set `limit`)",
+                "description": "total number of matching results (how many you'd get if you could set an infinite `limit`)",
                 "type": "integer",
                 "format": "int32",
                 "minimum": 0
@@ -1727,7 +1727,7 @@
             },
             "headers": {
               "Count": {
-                "description": "total number of matching results (how many you'd get if you didn't set `limit`)",
+                "description": "total number of matching results (how many you'd get if you could set an infinite `limit`)",
                 "type": "integer",
                 "format": "int32",
                 "minimum": 0
@@ -1787,7 +1787,7 @@
             },
             "headers": {
               "Count": {
-                "description": "total number of matching results (how many you'd get if you didn't set `limit`)",
+                "description": "total number of matching results (how many you'd get if you could set an infinite `limit`)",
                 "type": "integer",
                 "format": "int32",
                 "minimum": 0
@@ -1937,7 +1937,7 @@
             },
             "headers": {
               "Count": {
-                "description": "total number of matching results (how many you'd get if you didn't set `limit`)",
+                "description": "total number of matching results (how many you'd get if you could set an infinite `limit`)",
                 "type": "integer",
                 "format": "int32",
                 "minimum": 0
@@ -2171,7 +2171,7 @@
             },
             "headers": {
               "Count": {
-                "description": "total number of matching results (how many you'd get if you didn't set `limit`)",
+                "description": "total number of matching results (how many you'd get if you could set an infinite `limit`)",
                 "type": "integer",
                 "format": "int32",
                 "minimum": 0
@@ -2303,7 +2303,7 @@
             },
             "headers": {
               "Count": {
-                "description": "total number of matching results (how many you'd get if you didn't set `limit`)",
+                "description": "total number of matching results (how many you'd get if you could set an infinite `limit`)",
                 "type": "integer",
                 "format": "int32",
                 "minimum": 0
@@ -2423,7 +2423,7 @@
             },
             "headers": {
               "Count": {
-                "description": "total number of matching results (how many you'd get if you didn't set `limit`)",
+                "description": "total number of matching results (how many you'd get if you could set an infinite `limit`)",
                 "type": "integer",
                 "format": "int32",
                 "minimum": 0
@@ -2555,7 +2555,7 @@
             },
             "headers": {
               "Count": {
-                "description": "total number of matching results (how many you'd get if you didn't set `limit`)",
+                "description": "total number of matching results (how many you'd get if you could set an infinite `limit`)",
                 "type": "integer",
                 "format": "int32",
                 "minimum": 0
@@ -2685,7 +2685,7 @@
             },
             "headers": {
               "Count": {
-                "description": "total number of matching results (how many you'd get if you didn't set `limit`)",
+                "description": "total number of matching results (how many you'd get if you could set an infinite `limit`)",
                 "type": "integer",
                 "format": "int32",
                 "minimum": 0
@@ -2782,7 +2782,7 @@
             },
             "headers": {
               "Count": {
-                "description": "total number of matching results (how many you'd get if you didn't set `limit`)",
+                "description": "total number of matching results (how many you'd get if you could set an infinite `limit`)",
                 "type": "integer",
                 "format": "int32",
                 "minimum": 0
@@ -3310,7 +3310,7 @@
             },
             "headers": {
               "Count": {
-                "description": "total number of matching results (how many you'd get if you didn't set `limit`)",
+                "description": "total number of matching results (how many you'd get if you could set an infinite `limit`)",
                 "type": "integer",
                 "format": "int32",
                 "minimum": 0
@@ -3415,7 +3415,7 @@
             },
             "headers": {
               "Count": {
-                "description": "total number of matching results (how many you'd get if you didn't set `limit`)",
+                "description": "total number of matching results (how many you'd get if you could set an infinite `limit`)",
                 "type": "integer",
                 "format": "int32",
                 "minimum": 0
