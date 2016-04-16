@@ -1209,6 +1209,13 @@
             "type": "string"
           },
           {
+            "name": "packaged-product",
+            "in": "query",
+            "description": "packaged-product codes to filter by.",
+            "required": false,
+            "type": "string"
+          },
+          {
             "name": "limit",
             "in": "query",
             "description": "maximum number of results to return",
