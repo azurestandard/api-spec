@@ -1202,6 +1202,20 @@
             "type": "string"
           },
           {
+            "name": "search",
+            "in": "query",
+            "description": "search string for filtering products.  The logic behind this is left up to the implementation, but it should at least match words in the product name, and may optionally match the product description or other characteristics",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "packaged-product",
+            "in": "query",
+            "description": "packaged-product codes to filter by.",
+            "required": false,
+            "type": "string"
+          },
+          {
             "name": "limit",
             "in": "query",
             "description": "maximum number of results to return",
