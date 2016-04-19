@@ -3402,6 +3402,13 @@
             "type": "boolean"
           },
           {
+            "name": "inline",
+            "in": "query",
+            "description": "for convenience, include a full representation of the inlined property. Currently supports \"packaged-product\" and \"packaged-product.product\".",
+            "required": false,
+            "type": "string"
+          },
+          {
             "name": "limit",
             "in": "query",
             "description": "maximum number of results to return",
