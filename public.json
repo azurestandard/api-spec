@@ -3406,7 +3406,11 @@
             "in": "query",
             "description": "for convenience, include a full representation of the inlined property. Currently supports \"packaged-product\" and \"packaged-product.product\".",
             "required": false,
-            "type": "string"
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "csv"
           },
           {
             "name": "limit",
