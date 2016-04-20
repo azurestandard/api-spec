@@ -1714,6 +1714,17 @@
             "type": "boolean"
           },
           {
+            "name": "category",
+            "in": "query",
+            "description": "categories to filter by",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "csv"
+          },
+          {
             "name": "limit",
             "in": "query",
             "description": "maximum number of results to return",
