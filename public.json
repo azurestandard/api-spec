@@ -2093,6 +2093,29 @@
         ],
         "parameters": [
           {
+            "name": "username",
+            "in": "query",
+            "description": "usernames to filter by",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "csv"
+          },
+          {
+            "name": "email",
+            "in": "query",
+            "description": "email addresses to filter by",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string",
+              "format": "email"
+            },
+            "collectionFormat": "csv"
+          },
+          {
             "name": "drop",
             "in": "query",
             "description": "drop IDs to filter by",
