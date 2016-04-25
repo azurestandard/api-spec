@@ -4921,7 +4921,7 @@
       "required": [
         "id",
         "order",
-        "product",
+        "packaged-product",
         "quantity-ordered",
         "weight",
         "volume"
