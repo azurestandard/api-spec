@@ -2821,6 +2821,38 @@
             }
           }
         }
+      },
+      "post": {
+        "summary": "Create a new person",
+        "operationId": "addPerson",
+        "tags": [
+          "person"
+        ],
+        "parameters": [
+          {
+            "name": "person",
+            "in": "body",
+            "description": "Person to add",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/updatePersonUserPassword"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "person response",
+            "schema": {
+              "$ref": "#/definitions/person"
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "schema": {
+              "$ref": "#/definitions/errorModel"
+            }
+          }
+        }
       }
     },
     "/person/{id}": {
