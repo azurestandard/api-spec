@@ -2541,6 +2541,13 @@
         ],
         "parameters": [
           {
+            "name": "active",
+            "in": "query",
+            "description": "only return (in)active payment methods",
+            "required": false,
+            "type": "boolean"
+          },
+          {
             "name": "filter-person",
             "in": "query",
             "description": "person IDs to filter by",
@@ -5023,6 +5030,10 @@
             "credit-card"
           ]
         },
+        "active": {
+          "description": "whether or not this payment method available for further activity",
+          "type": "boolean"
+        },
         "person": {
           "description": "person associated with this credit card",
           "type": "integer",
@@ -5053,6 +5064,7 @@
       "required": [
         "id",
         "type",
+        "active",
         "person",
         "name",
         "address",
@@ -5070,6 +5082,10 @@
           "enum": [
             "credit-card"
           ]
+        },
+        "active": {
+          "description": "whether or not this payment method available for further activity.  Defaults to true",
+          "type": "boolean"
         },
         "person": {
           "description": "person associated with this credit card",
@@ -5124,6 +5140,10 @@
             "payroll-deduction"
           ]
         },
+        "active": {
+          "description": "whether or not this payment method available for further activity",
+          "type": "boolean"
+        },
         "person": {
           "description": "person associated with this payroll deduction",
           "type": "integer",
@@ -5133,6 +5153,7 @@
       "required": [
         "id",
         "type",
+        "active",
         "person"
       ]
     },
