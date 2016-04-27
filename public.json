@@ -2364,6 +2364,17 @@
             "format": "int64"
           },
           {
+            "name": "inline",
+            "in": "query",
+            "description": "for convenience, include a full representation of the inlined property. Currently supports \"packaging\" and descendants.",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "csv"
+          },
+          {
             "name": "limit",
             "in": "query",
             "description": "maximum number of results to return",
@@ -2549,6 +2560,17 @@
             "required": false,
             "type": "integer",
             "format": "int64"
+          },
+          {
+            "name": "inline",
+            "in": "query",
+            "description": "for convenience, include a full representation of the inlined property. Currently supports \"product\" and descendants.",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "csv"
           },
           {
             "name": "limit",
@@ -5396,7 +5418,7 @@
           {
             "name": "inline",
             "in": "query",
-            "description": "for convenience, include a full representation of the inlined property. Currently supports \"packaged-product\" and \"packaged-product.product\".",
+            "description": "for convenience, include a full representation of the inlined property. Currently supports \"packaged-product\" and descendants.",
             "required": false,
             "type": "array",
             "items": {
@@ -6884,10 +6906,9 @@
           "type": "string"
         },
         "product": {
-          "description": "the name and brand of the product that this packaged-product is associated with",
-          "schema": {
-            "$ref": "#/definitions/packagedProductProduct"
-          }
+          "description": "the product that this packaging packages",
+          "type": "integer",
+          "format": "int64"
         },
         "primary-category": {
           "description": "the id of the primary category for this packaged-product",
@@ -6897,30 +6918,11 @@
       },
       "required": [
         "code",
+        "product",
         "size",
         "price",
         "tags"
       ]
-    },
-    "packagedProductProduct": {
-      "description": "the ID, name, and brand of a product that a packaged-product is associated with",
-      "type": "object",
-      "properties": {
-        "id": {
-          "type": "integer",
-          "format": "int64"
-        },
-        "name": {
-          "description": "the product name",
-          "type": "string"
-        },
-        "brand": {
-          "description": "the brand that this product is associated with",
-          "schema": {
-            "$ref": "#/definitions/brand"
-          }
-        }
-      }
     },
     "packagedProductTag": {
       "description": "a type of packaged product or other boolean marker",
@@ -7006,7 +7008,8 @@
           "description": "packaged versions of this product",
           "type": "array",
           "items": {
-            "$ref": "#/definitions/packagedProduct"
+            "type": "integer",
+            "format": "int64"
           }
         },
         "country-of-origin": {
@@ -7024,8 +7027,7 @@
       },
       "required": [
         "id",
-        "name",
-        "packaging"
+        "name"
       ]
     },
     "nutritionFacts": {
