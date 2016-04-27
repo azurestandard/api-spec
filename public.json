@@ -2366,7 +2366,7 @@
           {
             "name": "inline",
             "in": "query",
-            "description": "for convenience, include a full representation of the inlined property. Currently supports \"packaging\" and descendants.",
+            "description": "for convenience, include a full representation of the inlined property. Currently supports \"brand\", \"packaging\", and descendants.",
             "required": false,
             "type": "array",
             "items": {
@@ -6986,7 +6986,9 @@
           "type": "string"
         },
         "brand": {
-          "$ref": "#/definitions/brand"
+          "description": "the brand associated with this product",
+          "type": "integer",
+          "format": "int64"
         },
         "directions": {
           "description": "product use directions (e.g., cooking suggestions)",
