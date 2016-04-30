@@ -1220,6 +1220,18 @@
             "collectionFormat": "csv"
           },
           {
+            "name": "pickup",
+            "in": "query",
+            "description": "pickup IDs to filter by",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "collectionFormat": "csv"
+          },
+          {
             "name": "target-time-after",
             "in": "query",
             "description": "only return stops with a target time after or on this date",
