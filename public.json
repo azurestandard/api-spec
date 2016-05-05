@@ -874,6 +874,18 @@
             "collectionFormat": "csv"
           },
           {
+            "name": "pickup",
+            "in": "query",
+            "description": "pickup IDs to filter by",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "collectionFormat": "csv"
+          },
+          {
             "name": "stop",
             "in": "query",
             "description": "stop IDs to filter by",
