@@ -2450,6 +2450,17 @@
             "collectionFormat": "csv"
           },
           {
+            "name": "inline",
+            "in": "query",
+            "description": "for convenience, include a full representation of the inlined property.  Currently supports \"payment.payment-method\".",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "csv"
+          },
+          {
             "name": "limit",
             "in": "query",
             "description": "maximum number of results to return",
@@ -2515,6 +2526,17 @@
             "description": "override the HTTP Accept header to chose the response type.  Empty and unrecognized values will result in application/json.",
             "required": false,
             "type": "string"
+          },
+          {
+            "name": "inline",
+            "in": "query",
+            "description": "for convenience, include a full representation of the inlined property.  Currently supports \"payment.payment-method\".",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "csv"
           }
         ],
         "produces": [
