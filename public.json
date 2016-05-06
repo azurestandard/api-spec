@@ -5726,7 +5726,7 @@
         },
         "type": {
           "description": "The type of payment used",
-          "type": "string",
+          "type": "string"
         },
         "amount": {
           "description": "Amount to charge (or which was charged) in dollars",
