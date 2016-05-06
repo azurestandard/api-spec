@@ -5724,6 +5724,10 @@
           "type": "integer",
           "format": "int64"
         },
+        "type": {
+          "description": "The type of payment used",
+          "type": "string",
+        },
         "amount": {
           "description": "Amount to charge (or which was charged) in dollars",
           "type": "number",
