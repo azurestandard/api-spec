@@ -5572,7 +5572,7 @@
           ]
         },
         "active": {
-          "description": "whether or not this payment method available for further activity",
+          "description": "whether or not this payment method is available for further activity",
           "type": "boolean"
         },
         "person": {
@@ -5625,7 +5625,7 @@
           ]
         },
         "active": {
-          "description": "whether or not this payment method available for further activity.  Defaults to true",
+          "description": "whether or not this payment method is available for further activity.  Defaults to true",
           "type": "boolean"
         },
         "person": {
@@ -5682,7 +5682,7 @@
           ]
         },
         "active": {
-          "description": "whether or not this payment method available for further activity",
+          "description": "whether or not this payment method is available for further activity",
           "type": "boolean"
         },
         "person": {
