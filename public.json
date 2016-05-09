@@ -5565,7 +5565,7 @@
           "format": "int64"
         },
         "type": {
-          "description": "string identifying this payment model",
+          "description": "string identifying this payment method",
           "type": "string",
           "enum": [
             "credit-card"
@@ -5618,7 +5618,7 @@
       "type": "object",
       "properties": {
         "type": {
-          "description": "string identifying this payment model",
+          "description": "string identifying this payment method",
           "type": "string",
           "enum": [
             "credit-card"
@@ -5675,7 +5675,7 @@
           "format": "int64"
         },
         "type": {
-          "description": "string identifying this payment model",
+          "description": "string identifying this payment method",
           "type": "string",
           "enum": [
             "payroll-deduction"
