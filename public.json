@@ -5701,8 +5701,8 @@
           "enum": [
             "cash-on-delivery",
             "hold-for-payment",
-            "net-10",
-            "net-30",
+            "net-10-days",
+            "net-30-days",
             "payroll-deduction"
           ]
         },
