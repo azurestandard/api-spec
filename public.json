@@ -332,6 +332,13 @@
             "collectionFormat": "csv"
           },
           {
+            "name": "pending",
+            "in": "query",
+            "description": "only return pending (true) or accepted (false) memberships",
+            "required": false,
+            "type": "boolean"
+          },
+          {
             "name": "inline",
             "in": "query",
             "description": "for convenience, include a full representation of the inlined property.  Currently supports \"customer\" and \"drop\".",
@@ -4514,6 +4521,10 @@
           "type": "integer",
           "format": "int64"
         },
+        "pending": {
+          "description": "whether the membership is pending (true) or accepted (false).",
+          "type": "boolean"
+        },
         "notifications": {
           "$ref": "#/definitions/dropMembershipNotifications"
         }
@@ -4522,6 +4533,7 @@
         "id",
         "customer",
         "drop",
+        "pending",
         "notifications"
       ]
     },
@@ -4539,13 +4551,18 @@
           "type": "integer",
           "format": "int64"
         },
+        "pending": {
+          "description": "whether the membership is pending (true) or accepted (false).",
+          "type": "boolean"
+        },
         "notifications": {
           "$ref": "#/definitions/dropMembershipNotifications"
         }
       },
       "required": [
         "customer",
-        "drop"
+        "drop",
+        "pending"
       ]
     },
     "newDropMembership": {
