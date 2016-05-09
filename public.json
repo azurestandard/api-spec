@@ -4498,7 +4498,6 @@
       },
       "required": [
         "id",
-        "name",
         "notifications",
         "customer",
         "drop"
