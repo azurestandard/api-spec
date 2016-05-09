@@ -5576,7 +5576,7 @@
           "type": "boolean"
         },
         "person": {
-          "description": "person associated with this credit card",
+          "description": "person associated with this payment method",
           "type": "integer",
           "format": "int64"
         },
@@ -5629,7 +5629,7 @@
           "type": "boolean"
         },
         "person": {
-          "description": "person associated with this credit card",
+          "description": "person associated with this payment method",
           "type": "integer",
           "format": "int64"
         },
@@ -5686,7 +5686,7 @@
           "type": "boolean"
         },
         "person": {
-          "description": "person associated with this payroll deduction",
+          "description": "person associated with this payment method",
           "type": "integer",
           "format": "int64"
         }
