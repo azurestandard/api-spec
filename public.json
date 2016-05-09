@@ -4498,15 +4498,20 @@
       },
       "required": [
         "id",
-        "notifications",
         "customer",
-        "drop"
+        "drop",
+        "notifications"
       ]
     },
     "updateDropMembership": {
       "description": "a drop membership to update",
       "type": "object",
       "properties": {
+        "customer": {
+          "description": "customer that has the drop membership",
+          "type": "integer",
+          "format": "int64"
+        },
         "drop": {
           "description": "the drop this membership is for",
           "type": "integer",
@@ -4514,11 +4519,6 @@
         },
         "notifications": {
           "$ref": "#/definitions/dropMembershipNotifications"
-        },
-        "customer": {
-          "description": "customer that has the drop membership",
-          "type": "integer",
-          "format": "int64"
         }
       },
       "required": [
