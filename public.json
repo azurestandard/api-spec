@@ -5666,8 +5666,8 @@
         "expiration"
       ]
     },
-    "payrollDeduction": {
-      "description": "a payroll deduction (one of our supported payment methods)",
+    "genericPaymentMethod": {
+      "description": "one of our supported payment methods that does not have properties beyond the generic payment-method properties",
       "type": "object",
       "properties": {
         "id": {
@@ -5675,9 +5675,13 @@
           "format": "int64"
         },
         "type": {
-          "description": "string identifying this payment method",
+          "description": "string identifying this payment method.  cash-on-delivery means customers must pay for their order in cash to pick up the order.  hold-for-payment means customers must pay for the order before Azure will ship it.  net-N means the order must be paid for within N days.  payroll-deduction means the invoiced price will be deducted from the customer's (an Azure employee) next paycheck.",
           "type": "string",
           "enum": [
+            "cash-on-delivery",
+            "hold-for-payment",
+            "net-10",
+            "net-30",
             "payroll-deduction"
           ]
         },
@@ -5704,7 +5708,7 @@
           "$ref": "#definitions/creditCard"
         },
         {
-          "$ref": "#definitions/payrollDeduction"
+          "$ref": "#definitions/genericPaymentMethod"
         }
       ]
     },
