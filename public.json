@@ -5415,7 +5415,7 @@
           "format": "int64"
         },
         "trip": {
-          "description": "trip delivering the order (unset for UPS orders)",
+          "description": "trip delivering the order (automatically populated for for UPS orders)",
           "type": "integer",
           "format": "int64"
         },
