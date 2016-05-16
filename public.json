@@ -4932,7 +4932,7 @@
           "#ref": "#/definitions/price"
         },
         "stock": {
-          "description": "amount of stock available for purchase",
+          "description": "amount of stock available for purchase.  This includes breakdown ancestors.  For example, if we have a single 4 x 6 x 14 oz case in the warehouse, the 4 x 6 x 14 oz packaging will have 1 stock, the 6 x 14 oz packagaging will have 4 stock, and the 14 oz packaging will have 24 stock.",
           "type": "integer",
           "format": "int32"
         },
