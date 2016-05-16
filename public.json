@@ -5384,12 +5384,12 @@
           "format": "date-time"
         },
         "target-delivery": {
-          "description": "planned delivery time (fixed before the trip starts, and unset for UPS orders)",
+          "description": "planned delivery time (fixed before the trip starts, and unset for parcel-carrier orders)",
           "type": "string",
           "format": "date-time"
         },
         "estimated-delivery": {
-          "description": "estimated delivery time (updated after the trip starts until the order is delivered, and unset for UPS orders)",
+          "description": "estimated delivery time (updated after the trip starts until the order is delivered, and unset for parcel-carrier orders)",
           "type": "string",
           "format": "date-time"
         },
@@ -5410,17 +5410,17 @@
           }
         },
         "drop": {
-          "description": "drop the order is destined for (unset for UPS orders)",
+          "description": "drop the order is destined for (unset for parcel-carrier orders)",
           "type": "integer",
           "format": "int64"
         },
         "trip": {
-          "description": "trip delivering the order (unset for UPS orders)",
+          "description": "trip delivering the order (automatically populated for for parcel-carrier orders)",
           "type": "integer",
           "format": "int64"
         },
         "address": {
-          "description": "UPS delivery location (unset for truck orders)",
+          "description": "parcel-carrier delivery location (unset for truck orders)",
           "$ref": "#/definitions/address"
         }
       },
