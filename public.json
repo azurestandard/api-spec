@@ -2675,6 +2675,38 @@
             }
           }
         }
+      },
+      "post": {
+        "summary": "Create a new order-line",
+        "operationId": "addOrderLine",
+        "tags": [
+          "order"
+        ],
+        "parameters": [
+          {
+            "name": "order",
+            "in": "body",
+            "description": "Order-line to add",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/updateOrderLine"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Order-line response",
+            "schema": {
+              "$ref": "#/definitions/orderLine"
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "schema": {
+              "$ref": "#/definitions/errorModel"
+            }
+          }
+        }
       }
     },
     "/order-line/{id}": {
@@ -2700,6 +2732,74 @@
             "schema": {
               "$ref": "#/definitions/orderLine"
             }
+          },
+          "default": {
+            "description": "unexpected error",
+            "schema": {
+              "$ref": "#/definitions/errorModel"
+            }
+          }
+        }
+      },
+      "put": {
+        "summary": "Update an existing order-line",
+        "operationId": "updateOrderLine",
+        "tags": [
+          "order"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of order-line to update",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "order-line",
+            "in": "body",
+            "description": "Updated order-line parameters (can optionally include 'id')",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/updateOrderLine"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Order-line response",
+            "schema": {
+              "$ref": "#/definitions/orderLine"
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "schema": {
+              "$ref": "#/definitions/errorModel"
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete an existing order-line",
+        "operationId": "deleteOrderLine",
+        "tags": [
+          "order"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of order-line to delete",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "delete successful"
           },
           "default": {
             "description": "unexpected error",
@@ -5436,6 +5536,31 @@
         "quantity-ordered",
         "weight",
         "volume"
+      ]
+    },
+    "updateOrderLine": {
+      "description": "a per-product entry in an order",
+      "type": "object",
+      "properties": {
+        "order": {
+          "description": "order that the order-line belongs to",
+          "type": "integer",
+          "format": "int64"
+        },
+        "packaged-product": {
+          "description": "packaged product code that is being ordered",
+          "type": "string"
+        },
+        "quantity-ordered": {
+          "description": "number of product instances requested",
+          "type": "integer",
+          "format": "int32"
+        }
+      },
+      "required": [
+        "order",
+        "packaged-product",
+        "quantity-ordered"
       ]
     },
     "orderFee": {
