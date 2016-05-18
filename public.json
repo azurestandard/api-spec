@@ -919,6 +919,13 @@
             "format": "date-time"
           },
           {
+            "name": "confirmed",
+            "in": "query",
+            "description": "only return (un)confirmed trips",
+            "required": false,
+            "type": "boolean"
+          },
+          {
             "name": "limit",
             "in": "query",
             "description": "maximum number of results to return",
@@ -4678,6 +4685,11 @@
         },
         "cutoff": {
           "description": "cutoff for placing orders on this trip",
+          "type": "string",
+          "format": "date-time"
+        },
+        "confirmed": {
+          "description": "when the trip was reviewed and orders were either accepted or (for short drops) bumped to the next trip.  This will always be set before the trip is confirmed, and will be unset until then.  Customer service and customers who have received a short-drop notification can continue to manipulate placed orders in the window between cutoff and confirmation.",
           "type": "string",
           "format": "date-time"
         },
