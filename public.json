@@ -4682,7 +4682,7 @@
           "format": "date-time"
         },
         "pick-date": {
-          "description": "date that orders for this trip should be picked",
+          "description": "date-time that orders for this trip should be picked",
           "type": "string",
           "format": "date-time"
         },
@@ -4702,17 +4702,17 @@
           "format": "date-time"
         },
         "backhaul-start": {
-          "description": "estimated date for the first backhaul",
+          "description": "estimated date-time for the first backhaul",
           "type": "string",
           "format": "date-time"
         },
         "backhaul-end": {
-          "description": "estimated date for the last backhaul",
+          "description": "estimated date-time for the last backhaul",
           "type": "string",
           "format": "date-time"
         },
         "warehouse-arrival": {
-          "description": "estimated date for warehouse arrival",
+          "description": "estimated date-time for warehouse arrival",
           "type": "string",
           "format": "date-time"
         }
@@ -4738,7 +4738,7 @@
           "format": "date-time"
         },
         "pick-date": {
-          "description": "date that orders for this trip should be picked",
+          "description": "date-time that orders for this trip should be picked",
           "type": "string",
           "format": "date-time"
         },
@@ -4753,17 +4753,17 @@
           "format": "date-time"
         },
         "backhaul-start": {
-          "description": "estimated date for the first backhaul",
+          "description": "estimated date-time for the first backhaul",
           "type": "string",
           "format": "date-time"
         },
         "backhaul-end": {
-          "description": "estimated date for the last backhaul",
+          "description": "estimated date-time for the last backhaul",
           "type": "string",
           "format": "date-time"
         },
         "warehouse-arrival": {
-          "description": "estimated date for warehouse arrival",
+          "description": "estimated date-time for warehouse arrival",
           "type": "string",
           "format": "date-time"
         }
@@ -6251,7 +6251,7 @@
           "format": "int64"
         },
         "expires": {
-          "description": "current expiration date for this session (http://tools.ietf.org/html/rfc6265#section-5.3, covering both Max-Age and Expires representations, unset if the session expires at browser-close)",
+          "description": "current expiration date-time for this session (http://tools.ietf.org/html/rfc6265#section-5.3, covering both Max-Age and Expires representations, unset if the session expires at browser-close)",
           "type": "string",
           "format": "date-time"
         }
