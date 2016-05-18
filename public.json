@@ -1284,6 +1284,13 @@
             "format": "date-time"
           },
           {
+            "name": "short-drop",
+            "in": "query",
+            "description": "only return stops which have (not) had short-drop warnings sent.",
+            "required": false,
+            "type": "boolean"
+          },
+          {
             "name": "limit",
             "in": "query",
             "description": "maximum number of results to return",
@@ -4818,7 +4825,7 @@
       ]
     },
     "stop": {
-      "description": "a trip stop or waypoint.  Stops are created for all route-stops when a trip is created for that route.  At verification time, stops that will not be visited (e.g. because they missed their order-minimum) are deleted",
+      "description": "a trip stop or waypoint.  Stops are created for all route-stops when a trip is created for that route.  At confirmation time, stops that will not be visited (e.g. because they missed their order-minimum) are deleted",
       "type": "object",
       "properties": {
         "id": {
@@ -4834,6 +4841,10 @@
           "description": "drop ID for the stop",
           "type": "integer",
           "format": "int64"
+        },
+        "short-drop": {
+          "description": "whether short-drop warnings were sent out for this stop.  If they were, customers can manipulate placed orders after cutoff time, although nobody can edit orders after the trip is confirmed.",
+          "type": "boolean"
         },
         "pickup": {
           "description": "pickup ID for the stop",
