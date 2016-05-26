@@ -2509,6 +2509,7 @@
               "enum": [
                 "cart",
                 "placed",
+                "confirmed",
                 "shipped",
                 "lost"
               ]
@@ -5348,6 +5349,7 @@
           "enum": [
             "cart",
             "placed",
+            "confirmed",
             "shipped",
             "lost"
           ]
