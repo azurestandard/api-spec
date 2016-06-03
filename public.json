@@ -3216,6 +3216,119 @@
         }
       }
     },
+    "/countries": {
+      "get": {
+        "summary": "Returns all countries from the system",
+        "description": "Countries that are allowed to be used with addresses, ordered by name.",
+        "operationId": "findCountries",
+        "tags": [
+          "country"
+        ],
+        "parameters": [
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "maximum number of results to return",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "start",
+            "in": "query",
+            "description": "offset to the first result to return.  Use negative numbers to offset from the end of the result list.",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "country response",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/country"
+              }
+            },
+            "headers": {
+              "Count": {
+                "description": "total number of matching results (how many you'd get if you could set an infinite `limit`)",
+                "type": "integer",
+                "format": "int32",
+                "minimum": 0
+              }
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "schema": {
+              "$ref": "#/definitions/errorModel"
+            }
+          }
+        }
+      }
+    },
+    "/regions": {
+      "get": {
+        "summary": "Returns all country regions from the system",
+        "description": "Regions that are allowed to be used with addresses in the United States and Canada, ordered alphabetically.  Other countries may use any string values for their regions.",
+        "operationId": "findRegions",
+        "tags": [
+          "region"
+        ],
+        "parameters": [
+          {
+            "name": "country",
+            "in": "query",
+            "description": "country to filter by",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "maximum number of results to return",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "start",
+            "in": "query",
+            "description": "offset to the first result to return.  Use negative numbers to offset from the end of the result list.",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "country region response",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/region"
+              }
+            },
+            "headers": {
+              "Count": {
+                "description": "total number of matching results (how many you'd get if you could set an infinite `limit`)",
+                "type": "integer",
+                "format": "int32",
+                "minimum": 0
+              }
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "schema": {
+              "$ref": "#/definitions/errorModel"
+            }
+          }
+        }
+      }
+    },
     "/people": {
       "get": {
         "summary": "Returns all people from the system that the user has access to",
@@ -6075,6 +6188,7 @@
           "type": "string"
         },
         "region": {
+          "description": "required for the United States and Canada, optional for other countries",
           "type": "string"
         },
         "postal-code": {
@@ -6091,9 +6205,42 @@
       },
       "required": [
         "locality",
-        "region",
         "country-name"
       ]
+    },
+    "country": {
+      "description": "a country",
+      "type": "object",
+      "properties": {
+        "name": {
+          "description": "country name",
+          "type": "string"
+        },
+        "iso": {
+          "description": "The country's ISO 3166-1 alpha-2 code",
+          "type": "string"
+        },
+        "iso3": {
+          "description": "The country's ISO 3166-1 alpha-3 code",
+          "type": "string"
+        }
+      }
+    },
+    "region": {
+      "description": "a country region (US state or Canadian province)",
+      "type": "object",
+      "properties": {
+        "name": {
+          "description": "region name",
+          "type": "string"
+        },
+        "abbreviation": {
+          "type": "string"
+        },
+        "country-iso3": {
+          "type": "string"
+        }
+      }
     },
     "location": {
       "description": "a named geographic coordinate with an enumerated label",
