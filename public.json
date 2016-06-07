@@ -2493,7 +2493,7 @@
             "items": {
               "type": "string",
               "enum": [
-                "cart",
+                "open",
                 "placed",
                 "shipped",
                 "lost"
@@ -5436,7 +5436,7 @@
           "description": "order's lifecycle stage",
           "type": "string",
           "enum": [
-            "cart",
+            "open",
             "placed",
             "shipped",
             "lost"
