@@ -5584,7 +5584,7 @@
           "format": "int64"
         },
         "trip": {
-          "description": "trip delivering the order (automatically populated for for parcel-carrier orders)",
+          "description": "trip delivering the order (automatically populated for parcel-carrier orders)",
           "type": "integer",
           "format": "int64"
         },
