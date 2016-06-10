@@ -2543,11 +2543,43 @@
             }
           }
         }
+      },
+      "post": {
+        "summary": "Create a new order",
+        "operationId": "addOrder",
+        "tags": [
+          "order"
+        ],
+        "parameters": [
+          {
+            "name": "order",
+            "in": "body",
+            "description": "Order to add",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/updateOrder"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Order response",
+            "schema": {
+              "$ref": "#/definitions/order"
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "schema": {
+              "$ref": "#/definitions/errorModel"
+            }
+          }
+        }
       }
     },
     "/order/{id}": {
       "get": {
-        "summary": "Returns a order based on a single ID",
+        "summary": "Returns an order based on a single ID",
         "operationId": "findOrderById",
         "tags": [
           "order"
@@ -2580,6 +2612,81 @@
             "schema": {
               "$ref": "#/definitions/order"
             }
+          },
+          "default": {
+            "description": "unexpected error",
+            "schema": {
+              "$ref": "#/definitions/errorModel"
+            }
+          }
+        }
+      },
+      "put": {
+        "summary": "Update an existing order",
+        "operationId": "updateOrderById",
+        "tags": [
+          "order"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of order to update",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "order",
+            "in": "body",
+            "description": "Updated order parameters (can optionally include 'id')",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/updateOrder"
+            }
+          },
+          {
+            "name": "save",
+            "in": "query",
+            "description": "Whether to save the result of the PUT or not (defaults to true).  Set to false if you want to preview the side-effects of a change before going through with an update",
+            "required": false,
+            "type": "boolean"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Order response",
+            "schema": {
+              "$ref": "#/definitions/changedOrder"
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "schema": {
+              "$ref": "#/definitions/errorModel"
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete an existing order",
+        "operationId": "deleteOrder",
+        "tags": [
+          "order"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of order to delete",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "delete successful"
           },
           "default": {
             "description": "unexpected error",
@@ -2711,7 +2818,7 @@
     },
     "/order-line/{id}": {
       "get": {
-        "summary": "Returns a order-line based on a single ID",
+        "summary": "Returns an order-line based on a single ID",
         "operationId": "findOrderLineById",
         "tags": [
           "order"
@@ -5584,7 +5691,7 @@
           "format": "int64"
         },
         "trip": {
-          "description": "trip delivering the order (automatically populated for for parcel-carrier orders)",
+          "description": "trip delivering the order (automatically populated for parcel-carrier orders)",
           "type": "integer",
           "format": "int64"
         },
@@ -5597,6 +5704,94 @@
         "id",
         "customer",
         "status"
+      ]
+    },
+    "updateOrder": {
+      "description": "an order placed by a customer",
+      "type": "object",
+      "properties": {
+        "customer": {
+          "description": "customer making the order",
+          "type": "integer",
+          "format": "int64"
+        },
+        "status": {
+          "description": "order's lifecycle stage",
+          "type": "string",
+          "enum": [
+            "open",
+            "placed",
+            "shipped",
+            "lost"
+          ]
+        },
+        "checkout-payment": {
+          "description": "before shipping, the customer can use this to associate a payment-method with the order.  After shipping, it contains information about the charged payment",
+          "$ref": "#/definitions/payment"
+        },
+        "drop": {
+          "description": "drop the order is destined for (unset for parcel-carrier orders)",
+          "type": "integer",
+          "format": "int64"
+        },
+        "trip": {
+          "description": "trip delivering the order (automatically populated for parcel-carrier orders)",
+          "type": "integer",
+          "format": "int64"
+        },
+        "address": {
+          "description": "parcel-carrier delivery location (unset for truck orders)",
+          "$ref": "#/definitions/address"
+        }
+      },
+      "required": [
+        "customer",
+        "status"
+      ]
+    },
+    "changedOrder": {
+      "description": "an updated order and a list of any side-effects from the update",
+      "type": "object",
+      "properties": {
+        "order": {
+          "description": "The updated order",
+          "$ref": "#/definitions/order"
+        },
+        "changes": {
+          "description": "An array of side-effects.  Will be set if there were side-effects and unset if there were none",
+          "type": "array",
+          "items": {
+            "$ref": "#/defintition/orderChange"
+          }
+        }
+      },
+      "required": [
+        "order"
+      ]
+    },
+    "orderChange": {
+      "description": "A side-effect from an order update",
+      "type": "object",
+      "properties": {
+        "type": {
+          "description": "A slug identifying the type of change",
+          "type": "string",
+          "enum": [
+            "remove-order-line"
+          ]
+        },
+        "reason": {
+          "description": "A human-readable description of the change",
+          "type": "string"
+        },
+        "order-line": {
+          "description": "An inline copy of the affected line.  In the case of line removals, this entry will no longer exist in the API backend, although customers may attempt to create new order lines based on the inline information",
+          "$ref": "#/definitions/orderLine"
+        }
+      },
+      "required": [
+        "change",
+        "reason"
       ]
     },
     "orderLine": {
