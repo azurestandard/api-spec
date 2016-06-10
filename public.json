@@ -2644,13 +2644,20 @@
             "schema": {
               "$ref": "#/definitions/updateOrder"
             }
+          },
+          {
+            "name": "save",
+            "in": "query",
+            "description": "Whether to save the result of the PUT or not (defaults to true).  Set to false if you want to preview the side-effects of a change before going through with an update",
+            "required": false,
+            "type": "boolean"
           }
         ],
         "responses": {
           "200": {
             "description": "Order response",
             "schema": {
-              "$ref": "#/definitions/order"
+              "$ref": "#/definitions/changedOrder"
             }
           },
           "default": {
@@ -5740,6 +5747,51 @@
       "required": [
         "customer",
         "status"
+      ]
+    },
+    "changedOrder": {
+      "description": "an updated order and a list of any side-effects from the update",
+      "type": "object",
+      "properties": {
+        "order": {
+          "description": "The updated order",
+          "$ref": "#/definitions/order"
+        },
+        "changes": {
+          "description": "An array of side-effects.  Will be set if there were side-effects and unset if there were none",
+          "type": "array",
+          "items": {
+            "$ref": "#/defintition/orderChange"
+          }
+        }
+      },
+      "required": [
+        "order"
+      ]
+    },
+    "orderChange": {
+      "description": "A side-effect from an order update",
+      "type": "object",
+      "properties": {
+        "type": {
+          "description": "A slug identifying the type of change",
+          "type": "string",
+          "enum": [
+            "remove-order-line"
+          ]
+        },
+        "reason": {
+          "description": "A human-readable description of the change",
+          "type": "string"
+        },
+        "order-line": {
+          "description": "An inline copy of the affected line.  In the case of line removals, this entry will no longer exist in the API backend, although customers may attempt to create new order lines based on the inline information",
+          "$ref": "#/definitions/orderLine"
+        }
+      },
+      "required": [
+        "change",
+        "reason"
       ]
     },
     "orderLine": {
