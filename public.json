@@ -1526,6 +1526,18 @@
             "type": "string"
           },
           {
+            "name": "gtin13",
+            "in": "query",
+            "description": "packaged-product 13-digit Global Trade Item Numbers to filter by",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "collectionFormat": "csv"
+          },
+          {
             "name": "brand",
             "in": "query",
             "description": "brand IDs to filter by",
@@ -1703,6 +1715,18 @@
             "name": "product",
             "in": "query",
             "description": "product IDs to filter by",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "collectionFormat": "csv"
+          },
+          {
+            "name": "gtin13",
+            "in": "query",
+            "description": "13-digit Global Trade Item Numbers to filter by",
             "required": false,
             "type": "array",
             "items": {
@@ -5176,6 +5200,10 @@
       "type": "object",
       "properties": {
         "code": {
+          "type": "string"
+        },
+        "gtin13": {
+          "description": "13-digit Global Trade Item Number (https://schema.org/gtin13)",
           "type": "string"
         },
         "size": {
