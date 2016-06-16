@@ -1318,6 +1318,45 @@
             }
           }
         }
+      },
+      "post": {
+        "summary": "Create a new stop on a trip",
+        "operationId": "addStop",
+        "tags": [
+          "stop"
+        ],
+        "parameters": [
+          {
+            "name": "stop",
+            "in": "body",
+            "description": "stop to add",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/updateStop"
+            }
+          },
+          {
+            "name": "persist",
+            "in": "query",
+            "description": "if true, calculate the offset between the trips's delivery start and this stop's estimated time.  For any pre-cutoff trips associated with this stop's trip's route which cutoff later than this stop's trip, create a stop for this location (drop or pickup) if it does not already exist and update that stop's target and estimated times to have the same offset from that stops's trip's delivery start.  Also create a route-stop association, if it does not already exist, for this location on this stop's trip's route and update that route-stop with the same delivery offset.",
+            "required": false,
+            "type": "boolean"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "stop response",
+            "schema": {
+              "$ref": "#/definitions/stop"
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "schema": {
+              "$ref": "#/definitions/errorModel"
+            }
+          }
+        }
       }
     },
     "/stop/{id}": {
@@ -1343,6 +1382,95 @@
             "schema": {
               "$ref": "#/definitions/stop"
             }
+          },
+          "default": {
+            "description": "unexpected error",
+            "schema": {
+              "$ref": "#/definitions/errorModel"
+            }
+          }
+        }
+      },
+      "put": {
+        "summary": "Update an existing stop",
+        "operationId": "updateStop",
+        "tags": [
+          "stop"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of stop to update",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "stop",
+            "in": "body",
+            "description": "stop to update",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/updateStop"
+            }
+          },
+          {
+            "name": "persist",
+            "in": "query",
+            "description": "if true, calculate the offset between the trips's delivery start and this stop's estimated time.  For any pre-cutoff trips associated with this stop's trip's route which cutoff later than this stop's trip, create a stop for this location (drop or pickup) if it does not already exist and update that stop's target and estimated times to have the same offset from that stops's trip's delivery start.  Also create a route-stop association, if it does not already exist, for this location on this stop's trip's route and update that route-stop with the same delivery offset.  If propagate is set, apply the persistance logic to the later stops on the trip as well.",
+            "required": false,
+            "type": "boolean"
+          },
+          {
+            "name": "propagate",
+            "in": "query",
+            "description": "if true, calculate the change from the existing estimated time.  Shift the estimated time of all later stops on the trip by the same amount.  For pre-cutoff trips, also shift the target times.",
+            "required": false,
+            "type": "boolean"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "stop response",
+            "schema": {
+              "$ref": "#/definitions/stop"
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "schema": {
+              "$ref": "#/definitions/errorModel"
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete an existing stop",
+        "operationId": "deleteStop",
+        "tags": [
+          "stop"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of stop to delete",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "persist",
+            "in": "query",
+            "description": "if true, for any pre-cutoff trips associated with this stop's trip's route which cutoff later than this stop's trip, delete any stops for this location (drop or pickup).  Also delete any route-stop associations for this location on this stop's trip's route.",
+            "required": false,
+            "type": "boolean"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "delete successful"
           },
           "default": {
             "description": "unexpected error",
@@ -5190,6 +5318,47 @@
       },
       "required": [
         "id",
+        "trip",
+        "target-time",
+        "estimated-time"
+      ]
+    },
+    "updateStop": {
+      "description": "an update to a trip stop or waypoint",
+      "type": "object",
+      "properties": {
+        "trip": {
+          "description": "trip ID for the stop",
+          "type": "integer",
+          "format": "int64"
+        },
+        "drop": {
+          "description": "drop ID for the stop",
+          "type": "integer",
+          "format": "int64"
+        },
+        "pickup": {
+          "description": "pickup ID for the stop",
+          "type": "integer",
+          "format": "int64"
+        },
+        "target-time": {
+          "description": "planned stop time (fixed before the trip starts)",
+          "type": "string",
+          "format": "date-time"
+        },
+        "estimated-time": {
+          "description": "estimated stop time (updated after the trip starts until the stop is reached)",
+          "type": "string",
+          "format": "date-time"
+        },
+        "time": {
+          "description": "actual stop time (set after the stop is reached)",
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "required": [
         "trip",
         "target-time",
         "estimated-time"
