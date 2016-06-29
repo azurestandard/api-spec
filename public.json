@@ -7042,6 +7042,10 @@
           "description": "the new unit of measurement.  Ideally one of \"\", or \"\", but you can use another unit if none of those fit.",
           "type": "string"
         },
+        "size": {
+          "description": "override the auto-generated size (based on packs and unit) with a custom name.  This can be useful for adding packaging information (e.g. \"32 floz glass\" to distinguish glass from plastic vinegar bottles).",
+          "type": "string"
+        },
         "clear-audited": {
           "description": "If true, clear the audited date-time for this packaged-product.  If false (the default), set the audited date-time to the current time.",
           "type": "boolean"
