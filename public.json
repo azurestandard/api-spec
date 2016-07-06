@@ -5557,6 +5557,10 @@
           "items": {
             "$ref": "#/definitions/packagedProduct"
           }
+        },
+        "country-of-origin": {
+          "description": "country of origin for this product",
+          "type": "string"
         }
       },
       "required": [
