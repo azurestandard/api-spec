@@ -919,6 +919,13 @@
             "format": "date-time"
           },
           {
+            "name": "confirmed",
+            "in": "query",
+            "description": "only return (un)confirmed trips",
+            "required": false,
+            "type": "boolean"
+          },
+          {
             "name": "limit",
             "in": "query",
             "description": "maximum number of results to return",
@@ -1275,6 +1282,13 @@
             "required": false,
             "type": "string",
             "format": "date-time"
+          },
+          {
+            "name": "short-drop",
+            "in": "query",
+            "description": "only return stops which have (not) had short-drop warnings sent.",
+            "required": false,
+            "type": "boolean"
           },
           {
             "name": "limit",
@@ -2647,6 +2661,7 @@
               "enum": [
                 "open",
                 "placed",
+                "confirmed",
                 "shipped",
                 "lost"
               ]
@@ -5153,8 +5168,13 @@
           "type": "string",
           "format": "date-time"
         },
+        "confirmed": {
+          "description": "when the trip was reviewed and orders were either accepted or (for short drops) bumped to the next trip.  This will always be set before the trip is confirmed, and will be unset until then.  Customer service and customers who have received a short-drop notification can continue to manipulate placed orders in the window between cutoff and confirmation.",
+          "type": "string",
+          "format": "date-time"
+        },
         "pick-date": {
-          "description": "date that orders for this trip should be picked",
+          "description": "date-time that orders for this trip should be picked",
           "type": "string",
           "format": "date-time"
         },
@@ -5174,17 +5194,17 @@
           "format": "date-time"
         },
         "backhaul-start": {
-          "description": "estimated date for the first backhaul",
+          "description": "estimated date-time for the first backhaul",
           "type": "string",
           "format": "date-time"
         },
         "backhaul-end": {
-          "description": "estimated date for the last backhaul",
+          "description": "estimated date-time for the last backhaul",
           "type": "string",
           "format": "date-time"
         },
         "warehouse-arrival": {
-          "description": "estimated date for warehouse arrival",
+          "description": "estimated date-time for warehouse arrival",
           "type": "string",
           "format": "date-time"
         }
@@ -5210,7 +5230,7 @@
           "format": "date-time"
         },
         "pick-date": {
-          "description": "date that orders for this trip should be picked",
+          "description": "date-time that orders for this trip should be picked",
           "type": "string",
           "format": "date-time"
         },
@@ -5225,17 +5245,17 @@
           "format": "date-time"
         },
         "backhaul-start": {
-          "description": "estimated date for the first backhaul",
+          "description": "estimated date-time for the first backhaul",
           "type": "string",
           "format": "date-time"
         },
         "backhaul-end": {
-          "description": "estimated date for the last backhaul",
+          "description": "estimated date-time for the last backhaul",
           "type": "string",
           "format": "date-time"
         },
         "warehouse-arrival": {
-          "description": "estimated date for warehouse arrival",
+          "description": "estimated date-time for warehouse arrival",
           "type": "string",
           "format": "date-time"
         }
@@ -5278,7 +5298,7 @@
       ]
     },
     "stop": {
-      "description": "a trip stop or waypoint.  Stops are created for all route-stops when a trip is created for that route.  At verification time, stops that will not be visited (e.g. because they missed their order-minimum) are deleted",
+      "description": "a trip stop or waypoint.  Stops are created for all route-stops when a trip is created for that route.  At confirmation time, stops that will not be visited (e.g. because they missed their order-minimum) are deleted",
       "type": "object",
       "properties": {
         "id": {
@@ -5294,6 +5314,10 @@
           "description": "drop ID for the stop",
           "type": "integer",
           "format": "int64"
+        },
+        "short-drop": {
+          "description": "whether short-drop warnings were sent out for this stop.  If they were, customers can manipulate placed orders after cutoff time, although nobody can edit orders after the trip is confirmed.",
+          "type": "boolean"
         },
         "pickup": {
           "description": "pickup ID for the stop",
@@ -5846,6 +5870,7 @@
           "enum": [
             "open",
             "placed",
+            "confirmed",
             "shipped",
             "lost"
           ]
@@ -6921,7 +6946,7 @@
           "format": "int64"
         },
         "expires": {
-          "description": "current expiration date for this session (http://tools.ietf.org/html/rfc6265#section-5.3, covering both Max-Age and Expires representations, unset if the session expires at browser-close)",
+          "description": "current expiration date-time for this session (http://tools.ietf.org/html/rfc6265#section-5.3, covering both Max-Age and Expires representations, unset if the session expires at browser-close)",
           "type": "string",
           "format": "date-time"
         }
