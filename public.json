@@ -6014,6 +6014,10 @@
         "address": {
           "description": "parcel-carrier delivery location (unset for truck orders)",
           "$ref": "#/definitions/address"
+        },
+        "notes": {
+          "description": "Additional information about the order, including special instructions for Azure's pickers",
+          "type": "string"
         }
       },
       "required": [
@@ -6058,6 +6062,10 @@
         "address": {
           "description": "parcel-carrier delivery location (unset for truck orders)",
           "$ref": "#/definitions/address"
+        },
+        "notes": {
+          "description": "Additional information about the order, including special instructions for Azure's pickers",
+          "type": "string"
         }
       },
       "required": [
