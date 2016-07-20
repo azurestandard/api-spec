@@ -3588,7 +3588,6 @@
           }
         }
       },
-    "/payment-method/{id}": {
       "delete": {
         "summary": "Deactivates a payment method based on a single ID",
         "operationId": "deactivatePaymentMethodById",
@@ -3608,7 +3607,6 @@
         "responses": {
           "204": {
             "description": "deactivate successful"
-            }
           },
           "default": {
             "description": "unexpected error",
