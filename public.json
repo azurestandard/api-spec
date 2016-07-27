@@ -5332,6 +5332,10 @@
           "description": "estimated date-time for warehouse arrival",
           "type": "string",
           "format": "date-time"
+        },
+        "notes": {
+          "description": "free-form Markdown notes for additional trip information.  We expect this will mostly be for delay causes (e.g. \"High winds in Laramie\" or \"The truck broke down\")",
+          "type": "string"
         }
       },
       "required": [
