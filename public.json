@@ -6048,7 +6048,7 @@
           "$ref": "#/definitions/address"
         },
         "notes": {
-          "description": "Additional information about the order, including special instructions for Azure's pickers",
+          "description": "Warehouse packing instructions",
           "type": "string"
         }
       },
