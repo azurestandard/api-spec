@@ -5093,6 +5093,11 @@
           "description": "whether the membership is pending (true) or accepted (false).",
           "type": "boolean"
         },
+        "created": {
+          "description": "date-time the drop-membership was created",
+          "type": "string",
+          "format": "date-time"
+        },
         "notifications": {
           "$ref": "#/definitions/dropMembershipNotifications"
         }
@@ -5102,6 +5107,7 @@
         "customer",
         "drop",
         "pending",
+        "created",
         "notifications"
       ]
     },
