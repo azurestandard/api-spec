@@ -6524,6 +6524,10 @@
           "description": "The type of payment used",
           "type": "string"
         },
+        "last-four": {
+          "description": "The last four digits of the credit card used. Only included if the payment type is Credit Card",
+          "type": "string"
+        },
         "amount": {
           "description": "Amount to charge (or which was charged) in dollars",
           "type": "number",
