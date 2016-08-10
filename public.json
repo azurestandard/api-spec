@@ -5135,8 +5135,7 @@
       },
       "required": [
         "customer",
-        "drop",
-        "pending"
+        "drop"
       ]
     },
     "newDropMembership": {
