@@ -308,6 +308,13 @@
         ],
         "parameters": [
           {
+            "name": "active",
+            "in": "query",
+            "description": "only return (in)active memberships",
+            "required": false,
+            "type": "boolean"
+          },
+          {
             "name": "drop",
             "in": "query",
             "description": "drop IDs to filter by",
@@ -5089,6 +5096,10 @@
           "type": "integer",
           "format": "int64"
         },
+        "active": {
+          "description": "whether or not this membership is active.  Pending memberships are active, and the usual flow for semi-open drops is (active true, pending true) -> (active true, pending false) -> (active false, pending false).",
+          "type": "boolean"
+        },
         "pending": {
           "description": "whether the membership is pending (true) or accepted (false).",
           "type": "boolean"
@@ -5106,6 +5117,7 @@
         "id",
         "customer",
         "drop",
+        "active",
         "pending",
         "created",
         "notifications"
@@ -5125,6 +5137,10 @@
           "type": "integer",
           "format": "int64"
         },
+        "active": {
+          "description": "whether or not this membership is active.",
+          "type": "boolean"
+        },
         "pending": {
           "description": "whether the membership is pending (true) or accepted (false).",
           "type": "boolean"
@@ -5135,7 +5151,8 @@
       },
       "required": [
         "customer",
-        "drop"
+        "drop",
+        "active"
       ]
     },
     "newDropMembership": {
