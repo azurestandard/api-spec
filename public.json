@@ -6197,6 +6197,14 @@
           "description": "the total price for this line in dollars (estimated until picking time).  The per-unit price used to calculate this total is currently locked in when you place the order.",
           "type": "number",
           "format": "float"
+        },
+        "warnings": {
+          "description": "An array of warnings about this product.",
+          "type": "array",
+          "items": {
+            "description": "Warnings about products that a customer can associate with this order, but maybe should not (e.g. that is is likely to expire before reaching the customer)",
+            "type": "string"
+          }
         }
       },
       "required": [
