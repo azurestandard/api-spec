@@ -7923,7 +7923,7 @@
           "format": "url"
         },
         "person": {
-          "description": "The registrant's personal information.  Name and password are required.",
+          "description": "The registrant's personal information.  'name' is required.",
           "type": "object",
           "schema": {
             "$ref": "#/definitions/updatePerson"
