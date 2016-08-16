@@ -3687,6 +3687,38 @@
             }
           }
         }
+      },
+      "post": {
+        "summary": "Create a new address",
+        "operationId": "addAddress",
+        "tags": [
+          "address"
+        ],
+        "parameters": [
+          {
+            "name": "address",
+            "in": "body",
+            "description": "address to add",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/address"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "address response",
+            "schema": {
+              "$ref": "#/definitions/address"
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "schema": {
+              "$ref": "#/definitions/errorModel"
+            }
+          }
+        }
       }
     },
     "/address/{id}": {
@@ -3712,6 +3744,74 @@
             "schema": {
               "$ref": "#/definitions/address"
             }
+          },
+          "default": {
+            "description": "unexpected error",
+            "schema": {
+              "$ref": "#/definitions/errorModel"
+            }
+          }
+        }
+      },
+      "put": {
+        "summary": "Update an existing address",
+        "operationId": "updateAddress",
+        "tags": [
+          "address"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of address to update",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "address",
+            "in": "body",
+            "description": "Address to update",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/address"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "address response",
+            "schema": {
+              "$ref": "#/definitions/address"
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "schema": {
+              "$ref": "#/definitions/errorModel"
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete an existing address",
+        "operationId": "deleteAddress",
+        "tags": [
+          "address"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of address to delete",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "delete successful"
           },
           "default": {
             "description": "unexpected error",
