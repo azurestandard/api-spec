@@ -5961,9 +5961,13 @@
       ]
     },
     "packagedProductProduct": {
-      "description": "the name and brand of a product that a packaged-product is associated with",
+      "description": "the ID, name, and brand of a product that a packaged-product is associated with",
       "type": "object",
       "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        },
         "name": {
           "description": "the product name",
           "type": "string"
