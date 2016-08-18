@@ -4020,8 +4020,71 @@
           "200": {
             "description": "Email response.  An email with a confirmation URL will be mailed to the address, and new emails will be unconfirmed until the token is submitted via emailConfirmation.",
             "schema": {
+              "$ref": "#/definitions/updatedEmail"
+            }
+          },
+          "default": {
+            "description": "Unexpected error.",
+            "schema": {
+              "$ref": "#/definitions/errorModel"
+            }
+          }
+        }
+      }
+    },
+    "/emails/confirm": {
+      "post": {
+        "summary": "Complete an in-progress email confirmation.",
+        "operationId": "emailConfirmation",
+        "tags": [
+          "email"
+        ],
+        "parameters": [
+          {
+            "name": "token",
+            "in": "body",
+            "description": "The confirmation token from addEmail or updateEmail.",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Email response.",
+            "schema": {
               "$ref": "#/definitions/email"
             }
+          },
+          "default": {
+            "description": "Unexpected error.",
+            "schema": {
+              "$ref": "#/definitions/errorModel"
+            }
+          }
+        }
+      }
+    },
+    "/emails/resend": {
+      "post": {
+        "summary": "Resend the confirmation email to the user.",
+        "operationId": "resendEmailConfirmation",
+        "tags": [
+          "email"
+        ],
+        "parameters": [
+          {
+            "name": "resend",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/resendRegistrationEmail"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Confirmation email resent",
+            "schema": {}
           },
           "default": {
             "description": "Unexpected error.",
@@ -4091,9 +4154,9 @@
         ],
         "responses": {
           "200": {
-            "description": "Email response.  An email with a confirmation URL will be mailed to the address, and updated emails will be unconfirmed until the token is submitted via emailConfirmation.",
+            "description": "Email response.  If the address changed or the email had an earlier error, an email with a confirmation URL will be mailed to the address.  Changed addresses will be unconfirmed until the token is submitted via emailConfirmation.",
             "schema": {
-              "$ref": "#/definitions/email"
+              "$ref": "#/definitions/updatedEmail"
             }
           },
           "default": {
@@ -4123,38 +4186,6 @@
         "responses": {
           "204": {
             "description": "Delete successful."
-          },
-          "default": {
-            "description": "Unexpected error.",
-            "schema": {
-              "$ref": "#/definitions/errorModel"
-            }
-          }
-        }
-      }
-    },
-    "/email/{id}/confirm": {
-      "post": {
-        "summary": "Complete an in-progress email confirmation.",
-        "operationId": "emailConfirmation",
-        "tags": [
-          "email"
-        ],
-        "parameters": [
-          {
-            "name": "token",
-            "in": "body",
-            "description": "The confirmation token from addEmail or updateEmail.",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Email response.",
-            "schema": {
-              "$ref": "#/definitions/email"
-            }
           },
           "default": {
             "description": "Unexpected error.",
@@ -7333,6 +7364,10 @@
       "description": "An email address.",
       "type": "object",
       "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        },
         "address": {
           "type": "string",
           "format": "email"
@@ -7353,7 +7388,9 @@
         }
       },
       "required": [
-        "address"
+        "id",
+        "address",
+        "person"
       ]
     },
     "updateEmailUserPassword": {
@@ -7387,7 +7424,25 @@
       "required": [
         "base-url",
         "address",
+        "person",
         "user-password"
+      ]
+    },
+    "updatedEmail": {
+      "description": "An updated (but unconfirmed) email response.",
+      "type": "object",
+      "properties": {
+        "token": {
+          "description": "Resend token for resendEmailConfirmation (not the same as the confirmation token emailed to the user, which is for emailConfirmation).  Unset if a confirmation email was not set (more details on this in updateEmail).",
+          "type": "string",
+          "format": "url"
+        },
+        "email": {
+          "$ref": "#/definitions/email"
+        }
+      },
+      "required": [
+        "email"
       ]
     },
     "favorite": {
