@@ -4039,6 +4039,7 @@
         "tags": [
           "email"
         ],
+        "security": [],
         "parameters": [
           {
             "name": "token",
@@ -4071,6 +4072,7 @@
         "tags": [
           "email"
         ],
+        "security": [],
         "parameters": [
           {
             "name": "resend",
