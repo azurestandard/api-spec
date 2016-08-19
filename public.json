@@ -4217,6 +4217,17 @@
             "collectionFormat": "csv"
           },
           {
+            "name": "inline",
+            "in": "query",
+            "description": "for convenience, include additional information.  Currently supports \"email\" as described in the email model.",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "csv"
+          },
+          {
             "name": "limit",
             "in": "query",
             "description": "maximum number of results to return",
@@ -4275,6 +4286,17 @@
             "required": true,
             "type": "integer",
             "format": "int64"
+          },
+          {
+            "name": "inline",
+            "in": "query",
+            "description": "for convenience, include additional information.  Currently supports \"email\" as described in the email model.",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "csv"
           }
         ],
         "responses": {
@@ -7091,6 +7113,11 @@
         },
         "name": {
           "type": "string"
+        },
+        "email": {
+          "description": "The person's preferred, error-less email address (set if the \"inline\" query parameter contains \"email\").",
+          "type": "string",
+          "format": "email"
         },
         "can-email": {
           "description": "Can Azure contact this person for reasons other than registration",
