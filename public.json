@@ -348,7 +348,7 @@
           {
             "name": "inline",
             "in": "query",
-            "description": "for convenience, include a full representation of the inlined property.  Currently supports \"customer\" and \"drop\".",
+            "description": "for convenience, include a full representation of the inlined property.  Currently supports \"customer\", \"customer.email\", and \"drop\".",
             "required": false,
             "type": "array",
             "items": {
