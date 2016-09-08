@@ -5494,6 +5494,10 @@
           "type": "string",
           "format": "date-time"
         },
+        "heavy": {
+          "description": "whether the member can get pallets, totes, barrels, and other heavy objects off a truck (defaults to false).",
+          "type": "boolean"
+        },
         "notifications": {
           "$ref": "#/definitions/dropMembershipNotifications"
         }
@@ -5528,6 +5532,10 @@
         },
         "pending": {
           "description": "whether the membership is pending (true) or accepted (false).",
+          "type": "boolean"
+        },
+        "heavy": {
+          "description": "whether the member can get pallets, totes, barrels, and other heavy objects off a truck (defaults to false).",
           "type": "boolean"
         },
         "notifications": {
