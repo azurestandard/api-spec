@@ -5313,16 +5313,10 @@
           "type": "boolean"
         },
         "storage": {
-          "description": "storage facilities available at this drop",
+          "description": "storage environments available at this drop",
           "type": "array",
           "items": {
-            "description": "facility name",
-            "type": "string",
-            "enum": [
-              "dry",
-              "refregerator",
-              "freezer"
-            ]
+            "$ref": "#/definitions/storage"
           }
         },
         "fees": {
@@ -5412,16 +5406,10 @@
           ]
         },
         "storage": {
-          "description": "storage facilities available at this drop",
+          "description": "storage environments available at this drop",
           "type": "array",
           "items": {
-            "description": "facility name",
-            "type": "string",
-            "enum": [
-              "dry",
-              "refregerator",
-              "freezer"
-            ]
+            "$ref": "#/definitions/storage"
           }
         },
         "fees": {
@@ -5924,6 +5912,16 @@
         "estimated-time"
       ]
     },
+    "storage": {
+      "description": "An environment for storing products",
+      "type": "string",
+      "enum": [
+        "dry",
+        "chilled",
+        "frozen",
+        "greenhouse"
+      ]
+    },
     "packagedProduct": {
       "description": "a particular packaged form of a product",
       "type": "object",
@@ -6126,15 +6124,9 @@
           "description": "country of origin for this product",
           "type": "string"
         },
-        "storage-climate": {
-          "description": "the climate at which this product must be stored",
-          "type": "string",
-          "enum": [
-            "dry",
-            "chilled",
-            "frozen",
-            "greenhouse"
-          ]
+        "storage": {
+          "description": "The environment in which this product must be stored",
+          "$ref": "#/definitions/storage"
         }
       },
       "required": [
