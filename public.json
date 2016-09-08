@@ -6460,14 +6460,13 @@
           "description": "parcel-carrier delivery location (unset for truck orders)",
           "$ref": "#/definitions/address"
         },
+        "cases-shipped": {
+          "description": "Quantity of shipped boxes and bulk stock",
+          "$ref": "#/definitions/orderCases"
+        },
         "notes": {
           "description": "Warehouse packing instructions",
           "type": "string"
-        },
-        "cases-shipped": {
-          "description": "quantity of shipped boxes and bulk stock",
-          "type": "integer",
-          "format": "int32"
         }
       },
       "required": [
@@ -6567,6 +6566,32 @@
         "change",
         "reason"
       ]
+    },
+    "orderCases": {
+      "description": "Quantity of shipped boxes and bulk stock",
+      "type": "object",
+      "properties": {
+        "dry": {
+          "description": "Quantity of shipped boxes and bulk stock with the dry climate",
+          "type": "integer",
+          "format": "int32"
+        },
+        "chilled": {
+          "description": "Quantity of shipped boxes and bulk stock with the chilled climate",
+          "type": "integer",
+          "format": "int32"
+        },
+        "frozen": {
+          "description": "Quantity of shipped boxes and bulk stock with the frozen climate",
+          "type": "integer",
+          "format": "int32"
+        },
+        "greenhouse": {
+          "description": "Quantity of shipped boxes and bulk stock with the greenhouse climate",
+          "type": "integer",
+          "format": "int32"
+        }
+      }
     },
     "orderLine": {
       "description": "a per-product entry in an order",
