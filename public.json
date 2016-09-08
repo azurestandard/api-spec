@@ -5939,6 +5939,14 @@
           "description": "size of the product (e.g. 12 oz., or 6x12 oz.)",
           "type": "string"
         },
+        "packs": {
+          "description": "the dimensions of package sizes (e.g. \"4\", \"4x32.5\", or \"2x4x32.5\")",
+          "type": "string"
+        },
+        "unit": {
+          "description": "the unit of measurement",
+          "type": "string"
+        },
         "weight": {
           "minimum": {
             "description": "minimum weight of this packaged product in pounds",
@@ -6011,6 +6019,8 @@
       "required": [
         "code",
         "size",
+        "packs",
+        "unit",
         "price",
         "tags"
       ]
