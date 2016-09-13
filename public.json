@@ -4549,7 +4549,7 @@
     "/registration/confirm": {
       "post": {
         "summary": "Complete an in-progress registration, authenticate, and receive a session cookie",
-        "description": "The user account corresponding to the given registration token will be activated. Any errors associated with the user's primary email will be cleared. This will also authenticate the user and return a session cookie and session response in the same manner as the login endpoint.",
+        "description": "The user account corresponding to the given registration token will be activated. Any errors associated with the user's primary email will be cleared. This will also authenticate the user and return a response containing the person activated and the session information, along with a new session cookie.",
         "operationId": "confirmRegistration",
         "tags": [
           "registration"
