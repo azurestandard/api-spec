@@ -4548,7 +4548,8 @@
     },
     "/registration/confirm": {
       "post": {
-        "summary": "Complete an in-progress registration",
+        "summary": "Complete an in-progress registration, authenticate, and receive a session cookie",
+        "description": "The user account corresponding to the given registration token will be activated. Any errors associated with the user's primary email will be cleared. This will also authenticate the user and return a session cookie and session response in the same manner as the login endpoint.",
         "operationId": "confirmRegistration",
         "tags": [
           "registration"
@@ -4564,9 +4565,9 @@
         ],
         "responses": {
           "200": {
-            "description": "person response",
+            "description": "session response",
             "schema": {
-              "$ref": "#/definitions/person"
+              "$ref": "#/definitions/session"
             }
           },
           "default": {
