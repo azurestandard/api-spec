@@ -4528,7 +4528,7 @@
             "required": true,
             "type": "object",
             "schema": {
-              "$ref": "#/definitions/registration"
+              "$ref": "#/definitions/registrationRequest"
             }
           }
         ],
@@ -4548,7 +4548,8 @@
     },
     "/registration/confirm": {
       "post": {
-        "summary": "Complete an in-progress registration",
+        "summary": "Complete an in-progress registration, authenticate, and receive a session cookie",
+        "description": "The user account corresponding to the given registration token will be activated. Any errors associated with the user's primary email will be cleared. This will also authenticate the user and return a response containing the person activated and the session information, along with a new session cookie.",
         "operationId": "confirmRegistration",
         "tags": [
           "registration"
@@ -4564,9 +4565,9 @@
         ],
         "responses": {
           "200": {
-            "description": "person response",
+            "description": "registration confirmation response",
             "schema": {
-              "$ref": "#/definitions/person"
+              "$ref": "#/definitions/registrationConfirmResponse"
             }
           },
           "default": {
@@ -6978,7 +6979,7 @@
         "payment-method"
       ]
     },
-    "registration": {
+    "registrationRequest": {
       "description": "A request for registering a new person",
       "type": "object",
       "properties": {
@@ -7024,6 +7025,22 @@
         "person",
         "email"
       ]
+    },
+    "registrationConfirmResponse": {
+      "description": "The response to a successful registration confirmation, including the person who registered and the session information",
+      "type": "object",
+      "properties": {
+        "person": {
+          "$ref": "#/definitions/person"
+        },
+        "session": {
+          "$ref": "#/definitions/session"
+        },
+        "required": [
+          "person",
+          "session"
+        ]
+      }
     },
     "resendRegistrationEmail": {
       "description": "A request for another registration email",
