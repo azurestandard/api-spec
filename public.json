@@ -7027,7 +7027,11 @@
         },
         "session": {
           "$ref": "#/definitions/session"
-        }
+        },
+        "required": [
+          "person",
+          "session"
+        ]
       }
     },
     "resendRegistrationEmail": {
