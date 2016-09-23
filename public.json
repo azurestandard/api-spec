@@ -6734,6 +6734,10 @@
           "type": "string",
           "format": "url"
         },
+        "indie": {
+          "description": "whether or not this vendor is a privately held company",
+          "type": "boolean"
+        },
         "account": {
           "description": "vendor's identifier for Azure",
           "type": "string"
