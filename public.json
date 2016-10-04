@@ -7197,9 +7197,6 @@
           "description": "Does this person want social media links to display",
           "type": "boolean"
         },
-        "opt-in-beta-site": {
-          "type": "boolean"
-        },
         "price-level": {
           "$ref": "#/definitions/priceLevel"
         },
@@ -7247,9 +7244,6 @@
           "description": "Does this person want social media links to display?  Defaults to true when creating a person",
           "type": "boolean"
         },
-        "opt-in-beta-site": {
-          "type": "boolean"
-        },
         "notifications": {
           "$ref": "#/definitions/personNotifications"
         }
@@ -7280,9 +7274,6 @@
         },
         "allow-social-media": {
           "description": "Does this person want social media links to display",
-          "type": "boolean"
-        },
-        "opt-in-beta-site": {
           "type": "boolean"
         },
         "user-password": {
