@@ -5859,7 +5859,7 @@
         },
         "timezone": {
           "description": "IANA time zone location (https://www.iana.org/time-zones, e.g. America/Los_Angeles)",
-          "type": "string",
+          "type": "string"
         },
         "target-time": {
           "description": "planned stop time (fixed before the trip starts)",
