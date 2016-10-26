@@ -45,6 +45,588 @@
     "application/json"
   ],
   "paths": {
+    "/bartender-hosts": {
+      "get": {
+        "summary": "Returns all BarTender hosts from the system that the user has access to",
+        "operationId": "findBartenderHosts",
+        "tags": [
+          "bartender"
+        ],
+        "parameters": [
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "maximum number of results to return",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "start",
+            "in": "query",
+            "description": "offset to the first result to return.  Use negative numbers to offset from the end of the result list.",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "bartenderHost response",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/bartenderHost"
+              }
+            },
+            "headers": {
+              "Count": {
+                "description": "total number of matching results (how many you'd get if you could set an infinite `limit`)",
+                "type": "integer",
+                "format": "int32",
+                "minimum": 0
+              }
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "schema": {
+              "$ref": "#/definitions/errorModel"
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Create a new BarTender host",
+        "operationId": "addBartenderHost",
+        "tags": [
+          "bartender"
+        ],
+        "parameters": [
+          {
+            "name": "host",
+            "in": "body",
+            "description": "BarTender host to add",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/bartenderHost"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "BarTender host response",
+            "schema": {
+              "$ref": "#/definitions/bartenderHost"
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "schema": {
+              "$ref": "#/definitions/errorModel"
+            }
+          }
+        }
+      }
+    },
+    "/bartender-host/{code}": {
+      "get": {
+        "summary": "Returns a BarTender host based on a single code, if the user has access to it",
+        "operationId": "findBartenderHostByCode",
+        "tags": [
+          "bartender"
+        ],
+        "parameters": [
+          {
+            "name": "code",
+            "in": "path",
+            "description": "code of BarTender host to fetch",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "BarTender host response",
+            "schema": {
+              "$ref": "#/definitions/bartenderHost"
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "schema": {
+              "$ref": "#/definitions/errorModel"
+            }
+          }
+        }
+      },
+      "put": {
+        "summary": "Update an existing BarTender host",
+        "operationId": "updateBartenderHost",
+        "tags": [
+          "bartender"
+        ],
+        "parameters": [
+          {
+            "name": "code",
+            "in": "path",
+            "description": "code of BarTender host to update",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "host",
+            "in": "body",
+            "description": "Updated BarTender host parameters (can optionally include 'code')",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/bartenderHost"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "BarTender host response",
+            "schema": {
+              "$ref": "#/definitions/bartenderHost"
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "schema": {
+              "$ref": "#/definitions/errorModel"
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete an existing BarTender host",
+        "operationId": "deleteBartenderHost",
+        "tags": [
+          "bartender"
+        ],
+        "parameters": [
+          {
+            "name": "code",
+            "in": "path",
+            "description": "code of BarTender host to delete",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "delete successful"
+          },
+          "default": {
+            "description": "unexpected error",
+            "schema": {
+              "$ref": "#/definitions/errorModel"
+            }
+          }
+        }
+      }
+    },
+    "/bartender-templates": {
+      "get": {
+        "summary": "Returns all BarTender templates from the system that the user has access to",
+        "operationId": "findBartenderTemplates",
+        "tags": [
+          "bartender"
+        ],
+        "parameters": [
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "maximum number of results to return",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "start",
+            "in": "query",
+            "description": "offset to the first result to return.  Use negative numbers to offset from the end of the result list.",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "bartenderTemplate response",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/bartenderTemplate"
+              }
+            },
+            "headers": {
+              "Count": {
+                "description": "total number of matching results (how many you'd get if you could set an infinite `limit`)",
+                "type": "integer",
+                "format": "int32",
+                "minimum": 0
+              }
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "schema": {
+              "$ref": "#/definitions/errorModel"
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Create a new BarTender template",
+        "operationId": "addBartenderTemplate",
+        "tags": [
+          "bartender"
+        ],
+        "parameters": [
+          {
+            "name": "template",
+            "in": "body",
+            "description": "BarTender template to add",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/bartenderTemplate"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "BarTender template response",
+            "schema": {
+              "$ref": "#/definitions/bartenderTemplate"
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "schema": {
+              "$ref": "#/definitions/errorModel"
+            }
+          }
+        }
+      }
+    },
+    "/bartender-template/{id}": {
+      "get": {
+        "summary": "Returns a BarTender template based on a single ID, if the user has access to it",
+        "operationId": "findBartenderTemplateById",
+        "tags": [
+          "bartender"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of BarTender template to fetch",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "BarTender template response",
+            "schema": {
+              "$ref": "#/definitions/bartenderTemplate"
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "schema": {
+              "$ref": "#/definitions/errorModel"
+            }
+          }
+        }
+      },
+      "put": {
+        "summary": "Update an existing BarTender template",
+        "operationId": "updateBartenderTemplate",
+        "tags": [
+          "bartender"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of BarTender template to update",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "template",
+            "in": "body",
+            "description": "Updated BarTender template parameters (can optionally include 'id')",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/bartenderTemplate"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "BarTender template response",
+            "schema": {
+              "$ref": "#/definitions/bartenderTemplate"
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "schema": {
+              "$ref": "#/definitions/errorModel"
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete an existing BarTender template",
+        "operationId": "deleteBartenderTemplate",
+        "tags": [
+          "bartender"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of BarTender template to delete",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "delete successful"
+          },
+          "default": {
+            "description": "unexpected error",
+            "schema": {
+              "$ref": "#/definitions/errorModel"
+            }
+          }
+        }
+      }
+    },
+    "/bartender-print-configurations": {
+      "get": {
+        "summary": "Returns all BarTender print configurations from the system that the user has access to",
+        "operationId": "findBartenderPrintConfigurations",
+        "tags": [
+          "bartender"
+        ],
+        "parameters": [
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "maximum number of results to return",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "start",
+            "in": "query",
+            "description": "offset to the first result to return.  Use negative numbers to offset from the end of the result list.",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "bartenderPrintConfiguration response",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/bartenderPrintConfiguration"
+              }
+            },
+            "headers": {
+              "Count": {
+                "description": "total number of matching results (how many you'd get if you could set an infinite `limit`)",
+                "type": "integer",
+                "format": "int32",
+                "minimum": 0
+              }
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "schema": {
+              "$ref": "#/definitions/errorModel"
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Create a new BarTender print configuration",
+        "operationId": "addBartenderPrintConfiguration",
+        "tags": [
+          "bartender"
+        ],
+        "parameters": [
+          {
+            "name": "print-configuration",
+            "in": "body",
+            "description": "BarTender print configuration to add",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/bartenderPrintConfiguration"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "BarTender print configuration response",
+            "schema": {
+              "$ref": "#/definitions/bartenderPrintConfiguration"
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "schema": {
+              "$ref": "#/definitions/errorModel"
+            }
+          }
+        }
+      }
+    },
+    "/bartender-print-configuration/{id}": {
+      "get": {
+        "summary": "Returns a BarTender print configuration based on a single ID, if the user has access to it",
+        "operationId": "findBartenderPrintConfigurationById",
+        "tags": [
+          "bartender"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of BarTender print configuration to fetch",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "BarTender print configuration response",
+            "schema": {
+              "$ref": "#/definitions/bartenderPrintConfiguration"
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "schema": {
+              "$ref": "#/definitions/errorModel"
+            }
+          }
+        }
+      },
+      "put": {
+        "summary": "Update an existing BarTender print configuration",
+        "operationId": "updateBartenderPrintConfiguration",
+        "tags": [
+          "bartender"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of BarTender print configuration to update",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "print-configuration",
+            "in": "body",
+            "description": "Updated BarTender print configuration parameters (can optionally include 'id')",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/bartenderPrintConfiguration"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "BarTender print configuration response",
+            "schema": {
+              "$ref": "#/definitions/bartenderPrintConfiguration"
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "schema": {
+              "$ref": "#/definitions/errorModel"
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete an existing BarTender print configuration",
+        "operationId": "deleteBartenderPrintConfiguration",
+        "tags": [
+          "bartender"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of BarTender print configuration to delete",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "delete successful"
+          },
+          "default": {
+            "description": "unexpected error",
+            "schema": {
+              "$ref": "#/definitions/errorModel"
+            }
+          }
+        }
+      }
+    },
+    "/bartender-print-configuration/{id}/actions/test-print": {
+      "post": {
+        "summary": "Create a test BarTender print request using this print configuration.  The print request uses hard-coded dummy data.",
+        "operationId": "actionTestBartenderPrintConfiguration",
+        "tags": [
+          "bartender"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of BarTender print configuration to test",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "BarTender print configuration test print request created"
+          }
+        },
+        "default": {
+          "description": "unexpected error",
+          "schema": {
+            "$ref": "#/definitions/errorModel"
+          }
+        }
+      }
+    },
     "/drops": {
       "get": {
         "summary": "Returns all drops from the system that the user has access to",
@@ -5151,9 +5733,244 @@
           }
         }
       }
+    },
+    "/printers": {
+      "get": {
+        "summary": "Returns all printers from the system that the user has access to",
+        "operationId": "findPrinters",
+        "tags": [
+          "printer"
+        ],
+        "parameters": [
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "maximum number of results to return",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "start",
+            "in": "query",
+            "description": "offset to the first result to return.  Use negative numbers to offset from the end of the result list.",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "printer response",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/printer"
+              }
+            },
+            "headers": {
+              "Count": {
+                "description": "total number of matching results (how many you'd get if you could set an infinite `limit`)",
+                "type": "integer",
+                "format": "int32",
+                "minimum": 0
+              }
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "schema": {
+              "$ref": "#/definitions/errorModel"
+            }
+          }
+        }
+      }
+    },
+    "/printer/{id}": {
+      "get": {
+        "summary": "Returns a printer based on a single ID, if the user has access to it",
+        "operationId": "findPrinterById",
+        "tags": [
+          "printer"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of printer to fetch",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "printer response",
+            "schema": {
+              "$ref": "#/definitions/printer"
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "schema": {
+              "$ref": "#/definitions/errorModel"
+            }
+          }
+        }
+      }
+    },
+    "/warehouses": {
+      "get": {
+        "summary": "Returns all warehouses from the system that the user has access to",
+        "operationId": "findWarehouses",
+        "tags": [
+          "warehouse"
+        ],
+        "parameters": [
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "maximum number of results to return",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "start",
+            "in": "query",
+            "description": "offset to the first result to return.  Use negative numbers to offset from the end of the result list.",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "warehouse response",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/warehouse"
+              }
+            },
+            "headers": {
+              "Count": {
+                "description": "total number of matching results (how many you'd get if you could set an infinite `limit`)",
+                "type": "integer",
+                "format": "int32",
+                "minimum": 0
+              }
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "schema": {
+              "$ref": "#/definitions/errorModel"
+            }
+          }
+        }
+      }
+    },
+    "/warehouse/{code}": {
+      "get": {
+        "summary": "Returns a warehouse based on a single code, if the user has access to it",
+        "operationId": "findWarehouseByCode",
+        "tags": [
+          "warehouse"
+        ],
+        "parameters": [
+          {
+            "name": "code",
+            "in": "path",
+            "description": "code of warehouse to fetch",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "warehouse response",
+            "schema": {
+              "$ref": "#/definitions/warehouse"
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "schema": {
+              "$ref": "#/definitions/errorModel"
+            }
+          }
+        }
+      }
     }
   },
   "definitions": {
+    "bartenderHost": {
+      "description": "a BarTender host/instance",
+      "type": "object",
+      "properties": {
+        "code": {
+          "description": "slug for stable reference (e.g. \"bt1\")",
+          "type": "string"
+        },
+        "name": {
+          "description": "human readable name (e.g. \"Bar Tender 1\")",
+          "type": "string"
+        }
+      },
+      "required": [
+        "code",
+        "name"
+      ]
+    },
+    "bartenderTemplate": {
+      "description": "a BarTender template/document",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "path": {
+          "description": "Path to the BarTender template on the BarTender host filesystem.",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "path"
+      ]
+    },
+    "bartenderPrintConfiguration": {
+      "description": "A BarTender print configuration for BarTender print requests.  These configurations are added to warehouse pieces (which are related to individual stock) in Beehive and are used to route print requests and to tell BarTender which template should be used.  A print request will be created for each print configuration associated with a stock location's warehouse.",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "host": {
+          "description": "the BarTender host's code",
+          "type": "string"
+        },
+        "printer": {
+          "description": "The printer ID. The referenced printer must support the `bartender` format and delivery methods.",
+          "type": "integer",
+          "format": "int64"
+        },
+        "template": {
+          "description": "The BarTender template ID.",
+          "type": "integer",
+          "format": "int64"
+        }
+      },
+      "required": [
+        "id",
+        "host",
+        "printer",
+        "template"
+      ]
+    },
     "drop": {
       "description": "an order-delivery location",
       "type": "object",
@@ -7784,6 +8601,63 @@
       "required": [
         "packs",
         "unit"
+      ]
+    },
+    "printer": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "name": {
+          "type": "string"
+        },
+        "format": {
+          "type": "string",
+          "enum": [
+            "pdf",
+            "epl2",
+            "bartender"
+          ]
+        },
+        "delivery": {
+          "type": "string",
+          "enum": [
+            "http",
+            "cups",
+            "bartender"
+          ]
+        },
+        "warehouse": {
+          "description": "the warehouse's code",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "format",
+        "delivery",
+        "warehouse"
+      ]
+    },
+    "warehouse": {
+      "description": "a physical warehouse or facility",
+      "type": "object",
+      "properties": {
+        "code": {
+          "description": "slug for stable reference (e.g. \"moro\")",
+          "type": "string"
+        },
+        "name": {
+          "description": "human readable name (e.g. \"Moro\")",
+          "type": "string"
+        }
+      },
+      "required": [
+        "code",
+        "name"
       ]
     },
     "errorModel": {
