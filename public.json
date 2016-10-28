@@ -4647,38 +4647,6 @@
         }
       }
     },
-    "/emails/resend": {
-      "post": {
-        "summary": "Resend the confirmation email to the user.",
-        "operationId": "resendEmailConfirmation",
-        "tags": [
-          "email"
-        ],
-        "security": [],
-        "parameters": [
-          {
-            "name": "resend",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/resendRegistrationEmail"
-            }
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "Confirmation email resent",
-            "schema": {}
-          },
-          "default": {
-            "description": "Unexpected error.",
-            "schema": {
-              "$ref": "#/definitions/errorModel"
-            }
-          }
-        }
-      }
-    },
     "/email/{id}": {
       "get": {
         "summary": "Returns a email based on a single ID.",
@@ -4770,6 +4738,45 @@
         "responses": {
           "204": {
             "description": "Delete successful."
+          },
+          "default": {
+            "description": "Unexpected error.",
+            "schema": {
+              "$ref": "#/definitions/errorModel"
+            }
+          }
+        }
+      }
+    },
+    "/email/{id}/resend": {
+      "post": {
+        "summary": "Resend the confirmation email to the user.",
+        "operationId": "resendEmailConfirmation",
+        "tags": [
+          "email"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of email whose confirmation will be re-sent.",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "resend",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/resendRegistrationEmail"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Confirmation email re-sent",
+            "schema": {}
           },
           "default": {
             "description": "Unexpected error.",
@@ -5180,7 +5187,7 @@
         ],
         "responses": {
           "204": {
-            "description": "Confirmation email resent",
+            "description": "Confirmation email re-sent",
             "schema": {}
           },
           "default": {
@@ -7894,13 +7901,12 @@
           "format": "url"
         },
         "token": {
-          "description": "The registrant's resend token",
+          "description": "The registrant's resend token.  If token is unset, the request must be authenticated with basic auth or a session cookie.",
           "type": "string"
         }
       },
       "required": [
-        "base-url",
-        "token"
+        "base-url"
       ]
     },
     "passwordResetRequest": {
