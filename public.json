@@ -5750,6 +5750,38 @@
         ],
         "parameters": [
           {
+            "name": "delivery",
+            "in": "query",
+            "description": "printer delivery method",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "http",
+                "cups",
+                "bartender"
+              ]
+            },
+            "collectionFormat": "csv"
+          },
+          {
+            "name": "format",
+            "in": "query",
+            "description": "printer format",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "pdf",
+                "epl2",
+                "bartender"
+              ]
+            },
+            "collectionFormat": "csv"
+          },
+          {
             "name": "limit",
             "in": "query",
             "description": "maximum number of results to return",
