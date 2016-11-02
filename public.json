@@ -2835,6 +2835,13 @@
             "collectionFormat": "csv"
           },
           {
+            "name": "active",
+            "in": "query",
+            "description": "only return (in)active categories",
+            "required": false,
+            "type": "boolean"
+          },
+          {
             "name": "product",
             "in": "query",
             "description": "product IDs to filter by",
