@@ -8308,7 +8308,7 @@
       "type": "object",
       "properties": {
         "base-url": {
-          "description": "Redirect URL for the confirmation UI.  The confirmation email points customers at {base-url}{confirmation-token} to confirm their registration.",
+          "description": "Redirect URL for the confirmation UI.  The confirmation email points customers at {base-url}{confirmation-token} to confirm their registration.  Required if address is changing; optional if address is not changing.",
           "type": "string",
           "format": "url"
         },
@@ -8332,7 +8332,6 @@
         }
       },
       "required": [
-        "base-url",
         "address",
         "person",
         "user-password"
