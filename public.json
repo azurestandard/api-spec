@@ -6971,6 +6971,10 @@
         "storage": {
           "description": "The environment in which this product must be stored",
           "$ref": "#/definitions/storage"
+        },
+        "slug": {
+          "description": "a slug generated from the product name",
+          "type": "string"
         }
       },
       "required": [
@@ -7039,6 +7043,10 @@
           "description": "homepage for the brand",
           "type": "string",
           "format": "url"
+        },
+        "slug": {
+          "description": "a slug generated from the brand name",
+          "type": "string"
         }
       },
       "required": [
@@ -7162,6 +7170,10 @@
           "description": "ordering precedence for likely customer interest.  Defaults to zero.",
           "type": "integer",
           "format": "int32"
+        },
+        "slug": {
+          "description": "a slug generated from the category short-name (or name if short-name is not defined)",
+          "type": "string"
         }
       },
       "required": [
