@@ -5757,6 +5757,28 @@
         ],
         "parameters": [
           {
+            "name": "delivery",
+            "in": "query",
+            "description": "printer delivery method",
+            "required": false,
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/printerDeliveryType"
+            },
+            "collectionFormat": "csv"
+          },
+          {
+            "name": "format",
+            "in": "query",
+            "description": "printer format",
+            "required": false,
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/printerFormatType"
+            },
+            "collectionFormat": "csv"
+          },
+          {
             "name": "limit",
             "in": "query",
             "description": "maximum number of results to return",
@@ -8628,21 +8650,13 @@
         "name": {
           "type": "string"
         },
-        "format": {
-          "type": "string",
-          "enum": [
-            "pdf",
-            "epl2",
-            "bartender"
-          ]
-        },
         "delivery": {
-          "type": "string",
-          "enum": [
-            "http",
-            "cups",
-            "bartender"
-          ]
+          "description": "the printer delivery type slug",
+          "$ref": "#/definitions/printerDeliveryType"
+        },
+        "format": {
+          "description": "the printer format type slug",
+          "$ref": "#/definitions/printerFormatType"
         },
         "warehouse": {
           "description": "the warehouse's code",
@@ -8652,9 +8666,27 @@
       "required": [
         "id",
         "name",
-        "format",
         "delivery",
+        "format",
         "warehouse"
+      ]
+    },
+    "printerDeliveryType": {
+      "description": "A property for printer delivery method",
+      "type": "string",
+      "enum": [
+        "http",
+        "cups",
+        "bartender"
+      ]
+    },
+    "printerFormatType": {
+      "description": "A property for printer format method",
+      "type": "string",
+      "enum": [
+        "pdf",
+        "epl2",
+        "bartender"
       ]
     },
     "warehouse": {
