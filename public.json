@@ -615,8 +615,8 @@
           }
         ],
         "responses": {
-          "201": {
-            "description": "BarTender print configuration test print request created"
+          "202": {
+            "description": "BarTender print configuration test print request accepted"
           }
         },
         "default": {
