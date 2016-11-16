@@ -5939,19 +5939,10 @@
         }
       }
     },
-    "/ip2location/{ipaddress}": {
+    "/ip2location": {
       "get": {
-        "summary": "Returns location data for the given ip address.",
+        "summary": "Returns location data for the requesting ip address.",
         "operationId": "ip2Location",
-        "parameters": [
-          {
-            "name": "ipaddress",
-            "in": "path",
-            "description": "ipv4 address to lookup",
-            "required": true,
-            "type": "string"
-          }
-        ],
         "responses": {
           "200": {
             "description": "ip2location response",
