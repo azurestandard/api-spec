@@ -5938,6 +5938,35 @@
           }
         }
       }
+    },
+    "/ip2location/{ipaddress}": {
+      "get": {
+        "summary": "Returns location data for the given ip address.",
+        "operationId": "ip2Location",
+        "parameters": [
+          {
+            "name": "ipaddress",
+            "in": "path",
+            "description": "ipv4 address to lookup",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ip2location response",
+            "schema": {
+              "$ref": "#/definitions/ip2location"
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "schema": {
+              "$ref": "#/definitions/errorModel"
+            }
+          }
+        }
+      }
     }
   },
   "definitions": {
@@ -8705,6 +8734,39 @@
       "required": [
         "code",
         "name"
+      ]
+    },
+    "ip2location": {
+      "description": "location information for an ip address",
+      "type": "object",
+      "properties": {
+        "country-short": {
+          "type": "string"
+        },
+        "country-long": {
+          "type": "string"
+        },
+        "region": {
+          "type": "string"
+        },
+        "city": {
+          "type": "string"
+        },
+        "zipcode": {
+          "type": "string"
+        },
+        "geo": {
+          "$ref": "#/definitions/geo"
+        }
+      },
+      "required": [
+        "country_short",
+        "country_long",
+        "region",
+        "city",
+        "zipcode",
+        "ip",
+        "geo"
       ]
     },
     "errorModel": {
