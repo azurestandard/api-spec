@@ -4235,6 +4235,17 @@
             "collectionFormat": "csv"
           },
           {
+            "name": "inline",
+            "in": "query",
+            "description": "for convenience, include a full representation of the inlined property.  Currently supports \"country\".",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "csv"
+          },
+          {
             "name": "limit",
             "in": "query",
             "description": "maximum number of results to return",
@@ -5943,6 +5954,18 @@
       "get": {
         "summary": "Returns location data for the requesting ip address.",
         "operationId": "ip2Location",
+          {
+            "name": "inline",
+            "in": "query",
+            "description": "for convenience, include a full representation of the inlined property.  Currently supports \"address.country\".",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "csv"
+          }
+        ],
         "responses": {
           "200": {
             "description": "ip2location response",
@@ -8234,7 +8257,8 @@
         "postal-code": {
           "type": "string"
         },
-        "country-name": {
+        "country": {
+          "description": "ISO 3166-1 alpha-3 code for the country.  On push, you can set the alpha-2 code or case-insensitve name instead, or you can use an inline country object.",
           "type": "string"
         },
         "preference": {
@@ -8245,7 +8269,7 @@
       },
       "required": [
         "locality",
-        "country-name"
+        "country"
       ]
     },
     "country": {
@@ -8264,7 +8288,12 @@
           "description": "The country's ISO 3166-1 alpha-3 code",
           "type": "string"
         }
-      }
+      },
+      "required": [
+        "name",
+        "iso",
+        "iso3"
+      ]
     },
     "region": {
       "description": "a country region (US state or Canadian province)",
@@ -8731,32 +8760,15 @@
       "description": "location information for an ip address",
       "type": "object",
       "properties": {
-        "country-short": {
-          "type": "string"
-        },
-        "country-long": {
-          "type": "string"
-        },
-        "region": {
-          "type": "string"
-        },
-        "city": {
-          "type": "string"
-        },
-        "zipcode": {
-          "type": "string"
+        "address": {
+          "$ref": "#/definitions/address"
         },
         "geo": {
           "$ref": "#/definitions/geo"
         }
       },
       "required": [
-        "country_short",
-        "country_long",
-        "region",
-        "city",
-        "zipcode",
-        "ip",
+        "address",
         "geo"
       ]
     },
