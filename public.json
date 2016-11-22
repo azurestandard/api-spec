@@ -5954,6 +5954,7 @@
       "get": {
         "summary": "Returns location data for the requesting ip address.",
         "operationId": "ip2Location",
+        "parameters": [
           {
             "name": "inline",
             "in": "query",
