@@ -5060,20 +5060,14 @@
             "in": "body",
             "required": true,
             "type": "object",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "username": {
-                  "description": "Username for authentication.  Instead of your username, you could also use one of your associated email addresses or your person ID here",
-                  "type": "string"
-                },
-                "password": {
-                  "description": "Password for authentication",
-                  "required": true,
-                  "type": "string"
-                }
+            "oneOf": [
+              {
+                "$ref": "#/definitions/usernamePassword"
+              },
+              {
+                "$ref": "#/definitions/token"
               }
-            }
+            ]
           }
         ],
         "responses": {
@@ -5123,7 +5117,7 @@
     "/registration/register": {
       "post": {
         "summary": "Register a new person",
-        "description": "The API implementation will by sending the registrant a confirmation email.  That email will contain a confirmation URL with a registration token.  Following that URL will (possibly indirectly) send the token to this API's confirmation endpoint which completes the registration.  Since customers are unlikely to enjoy hitting the JSON confirmation endpoint directly, we recommend clients set base-url to something like `http://example.com/activation?token=` and have that page send a request to this API's confirmation endpoint and display the result returned by the API.  On success, this endpoint will also return a resend token (not the same as the confirmation token emailed to the registrant), which can be used by the client to trigger confirmation email resends.",
+        "description": "When the user provides an email address, check for existing accounts which use that email address.\n\n* If an inactive account using the email address is found, send an inactive-member email pointing the user at customer service.  Do not authenticate the user.\n\n* If an active account using the email address is found, send an active-member email with an authenticating URL with an authentication token.  Following that URL will (possibly indirectly) send the token to this API's login endpoint to authenticate the bearer.\n\n* If no account using that email address is found, create a new account and immediately authenticate the user.  If they provided an email address or SMS number, potentially send a welcome-aboard notification.  Any email address will remain unconfirmed until the user completes a confirmation cycle.",
         "operationsId": "registerPerson",
         "tags": [
           "registration"
@@ -5137,42 +5131,11 @@
             "schema": {
               "$ref": "#/definitions/registrationRequest"
             }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "resend token (registration successfully initiated and confirmation email sent)",
-            "type": "string"
-          },
-          "default": {
-            "description": "unexpected error",
-            "schema": {
-              "$ref": "#/definitions/errorModel"
-            }
-          }
-        }
-      }
-    },
-    "/registration/confirm": {
-      "post": {
-        "summary": "Complete an in-progress registration, authenticate, and receive a session cookie",
-        "description": "The user account corresponding to the given registration token will be activated. Any errors associated with the user's primary email will be cleared. This will also authenticate the user and return a response containing the person activated and the session information, along with a new session cookie.",
-        "operationId": "confirmRegistration",
-        "tags": [
-          "registration"
-        ],
-        "parameters": [
-          {
-            "name": "token",
-            "in": "body",
-            "description": "The registrant's confirmation token",
-            "required": true,
-            "type": "string"
           },
           {
             "name": "inline",
             "in": "query",
-            "description": "for convenience, include a full representation of the inlined property. Currently supports \"person\" and descendants.",
+            "description": "for convenience, include a full representation of the inlined property. Currently supports \"session.person\" and descendants.",
             "required": false,
             "type": "array",
             "items": {
@@ -5183,9 +5146,9 @@
         ],
         "responses": {
           "200": {
-            "description": "registration confirmation response",
+            "description": "registration request response",
             "schema": {
-              "$ref": "#/definitions/session"
+              "$ref": "#/definitions/registrationResponse"
             }
           },
           "default": {
@@ -7975,6 +7938,24 @@
         "email"
       ]
     },
+    "registrationResponse": {
+      "description": "The registration response",
+      "type": "object",
+      "properties": {
+        "session": {
+          "$ref": "#/definitions/session"
+        },
+        "token": {
+          "description": "Resend token.  Can be sent to resendRegistrationEmail to trigger a new registration notification.",
+          "type": "string",
+          "format": "url"
+        },
+        "required": [
+          "session",
+          "token"
+        ]
+      }
+    },
     "resendRegistrationEmail": {
       "description": "A request for another registration email",
       "type": "object",
@@ -7991,6 +7972,37 @@
       },
       "required": [
         "base-url"
+      ]
+    },
+    "token": {
+      "description": "Authentication credentials",
+      "type": "object",
+      "properties": {
+        "token": {
+          "description": "Token for authentication.",
+          "type": "string"
+        }
+      },
+      "required": [
+        "token"
+      ]
+    },
+    "usernamePassword": {
+      "description": "Authentication credentials",
+      "type": "object",
+      "properties": {
+        "username": {
+          "description": "Username for authentication.  Instead of your username, you could also use your primary email address or your person ID here",
+          "type": "string"
+        },
+        "password": {
+          "description": "Password for authentication",
+          "type": "string"
+        }
+      },
+      "required": [
+        "username",
+        "password"
       ]
     },
     "passwordResetRequest": {
