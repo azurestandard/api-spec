@@ -5168,13 +5168,24 @@
             "description": "The registrant's confirmation token",
             "required": true,
             "type": "string"
+          },
+          {
+            "name": "inline",
+            "in": "query",
+            "description": "for convenience, include a full representation of the inlined property. Currently supports \"person\" and descendants.",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "csv"
           }
         ],
         "responses": {
           "200": {
             "description": "registration confirmation response",
             "schema": {
-              "$ref": "#/definitions/registrationConfirmResponse"
+              "$ref": "#/definitions/session"
             }
           },
           "default": {
@@ -7963,22 +7974,6 @@
         "person",
         "email"
       ]
-    },
-    "registrationConfirmResponse": {
-      "description": "The response to a successful registration confirmation, including the person who registered and the session information",
-      "type": "object",
-      "properties": {
-        "person": {
-          "$ref": "#/definitions/person"
-        },
-        "session": {
-          "$ref": "#/definitions/session"
-        },
-        "required": [
-          "person",
-          "session"
-        ]
-      }
     },
     "resendRegistrationEmail": {
       "description": "A request for another registration email",
