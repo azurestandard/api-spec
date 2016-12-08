@@ -7589,7 +7589,7 @@
           "type": "string"
         },
         "name": {
-          "description": "most order lines are for packaged products, but Azure sometimes bills for less concrete items like sales-flyer ads.  This field holds a brief description of the line, and should be used for invoices instead of following packaged-product (which may not be set).",
+          "description": "most order lines are for packaged products, but Azure sometimes bills for less concrete items like catalog ads.  This field holds a brief description of the line, and should be used for invoices instead of following packaged-product (which may not be set).",
           "type": "string"
         },
         "quantity-ordered": {
@@ -7923,14 +7923,18 @@
           "format": "url"
         },
         "person": {
-          "description": "The registrant's personal information.  Name and password are required.",
+          "description": "The registrant's personal information.  'name' is required.",
           "type": "object",
           "schema": {
             "$ref": "#/definitions/updatePerson"
           }
         },
+        "catalog": {
+          "description": "Set to true to receive the catalog after registration.",
+          "type": "boolean"
+        },
         "address": {
-          "description": "The registrant's mailing address (required if they've set person.catalog).",
+          "description": "The registrant's mailing address (required if they've set catalog or person.sale-magazine).",
           "type": "object",
           "schema": {
             "$ref": "#/definitions/address"
@@ -8093,8 +8097,8 @@
           "description": "Can Azure contact this person for reasons other than registration",
           "type": "boolean"
         },
-        "catalog": {
-          "description": "Set to true to receive the product catalog",
+        "sale-magazine": {
+          "description": "Set to true to receive the sale magazine",
           "type": "boolean"
         },
         "company": {
@@ -8140,8 +8144,8 @@
           "description": "Can Azure contact this person for reasons other than registration?  Defaults to true when creating a person",
           "type": "boolean"
         },
-        "catalog": {
-          "description": "Subscribed to receive the product catalog?  Defaults to false when creating a person",
+        "sale-magazine": {
+          "description": "Subscribed to receive the sale magazine?  Defaults to false when creating a person",
           "type": "boolean"
         },
         "company": {
@@ -8172,8 +8176,8 @@
           "description": "Can Azure contact this person for reasons other than registration",
           "type": "boolean"
         },
-        "catalog": {
-          "description": "Subscribed to receive the product catalog",
+        "sale-magazine": {
+          "description": "Subscribed to receive the sale magazine",
           "type": "boolean"
         },
         "company": {
