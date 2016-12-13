@@ -678,6 +678,11 @@
             "collectionFormat": "csv"
           },
           {
+            "name": "sort",
+            "in": "query",
+            "description": "Order results by this field.  Only one special sort field is supported, \"distance(lat:45.45|lon:-121.13)\", which will sort drops by increasing distance from the lat and lon combination."
+          },
+          {
             "name": "limit",
             "in": "query",
             "description": "maximum number of results to return",
