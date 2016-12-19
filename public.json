@@ -8154,6 +8154,10 @@
           "items": {
             "$ref": "#/definitions/permission"
           }
+        },
+        "internal-notes": {
+          "description": "free-form Markdown notes for any internal information that doesn't fit into an existing field.  Only Azure employees can view or edit this information, although it may be passed into the registerPerson endpoint when registering new people.",
+          "type": "string"
         }
       },
       "required": [
