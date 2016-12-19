@@ -7968,13 +7968,17 @@
         "session": {
           "$ref": "#/definitions/session"
         },
-        "token": {
+        "auth-token": {
+          "description": "Auth token.  Can be sent to login to authenticate a new session.",
+          "type": "string"
+        },
+        "resend-token": {
           "description": "Resend token.  Can be sent to resendRegistrationEmail to trigger a new registration notification.",
           "type": "string"
         },
         "required": [
           "session",
-          "token"
+          "resend-token"
         ]
       }
     },
