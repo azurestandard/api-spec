@@ -7970,8 +7970,7 @@
         },
         "token": {
           "description": "Resend token.  Can be sent to resendRegistrationEmail to trigger a new registration notification.",
-          "type": "string",
-          "format": "url"
+          "type": "string"
         },
         "required": [
           "session",
@@ -8461,8 +8460,7 @@
       "properties": {
         "token": {
           "description": "Resend token for resendEmailConfirmation (not the same as the confirmation token emailed to the user, which is for emailConfirmation).  Unset if a confirmation email was not set (more details on this in updateEmail).",
-          "type": "string",
-          "format": "url"
+          "type": "string"
         },
         "email": {
           "$ref": "#/definitions/email"
