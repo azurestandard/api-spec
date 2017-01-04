@@ -4273,7 +4273,7 @@
             "schema": {
               "type": "array",
               "items": {
-                "$ref": "#/definitions/address"
+                "$ref": "#/definitions/personAddress"
               }
             },
             "headers": {
@@ -4306,7 +4306,7 @@
             "description": "address to add",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/address"
+              "$ref": "#/definitions/updatePersonAddress"
             }
           }
         ],
@@ -4314,7 +4314,7 @@
           "200": {
             "description": "address response",
             "schema": {
-              "$ref": "#/definitions/address"
+              "$ref": "#/definitions/personAddress"
             }
           },
           "default": {
@@ -4347,7 +4347,7 @@
           "200": {
             "description": "address response",
             "schema": {
-              "$ref": "#/definitions/address"
+              "$ref": "#/definitions/personAddress"
             }
           },
           "default": {
@@ -4359,7 +4359,7 @@
         }
       },
       "put": {
-        "summary": "Update an existing address",
+        "summary": "Update an existing address. Changing the person associated with an address is forbidden.",
         "operationId": "updateAddress",
         "tags": [
           "address"
@@ -4379,7 +4379,7 @@
             "description": "Address to update",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/address"
+              "$ref": "#/definitions/updatePersonAddress"
             }
           }
         ],
@@ -7908,14 +7908,14 @@
           "type": "boolean"
         },
         "address": {
-          "description": "The registrant's mailing address (required if they've set catalog or person.sale-magazine).",
+          "description": "The registrant's mailing address (required if they've set catalog or person.sale-magazine). Will have a preference of 100.",
           "type": "object",
           "schema": {
             "$ref": "#/definitions/address"
           }
         },
         "email": {
-          "description": "The registrant's primary email address.  Will have a preference level of 100.",
+          "description": "The registrant's primary email address.  Will have a preference of 100.",
           "type": "string",
           "format": "email"
         },
@@ -8302,16 +8302,62 @@
         "country": {
           "description": "ISO 3166-1 alpha-3 code for the country.  On push, you can set the alpha-2 code or case-insensitve name instead, or you can use an inline country object.",
           "type": "string"
-        },
-        "preference": {
-          "description": "ordering precedence for the findAddresses.  Defaults to zero.",
-          "type": "integer",
-          "format": "int32"
         }
       },
       "required": [
         "locality",
         "country"
+      ]
+    },
+    "personAddress": {
+      "description": "an address associated with a person, with additional properties preference and geo",
+      "allOf": [
+        {
+          "$ref": "#/definitions/address"
+        },
+        {
+          "properties": {
+            "person": {
+              "description": "Person associated with this address.",
+              "type": "integer",
+              "format": "int64"
+            },
+            "geo": {
+              "$ref": "#/definitions/geo"
+            },
+            "preference": {
+              "description": "ordering precedence for findAddresses.",
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          "required": [
+            "person",
+            "preference"
+          ]
+        }
+      ]
+    },
+    "updatePersonAddress": {
+      "description": "A request for adding or updating an address associated with a person",
+      "allOf": [
+        {
+          "$ref": "#/definitions/address"
+        },
+        {
+          "properties": {
+            "person": {
+              "description": "Person associated with this address. Defaults to the authenticated person",
+              "type": "integer",
+              "format": "int64"
+            },
+            "preference": {
+              "description": "ordering precedence for findAddresses.  Defaults to 100 if this is the person's first address, otherwise zero.",
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        }
       ]
     },
     "country": {
