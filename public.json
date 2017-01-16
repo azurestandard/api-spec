@@ -2366,7 +2366,7 @@
           {
             "name": "inline",
             "in": "query",
-            "description": "for convenience, include a full representation of the inlined property. Currently supports \"brand\", \"packaging\", and descendants.",
+            "description": "for convenience, include a full representation of the inlined property. Currently supports the local \"description\" and \"favorites\" as well as \"brand\", \"packaging\", \"vendors\", and descendants.",
             "required": false,
             "type": "array",
             "items": {
@@ -2432,6 +2432,17 @@
             "description": "ID of product to fetch",
             "required": true,
             "type": "string"
+          },
+          {
+            "name": "inline",
+            "in": "query",
+            "description": "for convenience, include a full representation of the inlined property. Currently supports the local \"description\" and \"favorites\" as well as \"brand\", \"packaging\", \"vendors\", and descendants.",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "csv"
           }
         ],
         "responses": {
@@ -2564,7 +2575,7 @@
           {
             "name": "inline",
             "in": "query",
-            "description": "for convenience, include a full representation of the inlined property. Currently supports \"product\" and descendants.",
+            "description": "for convenience, include a full representation of the inlined property. Currently supports the local \"favorites\", \"next-purchase-arrival\", and \"quantity-on-next-purchase\" as well as \"product\", \"vendors\", and descendants.",
             "required": false,
             "type": "array",
             "items": {
@@ -2630,6 +2641,17 @@
             "description": "code of the packaged product to fetch",
             "required": true,
             "type": "string"
+          },
+          {
+            "name": "inline",
+            "in": "query",
+            "description": "for convenience, include a full representation of the inlined property. Currently supports the local \"favorites\", \"next-purchase-arrival\", and \"quantity-on-next-purchase\" as well as \"product\", \"vendors\", and descendants.",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "csv"
           }
         ],
         "responses": {
@@ -5517,6 +5539,17 @@
             "required": true,
             "type": "integer",
             "format": "int64"
+          },
+          {
+            "name": "inline",
+            "in": "query",
+            "description": "for convenience, include a full representation of the inlined property. Currently supports \"packaged-product\" and descendants.",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "csv"
           }
         ],
         "responses": {
