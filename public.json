@@ -1182,6 +1182,13 @@
             "collectionFormat": "csv"
           },
           {
+            "name": "detailed",
+            "in": "query",
+            "description": "include properties with large payloads that are probably only useful for product-detail views (e.g. description, directions, ingredients, ...).  This is false by default to reduce the size of responses that will only be used for product-list views.",
+            "required": false,
+            "type": "boolean"
+          },
+          {
             "name": "limit",
             "in": "query",
             "description": "maximum number of results to return",
