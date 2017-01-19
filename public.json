@@ -944,6 +944,11 @@
             "collectionFormat": "csv"
           },
           {
+            "name": "sort",
+            "in": "query",
+            "description": "Order results by this field.  Supported fields: \"customer.name\", \"drop.name\"."
+          },
+          {
             "name": "limit",
             "in": "query",
             "description": "maximum number of results to return",
