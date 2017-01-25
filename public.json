@@ -599,7 +599,7 @@
     },
     "/bartender-print-configuration/{id}/actions/test-print": {
       "post": {
-        "summary": "Create a test BarTender print request using this print configuration.  The print request uses hard-coded dummy data.",
+        "summary": "Create a test BarTender print request using this print configuration.  The print request uses hard-coded dummy data if a stock ID is not provided.",
         "operationId": "actionTestBartenderPrintConfiguration",
         "tags": [
           "bartender"
@@ -612,6 +612,20 @@
             "required": true,
             "type": "integer",
             "format": "int64"
+          },
+          {
+            "name": "testData",
+            "in": "body",
+            "description": "Test data to use in the test print request.  The payload must be a JSON object, but the 'stock' property is optional.",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "stock": {
+                  "type": "int64"
+                }
+              }
+            }
           }
         ],
         "responses": {
