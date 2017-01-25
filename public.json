@@ -2371,7 +2371,7 @@
           {
             "name": "inline",
             "in": "query",
-            "description": "for convenience, include a full representation of the inlined property. Currently supports the local \"description\" and \"favorites\" as well as \"brand\", \"packaging\", \"vendors\", and descendants.",
+            "description": "for convenience, include a full representation of the inlined property. Currently supports the local \"description\", \"favorites\", and \"substitutions\" as well as \"brand\", \"packaging\", \"vendors\", and descendants.",
             "required": false,
             "type": "array",
             "items": {
@@ -2441,7 +2441,7 @@
           {
             "name": "inline",
             "in": "query",
-            "description": "for convenience, include a full representation of the inlined property. Currently supports the local \"description\" and \"favorites\" as well as \"brand\", \"packaging\", \"vendors\", and descendants.",
+            "description": "for convenience, include a full representation of the inlined property. Currently supports the local \"description\", \"favorites\", and \"substitutions\" as well as \"brand\", \"packaging\", \"vendors\", and descendants.",
             "required": false,
             "type": "array",
             "items": {
@@ -7050,6 +7050,28 @@
           "items": {
             "type": "integer",
             "format": "int64"
+          }
+        },
+        "substitutions": {
+          "description": "Suggested in-stock substitutions.",
+          "type": "object",
+          "properties": {
+            "by-category": {
+              "description": "Suggested substitute product IDs which belong to related categories.",
+              "type": "array",
+              "items": {
+                "type": "integer",
+                "format": "int64"
+              }
+            },
+            "staff-picks": {
+              "description": "Suggested substitute product IDs which were chosen by staff members.",
+              "type": "array",
+              "items": {
+                "type": "integer",
+                "format": "int64"
+              }
+            }
           }
         },
         "country-of-origin": {
