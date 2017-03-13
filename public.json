@@ -7297,8 +7297,17 @@
         "estimated-time"
       ]
     },
+    "shippingClimate": {
+      "description": "An environment for shipping products.  'all' is a shipping climate for products of all types.  'dry' includes both 'dry' and 'greenhouse' storage environments.  'chilled/frozen' includes both 'chilled' and 'frozen' storage environments.",
+      "type": "string",
+      "enum": [
+        "all",
+        "dry",
+        "chilled/frozen"
+      ]
+    },
     "storage": {
-      "description": "An environment for storing products",
+      "description": "An environment for storing products.  The related to shippingClimate is less detailed, because stock is generally in transit for less time than it is in storage.",
       "type": "string",
       "enum": [
         "dry",
@@ -8116,6 +8125,10 @@
           "description": "Dollar value for the fee",
           "type": "number",
           "format": "float"
+        },
+        "climate": {
+          "description": "The shipping climate for order lines that the fee applies to.",
+          "$ref": "#/definitions/shippingClimate"
         },
         "notes": {
           "description": "Additional information about the reason or amount for the fee",
