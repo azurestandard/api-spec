@@ -8008,16 +8008,7 @@
           "format": "int64"
         },
         "context": {
-          "description": "The context in which the registration request is being made (to select between available notification templates).  Defaults to \"registration\".",
-          "format": "array",
-          "items": {
-            "type": "string",
-            "enum": [
-              "registration",
-              "checkout",
-              "catalog-request"
-            ]
-          }
+          "$ref": "#/definitions/registrationContext"
         },
         "authentication-base-url": {
           "description": "Redirect URL for the authentication UI.  The authentication notification points customers at {authentication-base-url}{authentication-token} to authenticate a new session.",
@@ -8035,6 +8026,15 @@
         "email",
         "authentication-base-url",
         "confirmation-base-url"
+      ]
+    },
+    "registrationContext": {
+      "description": "The context in which the registration request is being made (to select between available notification templates).  Defaults to \"registration\".",
+      "type": "string",
+      "enum": [
+        "registration",
+        "checkout",
+        "catalog-request"
       ]
     },
     "registrationResponse": {
@@ -8062,6 +8062,9 @@
       "description": "A request for another registration email",
       "type": "object",
       "properties": {
+        "context": {
+          "$ref": "#/definitions/registrationContext"
+        },
         "authentication-base-url": {
           "description": "Redirect URL for the authentication UI.  The authentication notification points customers at {authentication-base-url}{authentication-token} to authenticate a new session.",
           "type": "string",
