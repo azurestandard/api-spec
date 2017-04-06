@@ -7033,8 +7033,12 @@
           "description": "sentence-length product name",
           "type": "string"
         },
+        "short-description": {
+          "description": "paragraph-length, stand-alone, plain-text product description",
+          "type": "string"
+        },
         "description": {
-          "description": "long-form product description",
+          "description": "long-form, HTML product description.  When short-description is set, this value is for additional information which did not fit into short-description.  Displaying both short-description and description is not redundant.  Displaying only description may be confusing when short-description is available.",
           "type": "string"
         },
         "brand": {
