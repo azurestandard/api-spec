@@ -6770,6 +6770,9 @@
           "description": "offset from midnight on the morning of the trips's delivery start until the usual delivery time for this drop",
           "type": "string",
           "format": "duration"
+        },
+        "drop-shipping-fee": {
+          "$ref": "#/definitions/dropShippingFee"
         }
       },
       "required": [
@@ -6824,6 +6827,9 @@
           "description": "actual stop time (set after the stop is reached)",
           "type": "string",
           "format": "date-time"
+        },
+        "drop-shipping-fee": {
+          "$ref": "#/definitions/dropShippingFee"
         }
       },
       "required": [
@@ -7701,6 +7707,17 @@
         "shipping",
         "small-order"
       ]
+    },
+    "dropShippingFee": {
+      "description": "information for calculating shipping costs for orders delivered to a stop",
+      "type": "object",
+      "properties": {
+        "percent": {
+          "description": "the `shipping` order fee is the total order-line price over all lines on the order, multiplied by this percentage, and then rounded to the nearest cent.",
+          "type": "number",
+          "format": "float"
+        }
+      }
     },
     "vendor": {
       "description": "a company that sells products to Azure",
