@@ -6776,8 +6776,7 @@
         "id",
         "route",
         "drop",
-        "target-time",
-        "estimated-time"
+        "delivery-offset"
       ]
     },
     "stop": {
