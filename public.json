@@ -692,6 +692,17 @@
             "collectionFormat": "csv"
           },
           {
+            "name": "inline",
+            "in": "query",
+            "description": "for convenience, include a full representation of the inlined property. Currently supports \"route-drop-associations\".",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "csv"
+          },
+          {
             "name": "sort",
             "in": "query",
             "description": "Order results by this field.  Only one special sort field is supported, \"distance(lat:45.45|lon:-121.13)\", which will sort drops by increasing distance from the lat and lon combination."
@@ -787,6 +798,17 @@
             "required": true,
             "type": "integer",
             "format": "int64"
+          },
+          {
+            "name": "inline",
+            "in": "query",
+            "description": "for convenience, include a full representation of the inlined property. Currently supports \"route-drop-associations\".",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "csv"
           }
         ],
         "responses": {
@@ -6503,6 +6525,17 @@
         }
       }
     },
+    "dropShippingFee": {
+      "description": "information for calculating shipping costs for orders sent to a drop",
+      "type": "object",
+      "properties": {
+        "percent": {
+          "description": "the `shipping` order fee is the total order-line price over all lines on the order, multiplied by this percentage, and then rounded to the nearest cent.",
+          "type": "number",
+          "format": "float"
+        }
+      }
+    },
     "pickup": {
       "description": "a purchase-pickup location",
       "type": "object",
@@ -6629,6 +6662,28 @@
     },
     "newRoute": {
       "$ref": "route"
+    },
+    "routeDropAssociation": {
+      "description": "a route-drop assocation",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "route": {
+          "description": "name of the followed route",
+          "type": "string"
+        },
+        "drop": {
+          "description": "drop ID for the route-stop",
+          "type": "integer",
+          "format": "int64"
+        },
+        "shipping-fee": {
+          "$ref": "#/definitions/dropShippingFee"
+        }
+      }
     },
     "trip": {
       "description": "a truck delivering orders along a route",
