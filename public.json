@@ -6300,7 +6300,7 @@
           }
         },
         "notes": {
-          "description": "free-form Markdown notes for any drop information that doesn't fit into an existing field",
+          "description": "free-form Markdown notes for any member-oriented drop information that doesn't fit into an existing field.  This information is public for open and semi-open drops, and visible to all members for closed drops",
           "type": "string"
         },
         "sells-finished-goods-to-azure": {
@@ -6367,7 +6367,7 @@
           "$fees": "#definitions/dropFees"
         },
         "notes": {
-          "description": "free-form Markdown notes for any drop information that doesn't fit into an existing field",
+          "description": "free-form Markdown notes for any member-oriented drop information that doesn't fit into an existing field.  This information is public for open and semi-open drops, and visible to all members for closed drops",
           "type": "string"
         }
       },
