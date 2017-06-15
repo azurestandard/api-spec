@@ -5087,6 +5087,78 @@
         }
       }
     },
+    "/person/{id}/prices": {
+      "get": {
+        "summary": "Returns all prices from the system for a given person",
+        "operationId": "findPersonPricesById",
+        "tags": [
+          "person",
+          "price"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of person whose prices are being requested.",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "product",
+            "in": "query",
+            "description": "Product IDs to filter by.",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "csv"
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "Maximum number of results to return.",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "start",
+            "in": "query",
+            "description": "Offset to the first result to return.  Use negative numbers to offset from the end of the result list.",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Price response.",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/price"
+              }
+            },
+            "headers": {
+              "Count": {
+                "description": "Total number of matching results (how many you'd get if you could set an infinite `limit`).",
+                "type": "integer",
+                "format": "int32",
+                "minimum": 0
+              }
+            }
+          },
+          "default": {
+            "description": "Unexpected error.",
+            "schema": {
+              "$ref": "#/definitions/errorModel"
+            }
+          }
+        }
+      }
+    },
     "/session": {
       "get": {
         "summary": "Returns information about the current cookie-based session",
@@ -6928,7 +7000,7 @@
           "format": "float"
         },
         "price": {
-          "#ref": "#/definitions/price"
+          "#ref": "#/definitions/priceBase"
         },
         "stock": {
           "description": "amount of stock available for purchase.  This includes breakdown ancestors.  For example, if we have a single 4 x 6 x 14 oz case in the warehouse, the 4 x 6 x 14 oz packaging will have 1 stock, the 6 x 14 oz packagaging will have 4 stock, and the 14 oz packaging will have 24 stock.",
@@ -7002,7 +7074,6 @@
           "type": "string",
           "enum": [
             "status",
-            "price-level",
             "characteristic"
           ]
         }
@@ -7188,46 +7259,6 @@
         "name"
       ]
     },
-    "_price": {
-      "description": "a helper object for 'price'",
-      "type": "object",
-      "properties": {
-        "dollars": {
-          "description": "price of the product in dollars",
-          "type": "number",
-          "format": "float"
-        },
-        "per-pound": {
-          "description": "whether the 'dollars' price is per-pound or per-product",
-          "type": "boolean"
-        },
-        "discount": {
-          "description": "text for the discount (e.g. \"12%\", or \"$3.50\")",
-          "type": "string"
-        },
-        "dollars-per-unit": {
-          "description": "the per-unit price",
-          "type": "number",
-          "format": "float"
-        },
-        "unit": {
-          "description": "The unit for the dollars-per-unit",
-          "type": "string"
-        }
-      },
-      "required": [
-        "dollars"
-      ]
-    },
-    "priceLevel": {
-      "description": "a customer property to pick the right price from 'price'",
-      "type": "string",
-      "enum": [
-        "retail",
-        "wholesale",
-        "member"
-      ]
-    },
     "permission": {
       "description": "an API authorization or authorization category",
       "type": "string",
@@ -7237,28 +7268,70 @@
       ]
     },
     "price": {
-      "description": "product price information",
+      "description": "Customer-specific packaged-product price information.",
       "type": "object",
       "properties": {
-        "retail": {
-          "description": "pricing for retail customers",
-          "schema": {
-            "$ref": "#/definitions/_price"
-          }
+        "packaged-product": {
+          "description": "Packaged product code that this price applies to.",
+          "type": "string"
         },
-        "wholesale": {
-          "description": "pricing for wholesale customers",
-          "schema": {
-            "$ref": "#/definitions/_price"
-          }
+        "dollars": {
+          "description": "A customer's custom price for the packaged product in dollars",
+          "type": "string"
         },
-        "member": {
-          "description": "pricing for member customers",
-          "schema": {
-            "$ref": "#/definitions/_price"
+        "min": {
+          "description": "The minimum orderLine.quantity-ordered (inclusive) for which this price applies.  If min is unset, there is no lower bound.  For example, if min is 3, the price will apply to an order line if quantity-ordered is 3 or 4 but not if quantity-ordered is 1 or 2.",
+          "type": "string"
+        },
+        "max": {
+          "description": "The maximum orderLine.quantity-ordered (inclusive) for which this price applies.  If max is unset, there is no upper bound.  For example, if max is 3, the price will apply to an order line if quantity-ordered is 2 or 3 but not if quantity-ordered is 4 or 5.",
+          "type": "string"
+        },
+        "description": {
+          "description": "A collection of price descriptions.  This is an array, because there may be multiple descriptions if the price is due to stackable adjustments.",
+          "type": "array",
+          "items": {
+            "description": "A short phrase describing the price.  For example, \"June sale\".",
+            "type": "string"
           }
         }
-      }
+      },
+      "required": [
+        "packaged-product",
+        "dollars"
+      ]
+    },
+    "priceBase": {
+      "description": "Base price (not customer-specific) for a packaged product.",
+      "type": "object",
+      "properties": {
+        "default": {
+          "description": "Default price of the product in dollars.  This applies to customers that have no customer-specific pricing for the packaged product.",
+          "type": "number",
+          "format": "float"
+        },
+        "msrp": {
+          "description": "Manufactured default price of the packaged product in dollars.",
+          "type": "number",
+          "format": "float"
+        },
+        "per-pound": {
+          "description": "Whether the 'default' and 'msrp' prices are per-pound or per-product.",
+          "type": "boolean"
+        },
+        "dollars-per-unit": {
+          "description": "The per-unit price for FIXME (default?  msrp?).",
+          "type": "number",
+          "format": "float"
+        },
+        "unit": {
+          "description": "The unit for the dollars-per-unit.",
+          "type": "string"
+        }
+      },
+      "required": [
+        "default"
+      ]
     },
     "category": {
       "description": "a category available for sale",
@@ -8251,9 +8324,6 @@
         "allow-social-media": {
           "description": "Does this person want social media links to display",
           "type": "boolean"
-        },
-        "price-level": {
-          "$ref": "#/definitions/priceLevel"
         },
         "notifications": {
           "$ref": "#/definitions/personNotifications"
