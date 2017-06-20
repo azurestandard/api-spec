@@ -7524,7 +7524,7 @@
           "description": "An array of side-effects.  Will be set if there were side-effects and unset if there were none",
           "type": "array",
           "items": {
-            "$ref": "#/defintition/orderChange"
+            "$ref": "#/definition/orderChange"
           }
         }
       },
