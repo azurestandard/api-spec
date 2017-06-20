@@ -8199,7 +8199,7 @@
       "type": "object",
       "properties": {
         "dollars": {
-          "description": "price of the product in dollars",
+          "description": "Pre-sale price of the product in dollars.",
           "type": "number",
           "format": "float"
         },
@@ -8207,18 +8207,21 @@
           "description": "whether the 'dollars' price is per-pound or per-product",
           "type": "boolean"
         },
-        "discount": {
-          "description": "text for the discount (e.g. \"12%\", or \"$3.50\")",
-          "type": "string"
-        },
-        "dollars-per-unit": {
-          "description": "the per-unit price",
+        "units": {
+          "description": "The number of units contained in the 'dollars' price.  For example, if 'unit' is \"ounce\", and 'per-pound' is true, \"units\" will be 12.  Or if 'unit' is \"fluid-ounce\", 'per-pound' is false, and the product is a 14.5 floz bottle, then 'units' will be 14.5.",
           "type": "number",
           "format": "float"
         },
         "unit": {
-          "description": "The unit for the dollars-per-unit",
+          "description": "The unit for 'units'.  For example, \"pound\".",
           "type": "string"
+        },
+        "sales": {
+          "description": "An array of current sales.  Will be set if there are sales and unset if there are none.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definition/sale"
+          }
         }
       },
       "required": [
@@ -10009,6 +10012,29 @@
         "pdf",
         "epl2",
         "bartender"
+      ]
+    },
+    "sale": {
+      "description": "A sale for a packaged product.  Either 'dollar' or 'percent' will be set, but not both.  A single packaged product may have several sales for a given time and price-level, in which case only the largest applies.",
+      "type": "object",
+      "properties": {
+        "description": {
+          "description": "Text for the discount (e.g. \"2017 December\").",
+          "type": "string"
+        },
+        "dollar": {
+          "description": "Dollar discount from the base price.  For example, with 'dollar' set to 1.25 and a base price of $10, the sale price will be $8.75.",
+          "type": "number",
+          "format": "float"
+        },
+        "percent": {
+          "description": "Percent discount from the base price.  For example, with 'percent' set to 5 and a base price of $10, the sale price will be $9.50.  The sale price should be rounded to the nearest cent, rounding half to even.",
+          "type": "number",
+          "format": "float"
+        }
+      },
+      "required": [
+        "description"
       ]
     },
     "warehouse": {
