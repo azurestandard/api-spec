@@ -7607,8 +7607,8 @@
         },
         "quantity-shipped": {
           "description": "number of product instances delivered",
-          "type": "integer",
-          "format": "int32"
+          "type": "number",
+          "format": "float"
         },
         "weight": {
           "description": "weight of the shipped products in pounds (estimated until picking time)",
