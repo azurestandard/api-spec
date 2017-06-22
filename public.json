@@ -2704,7 +2704,7 @@
           {
             "name": "inline",
             "in": "query",
-            "description": "for convenience, include a full representation of the inlined property. Currently supports the local \"favorites\", \"next-purchase-arrival\", and \"quantity-on-next-purchase\" as well as \"product\", \"vendors\", and descendants.",
+            "description": "for convenience, include a full representation of the inlined property. Currently supports the local \"favorites\", \"next-purchase-arrival\", and \"quantity-on-next-purchase\" as well as \"image\", \"product\", \"vendors\", and descendants.",
             "required": false,
             "type": "array",
             "items": {
@@ -2774,7 +2774,7 @@
           {
             "name": "inline",
             "in": "query",
-            "description": "for convenience, include a full representation of the inlined property. Currently supports the local \"favorites\", \"next-purchase-arrival\", and \"quantity-on-next-purchase\" as well as \"product\", \"vendors\", and descendants.",
+            "description": "for convenience, include a full representation of the inlined property. Currently supports the local \"favorites\", \"next-purchase-arrival\", and \"quantity-on-next-purchase\" as well as \"image\", \"product\", \"vendors\", and descendants.",
             "required": false,
             "type": "array",
             "items": {
@@ -2792,6 +2792,206 @@
           },
           "default": {
             "description": "unexpected error",
+            "schema": {
+              "$ref": "#/definitions/errorModel"
+            }
+          }
+        }
+      }
+    },
+    "/packaged-product-images": {
+      "get": {
+        "summary": "Returns all packaged product images from the system that the user has access to",
+        "operationId": "findPackagedProductImages",
+        "tags": [
+          "image",
+          "product"
+        ],
+        "parameters": [
+          {
+            "name": "packaged-product",
+            "in": "query",
+            "description": "Packaged product codes to filter by.",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "csv"
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "Maximum number of results to return.",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "start",
+            "in": "query",
+            "description": "Offset to the first result to return.  Use negative numbers to offset from the end of the result list.",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Packaged product image response.",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/PackagedProductImage"
+              }
+            },
+            "headers": {
+              "Count": {
+                "description": "Total number of matching results (how many you'd get if you could set an infinite `limit`).",
+                "type": "integer",
+                "format": "int32",
+                "minimum": 0
+              }
+            }
+          },
+          "default": {
+            "description": "Unexpected error.",
+            "schema": {
+              "$ref": "#/definitions/errorModel"
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Add a packaged product image",
+        "operationId": "addPackagedProductImage",
+        "tags": [
+          "image",
+          "product"
+        ],
+        "parameters": [
+          {
+            "name": "packaged-product-image",
+            "in": "body",
+            "description": "Packaged product image to add.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/packagedProductImage"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Packaged product tag association response.",
+            "schema": {
+              "$ref": "#/definitions/packagedProductImage"
+            }
+          },
+          "default": {
+            "description": "Unexpected error.",
+            "schema": {
+              "$ref": "#/definitions/errorModel"
+            }
+          }
+        }
+      }
+    },
+    "/packaged-product-image/{id}": {
+      "get": {
+        "summary": "Returns a packaged product image based on a single ID, if the user has access to that object",
+        "operationId": "findPackagedProductImageById",
+        "tags": [
+          "image",
+          "product"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of packaged product image to fetch.",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Packaged product image response.",
+            "schema": {
+              "$ref": "#/definitions/packagedProductImage"
+            }
+          },
+          "default": {
+            "description": "Unexpected error.",
+            "schema": {
+              "$ref": "#/definitions/errorModel"
+            }
+          }
+        }
+      },
+      "put": {
+        "summary": "Update a packaged product image",
+        "operationId": "updatePackagedProductImage",
+        "tags": [
+          "image",
+          "product"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of packaged product image to update.",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "packaged-product-image",
+            "in": "body",
+            "description": "Packaged product image to update",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/packagedProductImage"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Packaged product image response.",
+            "schema": {
+              "$ref": "#/definitions/packagedProductImage"
+            }
+          },
+          "default": {
+            "description": "Unexpected error.",
+            "schema": {
+              "$ref": "#/definitions/errorModel"
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete a packaged product image.",
+        "operationId": "deletePackagedProductImage",
+        "tags": [
+          "image",
+          "product"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Packaged product image to delete.",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Delete successful."
+          },
+          "default": {
+            "description": "Unexpected error.",
             "schema": {
               "$ref": "#/definitions/errorModel"
             }
@@ -7053,13 +7253,6 @@
           "type": "integer",
           "format": "int32"
         },
-        "images": {
-          "type": "array",
-          "items": {
-            "description": "URL for a picture of this packaged product.",
-            "type": "string"
-          }
-        },
         "tags": {
           "description": "Mark types for this packaged product.",
           "type": "array",
@@ -7092,6 +7285,34 @@
         "size",
         "price",
         "tags"
+      ]
+    },
+    "packagedProductImage": {
+      "description": "An association between a packaged product and an image.",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "packaged-product": {
+          "description": "Code for the associated packaged product.",
+          "type": "string"
+        },
+        "image": {
+          "description": "File ID for the associated image.",
+          "type": "string"
+        },
+        "order": {
+          "description": "Ordering precedence among other entries associated with this packaged product.  Defaults to zero.",
+          "type": "integer",
+          "format": "int32"
+        }
+      },
+      "required": [
+        "id",
+        "packaged-product",
+        "image"
       ]
     },
     "packagedProductTag": {
