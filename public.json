@@ -6898,54 +6898,54 @@
           "type": "string"
         },
         "gtin13": {
-          "description": "13-digit Global Trade Item Number (https://schema.org/gtin13)",
+          "description": "13-digit Global Trade Item Number (https://schema.org/gtin13).",
           "type": "string"
         },
         "size": {
-          "description": "size of the product (e.g. 12 oz., or 6x12 oz.)",
+          "description": "Size of the product (e.g. 12 oz., or 6x12 oz.).",
           "type": "string"
         },
         "weight": {
           "$ref": "#/definitions/weight"
         },
         "volume": {
-          "description": "volume of this packaged product in cubic feet",
+          "description": "Volume of this packaged product in cubic feet.",
           "type": "number",
           "format": "float"
         },
         "price": {
-          "#ref": "#/definitions/price"
+          "$ref": "#/definitions/price"
         },
         "stock": {
-          "description": "amount of stock available for purchase.  This includes breakdown ancestors.  For example, if we have a single 4 x 6 x 14 oz case in the warehouse, the 4 x 6 x 14 oz packaging will have 1 stock, the 6 x 14 oz packagaging will have 4 stock, and the 14 oz packaging will have 24 stock.",
+          "description": "Amount of stock available for purchase.  This includes breakdown ancestors.  For example, if we have a single 4 x 6 x 14 oz case in the warehouse, the 4 x 6 x 14 oz packaging will have 1 stock, the 6 x 14 oz packagaging will have 4 stock, and the 14 oz packaging will have 24 stock.",
           "type": "integer",
           "format": "int32"
         },
         "favorite": {
-          "description": "if the annotate-person you associated with the request has favorited this packaged product",
+          "description": "If the annotate-person you associated with the request has favorited this packaged product.",
           "type": "boolean"
         },
         "favorites": {
-          "description": "number of people who've marked this packaged product as a favorite",
+          "description": "Number of people who've marked this packaged product as a favorite.",
           "type": "integer",
           "format": "int32"
         },
         "images": {
           "type": "array",
           "items": {
-            "description": "URL for a picture of this packaged product",
+            "description": "URL for a picture of this packaged product.",
             "type": "string"
           }
         },
         "tags": {
-          "description": "Mark types for this packaged product",
+          "description": "Mark types for this packaged product.",
           "type": "array",
           "items": {
             "type": "string"
           }
         },
         "bargain-bin-notes": {
-          "description": "Bargain-bin notes for this packaged product",
+          "description": "Bargain-bin notes for this packaged product.",
           "type": "string"
         },
         "servings-per-container": {
@@ -6953,12 +6953,12 @@
           "type": "string"
         },
         "product": {
-          "description": "the product that this packaging packages",
+          "description": "The product that this packaging packages.",
           "type": "integer",
           "format": "int64"
         },
         "primary-category": {
-          "description": "the id of the primary category for this packaged-product",
+          "description": "The id of the primary category for this packaged product.",
           "type": "integer",
           "format": "int64"
         }
