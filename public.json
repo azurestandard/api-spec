@@ -648,6 +648,7 @@
         "tags": [
           "brand"
         ],
+        "security": [],
         "parameters": [
           {
             "name": "name",
@@ -707,6 +708,7 @@
         "tags": [
           "brand"
         ],
+        "security": [],
         "parameters": [
           {
             "name": "id",
