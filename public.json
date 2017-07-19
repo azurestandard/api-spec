@@ -8451,6 +8451,10 @@
           "description": "Parcel-carrier services selected for the order.",
           "$ref": "#/definitions/orderParcelCarrierServices"
         },
+        "perishable-shipping-warning-accepted": {
+          "description": "If true, the customer has accepted the warning regarding shipping perishable product.",
+          "type": "boolean"
+        },
         "cases-shipped": {
           "description": "Quantity of shipped boxes and bulk stock",
           "$ref": "#/definitions/orderCases"
@@ -8506,6 +8510,10 @@
         "parcel-carrier-services": {
           "description": "Parcel-carrier services selected for the order.",
           "$ref": "#/definitions/orderParcelCarrierServices"
+        },
+        "perishable-shipping-warning-accepted": {
+          "description": "If true, the customer has accepted the warning regarding shipping perishable product.",
+          "type": "boolean"
         },
         "notes": {
           "description": "Additional information about the order, including special instructions for Azure's pickers",
