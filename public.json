@@ -648,7 +648,15 @@
         "tags": [
           "brand"
         ],
+        "security": [],
         "parameters": [
+          {
+            "name": "name",
+            "in": "query",
+            "description": "Only return brands whose name contains this value (case insensitive).",
+            "required": false,
+            "type": "string"
+          },
           {
             "name": "limit",
             "in": "query",
@@ -700,6 +708,7 @@
         "tags": [
           "brand"
         ],
+        "security": [],
         "parameters": [
           {
             "name": "id",
