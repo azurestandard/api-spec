@@ -4249,6 +4249,43 @@
         }
       }
     },
+    "/order/{id}/parcel-carrier-fee-estimates": {
+      "get": {
+        "summary": "Returns all parcel carrier shipping options and their costs for an order ID",
+        "operationId": "listOrderParcelCarrier",
+        "tags": [
+          "order",
+          "parcel-carrier"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of order to retrieve parcel carrier options for.",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Order parcel carrier estimate response.",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/orderParcelCarrierEstimate"
+              }
+            }
+          },
+          "default": {
+            "description": "Unexpected error.",
+            "schema": {
+              "$ref": "#/definitions/errorModel"
+            }
+          }
+        }
+      }
+    },
     "/vendors": {
       "get": {
         "summary": "Returns all vendors from the system that the user has access to",
@@ -7297,8 +7334,27 @@
         "estimated-time"
       ]
     },
+    "shippingService": {
+      "description": "A parcel-carrier service.  The listing below is ordered by carrier and then by increasing duration.",
+      "type": "string",
+      "enum": [
+        "UPS 2nd Day Air",
+        "UPS Ground",
+        "USPS Priority Mail Express",
+        "USPS Priority Mail"
+      ]
+    },
+    "shippingClimate": {
+      "description": "An environment for shipping products.  'all' is a shipping climate for products of all types.  'dry' includes both 'dry' and 'greenhouse' storage environments.  'chilled/frozen' includes both 'chilled' and 'frozen' storage environments.",
+      "type": "string",
+      "enum": [
+        "all",
+        "dry",
+        "chilled/frozen"
+      ]
+    },
     "storage": {
-      "description": "An environment for storing products",
+      "description": "An environment for storing products.  The related to shippingClimate is less detailed, because stock is generally in transit for less time than it is in storage.",
       "type": "string",
       "enum": [
         "dry",
@@ -7874,6 +7930,10 @@
           "description": "parcel-carrier delivery location (unset for truck orders)",
           "$ref": "#/definitions/address"
         },
+        "parcel-carrier-services": {
+          "description": "Parcel-carrier services selected for the order.",
+          "$ref": "#/definitions/orderParcelCarrierServices"
+        },
         "cases-shipped": {
           "description": "Quantity of shipped boxes and bulk stock",
           "$ref": "#/definitions/orderCases"
@@ -7925,6 +7985,10 @@
         "address": {
           "description": "parcel-carrier delivery location (unset for truck orders)",
           "$ref": "#/definitions/address"
+        },
+        "parcel-carrier-services": {
+          "description": "Parcel-carrier services selected for the order.",
+          "$ref": "#/definitions/orderParcelCarrierServices"
         },
         "notes": {
           "description": "Additional information about the order, including special instructions for Azure's pickers",
@@ -8117,6 +8181,14 @@
           "type": "number",
           "format": "float"
         },
+        "climate": {
+          "description": "The shipping climate for order lines that the fee applies to.",
+          "$ref": "#/definitions/shippingClimate"
+        },
+        "shipping-service": {
+          "description": "The shipping service name.",
+          "$ref": "#/definitions/shippingService"
+        },
         "notes": {
           "description": "Additional information about the reason or amount for the fee",
           "type": "string"
@@ -8144,6 +8216,71 @@
           "description": "the `shipping` order fee is the total order-line price over all lines on the order, multiplied by this percentage, and then rounded to the nearest cent.",
           "type": "number",
           "format": "float"
+        }
+      }
+    },
+    "orderParcelCarrierEstimate": {
+      "description": "A parcel carrier shipping estimate for a given order or portion of order.",
+      "type": "object",
+      "properties": {
+        "cost": {
+          "description": "The cost of the shipping service.",
+          "type": "number",
+          "format": "float"
+        },
+        "climate": {
+          "description": "The order-line shipping climate that the estimate was generated for.  For example, an order contains both dry and chilled/frozen lines may have separate estimates for 'all', 'dry', and 'chilled/frozen' climates.",
+          "$ref": "#/definitions/shippingClimate"
+        },
+        "service": {
+          "description": "The parcel carrier service used for this estimate.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/shippingService"
+          }
+        },
+        "expires": {
+          "description": "The date-time when this estimate expires.  Orders placed for this climate/service after that expiration may have a different fee or delivery estimates.",
+          "type": "string",
+          "format": "date-time"
+        },
+        "shipping-date": {
+          "description": "The estimated date when the covered order-lines will ship.",
+          "type": "string",
+          "format": "date"
+        },
+        "earliest-delivery": {
+          "description": "The estimated earliest delivery date (inclusive) for the covered order-lines.",
+          "type": "string",
+          "format": "date"
+        },
+        "latest-delivery": {
+          "description": "The estimated latest delivery date (inclusive) for the covered order-lines.",
+          "type": "string",
+          "format": "date"
+        }
+      },
+      "required": [
+        "cost",
+        "climate",
+        "service"
+      ]
+    },
+    "orderParcelCarrierServices": {
+      "description": "Parcel carrier services selected for an order.",
+      "type": "object",
+      "properties": {
+        "all": {
+          "description": "The shipping service to be used for all order lines.",
+          "$ref": "#/definitions/shippingService"
+        },
+        "dry": {
+          "description": "The shipping service to be used for dry order lines.",
+          "$ref": "#/definitions/shippingService"
+        },
+        "chilled/frozen": {
+          "description": "The shipping service to be used for chilled/frozen order lines.",
+          "$ref": "#/definitions/shippingService"
         }
       }
     },
