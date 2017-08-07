@@ -660,10 +660,20 @@
           {
             "name": "limit",
             "in": "query",
-            "description": "maximum number of results to return",
+            "description": "Maximum number of results to return.",
             "required": false,
-            "type": "integer",
-            "format": "int32"
+            "oneOf": [
+              {
+                "type": "integer",
+                "format": "int32"
+              },
+              {
+                "type": "string",
+                "enum": [
+                  "none"
+                ]
+              }
+            ]
           },
           {
             "name": "start",
@@ -685,7 +695,7 @@
             },
             "headers": {
               "Count": {
-                "description": "total number of matching results (how many you'd get if you could set an infinite `limit`)",
+                "description": "Total number of matching results (how many you'd get if you set `limit` to `none`).",
                 "type": "integer",
                 "format": "int32",
                 "minimum": 0
