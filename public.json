@@ -8614,6 +8614,9 @@
           "description": "Redirect URL for the channel-confirmation UI.  The channel-confirmation notification points customers at {confirmation-base-url}{confirmation-token} to confirm the notification channel.",
           "type": "string",
           "format": "url"
+        },
+        "post-affiliate-pro": {
+          "$ref": "#/definitions/postAffiliatePro"
         }
       },
       "required": [
@@ -8630,6 +8633,28 @@
         "registration",
         "checkout",
         "catalog-request"
+      ]
+    },
+    "postAffiliatePro": {
+      "description": "Business logic around the affiliate program is handled by Beehive.  If Beehive determines the referrer is due credit then this information is passed on to Post Affiliate Pro as a sale.",
+      "type": "object",
+      "properties": {
+        "referrer": {
+          "description": "Post Affiliate Pro referring affiliate code.",
+          "type": "string"
+        },
+        "visitor": {
+          "description": "Post Affiliate Pro visitor id.  This information is opaque to Azure.",
+          "type": "string"
+        },
+        "banner": {
+          "description": "Post Affiliate Pro banner ad id.  This information is opaque to Azure.",
+          "type": "string"
+        }
+      },
+      "required": [
+        "referrer",
+        "visitor"
       ]
     },
     "registrationResponse": {
@@ -8839,6 +8864,18 @@
         "internal-notes": {
           "description": "free-form Markdown notes for any internal information that doesn't fit into an existing field.  Only Azure employees can view or edit this information, although it may be passed into the registerPerson endpoint when registering new people.",
           "type": "string"
+        },
+        "affiliate-code": {
+          "description": "Affiliate code to be used with URL shares.",
+          "type": "string"
+        },
+        "is-allowed-to-be-affiliate": {
+          "description": "Is allowed to be an affiliate.",
+          "type": "boolean"
+        },
+        "accepted-affiliate-terms": {
+          "description": "Has accepted the affiliate terms of service.  This can only be set to true if is-allowed-to-be-affiliate value is true.",
+          "type": "boolean"
         }
       },
       "required": [
@@ -8876,6 +8913,18 @@
         },
         "notifications": {
           "$ref": "#/definitions/personNotifications"
+        },
+        "affiliate-code": {
+          "description": "Affiliate code to be used with URL shares.  Only users with the update-person permission can edit this information.",
+          "type": "string"
+        },
+        "is-allowed-to-be-affiliate": {
+          "description": "Is allowed to be an affiliate.  Only users with the update-person permission can edit this information.",
+          "type": "boolean"
+        },
+        "accepted-affiliate-terms": {
+          "description": "Has accepted the affiliate terms of service.  This can only be set to true if the is-allowed-to-be-affiliate value is true.",
+          "type": "boolean"
         }
       }
     },
