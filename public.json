@@ -5159,39 +5159,6 @@
         ],
         "responses": {
           "200": {
-            "description": "Email response.  An email with a confirmation URL will be mailed to the address, and new emails will be unconfirmed until the token is submitted via emailConfirmation.",
-            "schema": {
-              "$ref": "#/definitions/updatedEmail"
-            }
-          },
-          "default": {
-            "description": "Unexpected error.",
-            "schema": {
-              "$ref": "#/definitions/errorModel"
-            }
-          }
-        }
-      }
-    },
-    "/emails/confirm": {
-      "post": {
-        "summary": "Complete an in-progress email confirmation.",
-        "operationId": "emailConfirmation",
-        "tags": [
-          "email"
-        ],
-        "security": [],
-        "parameters": [
-          {
-            "name": "token",
-            "in": "body",
-            "description": "The confirmation token from addEmail or updateEmail.",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
             "description": "Email response.",
             "schema": {
               "$ref": "#/definitions/email"
@@ -5265,9 +5232,9 @@
         ],
         "responses": {
           "200": {
-            "description": "Email response.  If the address changed or the email had an earlier error, an email with a confirmation URL will be mailed to the address.  Changed addresses will be unconfirmed until the token is submitted via emailConfirmation.",
+            "description": "Email response.",
             "schema": {
-              "$ref": "#/definitions/updatedEmail"
+              "$ref": "#/definitions/email"
             }
           },
           "default": {
@@ -5297,45 +5264,6 @@
         "responses": {
           "204": {
             "description": "Delete successful."
-          },
-          "default": {
-            "description": "Unexpected error.",
-            "schema": {
-              "$ref": "#/definitions/errorModel"
-            }
-          }
-        }
-      }
-    },
-    "/email/{id}/resend": {
-      "post": {
-        "summary": "Resend the confirmation email to the user.",
-        "operationId": "resendEmailConfirmation",
-        "tags": [
-          "email"
-        ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "description": "ID of email whose confirmation will be re-sent.",
-            "required": true,
-            "type": "integer",
-            "format": "int64"
-          },
-          {
-            "name": "resend",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/resendConfirmationEmail"
-            }
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "Confirmation email re-sent",
-            "schema": {}
           },
           "default": {
             "description": "Unexpected error.",
@@ -5658,7 +5586,7 @@
     "/registration/register": {
       "post": {
         "summary": "Register a new person",
-        "description": "When the user provides an email address, check for existing accounts which use that email address.\n\n* If an inactive account using the email address is found, send an inactive-member email pointing the user at customer service.  Do not authenticate the user.\n\n* If an active account using the email address is found, send an active-member email with an authenticating URL with an authentication token.  Following that URL will (possibly indirectly) send the token to this API's login endpoint to authenticate the bearer.\n\n* If no account using that email address is found, create a new account and immediately authenticate the user.  If they provided an email address or SMS number, potentially send a welcome-aboard notification.  Any email address will remain unconfirmed until the user completes a confirmation cycle.",
+        "description": "When the user provides an email address, check for existing accounts which use that email address.\n\n* If an inactive account using the email address is found, send an inactive-member email pointing the user at customer service.  Do not authenticate the user.\n\n* If an active account using the email address is found, send an active-member email with an authenticating URL with an authentication token.  Following that URL will (possibly indirectly) send the token to this API's login endpoint to authenticate the bearer.\n\n* If no account using that email address is found, create a new account and immediately authenticate the user.  If they provided an email address or SMS number, potentially send a welcome-aboard notification.",
         "operationsId": "registerPerson",
         "tags": [
           "registration"
@@ -5703,8 +5631,8 @@
     },
     "/registration/resend": {
       "post": {
-        "summary": "Resend the confirmation email to the user",
-        "operationId": "resendRegistrationEmail",
+        "summary": "Resend the registration notification to the user.",
+        "operationId": "resendRegistrationNotification",
         "tags": [
           "registration"
         ],
@@ -5714,13 +5642,13 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/resendRegistrationEmail"
+              "$ref": "#/definitions/resendRegistrationNotification"
             }
           }
         ],
         "responses": {
           "204": {
-            "description": "Confirmation email re-sent",
+            "description": "Registration email re-sent",
             "schema": {}
           },
           "default": {
@@ -8632,11 +8560,6 @@
           "type": "string",
           "format": "url"
         },
-        "confirmation-base-url": {
-          "description": "Redirect URL for the channel-confirmation UI.  The channel-confirmation notification points customers at {confirmation-base-url}{confirmation-token} to confirm the notification channel.",
-          "type": "string",
-          "format": "url"
-        },
         "post-affiliate-pro": {
           "$ref": "#/definitions/postAffiliatePro"
         }
@@ -8644,8 +8567,7 @@
       "required": [
         "person",
         "email",
-        "authentication-base-url",
-        "confirmation-base-url"
+        "authentication-base-url"
       ]
     },
     "registrationContext": {
@@ -8691,7 +8613,7 @@
           "type": "string"
         },
         "resend-token": {
-          "description": "Resend token.  Can be sent to resendRegistrationEmail to trigger a new registration notification.",
+          "description": "Resend token.  Can be sent to resendRegistrationNotification to trigger a new registration notification.",
           "type": "string"
         },
         "required": [
@@ -8700,8 +8622,8 @@
         ]
       }
     },
-    "resendRegistrationEmail": {
-      "description": "A request for another registration email",
+    "resendRegistrationNotification": {
+      "description": "A request for another registration notification.",
       "type": "object",
       "properties": {
         "context": {
@@ -8712,11 +8634,6 @@
           "type": "string",
           "format": "url"
         },
-        "confirmation-base-url": {
-          "description": "Redirect URL for the channel-confirmation UI.  The channel-confirmation notification points customers at {confirmation-base-url}{confirmation-token} to confirm the notification channel.",
-          "type": "string",
-          "format": "url"
-        },
         "token": {
           "description": "The registrant's resend token.",
           "type": "string"
@@ -8724,7 +8641,6 @@
       },
       "required": [
         "authentication-base-url",
-        "confirmation-base-url",
         "token"
       ]
     },
@@ -9165,7 +9081,7 @@
           "format": "int64"
         },
         "error": {
-          "description": "Reason for not using this address (e.g. \"unconfirmed\", \"email bounced on 2016-08-15\").",
+          "description": "Reason for not using this address (e.g. \"email bounced on 2016-08-15\").",
           "type": "string"
         },
         "preference": {
@@ -9184,24 +9100,8 @@
       "description": "A request for adding or updating an email address with the logged in user's password",
       "type": "object",
       "properties": {
-        "base-url": {
-          "description": "Redirect URL for the confirmation UI.  The confirmation email points customers at {base-url}{confirmation-token} to confirm their registration.  Required if address is changing; optional if address is not changing.",
-          "type": "string",
-          "format": "url"
-        },
-        "address": {
-          "type": "string",
-          "format": "email"
-        },
-        "person": {
-          "description": "Person associated with this email.",
-          "type": "integer",
-          "format": "int64"
-        },
-        "preference": {
-          "description": "Ordering precedence for the findEmails.",
-          "type": "integer",
-          "format": "int32"
+        "email": {
+          "$ref": "#/definitions/email"
         },
         "user-password": {
           "description": "The authenticated person's password.",
@@ -9209,43 +9109,8 @@
         }
       },
       "required": [
-        "address",
-        "person",
+        "email",
         "user-password"
-      ]
-    },
-    "updatedEmail": {
-      "description": "An updated (but unconfirmed) email response.",
-      "type": "object",
-      "properties": {
-        "token": {
-          "description": "Resend token for resendEmailConfirmation (not the same as the confirmation token emailed to the user, which is for emailConfirmation).  Unset if a confirmation email was not set (more details on this in updateEmail).",
-          "type": "string"
-        },
-        "email": {
-          "$ref": "#/definitions/email"
-        }
-      },
-      "required": [
-        "email"
-      ]
-    },
-    "resendConfirmationEmail": {
-      "description": "A request for another confirmation email",
-      "type": "object",
-      "properties": {
-        "base-url": {
-          "description": "Redirect URL for the confirmation UI.  The confirmation email points customers at {base-url}{confirmation-token} to confirm their email address.",
-          "type": "string",
-          "format": "url"
-        },
-        "token": {
-          "description": "The customer's resend token.  If token is unset, the request must be authenticated with basic auth or a session cookie.",
-          "type": "string"
-        }
-      },
-      "required": [
-        "base-url"
       ]
     },
     "favorite": {
