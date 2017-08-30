@@ -7338,6 +7338,14 @@
           "description": "Size of the product (e.g. 12 oz., or 6x12 oz.).",
           "type": "string"
         },
+        "packs": {
+          "description": "Package organization (e.g. \"4\", \"4x32.5\", or \"2x4x32.5\")",
+          "type": "string"
+        },
+        "unit": {
+          "description": "Unit of measurement (\"ounce\", \"liter\", etc.)",
+          "type": "string"
+        },
         "weight": {
           "$ref": "#/definitions/weight"
         },
