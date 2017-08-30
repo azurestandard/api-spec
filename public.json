@@ -745,6 +745,146 @@
         }
       }
     },
+    "/company-directory": {
+      "get": {
+        "summary": "Search company directory",
+        "operationId": "findCompanyDirectoryEntries",
+        "tags": [
+          "company-directory"
+        ],
+        "parameters": [
+          {
+            "name": "query",
+            "in": "query",
+            "description": "Query to perform within the directory.  The use of a `*` at the beginning or end of the string is treated as a wildcard.  This parameter is case insensitive.",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "query-field",
+            "in": "query",
+            "description": "Fields to search.  Any property included in a companyDirectoryEntry response may be queried.  Defaults to `full-name`, `first-name`, `last-name`, `title`, `department.name`, `phone-number`, `phone-ext`, `mobile`, `email`, and `office`.",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "csv"
+          },
+          {
+            "name": "department",
+            "in": "query",
+            "description": "Filter by department.  If this parameter is used then department will be ignored in the query-field parameter.  This parameter is case insensitive.",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "sort",
+            "in": "query",
+            "description": "Order results by this field.  Any property included in a companyDirectoryEntry response may be used here.  Defaults to `department.name`, `first-name` and `last-name`.",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "csv"
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "maximum number of results to return",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "start",
+            "in": "query",
+            "description": "offset to the first result to return.  Use negative numbers to offset from the end of the result list.",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "companyDirectoryEntry response",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/companyDirectoryEntry"
+              }
+            },
+            "headers": {
+              "Count": {
+                "description": "Total number of matching results (how many you'd get if you could set an infinite `limit`)",
+                "type": "integer",
+                "format": "int32",
+                "minimum": 0
+              }
+            }
+          },
+          "default": {
+            "description": "Unexpected error.",
+            "schema": {
+              "$ref": "#/definitions/errorModel"
+            }
+          }
+        }
+      }
+    },
+    "/company-directory-departments": {
+      "get": {
+        "summary": "Returns all departments in the company directory",
+        "operationId": "findDepartments",
+        "tags": [
+          "company-directory"
+        ],
+        "parameters": [
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "Maximum number of results to return.",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "start",
+            "in": "query",
+            "description": "Offset to the first result to return.  Use negative numbers to offset from the end of the result list.",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Department response",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/department"
+              }
+            },
+            "headers": {
+              "Count": {
+                "description": "Total number of matching results (how many you'd get if you could set an infinite `limit`)",
+                "type": "integer",
+                "format": "int32",
+                "minimum": 0
+              }
+            }
+          },
+          "default": {
+            "description": "Unexpected error.",
+            "schema": {
+              "$ref": "#/definitions/errorModel"
+            }
+          }
+        }
+      }
+    },
     "/drops": {
       "get": {
         "summary": "Returns all drops from the system that the user has access to",
@@ -6503,6 +6643,70 @@
         "host",
         "printer",
         "template"
+      ]
+    },
+    "companyDirectoryEntry": {
+      "description": "a company directory entry",
+      "type": "object",
+      "properties": {
+        "full-name": {
+          "type": "string"
+        },
+        "first-name": {
+          "type": "string"
+        },
+        "last-name": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "department": {
+          "$ref": "#/definitions/department"
+        },
+        "office": {
+          "type": "string"
+        },
+        "phone-number": {
+          "type": "string"
+        },
+        "phone-ext": {
+          "type": "string"
+        },
+        "mobile": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "city": {
+          "type": "string"
+        },
+        "state": {
+          "type": "string"
+        },
+        "zip": {
+          "type": "string"
+        },
+        "street": {
+          "type": "string"
+        }
+      }
+    },
+    "department": {
+      "description": "An Azure department.",
+      "type": "object",
+      "properties": {
+        "name": {
+          "description": "Name of the department.",
+          "type": "string"
+        }
+      },
+      "required": [
+        "name"
       ]
     },
     "drop": {
