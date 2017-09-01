@@ -7928,6 +7928,10 @@
           "description": "A word or two naming the category.  A shortened version of the full name that drops any words already contained in the category's ancestors' short names.  This will be used in places where the ancestor short names are in close proximity (e.g. URL slugs) to avoid having the same word many times.",
           "type": "string"
         },
+        "description": {
+          "description": "A sentence or two with a stand-alone category description.  When this is unset, the nearest ancestor description is a reasonable fallback.",
+          "type": "string"
+        },
         "image": {
           "description": "A picture of this category.  When set for a fetched category, the value will be a URL.  When set for an uploaded category, file IDs and media URLs can be used interchangeably.",
           "type": "string"
