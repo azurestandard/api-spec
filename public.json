@@ -885,6 +885,298 @@
         }
       }
     },
+    "/reports": {
+      "get": {
+        "summary": "Returns all reports from the system that the user has access to",
+        "operationId": "findReports",
+        "tags": [
+          "report"
+        ],
+        "parameters": [
+          {
+            "name": "query",
+            "in": "query",
+            "description": "Query terms to filter by (currently searches `name` only).",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "category",
+            "in": "query",
+            "description": "Report category IDs to filter by.  `null` may be used to return reports that are uncategorized.",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "collectionFormat": "csv"
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "maximum number of results to return",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "start",
+            "in": "query",
+            "description": "offset to the first result to return.  Use negative numbers to offset from the end of the result list.",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "report response",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/report"
+              }
+            },
+            "headers": {
+              "Count": {
+                "description": "total number of matching results (how many you'd get if you could set an infinite `limit`)",
+                "type": "integer",
+                "format": "int32",
+                "minimum": 0
+              }
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "schema": {
+              "$ref": "#/definitions/errorModel"
+            }
+          }
+        }
+      }
+    },
+    "/report/{id}": {
+      "get": {
+        "summary": "Returns a report based on an ID, if the user has access to it",
+        "operationId": "findReportById",
+        "tags": [
+          "report"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of report to fetch",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "report response",
+            "schema": {
+              "$ref": "#/definitions/report"
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "schema": {
+              "$ref": "#/definitions/errorModel"
+            }
+          }
+        }
+      }
+    },
+    "/report-categories": {
+      "get": {
+        "summary": "Returns all report categories from the system that the user has access to",
+        "operationId": "findReportCategories",
+        "tags": [
+          "report"
+        ],
+        "parameters": [
+          {
+            "name": "customer-pricing",
+            "in": "query",
+            "description": "Filter categories by whether or not they contain customer pricing groups",
+            "required": false,
+            "type": "boolean"
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "maximum number of results to return",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "start",
+            "in": "query",
+            "description": "offset to the first result to return.  Use negative numbers to offset from the end of the result list.",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "reportCategory response",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/reportCategory"
+              }
+            },
+            "headers": {
+              "Count": {
+                "description": "total number of matching results (how many you'd get if you could set an infinite `limit`)",
+                "type": "integer",
+                "format": "int32",
+                "minimum": 0
+              }
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "schema": {
+              "$ref": "#/definitions/errorModel"
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Create a new report category",
+        "operationId": "addReportCategory",
+        "tags": [
+          "report"
+        ],
+        "parameters": [
+          {
+            "name": "report-category",
+            "in": "body",
+            "description": "report category to add",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/reportCategory"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "report category response",
+            "schema": {
+              "$ref": "#/definitions/reportCategory"
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "schema": {
+              "$ref": "#/definitions/errorModel"
+            }
+          }
+        }
+      }
+    },
+    "/report-category/{id}": {
+      "get": {
+        "summary": "Returns a report category based on an ID, if the user has access to it",
+        "operationId": "findReportCategoryById",
+        "tags": [
+          "report"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of report category to fetch",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "report category response",
+            "schema": {
+              "$ref": "#/definitions/reportCategory"
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "schema": {
+              "$ref": "#/definitions/errorModel"
+            }
+          }
+        }
+      },
+      "put": {
+        "summary": "Update an existing report category",
+        "operationId": "updateReportCategory",
+        "tags": [
+          "report"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of report category to update",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "report-category",
+            "in": "body",
+            "description": "Updated report category parameters",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/reportCategory"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "reportCategory response",
+            "schema": {
+              "$ref": "#/definitions/reportCategory"
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "schema": {
+              "$ref": "#/definitions/errorModel"
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete an existing report category",
+        "operationId": "deleteReportCategory",
+        "tags": [
+          "report"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of report category to delete",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "delete successful"
+          },
+          "default": {
+            "description": "unexpected error",
+            "schema": {
+              "$ref": "#/definitions/errorModel"
+            }
+          }
+        }
+      }
+    },
     "/drops": {
       "get": {
         "summary": "Returns all drops from the system that the user has access to",
@@ -6707,6 +6999,51 @@
       },
       "required": [
         "name"
+      ]
+    },
+    "report": {
+      "description": "A report.",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "name": {
+          "description": "The name of the report.",
+          "type": "string"
+        },
+        "category": {
+          "description": "The ID of the report category the report is in.",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "name"
+      ]
+    },
+    "reportCategory": {
+      "description": "A report category.",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "name": {
+          "description": "The category name.",
+          "type": "string"
+        },
+        "customer-pricing": {
+          "description": "Whether or not reports in this category are customer pricing groups (for use in the pricing module).",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "customer-pricing"
       ]
     },
     "drop": {
