@@ -8605,6 +8605,10 @@
           "description": "packaged product code that is being ordered",
           "type": "string"
         },
+        "name": {
+          "description": "most order lines are for packaged products, but Azure sometimes bills for less concrete items like catalog ads.  This field holds a brief description of the line, and should be used for invoices instead of following packaged-product (which may not be set).",
+          "type": "string"
+        },
         "quantity-ordered": {
           "description": "number of product instances requested",
           "type": "integer",
