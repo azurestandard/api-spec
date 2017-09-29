@@ -8031,6 +8031,10 @@
           "description": "sentence-length product name",
           "type": "string"
         },
+        "seo-name": {
+          "description": "An SEO-optimized name.  A lengthened version of the full name that includes additional keywords or rephrasing, suitable for use in a title tag.  When this is unset, the name is a reasonable fallback.",
+          "type": "string"
+        },
         "short-description": {
           "description": "paragraph-length, stand-alone, plain-text product description",
           "type": "string"
