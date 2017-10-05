@@ -5729,7 +5729,7 @@
           {
             "name": "inline",
             "in": "query",
-            "description": "for convenience, include additional information.  Currently supports \"email\" as described in the email model.",
+            "description": "for convenience, include additional information.  Currently supports \"email\" as described in the email model and \"order-place-issue\".",
             "required": false,
             "type": "array",
             "items": {
@@ -5800,7 +5800,7 @@
           {
             "name": "inline",
             "in": "query",
-            "description": "for convenience, include additional information.  Currently supports \"email\" as described in the email model.",
+            "description": "for convenience, include additional information.  Currently supports \"email\" as described in the email model and \"order-place-issue\".",
             "required": false,
             "type": "array",
             "items": {
@@ -5871,6 +5871,19 @@
         "operationId": "findPersonByAuth",
         "tags": [
           "person"
+        ],
+        "parameters": [
+          {
+            "name": "inline",
+            "in": "query",
+            "description": "for convenience, include additional information.  Currently supports \"email\" as described in the email model and \"order-place-issue\".",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "csv"
+          }
         ],
         "responses": {
           "200": {
@@ -9373,6 +9386,15 @@
           "items": {
             "$ref": "#/definitions/permission"
           }
+        },
+        "order-place-issue": {
+          "description": "If the person should be warned or blocked from placing orders, this property will be set with a slugged reason and recommended action.",
+          "type": "string",
+          "enum": [
+            "outstanding-balance-contact",
+            "outstanding-balance-pay",
+            "outstanding-balance-warn"
+          ]
         },
         "internal-notes": {
           "description": "free-form Markdown notes for any internal information that doesn't fit into an existing field.  Only Azure employees can view or edit this information, although it may be passed into the registerPerson endpoint when registering new people.",
