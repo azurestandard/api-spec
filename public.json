@@ -91,7 +91,7 @@
           "default": {
             "description": "unexpected error",
             "schema": {
-              "$ref": "#/definitions/errorModel"
+              "$ref": "#/definitions/error"
             }
           }
         }
@@ -123,7 +123,7 @@
           "default": {
             "description": "unexpected error",
             "schema": {
-              "$ref": "#/definitions/errorModel"
+              "$ref": "#/definitions/error"
             }
           }
         }
@@ -155,7 +155,7 @@
           "default": {
             "description": "unexpected error",
             "schema": {
-              "$ref": "#/definitions/errorModel"
+              "$ref": "#/definitions/error"
             }
           }
         }
@@ -194,7 +194,7 @@
           "default": {
             "description": "unexpected error",
             "schema": {
-              "$ref": "#/definitions/errorModel"
+              "$ref": "#/definitions/error"
             }
           }
         }
@@ -221,7 +221,7 @@
           "default": {
             "description": "unexpected error",
             "schema": {
-              "$ref": "#/definitions/errorModel"
+              "$ref": "#/definitions/error"
             }
           }
         }
@@ -273,7 +273,7 @@
           "default": {
             "description": "unexpected error",
             "schema": {
-              "$ref": "#/definitions/errorModel"
+              "$ref": "#/definitions/error"
             }
           }
         }
@@ -305,7 +305,7 @@
           "default": {
             "description": "unexpected error",
             "schema": {
-              "$ref": "#/definitions/errorModel"
+              "$ref": "#/definitions/error"
             }
           }
         }
@@ -338,7 +338,7 @@
           "default": {
             "description": "unexpected error",
             "schema": {
-              "$ref": "#/definitions/errorModel"
+              "$ref": "#/definitions/error"
             }
           }
         }
@@ -378,7 +378,7 @@
           "default": {
             "description": "unexpected error",
             "schema": {
-              "$ref": "#/definitions/errorModel"
+              "$ref": "#/definitions/error"
             }
           }
         }
@@ -406,7 +406,7 @@
           "default": {
             "description": "unexpected error",
             "schema": {
-              "$ref": "#/definitions/errorModel"
+              "$ref": "#/definitions/error"
             }
           }
         }
@@ -458,7 +458,7 @@
           "default": {
             "description": "unexpected error",
             "schema": {
-              "$ref": "#/definitions/errorModel"
+              "$ref": "#/definitions/error"
             }
           }
         }
@@ -490,7 +490,7 @@
           "default": {
             "description": "unexpected error",
             "schema": {
-              "$ref": "#/definitions/errorModel"
+              "$ref": "#/definitions/error"
             }
           }
         }
@@ -523,7 +523,7 @@
           "default": {
             "description": "unexpected error",
             "schema": {
-              "$ref": "#/definitions/errorModel"
+              "$ref": "#/definitions/error"
             }
           }
         }
@@ -563,7 +563,7 @@
           "default": {
             "description": "unexpected error",
             "schema": {
-              "$ref": "#/definitions/errorModel"
+              "$ref": "#/definitions/error"
             }
           }
         }
@@ -591,7 +591,7 @@
           "default": {
             "description": "unexpected error",
             "schema": {
-              "$ref": "#/definitions/errorModel"
+              "$ref": "#/definitions/error"
             }
           }
         }
@@ -636,7 +636,7 @@
         "default": {
           "description": "unexpected error",
           "schema": {
-            "$ref": "#/definitions/errorModel"
+            "$ref": "#/definitions/error"
           }
         }
       }
@@ -705,7 +705,7 @@
           "default": {
             "description": "unexpected error",
             "schema": {
-              "$ref": "#/definitions/errorModel"
+              "$ref": "#/definitions/error"
             }
           }
         }
@@ -739,7 +739,7 @@
           "default": {
             "description": "unexpected error",
             "schema": {
-              "$ref": "#/definitions/errorModel"
+              "$ref": "#/definitions/error"
             }
           }
         }
@@ -827,7 +827,7 @@
           "default": {
             "description": "Unexpected error.",
             "schema": {
-              "$ref": "#/definitions/errorModel"
+              "$ref": "#/definitions/error"
             }
           }
         }
@@ -879,7 +879,7 @@
           "default": {
             "description": "Unexpected error.",
             "schema": {
-              "$ref": "#/definitions/errorModel"
+              "$ref": "#/definitions/error"
             }
           }
         }
@@ -950,7 +950,7 @@
           "default": {
             "description": "unexpected error",
             "schema": {
-              "$ref": "#/definitions/errorModel"
+              "$ref": "#/definitions/error"
             }
           }
         }
@@ -982,7 +982,7 @@
           "default": {
             "description": "unexpected error",
             "schema": {
-              "$ref": "#/definitions/errorModel"
+              "$ref": "#/definitions/error"
             }
           }
         }
@@ -1041,7 +1041,7 @@
           "default": {
             "description": "unexpected error",
             "schema": {
-              "$ref": "#/definitions/errorModel"
+              "$ref": "#/definitions/error"
             }
           }
         }
@@ -1073,7 +1073,7 @@
           "default": {
             "description": "unexpected error",
             "schema": {
-              "$ref": "#/definitions/errorModel"
+              "$ref": "#/definitions/error"
             }
           }
         }
@@ -1105,7 +1105,7 @@
           "default": {
             "description": "unexpected error",
             "schema": {
-              "$ref": "#/definitions/errorModel"
+              "$ref": "#/definitions/error"
             }
           }
         }
@@ -1144,7 +1144,7 @@
           "default": {
             "description": "unexpected error",
             "schema": {
-              "$ref": "#/definitions/errorModel"
+              "$ref": "#/definitions/error"
             }
           }
         }
@@ -1171,7 +1171,7 @@
           "default": {
             "description": "unexpected error",
             "schema": {
-              "$ref": "#/definitions/errorModel"
+              "$ref": "#/definitions/error"
             }
           }
         }
@@ -1270,7 +1270,7 @@
           "default": {
             "description": "unexpected error",
             "schema": {
-              "$ref": "#/definitions/errorModel"
+              "$ref": "#/definitions/error"
             }
           }
         }
@@ -1302,7 +1302,7 @@
           "default": {
             "description": "unexpected error",
             "schema": {
-              "$ref": "#/definitions/errorModel"
+              "$ref": "#/definitions/error"
             }
           }
         }
@@ -1335,7 +1335,7 @@
           "default": {
             "description": "unexpected error",
             "schema": {
-              "$ref": "#/definitions/errorModel"
+              "$ref": "#/definitions/error"
             }
           }
         }
@@ -1375,7 +1375,7 @@
           "default": {
             "description": "unexpected error",
             "schema": {
-              "$ref": "#/definitions/errorModel"
+              "$ref": "#/definitions/error"
             }
           }
         }
@@ -1403,7 +1403,7 @@
           "default": {
             "description": "unexpected error",
             "schema": {
-              "$ref": "#/definitions/errorModel"
+              "$ref": "#/definitions/error"
             }
           }
         }
@@ -1430,7 +1430,7 @@
           "default": {
             "description": "unexpected error",
             "schema": {
-              "$ref": "#/definitions/errorModel"
+              "$ref": "#/definitions/error"
             }
           }
         }
@@ -1536,7 +1536,7 @@
           "default": {
             "description": "unexpected error",
             "schema": {
-              "$ref": "#/definitions/errorModel"
+              "$ref": "#/definitions/error"
             }
           }
         }
@@ -1568,7 +1568,7 @@
           "default": {
             "description": "unexpected error",
             "schema": {
-              "$ref": "#/definitions/errorModel"
+              "$ref": "#/definitions/error"
             }
           }
         }
@@ -1612,7 +1612,7 @@
           "default": {
             "description": "unexpected error",
             "schema": {
-              "$ref": "#/definitions/errorModel"
+              "$ref": "#/definitions/error"
             }
           }
         }
@@ -1652,7 +1652,7 @@
           "default": {
             "description": "unexpected error",
             "schema": {
-              "$ref": "#/definitions/errorModel"
+              "$ref": "#/definitions/error"
             }
           }
         }
@@ -1680,7 +1680,7 @@
           "default": {
             "description": "unexpected error",
             "schema": {
-              "$ref": "#/definitions/errorModel"
+              "$ref": "#/definitions/error"
             }
           }
         }
@@ -1732,7 +1732,7 @@
           "default": {
             "description": "Unexpected error.",
             "schema": {
-              "$ref": "#/definitions/errorModel"
+              "$ref": "#/definitions/error"
             }
           }
         }
@@ -1761,7 +1761,7 @@
           "default": {
             "description": "Unexpected error.",
             "schema": {
-              "$ref": "#/definitions/errorModel"
+              "$ref": "#/definitions/error"
             }
           }
         }
@@ -1790,7 +1790,7 @@
           "default": {
             "description": "Unexpected error.",
             "schema": {
-              "$ref": "#/definitions/errorModel"
+              "$ref": "#/definitions/error"
             }
           }
         }
@@ -1884,7 +1884,7 @@
           "default": {
             "description": "unexpected error",
             "schema": {
-              "$ref": "#/definitions/errorModel"
+              "$ref": "#/definitions/error"
             }
           }
         }
@@ -1917,7 +1917,7 @@
           "default": {
             "description": "unexpected error",
             "schema": {
-              "$ref": "#/definitions/errorModel"
+              "$ref": "#/definitions/error"
             }
           }
         }
@@ -1981,7 +1981,7 @@
           "default": {
             "description": "unexpected error",
             "schema": {
-              "$ref": "#/definitions/errorModel"
+              "$ref": "#/definitions/error"
             }
           }
         }
@@ -2013,7 +2013,7 @@
           "default": {
             "description": "unexpected error",
             "schema": {
-              "$ref": "#/definitions/errorModel"
+              "$ref": "#/definitions/error"
             }
           }
         }
@@ -2045,7 +2045,7 @@
           "default": {
             "description": "unexpected error",
             "schema": {
-              "$ref": "#/definitions/errorModel"
+              "$ref": "#/definitions/error"
             }
           }
         }
@@ -2084,7 +2084,7 @@
           "default": {
             "description": "unexpected error",
             "schema": {
-              "$ref": "#/definitions/errorModel"
+              "$ref": "#/definitions/error"
             }
           }
         }
@@ -2111,7 +2111,7 @@
           "default": {
             "description": "unexpected error",
             "schema": {
-              "$ref": "#/definitions/errorModel"
+              "$ref": "#/definitions/error"
             }
           }
         }
@@ -2222,7 +2222,7 @@
           "default": {
             "description": "unexpected error",
             "schema": {
-              "$ref": "#/definitions/errorModel"
+              "$ref": "#/definitions/error"
             }
           }
         }
@@ -2254,7 +2254,7 @@
           "default": {
             "description": "unexpected error",
             "schema": {
-              "$ref": "#/definitions/errorModel"
+              "$ref": "#/definitions/error"
             }
           }
         }
@@ -2287,7 +2287,7 @@
           "default": {
             "description": "unexpected error",
             "schema": {
-              "$ref": "#/definitions/errorModel"
+              "$ref": "#/definitions/error"
             }
           }
         }
@@ -2327,7 +2327,7 @@
           "default": {
             "description": "unexpected error",
             "schema": {
-              "$ref": "#/definitions/errorModel"
+              "$ref": "#/definitions/error"
             }
           }
         }
@@ -2355,7 +2355,7 @@
           "default": {
             "description": "unexpected error",
             "schema": {
-              "$ref": "#/definitions/errorModel"
+              "$ref": "#/definitions/error"
             }
           }
         }
@@ -2431,7 +2431,7 @@
           "default": {
             "description": "unexpected error",
             "schema": {
-              "$ref": "#/definitions/errorModel"
+              "$ref": "#/definitions/error"
             }
           }
         }
@@ -2464,7 +2464,7 @@
           "default": {
             "description": "unexpected error",
             "schema": {
-              "$ref": "#/definitions/errorModel"
+              "$ref": "#/definitions/error"
             }
           }
         }
@@ -2587,7 +2587,7 @@
           "default": {
             "description": "unexpected error",
             "schema": {
-              "$ref": "#/definitions/errorModel"
+              "$ref": "#/definitions/error"
             }
           }
         }
@@ -2626,7 +2626,7 @@
           "default": {
             "description": "unexpected error",
             "schema": {
-              "$ref": "#/definitions/errorModel"
+              "$ref": "#/definitions/error"
             }
           }
         }
@@ -2659,7 +2659,7 @@
           "default": {
             "description": "unexpected error",
             "schema": {
-              "$ref": "#/definitions/errorModel"
+              "$ref": "#/definitions/error"
             }
           }
         }
@@ -2713,7 +2713,7 @@
           "default": {
             "description": "unexpected error",
             "schema": {
-              "$ref": "#/definitions/errorModel"
+              "$ref": "#/definitions/error"
             }
           }
         }
@@ -2748,7 +2748,7 @@
           "default": {
             "description": "unexpected error",
             "schema": {
-              "$ref": "#/definitions/errorModel"
+              "$ref": "#/definitions/error"
             }
           }
         }
@@ -2822,7 +2822,7 @@
           "default": {
             "description": "unexpected error",
             "schema": {
-              "$ref": "#/definitions/errorModel"
+              "$ref": "#/definitions/error"
             }
           }
         }
@@ -2862,7 +2862,7 @@
           "default": {
             "description": "unexpected error",
             "schema": {
-              "$ref": "#/definitions/errorModel"
+              "$ref": "#/definitions/error"
             }
           }
         }
@@ -2905,7 +2905,7 @@
           "default": {
             "description": "unexpected error",
             "schema": {
-              "$ref": "#/definitions/errorModel"
+              "$ref": "#/definitions/error"
             }
           }
         }
@@ -3077,7 +3077,7 @@
           "default": {
             "description": "unexpected error",
             "schema": {
-              "$ref": "#/definitions/errorModel"
+              "$ref": "#/definitions/error"
             }
           }
         }
@@ -3120,7 +3120,7 @@
           "default": {
             "description": "unexpected error",
             "schema": {
-              "$ref": "#/definitions/errorModel"
+              "$ref": "#/definitions/error"
             }
           }
         }
@@ -3286,7 +3286,7 @@
           "default": {
             "description": "unexpected error",
             "schema": {
-              "$ref": "#/definitions/errorModel"
+              "$ref": "#/definitions/error"
             }
           }
         }
@@ -3329,7 +3329,7 @@
           "default": {
             "description": "unexpected error",
             "schema": {
-              "$ref": "#/definitions/errorModel"
+              "$ref": "#/definitions/error"
             }
           }
         }
@@ -3393,7 +3393,7 @@
           "default": {
             "description": "Unexpected error.",
             "schema": {
-              "$ref": "#/definitions/errorModel"
+              "$ref": "#/definitions/error"
             }
           }
         }
@@ -3426,7 +3426,7 @@
           "default": {
             "description": "Unexpected error.",
             "schema": {
-              "$ref": "#/definitions/errorModel"
+              "$ref": "#/definitions/error"
             }
           }
         }
@@ -3459,7 +3459,7 @@
           "default": {
             "description": "Unexpected error.",
             "schema": {
-              "$ref": "#/definitions/errorModel"
+              "$ref": "#/definitions/error"
             }
           }
         }
@@ -3500,7 +3500,7 @@
           "default": {
             "description": "Unexpected error.",
             "schema": {
-              "$ref": "#/definitions/errorModel"
+              "$ref": "#/definitions/error"
             }
           }
         }
@@ -3529,7 +3529,7 @@
           "default": {
             "description": "Unexpected error.",
             "schema": {
-              "$ref": "#/definitions/errorModel"
+              "$ref": "#/definitions/error"
             }
           }
         }
@@ -3599,7 +3599,7 @@
           "default": {
             "description": "unexpected error",
             "schema": {
-              "$ref": "#/definitions/errorModel"
+              "$ref": "#/definitions/error"
             }
           }
         }
@@ -3659,7 +3659,7 @@
           "default": {
             "description": "unexpected error",
             "schema": {
-              "$ref": "#/definitions/errorModel"
+              "$ref": "#/definitions/error"
             }
           }
         }
@@ -3691,7 +3691,7 @@
           "default": {
             "description": "unexpected error",
             "schema": {
-              "$ref": "#/definitions/errorModel"
+              "$ref": "#/definitions/error"
             }
           }
         }
@@ -3721,7 +3721,7 @@
           "default": {
             "description": "unexpected error",
             "schema": {
-              "$ref": "#/definitions/errorModel"
+              "$ref": "#/definitions/error"
             }
           }
         }
@@ -3827,7 +3827,7 @@
           "default": {
             "description": "unexpected error",
             "schema": {
-              "$ref": "#/definitions/errorModel"
+              "$ref": "#/definitions/error"
             }
           }
         }
@@ -3859,7 +3859,7 @@
           "default": {
             "description": "unexpected error",
             "schema": {
-              "$ref": "#/definitions/errorModel"
+              "$ref": "#/definitions/error"
             }
           }
         }
@@ -3904,7 +3904,7 @@
           "default": {
             "description": "unexpected error",
             "schema": {
-              "$ref": "#/definitions/errorModel"
+              "$ref": "#/definitions/error"
             }
           }
         }
@@ -3944,7 +3944,7 @@
           "default": {
             "description": "unexpected error",
             "schema": {
-              "$ref": "#/definitions/errorModel"
+              "$ref": "#/definitions/error"
             }
           }
         }
@@ -4053,7 +4053,7 @@
           "default": {
             "description": "unexpected error",
             "schema": {
-              "$ref": "#/definitions/errorModel"
+              "$ref": "#/definitions/error"
             }
           }
         }
@@ -4086,7 +4086,7 @@
           "default": {
             "description": "unexpected error",
             "schema": {
-              "$ref": "#/definitions/errorModel"
+              "$ref": "#/definitions/error"
             }
           }
         }
@@ -4238,7 +4238,7 @@
           "default": {
             "description": "unexpected error",
             "schema": {
-              "$ref": "#/definitions/errorModel"
+              "$ref": "#/definitions/error"
             }
           }
         }
@@ -4270,7 +4270,7 @@
           "default": {
             "description": "unexpected error",
             "schema": {
-              "$ref": "#/definitions/errorModel"
+              "$ref": "#/definitions/error"
             }
           }
         }
@@ -4315,7 +4315,7 @@
           "default": {
             "description": "unexpected error",
             "schema": {
-              "$ref": "#/definitions/errorModel"
+              "$ref": "#/definitions/error"
             }
           }
         }
@@ -4362,7 +4362,7 @@
           "default": {
             "description": "unexpected error",
             "schema": {
-              "$ref": "#/definitions/errorModel"
+              "$ref": "#/definitions/error"
             }
           }
         }
@@ -4390,7 +4390,7 @@
           "default": {
             "description": "unexpected error",
             "schema": {
-              "$ref": "#/definitions/errorModel"
+              "$ref": "#/definitions/error"
             }
           }
         }
@@ -4477,7 +4477,7 @@
           "default": {
             "description": "unexpected error",
             "schema": {
-              "$ref": "#/definitions/errorModel"
+              "$ref": "#/definitions/error"
             }
           }
         }
@@ -4509,7 +4509,7 @@
           "default": {
             "description": "unexpected error",
             "schema": {
-              "$ref": "#/definitions/errorModel"
+              "$ref": "#/definitions/error"
             }
           }
         }
@@ -4542,7 +4542,7 @@
           "default": {
             "description": "unexpected error",
             "schema": {
-              "$ref": "#/definitions/errorModel"
+              "$ref": "#/definitions/error"
             }
           }
         }
@@ -4582,7 +4582,7 @@
           "default": {
             "description": "unexpected error",
             "schema": {
-              "$ref": "#/definitions/errorModel"
+              "$ref": "#/definitions/error"
             }
           }
         }
@@ -4610,7 +4610,7 @@
           "default": {
             "description": "unexpected error",
             "schema": {
-              "$ref": "#/definitions/errorModel"
+              "$ref": "#/definitions/error"
             }
           }
         }
@@ -4674,7 +4674,7 @@
           "default": {
             "description": "unexpected error",
             "schema": {
-              "$ref": "#/definitions/errorModel"
+              "$ref": "#/definitions/error"
             }
           }
         }
@@ -4707,7 +4707,7 @@
           "default": {
             "description": "unexpected error",
             "schema": {
-              "$ref": "#/definitions/errorModel"
+              "$ref": "#/definitions/error"
             }
           }
         }
@@ -4744,7 +4744,7 @@
           "default": {
             "description": "Unexpected error.",
             "schema": {
-              "$ref": "#/definitions/errorModel"
+              "$ref": "#/definitions/error"
             }
           }
         }
@@ -4828,7 +4828,7 @@
           "default": {
             "description": "unexpected error",
             "schema": {
-              "$ref": "#/definitions/errorModel"
+              "$ref": "#/definitions/error"
             }
           }
         }
@@ -4861,7 +4861,7 @@
           "default": {
             "description": "unexpected error",
             "schema": {
-              "$ref": "#/definitions/errorModel"
+              "$ref": "#/definitions/error"
             }
           }
         }
@@ -4948,7 +4948,7 @@
           "default": {
             "description": "unexpected error",
             "schema": {
-              "$ref": "#/definitions/errorModel"
+              "$ref": "#/definitions/error"
             }
           }
         }
@@ -4981,7 +4981,7 @@
           "default": {
             "description": "unexpected error",
             "schema": {
-              "$ref": "#/definitions/errorModel"
+              "$ref": "#/definitions/error"
             }
           }
         }
@@ -5015,7 +5015,7 @@
           "default": {
             "description": "unexpected error",
             "schema": {
-              "$ref": "#/definitions/errorModel"
+              "$ref": "#/definitions/error"
             }
           }
         }
@@ -5087,7 +5087,7 @@
           "default": {
             "description": "unexpected error",
             "schema": {
-              "$ref": "#/definitions/errorModel"
+              "$ref": "#/definitions/error"
             }
           }
         }
@@ -5119,7 +5119,7 @@
           "default": {
             "description": "unexpected error",
             "schema": {
-              "$ref": "#/definitions/errorModel"
+              "$ref": "#/definitions/error"
             }
           }
         }
@@ -5152,7 +5152,7 @@
           "default": {
             "description": "unexpected error",
             "schema": {
-              "$ref": "#/definitions/errorModel"
+              "$ref": "#/definitions/error"
             }
           }
         }
@@ -5180,7 +5180,7 @@
           "default": {
             "description": "unexpected error",
             "schema": {
-              "$ref": "#/definitions/errorModel"
+              "$ref": "#/definitions/error"
             }
           }
         }
@@ -5256,7 +5256,7 @@
           "default": {
             "description": "unexpected error",
             "schema": {
-              "$ref": "#/definitions/errorModel"
+              "$ref": "#/definitions/error"
             }
           }
         }
@@ -5288,7 +5288,7 @@
           "default": {
             "description": "unexpected error",
             "schema": {
-              "$ref": "#/definitions/errorModel"
+              "$ref": "#/definitions/error"
             }
           }
         }
@@ -5321,7 +5321,7 @@
           "default": {
             "description": "unexpected error",
             "schema": {
-              "$ref": "#/definitions/errorModel"
+              "$ref": "#/definitions/error"
             }
           }
         }
@@ -5361,7 +5361,7 @@
           "default": {
             "description": "unexpected error",
             "schema": {
-              "$ref": "#/definitions/errorModel"
+              "$ref": "#/definitions/error"
             }
           }
         }
@@ -5389,7 +5389,7 @@
           "default": {
             "description": "unexpected error",
             "schema": {
-              "$ref": "#/definitions/errorModel"
+              "$ref": "#/definitions/error"
             }
           }
         }
@@ -5442,7 +5442,7 @@
           "default": {
             "description": "unexpected error",
             "schema": {
-              "$ref": "#/definitions/errorModel"
+              "$ref": "#/definitions/error"
             }
           }
         }
@@ -5502,7 +5502,7 @@
           "default": {
             "description": "unexpected error",
             "schema": {
-              "$ref": "#/definitions/errorModel"
+              "$ref": "#/definitions/error"
             }
           }
         }
@@ -5567,7 +5567,7 @@
           "default": {
             "description": "Unexpected error.",
             "schema": {
-              "$ref": "#/definitions/errorModel"
+              "$ref": "#/definitions/error"
             }
           }
         }
@@ -5599,7 +5599,7 @@
           "default": {
             "description": "Unexpected error.",
             "schema": {
-              "$ref": "#/definitions/errorModel"
+              "$ref": "#/definitions/error"
             }
           }
         }
@@ -5632,7 +5632,7 @@
           "default": {
             "description": "Unexpected error.",
             "schema": {
-              "$ref": "#/definitions/errorModel"
+              "$ref": "#/definitions/error"
             }
           }
         }
@@ -5672,7 +5672,7 @@
           "default": {
             "description": "Unexpected error.",
             "schema": {
-              "$ref": "#/definitions/errorModel"
+              "$ref": "#/definitions/error"
             }
           }
         }
@@ -5700,7 +5700,7 @@
           "default": {
             "description": "Unexpected error.",
             "schema": {
-              "$ref": "#/definitions/errorModel"
+              "$ref": "#/definitions/error"
             }
           }
         }
@@ -5775,7 +5775,7 @@
           "default": {
             "description": "unexpected error",
             "schema": {
-              "$ref": "#/definitions/errorModel"
+              "$ref": "#/definitions/error"
             }
           }
         }
@@ -5819,7 +5819,7 @@
           "default": {
             "description": "unexpected error",
             "schema": {
-              "$ref": "#/definitions/errorModel"
+              "$ref": "#/definitions/error"
             }
           }
         }
@@ -5859,7 +5859,7 @@
           "default": {
             "description": "unexpected error",
             "schema": {
-              "$ref": "#/definitions/errorModel"
+              "$ref": "#/definitions/error"
             }
           }
         }
@@ -5882,7 +5882,7 @@
           "default": {
             "description": "unexpected error",
             "schema": {
-              "$ref": "#/definitions/errorModel"
+              "$ref": "#/definitions/error"
             }
           }
         }
@@ -5914,7 +5914,7 @@
           "default": {
             "description": "unexpected error",
             "schema": {
-              "$ref": "#/definitions/errorModel"
+              "$ref": "#/definitions/error"
             }
           }
         }
@@ -5942,7 +5942,7 @@
           "default": {
             "description": "unexpected error",
             "schema": {
-              "$ref": "#/definitions/errorModel"
+              "$ref": "#/definitions/error"
             }
           }
         }
@@ -5981,7 +5981,7 @@
           "default": {
             "description": "unexpected error",
             "schema": {
-              "$ref": "#/definitions/errorModel"
+              "$ref": "#/definitions/error"
             }
           }
         }
@@ -6009,7 +6009,7 @@
           "default": {
             "description": "unexpected error",
             "schema": {
-              "$ref": "#/definitions/errorModel"
+              "$ref": "#/definitions/error"
             }
           }
         }
@@ -6055,7 +6055,7 @@
           "default": {
             "description": "unexpected error",
             "schema": {
-              "$ref": "#/definitions/errorModel"
+              "$ref": "#/definitions/error"
             }
           }
         }
@@ -6086,7 +6086,7 @@
           "default": {
             "description": "unexpected error",
             "schema": {
-              "$ref": "#/definitions/errorModel"
+              "$ref": "#/definitions/error"
             }
           }
         }
@@ -6117,7 +6117,7 @@
           "default": {
             "description": "unexpected error",
             "schema": {
-              "$ref": "#/definitions/errorModel"
+              "$ref": "#/definitions/error"
             }
           }
         }
@@ -6152,7 +6152,7 @@
           "default": {
             "description": "unexpected error",
             "schema": {
-              "$ref": "#/definitions/errorModel"
+              "$ref": "#/definitions/error"
             }
           }
         }
@@ -6222,7 +6222,7 @@
           "default": {
             "description": "unexpected error",
             "schema": {
-              "$ref": "#/definitions/errorModel"
+              "$ref": "#/definitions/error"
             }
           }
         }
@@ -6256,7 +6256,7 @@
           "default": {
             "description": "unexpected error",
             "schema": {
-              "$ref": "#/definitions/errorModel"
+              "$ref": "#/definitions/error"
             }
           }
         }
@@ -6338,7 +6338,7 @@
           "default": {
             "description": "unexpected error",
             "schema": {
-              "$ref": "#/definitions/errorModel"
+              "$ref": "#/definitions/error"
             }
           }
         }
@@ -6371,7 +6371,7 @@
         "default": {
           "description": "unexpected error",
           "schema": {
-            "$ref": "#/definitions/errorModel"
+            "$ref": "#/definitions/error"
           }
         }
       }
@@ -6414,7 +6414,7 @@
           "default": {
             "description": "unexpected error",
             "schema": {
-              "$ref": "#/definitions/errorModel"
+              "$ref": "#/definitions/error"
             }
           }
         }
@@ -6455,7 +6455,7 @@
         "default": {
           "description": "unexpected error",
           "schema": {
-            "$ref": "#/definitions/errorModel"
+            "$ref": "#/definitions/error"
           }
         }
       },
@@ -6473,7 +6473,7 @@
         "default": {
           "description": "unexpected error",
           "schema": {
-            "$ref": "#/definitions/errorModel"
+            "$ref": "#/definitions/error"
           }
         }
       }
@@ -6516,7 +6516,7 @@
           "default": {
             "description": "unexpected error",
             "schema": {
-              "$ref": "#/definitions/errorModel"
+              "$ref": "#/definitions/error"
             }
           }
         }
@@ -6549,7 +6549,7 @@
         "default": {
           "description": "unexpected error",
           "schema": {
-            "$ref": "#/definitions/errorModel"
+            "$ref": "#/definitions/error"
           }
         }
       }
@@ -6581,7 +6581,7 @@
           "default": {
             "description": "unexpected error",
             "schema": {
-              "$ref": "#/definitions/errorModel"
+              "$ref": "#/definitions/error"
             }
           }
         }
@@ -6622,7 +6622,7 @@
         "default": {
           "description": "unexpected error",
           "schema": {
-            "$ref": "#/definitions/errorModel"
+            "$ref": "#/definitions/error"
           }
         }
       },
@@ -6640,7 +6640,7 @@
         "default": {
           "description": "unexpected error",
           "schema": {
-            "$ref": "#/definitions/errorModel"
+            "$ref": "#/definitions/error"
           }
         }
       }
@@ -6713,7 +6713,7 @@
           "default": {
             "description": "unexpected error",
             "schema": {
-              "$ref": "#/definitions/errorModel"
+              "$ref": "#/definitions/error"
             }
           }
         }
@@ -6746,7 +6746,7 @@
           "default": {
             "description": "unexpected error",
             "schema": {
-              "$ref": "#/definitions/errorModel"
+              "$ref": "#/definitions/error"
             }
           }
         }
@@ -6798,7 +6798,7 @@
           "default": {
             "description": "unexpected error",
             "schema": {
-              "$ref": "#/definitions/errorModel"
+              "$ref": "#/definitions/error"
             }
           }
         }
@@ -6830,7 +6830,7 @@
           "default": {
             "description": "unexpected error",
             "schema": {
-              "$ref": "#/definitions/errorModel"
+              "$ref": "#/definitions/error"
             }
           }
         }
@@ -6863,7 +6863,7 @@
           "default": {
             "description": "unexpected error",
             "schema": {
-              "$ref": "#/definitions/errorModel"
+              "$ref": "#/definitions/error"
             }
           }
         }
@@ -10046,17 +10046,19 @@
         "average"
       ]
     },
-    "errorModel": {
+    "error": {
       "required": [
         "code",
         "message"
       ],
       "properties": {
         "code": {
+          "description": "HTTP error code (https://tools.ietf.org/html/rfc7231#section-6).",
           "type": "integer",
           "format": "int32"
         },
         "message": {
+          "description": "A sentence or two describing the error.",
           "type": "string"
         }
       }
