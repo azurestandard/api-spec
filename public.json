@@ -8804,13 +8804,11 @@
           "description": "The estimated latest delivery date (inclusive) for the covered order-lines.",
           "type": "string",
           "format": "date"
-        },
-        "message": {
-          "description": "An optional message that should be displayed to the customer when this service estimate is available for selection.",
-          "type": "string"
         }
       },
       "required": [
+        "cost",
+        "climate",
         "service"
       ]
     },
