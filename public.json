@@ -8805,12 +8805,29 @@
           "type": "string",
           "format": "date"
         },
-        "message": {
-          "description": "An optional message that should be displayed to the customer when this service estimate is available for selection.",
-          "type": "string"
+        "contact-for-quote": {
+          "description": "The customer should contact this person or team for a personalized shipping quote for this service.",
+          "type": "object",
+          "properties": {
+            "name": {
+              "description": "Name of the person or team.",
+              "type": "string"
+            },
+            "email": {
+              "description": "Email for the person or team.",
+              "type": "string",
+              "format": "email"
+            },
+            "telephone": {
+              "description": "E.123 telephone number for the person or team.",
+              "type": "string",
+              "format": "telephone"
+            }
+          }
         }
       },
       "required": [
+        "climate",
         "service"
       ]
     },
