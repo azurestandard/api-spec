@@ -9421,6 +9421,10 @@
           "description": "Affiliate code to be used with URL shares.",
           "type": "string"
         },
+        "affiliate-username": {
+          "description": "Affiliate username (email)",
+          "type": "string"
+        },
         "is-allowed-to-be-affiliate": {
           "description": "Is allowed to be an affiliate.",
           "type": "boolean"
