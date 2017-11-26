@@ -9423,7 +9423,8 @@
         },
         "affiliate-username": {
           "description": "Affiliate username (email)",
-          "type": "string"
+          "type": "string",
+          "format": "email"
         },
         "is-allowed-to-be-affiliate": {
           "description": "Is allowed to be an affiliate.",
