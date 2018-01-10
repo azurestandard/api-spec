@@ -3845,7 +3845,7 @@
             "description": "Category to create",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/category"
+              "$ref": "#/definitions/updateCategory"
             }
           }
         ],
@@ -3930,7 +3930,7 @@
             "description": "Category to update",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/category"
+              "$ref": "#/definitions/updateCategory"
             }
           }
         ],
@@ -8267,7 +8267,7 @@
       }
     },
     "category": {
-      "description": "a category available for sale",
+      "description": "A category available for sale.",
       "type": "object",
       "properties": {
         "id": {
@@ -8295,37 +8295,107 @@
           "type": "string"
         },
         "parent": {
-          "description": "category ID for the parent category",
+          "description": "Category ID for the parent category.",
           "type": "integer",
           "format": "int64"
         },
+        "ancestors": {
+          "description": "Ancestor categories.  If set, `ancestors[0]` is the parent category and the final `ancestors` entry is the root category.  Include \"ancestors\" in the `inline` query parameter if you need this.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definition/category"
+          }
+        },
+        "depth": {
+          "description": "The number of ancestor categories.  Include \"depth\" in the `inline` query parameter if you need this.",
+          "type": "integer",
+          "format": "int32"
+        },
         "primary": {
-          "description": "denotes if this is a primary category",
+          "description": "Is this a primary category?",
           "type": "boolean"
         },
         "active": {
-          "description": "denotes if this category is active",
+          "description": "Is this category active?",
           "type": "boolean"
         },
         "keywords": {
           "type": "array",
           "items": {
-            "description": "a keyword for this category",
+            "description": "A keyword for this category.",
             "type": "string"
           }
         },
         "featured": {
-          "description": "ordering precedence for likely customer interest.  Defaults to zero.",
+          "description": "Ordering precedence for likely customer interest.  Defaults to zero.",
           "type": "integer",
           "format": "int32"
         },
         "slug": {
-          "description": "a slug generated from the category short-name (or name if short-name is not defined)",
+          "description": "A slug generated from the category short-name (or name if short-name is not defined).",
           "type": "string"
         }
       },
       "required": [
         "id",
+        "name"
+      ]
+    },
+    "updateCategory": {
+      "description": "A category to update.",
+      "type": "object",
+      "properties": {
+        "name": {
+          "description": "A phrase naming the category.  This should be understandable (but not necessarily unique) without any further context.  It must be unique for categories sharing a given parent.",
+          "type": "string"
+        },
+        "short-name": {
+          "description": "A word or two naming the category.  A shortened version of the full name that drops any words already contained in the category's ancestors' short names.  This will be used in places where the ancestor short names are in close proximity (e.g. URL slugs) to avoid having the same word many times.  When this is unset, the name is a reasonable fallback",
+          "type": "string"
+        },
+        "seo-name": {
+          "description": "An SEO-optimized name for the category.  A lengthened version of the full name that includes additional keywords or rephrasing, suitable for use in a title tag.  When this is unset, the name is a reasonable fallback.",
+          "type": "string"
+        },
+        "description": {
+          "description": "A sentence or two with a stand-alone category description.  When this is unset, the nearest ancestor description is a reasonable fallback.",
+          "type": "string"
+        },
+        "image": {
+          "description": "A picture of this category.  When set for a fetched category, the value will be a URL.  When set for an uploaded category, file IDs and media URLs can be used interchangeably.",
+          "type": "string"
+        },
+        "parent": {
+          "description": "Category ID for the parent category.",
+          "type": "integer",
+          "format": "int64"
+        },
+        "primary": {
+          "description": "Is this a primary category?",
+          "type": "boolean"
+        },
+        "active": {
+          "description": "Is this category active?",
+          "type": "boolean"
+        },
+        "keywords": {
+          "type": "array",
+          "items": {
+            "description": "A keyword for this category.",
+            "type": "string"
+          }
+        },
+        "featured": {
+          "description": "Ordering precedence for likely customer interest.  Defaults to zero.",
+          "type": "integer",
+          "format": "int32"
+        },
+        "slug": {
+          "description": "A slug generated from the category short-name (or name if short-name is not defined).",
+          "type": "string"
+        }
+      },
+      "required": [
         "name"
       ]
     },
