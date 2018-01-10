@@ -3781,7 +3781,7 @@
           {
             "name": "inline",
             "in": "query",
-            "description": "For convenience, include a full representation of the inlined property.  Currently supports \"ancestors\".",
+            "description": "For convenience, include a full representation of the inlined property.  Currently supports \"ancestors\" and \"depth\".",
             "required": false,
             "type": "array",
             "items": {
@@ -3885,7 +3885,7 @@
           {
             "name": "inline",
             "in": "query",
-            "description": "For convenience, include a full representation of the inlined property.  Currently supports \"ancestors\".",
+            "description": "For convenience, include a full representation of the inlined property.  Currently supports \"ancestors\" and \"depth\".",
             "required": false,
             "type": "array",
             "items": {
