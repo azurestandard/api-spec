@@ -8700,6 +8700,11 @@
           "description": "packaged product code that is being ordered",
           "type": "string"
         },
+        "product": {
+          "description": "product ID of the packaged product that is being ordered",
+          "type": "integer",
+          "format": "int64"
+        },
         "name": {
           "description": "most order lines are for packaged products, but Azure sometimes bills for less concrete items like catalog ads.  This field holds a brief description of the line, and should be used for invoices instead of following packaged-product (which may not be set).",
           "type": "string"
@@ -9816,6 +9821,10 @@
         },
         "packaged-product": {
           "type": "string"
+        },
+        "product": {
+          "type": "integer",
+          "format": "int64"
         },
         "customer": {
           "type": "integer",
