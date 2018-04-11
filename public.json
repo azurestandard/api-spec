@@ -9723,20 +9723,17 @@
           "type": "integer",
           "format": "int64"
         },
-        "name": {
-          "type": "string"
-        },
         "geo": {
           "$ref": "#/definitions/geo"
         },
-        "label": {
+        "exclusivity": {
           "type": "string"
         }
       },
       "required": [
         "id",
-        "name",
-        "geo"
+        "geo",
+        "exclusivity"
       ]
     },
     "geo": {
