@@ -9478,6 +9478,10 @@
         "name": {
           "type": "string"
         },
+        "active": {
+          "description": "Whether or not this account is active.  Inactive users cannot log in.",
+          "type": "boolean"
+        },
         "email": {
           "description": "The person's preferred, error-less email address (set if the \"inline\" query parameter contains \"email\").",
           "type": "string",
