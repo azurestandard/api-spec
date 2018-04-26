@@ -9482,6 +9482,10 @@
           "description": "Whether or not this account is active.  Inactive users cannot log in.",
           "type": "boolean"
         },
+        "password-usable": {
+          "description": "Whether or not this account has a usable password.",
+          "type": "boolean"
+        },
         "email": {
           "description": "The person's preferred, error-less email address (set if the \"inline\" query parameter contains \"email\").",
           "type": "string",
@@ -9625,7 +9629,7 @@
           "type": "boolean"
         },
         "user-password": {
-          "description": "The authenticated person's password, required when changing password",
+          "description": "The authenticated person's password.  Required when changing password for users with a usable password.",
           "type": "string"
         },
         "notifications": {
@@ -9835,13 +9839,12 @@
           "$ref": "#/definitions/email"
         },
         "user-password": {
-          "description": "The authenticated person's password.",
+          "description": "The authenticated person's password.  Required for users with a usable password.",
           "type": "string"
         }
       },
       "required": [
-        "email",
-        "user-password"
+        "email"
       ]
     },
     "favorite": {
