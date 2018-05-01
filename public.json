@@ -9570,6 +9570,16 @@
           "format": "int32",
           "minimum": 1,
           "maximum": 5
+        },
+        "first-order-placed": {
+          "description": "When this customer's first order was placed.  This timestamp does not change once set, even if the initial order is subsequently deleted.",
+          "type": "string",
+          "format": "date-time"
+        },
+        "last-order-placed": {
+          "description": "When this customer's most recent order was placed.  This timestamp includes all open-to-placed transitions, regardless of whether the related order is subsequently deleted.",
+          "type": "string",
+          "format": "date-time"
         }
       },
       "required": [
