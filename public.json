@@ -9549,6 +9549,27 @@
         "accepted-affiliate-terms": {
           "description": "Has accepted the affiliate terms of service.  This can only be set to true if is-allowed-to-be-affiliate value is true.",
           "type": "boolean"
+        },
+        "recency": {
+          "description": "Order recency ranking.  Higher rankings for customers with more recent orders.",
+          "type": "integer",
+          "format": "int32",
+          "minimum": 1,
+          "maximum": 5
+        },
+        "frequency": {
+          "description": "Order frequency ranking.  Higher rankings for customers with more frequent orders.",
+          "type": "integer",
+          "format": "int32",
+          "minimum": 1,
+          "maximum": 5
+        },
+        "monetary": {
+          "description": "Order value ranking.  Higher rankings for customers with larger orders.",
+          "type": "integer",
+          "format": "int32",
+          "minimum": 1,
+          "maximum": 5
         }
       },
       "required": [
