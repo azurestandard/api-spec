@@ -8700,6 +8700,11 @@
           "description": "before shipping, the customer can use this to associate a payment-method with the order.  After shipping, it contains information about the charged payment",
           "$ref": "#/definitions/payment"
         },
+        "rewards-allocation": {
+          "description": "Rewards allocated for this order.  For open orders, this value has no side-effects.  For placed orders that are not yet shipped, this value will match the associated pending rewards debit amount.  When the order ships, this value does not change, but the associated rewards debit will have its amount reduced if the allocated rewards exceed the dollar balance.  If, instead of shipping, the placed order returns to open status, the associated pending rewards debit is deleted, releasing those rewards to be allocated towards other orders.",
+          "type": "number",
+          "format": "float"
+        },
         "drop": {
           "description": "drop the order is destined for (unset for parcel-carrier orders)",
           "type": "integer",
