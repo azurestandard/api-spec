@@ -8914,6 +8914,11 @@
           "type": "number",
           "format": "float"
         },
+        "rewards": {
+          "description": "The total rewards earned by this line (estimated until picking time).  The per-unit rewards used to calculate this total are currently locked in when you place the order.",
+          "type": "number",
+          "format": "float"
+        },
         "warnings": {
           "description": "An array of warnings about this product.",
           "type": "array",
