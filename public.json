@@ -8375,34 +8375,62 @@
       ]
     },
     "_price": {
-      "description": "a helper object for 'price'",
+      "description": "A helper object for `price`.",
       "type": "object",
       "properties": {
         "dollars": {
-          "description": "price of the product in dollars",
+          "description": "Price of the packaging in dollars.",
           "type": "number",
-          "format": "float"
+          "format": "float",
+          "minimum": 0
         },
         "per-pound": {
-          "description": "whether the 'dollars' price is per-pound or per-product",
+          "description": "Whether the `dollars`, `rewards`, and `rewards-standard` values are per-pound or per-package.",
           "type": "boolean"
         },
         "discount": {
-          "description": "text for the discount (e.g. \"12%\", or \"$3.50\")",
+          "description": "Text for the discount (e.g. \"12%\", or \"$3.50\").",
           "type": "string"
         },
         "dollars-per-unit": {
-          "description": "the per-unit price",
+          "description": "The per-unit price.",
           "type": "number",
-          "format": "float"
+          "format": "float",
+          "minimum": 0
+        },
+        "rewards": {
+          "description": "Rewards earned for this packaging.",
+          "type": "number",
+          "format": "float",
+          "minimum": 0
+        },
+        "rewards-standard": {
+          "description": "Hypothentical rewards earned for this packaging using the standard formula.  This value may be less than, equal to, or greater than `rewards`.",
+          "type": "number",
+          "format": "float",
+          "minimum": 0
+        },
+        "rewards-per-unit": {
+          "description": "Rewards earned per unit.",
+          "type": "number",
+          "format": "float",
+          "minimum": 0
+        },
+        "rewards-per-unit-standard": {
+          "description": "Hypothetical rewards earned per unit using the standard formula.  This value may be less than, equal to, or greater than `rewards-per-unit`.",
+          "type": "number",
+          "format": "float",
+          "minimum": 0
         },
         "unit": {
-          "description": "The unit for the dollars-per-unit",
+          "description": "The unit for the `dollars-per-unit`, `rewards-per-unit`, and `rewards-per-unit-standard`.",
           "type": "string"
         }
       },
       "required": [
-        "dollars"
+        "dollars",
+        "rewards",
+        "rewards-standard"
       ]
     },
     "priceLevel": {
