@@ -4869,7 +4869,7 @@
     },
     "/account-entries": {
       "get": {
-        "summary": "Returns all credits and debits from the system that the user has access to.  Results are ordered by increasing settled dates, falling back to IDs when multiple entries settled on the same day.",
+        "summary": "Returns all dollar credits and debits from the system that the user has access to.  Results are ordered by increasing settled dates, falling back to IDs when multiple entries settled on the same day.",
         "operationId": "findAccountEntries",
         "tags": [
           "account"
@@ -4906,7 +4906,7 @@
           {
             "name": "balance",
             "in": "query",
-            "description": "add the balance field to returned entries",
+            "description": "Add the `balance` property to returned entries.",
             "required": false,
             "type": "boolean"
           },
@@ -4956,7 +4956,7 @@
     },
     "/account-entry/{id}": {
       "get": {
-        "summary": "Returns a credit or debit based on a single ID",
+        "summary": "Returns a dollar credit or debit based on a single ID",
         "operationId": "findAccountEntryById",
         "tags": [
           "account"
@@ -5179,6 +5179,153 @@
           },
           "default": {
             "description": "unexpected error",
+            "schema": {
+              "$ref": "#/definitions/error"
+            }
+          }
+        }
+      }
+    },
+    "/rewards": {
+      "get": {
+        "summary": "Returns all reward credits and debits from the system that the user has access to.  Results are ordered by increasing settled times, falling back to ID for pending debits.",
+        "operationId": "findRewards",
+        "tags": [
+          "account"
+        ],
+        "parameters": [
+          {
+            "name": "filter-person",
+            "in": "query",
+            "description": "Person IDs to filter by.",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "collectionFormat": "csv"
+          },
+          {
+            "name": "date-after",
+            "in": "query",
+            "description": "Only return entries with dates after this date (inclusive).",
+            "required": false,
+            "type": "string",
+            "format": "date-time"
+          },
+          {
+            "name": "date-before",
+            "in": "query",
+            "description": "Only return entries with dates before this date (exclusive).",
+            "required": false,
+            "type": "string",
+            "format": "date-time"
+          },
+          {
+            "name": "status",
+            "in": "query",
+            "description": "Reward status to filter by.",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "pending",
+                "settled"
+              ]
+            },
+            "collectionFormat": "csv"
+          },
+          {
+            "name": "order",
+            "in": "query",
+            "description": "Order IDs to filter by.",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "collectionFormat": "csv"
+          },
+          {
+            "name": "balance",
+            "in": "query",
+            "description": "Add the `balance` and `pending` properties to returned entries.",
+            "required": false,
+            "type": "boolean"
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "Maximum number of results to return.",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "start",
+            "in": "query",
+            "description": "Offset to the first result to return.  Use negative numbers to offset from the end of the result list.",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Reward response.",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/reward"
+              }
+            },
+            "headers": {
+              "Count": {
+                "description": "Total number of matching results (how many you'd get if you could set an infinite `limit`).",
+                "type": "integer",
+                "format": "int32",
+                "minimum": 0
+              }
+            }
+          },
+          "default": {
+            "description": "Unexpected error.",
+            "schema": {
+              "$ref": "#/definitions/error"
+            }
+          }
+        }
+      }
+    },
+    "/reward/{id}": {
+      "get": {
+        "summary": "Returns a reward credit or debit based on a single ID.",
+        "operationId": "findRewardById",
+        "tags": [
+          "account"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of reward to fetch.",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Reward response.",
+            "schema": {
+              "$ref": "#/definitions/reward"
+            }
+          },
+          "default": {
+            "description": "Unexpected error.",
             "schema": {
               "$ref": "#/definitions/error"
             }
@@ -8993,7 +9140,7 @@
       ]
     },
     "accountEntry": {
-      "description": "an entry in a person's acount",
+      "description": "A dollar entry in a person's account.",
       "type": "object",
       "properties": {
         "id": {
@@ -9290,6 +9437,59 @@
         "registration",
         "checkout",
         "catalog-request"
+      ]
+    },
+    "reward": {
+      "description": "A reward entry.",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "person": {
+          "description": "Person associated with the reward.",
+          "type": "integer",
+          "format": "int64"
+        },
+        "amount": {
+          "description": "Reward value for the entry (positive for credits, negative for debits).",
+          "type": "number",
+          "format": "float"
+        },
+        "settled": {
+          "description": "When the entry was settled.  This will be unset for pending debits, and will be set for all settled debits.",
+          "type": "string",
+          "format": "date-time"
+        },
+        "order": {
+          "description": "The order which produced (for credits) or consumed (for debits) this entry.",
+          "type": "integer",
+          "format": "int64"
+        },
+        "account-entry": {
+          "description": "The account-entry credit created by this entry.  This will be set for rewards debits where the referenced account-entry credit shows the dollar increase associated with this rewards decrease.",
+          "type": "integer",
+          "format": "int64"
+        },
+        "balance": {
+          "description": "Settled reward balance after this reward entry.",
+          "type": "number",
+          "format": "float",
+          "minimum": 0
+        },
+        "pending": {
+          "description": "Total pending debits through this reward entry.",
+          "type": "number",
+          "format": "float",
+          "minimum": 0
+        }
+      },
+      "required": [
+        "id",
+        "person",
+        "amount",
+        "order"
       ]
     },
     "postAffiliatePro": {
