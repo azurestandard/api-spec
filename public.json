@@ -9754,6 +9754,11 @@
         "price-level": {
           "$ref": "#/definitions/priceLevel"
         },
+        "rewards-rate": {
+          "description": "Rewards rate (as a percentage) for this customer.  For products without custom rewards rates, the rewards earned for the product will be the price (after sales) * `rewards-rate` / 100, rounded to the nearest cent, rounding half to even.",
+          "type": "integer",
+          "format": "int32"
+        },
         "notifications": {
           "$ref": "#/definitions/personNotifications"
         },
