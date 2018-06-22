@@ -5250,9 +5250,9 @@
             "collectionFormat": "csv"
           },
           {
-            "name": "balance",
+            "name": "totals",
             "in": "query",
-            "description": "Add the `balance` and `pending` properties to returned entries.",
+            "description": "Add the `total-credit`, `total-debit`, and `total-pending` properties to returned entries.",
             "required": false,
             "type": "boolean"
           },
@@ -9510,14 +9510,20 @@
           "type": "integer",
           "format": "int64"
         },
-        "balance": {
-          "description": "Settled reward balance after this reward entry.",
+        "total-credit": {
+          "description": "Settled credit total through this reward entry.",
           "type": "number",
           "format": "float",
           "minimum": 0
         },
-        "pending": {
-          "description": "Total pending debits through this reward entry.",
+        "total-debit": {
+          "description": "Settled debit total through this reward entry.",
+          "type": "number",
+          "format": "float",
+          "minimum": 0
+        },
+        "total-pending": {
+          "description": "Pending debit total through this reward entry.",
           "type": "number",
           "format": "float",
           "minimum": 0
