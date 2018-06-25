@@ -8385,7 +8385,7 @@
           "minimum": 0
         },
         "per-pound": {
-          "description": "Whether the `dollars`, `rewards`, and `rewards-standard` values are per-pound or per-package.",
+          "description": "Whether the `dollars` value is per-pound or per-package.",
           "type": "boolean"
         },
         "discount": {
@@ -8398,39 +8398,19 @@
           "format": "float",
           "minimum": 0
         },
-        "rewards": {
-          "description": "Rewards earned for this packaging.",
-          "type": "number",
-          "format": "float",
-          "minimum": 0
-        },
-        "rewards-standard": {
-          "description": "Hypothentical rewards earned for this packaging using the standard formula.  This value may be less than, equal to, or greater than `rewards`.",
-          "type": "number",
-          "format": "float",
-          "minimum": 0
-        },
-        "rewards-per-unit": {
-          "description": "Rewards earned per unit.",
-          "type": "number",
-          "format": "float",
-          "minimum": 0
-        },
-        "rewards-per-unit-standard": {
-          "description": "Hypothetical rewards earned per unit using the standard formula.  This value may be less than, equal to, or greater than `rewards-per-unit`.",
-          "type": "number",
-          "format": "float",
+        "rewards-rate": {
+          "description": "Rewards rate (as a percentage) earned for this packaging.  This will only be set for packaging with a fixed rewards rate for the given price level, regardless of the ordering customer.  When unset, the rewards-rate for this package is the customer's default rewards-rate.  The rewards earned for the packaging will be `dollars` * `rewards-rate` / 100, rounded to the nearest cent, rounding half to even.",
+          "type": "integer",
+          "format": "int32",
           "minimum": 0
         },
         "unit": {
-          "description": "The unit for the `dollars-per-unit`, `rewards-per-unit`, and `rewards-per-unit-standard`.",
+          "description": "The unit for `dollars-per-unit`.",
           "type": "string"
         }
       },
       "required": [
-        "dollars",
-        "rewards",
-        "rewards-standard"
+        "dollars"
       ]
     },
     "priceLevel": {
@@ -9757,7 +9737,8 @@
         "rewards-rate": {
           "description": "Rewards rate (as a percentage) for this customer.  For products without custom rewards rates, the rewards earned for the product will be the price (after sales) * `rewards-rate` / 100, rounded to the nearest cent, rounding half to even.",
           "type": "integer",
-          "format": "int32"
+          "format": "int32",
+          "minimum": 0
         },
         "notifications": {
           "$ref": "#/definitions/personNotifications"
