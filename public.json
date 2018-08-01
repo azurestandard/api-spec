@@ -4911,6 +4911,20 @@
             "type": "boolean"
           },
           {
+            "name": "reason",
+            "in": "query",
+            "description": "The reason slugs to filter by.",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "affiliate-referral"
+              ]
+            },
+            "collectionFormat": "csv"
+          },
+          {
             "name": "limit",
             "in": "query",
             "description": "maximum number of results to return",
