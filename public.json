@@ -45,6 +45,36 @@
     "application/json"
   ],
   "paths": {
+    "/affiliate-code/{marketing-slug}": {
+      "get": {
+        "summary": "Returns an affiliate code based on a marketing slug (no authorization required)",
+        "operationId": "findAffiliateCodeByMarketingSlug",
+        "tags": ["affiliate"],
+        "parameters": [
+          {
+            "name": "marketing-slug",
+            "in": "path",
+            "description": "marketing slug of affiliate code to fetch",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Affiliate code response",
+            "schema": {
+              "type": "string"
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "schema": {
+              "$ref": "#/definitions/error"
+            }
+          }
+        }
+      }
+    },
     "/bartender-hosts": {
       "get": {
         "summary": "Returns all BarTender hosts from the system that the user has access to",
