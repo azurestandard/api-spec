@@ -5975,6 +5975,38 @@
         }
       }
     },
+    "/people/actions/find-affiliate-code-by-marketing-slug/{marketing-slug}": {
+      "get": {
+        "summary": "Returns an affiliate code based on a marketing slug (no authorization required)",
+        "operationId": "findAffiliateCodeByMarketingSlug",
+        "tags": [
+          "person"
+        ],
+        "parameters": [
+          {
+            "name": "marketing-slug",
+            "in": "path",
+            "description": "marketing slug of affiliate code to fetch",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Affiliate code response",
+            "schema": {
+              "ref": "#/definitions/affiliateCode"
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "schema": {
+              "$ref": "#/definitions/error"
+            }
+          }
+        }
+      }
+    },
     "/person/{id}": {
       "get": {
         "summary": "Returns a person based on a single ID, if the user has access to the person",
@@ -7078,6 +7110,24 @@
     }
   },
   "definitions": {
+    "affiliateCode": {
+      "description": "an affiliate code and associated marketing slug of a person",
+      "type": "object",
+      "properties": {
+        "marketing-slug": {
+          "description": "unique marketing slug of a person",
+          "type": "string"
+        },
+        "affiliate-code": {
+          "description": "unique affiliate code of the same person",
+          "type": "string"
+        }
+      },
+      "required": [
+        "marketing-slug",
+        "affiliate-code"
+      ]
+    },
     "bartenderHost": {
       "description": "a BarTender host/instance",
       "type": "object",
