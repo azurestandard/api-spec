@@ -9840,6 +9840,18 @@
           "description": "Is allowed to be an affiliate.",
           "type": "boolean"
         },
+        "affiliate-campaign": {
+          "description": "The affiliate campaign the person is a participant of.",
+          "type": "string",
+          "enum": [
+            "lead",
+            "community"
+          ]
+        },
+        "marketing-slug": {
+          "description": "A person's unique, primary marketing slug used, e.g., for the Azure Share program.",
+          "type": "string"
+        },
         "recency": {
           "description": "Order recency ranking.  Higher rankings for customers with more recent orders.",
           "type": "integer",
