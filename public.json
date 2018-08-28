@@ -9925,9 +9925,17 @@
           "description": "Is allowed to be an affiliate.",
           "type": "boolean"
         },
-        "accepted-affiliate-terms": {
-          "description": "Has accepted the affiliate terms of service.  This can only be set to true if is-allowed-to-be-affiliate value is true.",
-          "type": "boolean"
+        "affiliate-campaign": {
+          "description": "The affiliate campaign the person is a participant of.",
+          "type": "string",
+          "enum": [
+            "lead",
+            "community"
+          ]
+        },
+        "marketing-slug": {
+          "description": "A person's unique, primary marketing slug used, e.g., for the Azure Share program.",
+          "type": "string"
         },
         "recency": {
           "description": "Order recency ranking.  Higher rankings for customers with more recent orders.",
@@ -10003,10 +10011,6 @@
         },
         "is-allowed-to-be-affiliate": {
           "description": "Is allowed to be an affiliate.  Only users with the update-person permission can edit this information.",
-          "type": "boolean"
-        },
-        "accepted-affiliate-terms": {
-          "description": "Has accepted the affiliate terms of service.  This can only be set to true if the is-allowed-to-be-affiliate value is true.",
           "type": "boolean"
         }
       }
