@@ -45,6 +45,66 @@
     "application/json"
   ],
   "paths": {
+    "/affiliate-referrals": {
+      "get": {
+        "summary": "Returns all affiliate referrals for the given referring user, in descending order of the date the referred person's account was created",
+        "operationId": "findAffiliateReferrals",
+        "tags": [
+          "affiliate-referral"
+        ],
+        "parameters": [
+          {
+            "name": "person",
+            "in": "query",
+            "description": "person ID of the referring user",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "maximum number of results to return",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "start",
+            "in": "query",
+            "description": "offset to the first result to return.  Use negative numbers to offset from the end of the result list.",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "affiliate referral response",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/affiliateReferral"
+              }
+            },
+            "headers": {
+              "Count": {
+                "description": "total number of matching results (how many you'd get if you could set an infinite `limit`)",
+                "type": "integer",
+                "format": "int32",
+                "minimum": 0
+              }
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "schema": {
+              "$ref": "#/definitions/error"
+            }
+          }
+        }
+      }
+    },
     "/bartender-hosts": {
       "get": {
         "summary": "Returns all BarTender hosts from the system that the user has access to",
@@ -7126,6 +7186,31 @@
       "required": [
         "marketing-slug",
         "affiliate-code"
+      ]
+    },
+    "affiliateReferral": {
+      "description": "an affiliate referral",
+      "type": "object",
+      "properties": {
+        "created": {
+          "description": "date-time the referred person's account was created",
+          "type": "string",
+          "format": "date-time"
+        },
+        "name": {
+          "description": "name of the person referred",
+          "type": "string"
+        },
+        "amount-earned": {
+          "description": "dollar value for the sum of account credits to the referrer that were caused by this referral",
+          "type": "number",
+          "format": "float"
+        }
+      },
+      "required": [
+        "created",
+        "name",
+        "amount-earned"
       ]
     },
     "bartenderHost": {
