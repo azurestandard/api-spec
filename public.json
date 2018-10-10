@@ -7192,8 +7192,8 @@
       "description": "an affiliate referral",
       "type": "object",
       "properties": {
-        "created": {
-          "description": "date-time the referred person's account was created",
+        "referred": {
+          "description": "date-time the referred person's account was referred",
           "type": "string",
           "format": "date-time"
         },
@@ -7208,7 +7208,7 @@
         }
       },
       "required": [
-        "created",
+        "referred",
         "name",
         "amount-earned"
       ]
