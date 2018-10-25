@@ -9900,7 +9900,7 @@
           }
         },
         "order-place-issue": {
-          "description": "If the person should be warned or blocked from placing orders, this property will be set with a slugged reason and recommended action.",
+          "description": "If the person should be warned or blocked from placing orders, this property will be set with a slugged reason and recommended action. Only set if the \"inline\" query parameter contains \"order-place-issue\".",
           "type": "string",
           "enum": [
             "outstanding-balance-contact",
