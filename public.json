@@ -9969,7 +9969,7 @@
           "format": "date-time"
         },
         "is-drop-coordinator": {
-          "description": "Is a drop coordinator (inclusive of both primary contact and managers). Only set if the \"inline\" query parameter contains \"is-drop-coordinator\").",
+          "description": "Is a drop coordinator (inclusive of both primary contact and managers). Only set if the \"inline\" query parameter contains \"is-drop-coordinator\".",
           "type": "boolean"
         }
       },
