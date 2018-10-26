@@ -1545,7 +1545,7 @@
           {
             "name": "inline",
             "in": "query",
-            "description": "for convenience, include a full representation of the inlined property.  Currently supports \"customer\", \"customer.email\", and \"drop\".",
+            "description": "for convenience, include a full representation of the inlined property.  Currently supports \"customer\", \"customer.email\", \"drop\", and \"gratitude-total\".",
             "required": false,
             "type": "array",
             "items": {
@@ -1653,7 +1653,7 @@
           {
             "name": "inline",
             "in": "query",
-            "description": "for convenience, include a full representation of the inlined property.  Currently supports \"customer\" and \"drop\".",
+            "description": "for convenience, include a full representation of the inlined property.  Currently supports \"customer\", \"drop\", and \"gratitude-total\".",
             "required": false,
             "type": "array",
             "items": {
@@ -7723,6 +7723,12 @@
         },
         "notifications": {
           "$ref": "#/definitions/dropMembershipNotifications"
+        },
+        "gratitude-total": {
+          "description": "total \"Azure Gratitude\" (monetary incentive for hosting a drop) received from being this drop's coordinator. Only set if the \"inline\" query parameter contains \"gratitude-total\".",
+          "type": "number",
+          "format": "float",
+          "minimum": 0
         }
       },
       "required": [
