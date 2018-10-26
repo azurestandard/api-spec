@@ -8892,8 +8892,8 @@
           "description": "Warehouse packing instructions",
           "type": "string"
         },
-        "last-human-update": {
-          "description": "a datetime denoting when the order or its order-lines were last updated by a human (rather than programmatically)",
+        "last-api-update": {
+          "description": "a datetime denoting when the order or its order-lines were last updated via the API",
           "type": "date-time"
         }
       },
