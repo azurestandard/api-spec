@@ -8897,6 +8897,10 @@
         "notes": {
           "description": "Warehouse packing instructions",
           "type": "string"
+        },
+        "last-api-update": {
+          "description": "a datetime denoting when the order or its order-lines were last updated via the API",
+          "type": "date-time"
         }
       },
       "required": [
