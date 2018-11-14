@@ -8906,23 +8906,38 @@
           "description": "Optional computed properties included via the \"computed\" parameter.",
           "type": "object",
           "properties": {
-            "totalLinePrice": {
-              "description": "Dollar value for the sum of all orderlines.",
+            "totalItemPriceOrdered": {
+              "description": "Dollar value for the sum of all ordered items (does not include potential fees).",
               "type": "number",
               "format": "float"
             },
-            "totalFees": {
-              "description": "Dollar value for the sum of all order fees.",
+            "totalItemPriceShipped": {
+              "description": "Dollar value for the sum of all shipped items (does not include potential fees).",
               "type": "number",
               "format": "float"
             },
-            "totalWeight": {
+            "totalWeightOrdered": {
               "description": "Total weight (in pounds) of all ordered items.",
               "type": "number",
               "format": "float"
             },
-            "totalVolume": {
+            "totalWeightShipped": {
+              "description": "Total weight (in pounds) of all shipped items.",
+              "type": "number",
+              "format": "float"
+            },
+            "totalVolumeOrdered": {
               "description": "Total volume (in cubic feet) of all ordered items.",
+              "type": "number",
+              "format": "float"
+            },
+            "totalVolumeShipped": {
+              "description": "Total volume (in cubic feet) of all shipped items.",
+              "type": "number",
+              "format": "float"
+            },
+            "totalFees": {
+              "description": "Dollar value for the sum of all order fees (pre or post shipment, dependent on order status).",
               "type": "number",
               "format": "float"
             }
