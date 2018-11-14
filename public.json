@@ -8917,12 +8917,12 @@
               "format": "float"
             },
             "totalWeight": {
-              "description": "Total weight of all ordered items.",
+              "description": "Total weight (in pounds) of all ordered items.",
               "type": "number",
               "format": "float"
             },
             "totalVolume": {
-              "description": "Total volume of all ordered items.",
+              "description": "Total volume (in cubic feet) of all ordered items.",
               "type": "number",
               "format": "float"
             }
