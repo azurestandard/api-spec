@@ -8901,6 +8901,32 @@
         "last-api-update": {
           "description": "a datetime denoting when the order or its order-lines were last updated via the API",
           "type": "date-time"
+        },
+        "computed": {
+          "description": "Optional computed properties included via the \"computed\" parameter.",
+          "type": "object",
+          "properties": {
+            "totalLinePrice": {
+              "description": "Dollar value for the sum of all orderlines.",
+              "type": "number",
+              "format": "float"
+            },
+            "totalFees": {
+              "description": "Dollar value for the sum of all order fees.",
+              "type": "number",
+              "format": "float"
+            },
+            "totalWeight": {
+              "description": "Total weight of all ordered items.",
+              "type": "number",
+              "format": "float"
+            },
+            "totalVolume": {
+              "description": "Total volume of all ordered items.",
+              "type": "number",
+              "format": "float"
+            }
+          }
         }
       },
       "required": [
