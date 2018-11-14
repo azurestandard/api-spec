@@ -8818,10 +8818,16 @@
           "type": "integer",
           "format": "int64"
         },
-        "customer": {
-          "description": "customer making the order",
+        "customerId": {
+          "description": "ID of the customer making the order",
           "type": "integer",
           "format": "int64"
+        },
+        "customer": {
+          "description": "person object of the customer making the order (set if the \"inline\" query parameter contains \"customer\")",
+          "schema": {
+            "$ref": "#/definitions/person"
+          }
         },
         "status": {
           "description": "order's lifecycle stage",
