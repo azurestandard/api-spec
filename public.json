@@ -7167,6 +7167,37 @@
           }
         }
       }
+    },
+    "/orderFrequencySegment": {
+      "get": {
+        "summary": "Returns whether the customer has ordered in the last 120 days, \"active\" if yes or \"activeag\" (for \"active aging\") if not. If no customer exists, returns \"new\".",
+        "operationId": "orderFrequencySegment",
+        "parameters": [
+          {
+            "name": "email",
+            "in": "body",
+            "description": "Email of the person to look up.",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Whether the customer has ordered in the last 120 days, \"active\" if yes or \"activeag\" (for \"active aging\") if not. If no customer exists, returns \"new\".",
+            "type": "string",
+            "enum": [
+              "new",
+              "active",
+              "activeag"
+            ]
+          },
+          "default": {
+            "description": "unexpected error",
+            "schema": {
+              "$ref": "#/definitions/error"
+            }
+          }
+        }
+      }
     }
   },
   "definitions": {
@@ -10042,18 +10073,6 @@
         "id",
         "name",
         "notifications"
-      ]
-    },
-    "orderFrequencySegment": {
-      "description": "Returns whether the customer has ordered in the last 120 days, \"active\" if yes or \"activeag\" (for \"active aging\") if not. If no customer exists, returns \"new\".",
-      "type": "object",
-      "properties": {
-        "email": {
-          "$ref": "#/definitions/email"
-        }
-      },
-      "required": [
-        "email"
       ]
     },
     "updatePerson": {
