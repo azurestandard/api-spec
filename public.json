@@ -7168,7 +7168,7 @@
         }
       }
     },
-    "/orderFrequencySegment": {
+    "/order-frequency-segment": {
       "get": {
         "summary": "Returns whether the customer has ordered in the last 120 days, \"active\" if yes or \"activeag\" (for \"active aging\") if not. If no customer exists, returns \"new\".",
         "operationId": "orderFrequencySegment",
