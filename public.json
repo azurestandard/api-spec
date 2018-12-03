@@ -7183,12 +7183,21 @@
         "responses": {
           "200": {
             "description": "Whether the customer has ordered in the last 120 days, \"active\" if yes or \"activeag\" (for \"active aging\") if not. If no customer exists, returns \"new\".",
-            "type": "string",
-            "enum": [
-              "new",
-              "active",
-              "activeag"
-            ]
+            "type": "object",
+            "properties": {
+              "email": {
+                "description": "Email address sent for the lookup.",
+                "type": "string"
+              },
+              "orderFrequencySegment": {
+                "type": "string",
+                "enum": [
+                  "new",
+                  "active",
+                  "activeag"
+                ]
+              }
+            }
           },
           "default": {
             "description": "unexpected error",
