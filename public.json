@@ -8951,33 +8951,13 @@
           "description": "Optional computed properties included via the \"computed\" parameter.",
           "type": "object",
           "properties": {
-            "totalItemPriceOrdered": {
-              "description": "Dollar value for the sum of all ordered items (does not include potential fees).",
+            "totalPriceOrdered": {
+              "description": "Dollar value for the sum of all ordered products (does not include potential fees).",
               "type": "number",
               "format": "float"
             },
-            "totalItemPriceShipped": {
-              "description": "Dollar value for the sum of all shipped items (does not include potential fees).",
-              "type": "number",
-              "format": "float"
-            },
-            "totalWeightOrdered": {
-              "description": "Total weight (in pounds) of all ordered items.",
-              "type": "number",
-              "format": "float"
-            },
-            "totalWeightShipped": {
-              "description": "Total weight (in pounds) of all shipped items.",
-              "type": "number",
-              "format": "float"
-            },
-            "totalVolumeOrdered": {
-              "description": "Total volume (in cubic feet) of all ordered items.",
-              "type": "number",
-              "format": "float"
-            },
-            "totalVolumeShipped": {
-              "description": "Total volume (in cubic feet) of all shipped items.",
+            "totalPriceShipped": {
+              "description": "Dollar value for the sum of all shipped products (does not include potential fees).",
               "type": "number",
               "format": "float"
             },
@@ -8985,6 +8965,151 @@
               "description": "Dollar value for the sum of all order fees (pre or post shipment, dependent on order status).",
               "type": "number",
               "format": "float"
+            },
+            "cases": {
+              "type": "object",
+              "properties": {
+                "frozen": {
+                  "description": "Count of cases shipped with frozen products.",
+                  "type": "integer",
+                  "format": "int64" 
+                },
+                "refrigeratedAndRoomTemp": {
+                  "description": "Count of cases shipped with refrigerated/room-temperature products.",
+                  "type": "integer",
+                  "format": "int64" 
+                },
+                "greenhouse": {
+                  "description": "Count of cases shipped with greenhouse products.",
+                  "type": "integer",
+                  "format": "int64" 
+                },
+                "total": {
+                  "description": "Total count of cases shipped.",
+                  "type": "integer",
+                  "format": "int64" 
+                }
+              }
+            },
+            "weightOrdered": {
+              "type": "object",
+              "properties": {
+                "frozen": {
+                  "description": "Total weight (in pounds) of frozen products ordered.",
+                  "type": "number",
+                  "format": "float"
+                },
+                "refrigerated": {
+                  "description": "Total weight (in pounds) of refrigerated products ordered.",
+                  "type": "number",
+                  "format": "float"
+                },
+                "roomTemp": {
+                  "description": "Total weight (in pounds) of room temperature products ordered.",
+                  "type": "number",
+                  "format": "float"
+                },
+                "greenhouse": {
+                  "description": "Total weight (in pounds) of greenhouse products ordered.",
+                  "type": "number",
+                  "format": "float"
+                },
+                "total": {
+                  "description": "Total weight (in pounds) of all products ordered.",
+                  "type": "number",
+                  "format": "float"
+                }
+              }
+            },
+            "weightShipped": {
+              "type": "object",
+              "properties": {
+                "frozen": {
+                  "description": "Total weight (in pounds) of frozen products shipped.",
+                  "type": "number",
+                  "format": "float"
+                },
+                "refrigerated": {
+                  "description": "Total weight (in pounds) of refrigerated products shipped.",
+                  "type": "number",
+                  "format": "float"
+                },
+                "roomTemp": {
+                  "description": "Total weight (in pounds) of room temperature products shipped.",
+                  "type": "number",
+                  "format": "float"
+                },
+                "greenhouse": {
+                  "description": "Total weight (in pounds) of greenhouse products shipped.",
+                  "type": "number",
+                  "format": "float"
+                },
+                "total": {
+                  "description": "Total weight (in pounds) of all products shipped.",
+                  "type": "number",
+                  "format": "float"
+                }
+              }
+            },
+            "volumeOrdered": {
+              "type": "object",
+              "properties": {
+                "frozen": {
+                  "description": "Total volume (in cubic feet) of frozen products ordered.",
+                  "type": "number",
+                  "format": "float"
+                },
+                "refrigerated": {
+                  "description": "Total volume (in cubic feet) of refrigerated products ordered.",
+                  "type": "number",
+                  "format": "float"
+                },
+                "roomTemp": {
+                  "description": "Total volume (in cubic feet) of room temperature products ordered.",
+                  "type": "number",
+                  "format": "float"
+                },
+                "greenhouse": {
+                  "description": "Total volume (in cubic feet) of greenhouse products ordered.",
+                  "type": "number",
+                  "format": "float"
+                },
+                "total": {
+                  "description": "Total volume (in cubic feet) of all products ordered.",
+                  "type": "number",
+                  "format": "float"
+                }
+              }
+            },
+            "volumeShipped": {
+              "type": "object",
+              "properties": {
+                "frozen": {
+                  "description": "Total volume (in cubic feet) of frozen products shipped.",
+                  "type": "number",
+                  "format": "float"
+                },
+                "refrigerated": {
+                  "description": "Total volume (in cubic feet) of refrigerated products shipped.",
+                  "type": "number",
+                  "format": "float"
+                },
+                "roomTemp": {
+                  "description": "Total volume (in cubic feet) of room temperature products shipped.",
+                  "type": "number",
+                  "format": "float"
+                },
+                "greenhouse": {
+                  "description": "Total volume (in cubic feet) of greenhouse products shipped.",
+                  "type": "number",
+                  "format": "float"
+                },
+                "total": {
+                  "description": "Total volume (in cubic feet) of all products shipped.",
+                  "type": "number",
+                  "format": "float"
+                }
+              }
             }
           }
         }
