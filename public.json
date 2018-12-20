@@ -7170,7 +7170,7 @@
     },
     "/order-frequency-segment": {
       "get": {
-        "summary": "Returns whether the customer has ordered in the last 120 days, \"active\" if yes or \"activeag\" (for \"active aging\") if not. If no customer exists, returns \"new\".",
+        "summary": "Returns \"active\" if the customer has ordered within the last 120 days, \"activeag\" (for \"active aging\") if they've ordered before but not within 120 days, \"activereg\" if they've never ordered. If no customer exists, returns \"new\".",
         "operationId": "orderFrequencySegment",
         "parameters": [
           {
@@ -7182,7 +7182,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Whether the customer has ordered in the last 120 days, \"active\" if yes or \"activeag\" (for \"active aging\") if not. If no customer exists, returns \"new\".",
+            "description": "Returns \"active\" if the customer has ordered within the last 120 days, \"activeag\" (for \"active aging\") if they've ordered before but not within 120 days, \"activereg\" if they've never ordered. If no customer exists, returns \"new\".",
             "type": "object",
             "properties": {
               "email": {
@@ -7194,7 +7194,8 @@
                 "enum": [
                   "new",
                   "active",
-                  "activeag"
+                  "activeag",
+                  "activereg"
                 ]
               }
             }
