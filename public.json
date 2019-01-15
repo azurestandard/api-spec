@@ -8992,6 +8992,66 @@
                 }
               }
             },
+            "quantityOrdered": {
+              "type": "object",
+              "properties": {
+                "frozen": {
+                  "description": "Total count of frozen products ordered.",
+                  "type": "number",
+                  "format": "float"
+                },
+                "refrigerated": {
+                  "description": "Total count of refrigerated products ordered.",
+                  "type": "number",
+                  "format": "float"
+                },
+                "roomTemp": {
+                  "description": "Total count of room temperature products ordered.",
+                  "type": "number",
+                  "format": "float"
+                },
+                "greenhouse": {
+                  "description": "Total count of greenhouse products ordered.",
+                  "type": "number",
+                  "format": "float"
+                },
+                "total": {
+                  "description": "Total count of all products ordered.",
+                  "type": "number",
+                  "format": "float"
+                }
+              }
+            },
+            "quantityShipped": {
+              "type": "object",
+              "properties": {
+                "frozen": {
+                  "description": "Total count of frozen products shipped.",
+                  "type": "number",
+                  "format": "float"
+                },
+                "refrigerated": {
+                  "description": "Total count of refrigerated products shipped.",
+                  "type": "number",
+                  "format": "float"
+                },
+                "roomTemp": {
+                  "description": "Total count of room temperature products shipped.",
+                  "type": "number",
+                  "format": "float"
+                },
+                "greenhouse": {
+                  "description": "Total count of greenhouse products shipped.",
+                  "type": "number",
+                  "format": "float"
+                },
+                "total": {
+                  "description": "Total count of all products shipped.",
+                  "type": "number",
+                  "format": "float"
+                }
+              }
+            },
             "weightOrdered": {
               "type": "object",
               "properties": {
