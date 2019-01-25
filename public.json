@@ -4419,6 +4419,25 @@
               "$ref": "#/definitions/changedOrder"
             }
           },
+          "409": {
+            "description": "The order status cannot be updated to \"placed\" because of one or more conflicts. Resolve the conflicts before re-submitting the request.",
+            "type": "object",
+            "properties": {
+              "insufficientStock": {
+                "description": "Ordered items that are either out of stock (i.e. have zero stock available) or have less stock available than what was requested.",
+                "type": "array",
+                "items": {
+                  "stockAvailable": {
+                    "type": "integer",
+                    "format": "int32"
+                  },
+                  "orderLine": {
+                    "$ref": "#/definitions/orderLine"
+                  }
+                }
+              }
+            }
+          },
           "default": {
             "description": "unexpected error",
             "schema": {
