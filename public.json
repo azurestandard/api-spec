@@ -7770,6 +7770,17 @@
           "type": "number",
           "format": "float",
           "minimum": 0
+        },
+        "computed": {
+          "description": "Optional computed properties included via the \"computed\" parameter.",
+          "type": "object",
+          "properties": {
+            "lastOrderPlaced": {
+              "description": "date-time the member last placed an order on this drop",
+              "type": "string",
+              "format": "date-time"
+            }
+          }
         }
       },
       "required": [
