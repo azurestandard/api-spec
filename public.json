@@ -9912,6 +9912,16 @@
           "type": "number",
           "format": "float"
         },
+        "type": {
+          "description": "This entry's reward type.",
+          "type": "string",
+          "enum": [
+            "earned",
+            "used",
+            "expired",
+            "promotion"
+          ]
+        },
         "settled": {
           "description": "When the entry was settled.  This will be unset for pending debits, and will be set for all settled debits.",
           "type": "string",
