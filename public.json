@@ -8606,7 +8606,13 @@
           "minimum": 0
         },
         "rewards-rate": {
-          "description": "Rewards rate (as a percentage) earned for this packaging.  This will only be set for packaging with a fixed rewards rate for the given price level, regardless of the ordering customer.  When unset, the rewards-rate for this package is the customer's default rewards-rate.  The rewards earned for the packaging will be `dollars` * `rewards-rate` / 100, rounded to the nearest cent, rounding half to even.",
+          "description": "Rewards rate (as a percentage) earned for this packaging.  This will only be set for packaging with a fixed rewards rate.  The rewards earned for this product will be the price (after sales) * min(max(`person.rewards-rate`, `product.rewards-rate`), `product.maxRewardsRate`) / 100, rounded to the nearest cent, rounding half to even.",
+          "type": "integer",
+          "format": "int32",
+          "minimum": 0
+        },
+        "maxRewardsRate": {
+          "description": "The maximum rewards rate that could be earned for this product.  A value of 0 means that no rewards will be earned.",
           "type": "integer",
           "format": "int32",
           "minimum": 0
@@ -8617,6 +8623,7 @@
         }
       },
       "required": [
+        "maxRewardsRate",
         "dollars"
       ]
     },
@@ -10182,7 +10189,7 @@
           "$ref": "#/definitions/priceLevel"
         },
         "rewards-rate": {
-          "description": "Rewards rate (as a percentage) for this customer.  For products without custom rewards rates, the rewards earned for the product will be the price (after sales) * `rewards-rate` / 100, rounded to the nearest cent, rounding half to even.",
+          "description": "Rewards rate (as a percentage) for this customer.  The rewards earned for a product will be the price (after sales) * min(max(`person.rewards-rate`, `product.rewards-rate`), `product.maxRewardsRate`) / 100, rounded to the nearest cent, rounding half to even.",
           "type": "integer",
           "format": "int32",
           "minimum": 0
