@@ -8904,10 +8904,16 @@
           "type": "integer",
           "format": "int64"
         },
-        "dropMembershipId": {
-          "description": "the membership ID of the customer making the order. Only included if the request includes the inlined \"dropMembershipId\".",
-          "type": "integer",
-          "format": "int64"
+        "inline": {
+          "description": "Optional inlined properties included via the \"inline\" parameter.",
+          "type": "object",
+          "properties": {
+            "dropMembershipId": {
+              "description": "The membership ID of the customer making the order. Only included if the request includes the inlined \"dropMembershipId\".",
+              "type": "integer",
+              "format": "int64"
+            }
+          }
         },
         "status": {
           "description": "order's lifecycle stage",
