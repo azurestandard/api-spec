@@ -4275,6 +4275,17 @@
             "required": false,
             "type": "integer",
             "format": "int32"
+          },
+          {
+            "name": "inline",
+            "in": "query",
+            "description": "for convenience, include a full representation of the inlined property. Currently supports \"dropMembershipId\".",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "csv"
           }
         ],
         "responses": {
@@ -4358,6 +4369,17 @@
             "description": "override the HTTP Accept header to chose the response type.  Empty and unrecognized values will result in application/json.",
             "required": false,
             "type": "string"
+          },
+          {
+            "name": "inline",
+            "in": "query",
+            "description": "for convenience, include a full representation of the inlined property. Currently supports \"dropMembershipId\".",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "csv"
           }
         ],
         "produces": [
@@ -8879,6 +8901,11 @@
         },
         "customer": {
           "description": "customer making the order",
+          "type": "integer",
+          "format": "int64"
+        },
+        "dropMembershipId": {
+          "description": "the membership ID of the customer making the order. Only included if the request includes the inlined \"dropMembershipId\".",
           "type": "integer",
           "format": "int64"
         },
