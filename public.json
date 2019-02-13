@@ -3207,6 +3207,18 @@
             "collectionFormat": "csv"
           },
           {
+            "name": "code",
+            "in": "query",
+            "description": "packaged product codes to filter by",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "collectionFormat": "csv"
+          },
+          {
             "name": "gtin13",
             "in": "query",
             "description": "13-digit Global Trade Item Numbers to filter by",
