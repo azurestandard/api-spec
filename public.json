@@ -9030,6 +9030,10 @@
           "description": "a datetime denoting when the order or its order-lines were last updated via the API",
           "type": "date-time"
         },
+        "holdShipmentUntilStockAvailable": {
+          "description": "If true, the customer has requested to hold shipment of the order until all requested stock is available.",
+          "type": "boolean"
+        },
         "computed": {
           "description": "Optional computed properties included via the \"computed\" parameter.",
           "type": "object",
@@ -9311,6 +9315,10 @@
         "notes": {
           "description": "Additional information about the order, including special instructions for Azure's pickers",
           "type": "string"
+        },
+        "holdShipmentUntilStockAvailable": {
+          "description": "If true, the customer has requested to hold shipment of the order until all requested stock is available.",
+          "type": "boolean"
         }
       },
       "required": [
