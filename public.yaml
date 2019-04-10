@@ -6997,6 +6997,10 @@ components:
         - cutoff-frequency
         - delivery-offset
         - internal
+        - hub
+        - driverName
+        - driverPhone
+        - notes
     updateRoute:
       description: an order-delivery truck route's updated values
       type: object
