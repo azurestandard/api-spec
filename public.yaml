@@ -6948,6 +6948,9 @@ components:
       description: an order-delivery truck route
       type: object
       properties:
+        id:
+          type: integer
+          format: int64
         name:
           type: string
         description:
