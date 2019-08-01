@@ -9168,6 +9168,11 @@ components:
       description: configure if and how a user receives per-user notifications
       type: object
       properties:
+        abandonedCart:
+          description: Sent when an unplaced order is left in a cart.
+          format: array
+          items:
+            $ref: '#/components/schemas/notificationChannel'
         checkout:
           description: sent after checking out orders.
           format: array
