@@ -2217,16 +2217,16 @@ paths:
             items:
               type: integer
               format: int64
-        - name: target-time-after
+        - name: estimatedDeliveryAfter
           in: query
-          description: only return stops with a target time after or on this date
+          description: only return stops with an estimated time after or on this date
           required: false
           schema:
             type: string
             format: date-time
-        - name: target-time-before
+        - name: estimatedDeliveryBefore
           in: query
-          description: only return stops with a target time before this date
+          description: only return stops with an estimated time before this date
           required: false
           schema:
             type: string
@@ -7221,18 +7221,16 @@ components:
             IANA time zone location (https://www.iana.org/time-zones, e.g.
             America/Los_Angeles)
           type: string
-        target-time:
-          description: planned stop time (fixed before the trip starts)
+        estimatedDelivery:
+          description: editable until verification
           type: string
           format: date-time
-        estimated-time:
-          description: >-
-            estimated stop time (updated after the trip starts until the stop is
-            reached)
+        finalizedDelivery:
+          description: editable between verification and delivery
           type: string
           format: date-time
-        time:
-          description: actual stop time (set after the stop is reached)
+        actualDelivery:
+          description: when the stop is actually reached
           type: string
           format: date-time
         drop-shipping-fee:
@@ -7240,8 +7238,8 @@ components:
       required:
         - id
         - trip
-        - target-time
-        - estimated-time
+        - estimatedDelivery
+        - finalizedDelivery
     updateStop:
       description: an update to a trip stop or waypoint
       type: object
@@ -7258,24 +7256,22 @@ components:
           description: pickup ID for the stop
           type: integer
           format: int64
-        target-time:
-          description: planned stop time (fixed before the trip starts)
+        estimatedDelivery:
+          description: editable until verification
           type: string
           format: date-time
-        estimated-time:
-          description: >-
-            estimated stop time (updated after the trip starts until the stop is
-            reached)
+        finalizedDelivery:
+          description: editable between verification and delivery
           type: string
           format: date-time
-        time:
-          description: actual stop time (set after the stop is reached)
+        actualDelivery:
+          description: when the stop is actually reached
           type: string
           format: date-time
       required:
         - trip
-        - target-time
-        - estimated-time
+        - estimatedDelivery
+        - finalizedDelivery
     shippingService:
       description: >-
         A parcel-carrier service.  The listing below is ordered by carrier and
