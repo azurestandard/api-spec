@@ -7116,6 +7116,14 @@ components:
             this will mostly be for delay causes (e.g. "High winds in Laramie"
             or "The truck broke down")
           type: string
+        status: 
+          description: current stage of a trip's lifecycle
+          type: string
+          enum:
+            - new
+            - verified
+            - sequenced
+            - shipped
       required:
         - id
         - route
