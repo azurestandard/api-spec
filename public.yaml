@@ -1070,6 +1070,19 @@ paths:
           required: false
           schema:
             type: boolean
+        - name: exclusivity
+          in: query
+          description: types of exclusivity to filter by
+          required: false
+          style: form
+          schema:
+            type: array
+            items:
+              type: string
+              enum:
+                - open
+                - semi-open
+                - closed
         - name: route
           in: query
           description: route names to filter by
