@@ -7481,6 +7481,20 @@ components:
             includes additional keywords or rephrasing, suitable for use in a
             title tag.  When this is unset, the name is a reasonable fallback.
           type: string
+        treatAsActive:
+          description: If true, this product will be published to search engines
+            even when it is inactive (out for season, out long term, or
+            discontinued).
+          type: boolean
+        inactiveDescription:
+          description: >-
+            HTML description applicable only when the product is inactive (out
+            for season, out long term, or discontinued). It should contain
+            specific information pertinent to the inactive status of the product
+            (e.g. details about why it is inactive and what similar products
+            are available instead). It should not duplicate information in
+            short-description or description.
+          type: string
         short-description:
           description: 'paragraph-length, stand-alone, plain-text product description'
           type: string
