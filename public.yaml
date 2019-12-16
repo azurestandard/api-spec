@@ -7383,6 +7383,9 @@ components:
         bargain-bin-notes:
           description: Bargain-bin notes for this packaged product.
           type: string
+        statusReason:
+          description: Reason this packaged product is in its current status.
+          type: string
         servings-per-container:
           description: >-
             Servings per container.  The rest of the nutrition information is in
