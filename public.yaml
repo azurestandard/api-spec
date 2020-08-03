@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
-  version: 1.0.0-oas3
-  title: Azure Standard's Public API
+  version: "1.0.0-oas3"
+  title: Azure Standard Public API
   description: The public API behind Azure's website
   contact:
     name: Azure Standard Customer Service
@@ -16,7 +16,9 @@ security:
 paths:
   /affiliate-referrals:
     get:
-      summary: 'Returns all affiliate referrals for the given referring user, in descending order of the date the referred person''s account was created'
+      summary: >-
+        Returns all affiliate referrals for the given referring user, in
+        descending order of the date the referred person's account was created
       operationId: findAffiliateReferrals
       tags:
         - affiliate-referral
@@ -37,7 +39,9 @@ paths:
             format: int32
         - name: start
           in: query
-          description: offset to the first result to return.  Use negative numbers to offset from the end of the result list.
+          description: >-
+            offset to the first result to return.  Use negative numbers to
+            offset from the end of the result list.
           required: false
           schema:
             type: integer
@@ -47,7 +51,9 @@ paths:
           description: affiliate referral response
           headers:
             Count:
-              description: total number of matching results (how many you'd get if you could set an infinite `limit`)
+              description: >-
+                total number of matching results (how many you'd get if you
+                could set an infinite `limit`)
               schema:
                 type: integer
                 format: int32
@@ -80,7 +86,9 @@ paths:
             format: int32
         - name: start
           in: query
-          description: offset to the first result to return.  Use negative numbers to offset from the end of the result list.
+          description: >-
+            offset to the first result to return.  Use negative numbers to
+            offset from the end of the result list.
           required: false
           schema:
             type: integer
@@ -90,7 +98,9 @@ paths:
           description: bartenderHost response
           headers:
             Count:
-              description: total number of matching results (how many you'd get if you could set an infinite `limit`)
+              description: >-
+                total number of matching results (how many you'd get if you
+                could set an infinite `limit`)
               schema:
                 type: integer
                 format: int32
@@ -134,7 +144,9 @@ paths:
         required: true
   '/bartender-host/{code}':
     get:
-      summary: 'Returns a BarTender host based on a single code, if the user has access to it'
+      summary: >-
+        Returns a BarTender host based on a single code, if the user has access
+        to it
       operationId: findBartenderHostByCode
       tags:
         - bartender
@@ -213,7 +225,9 @@ paths:
                 $ref: '#/components/schemas/error'
   /bartender-templates:
     get:
-      summary: Returns all BarTender templates from the system that the user has access to
+      summary: >-
+        Returns all BarTender templates from the system that the user has access
+        to
       operationId: findBartenderTemplates
       tags:
         - bartender
@@ -227,7 +241,9 @@ paths:
             format: int32
         - name: start
           in: query
-          description: offset to the first result to return.  Use negative numbers to offset from the end of the result list.
+          description: >-
+            offset to the first result to return.  Use negative numbers to
+            offset from the end of the result list.
           required: false
           schema:
             type: integer
@@ -237,7 +253,9 @@ paths:
           description: bartenderTemplate response
           headers:
             Count:
-              description: total number of matching results (how many you'd get if you could set an infinite `limit`)
+              description: >-
+                total number of matching results (how many you'd get if you
+                could set an infinite `limit`)
               schema:
                 type: integer
                 format: int32
@@ -281,7 +299,9 @@ paths:
         required: true
   '/bartender-template/{id}':
     get:
-      summary: 'Returns a BarTender template based on a single ID, if the user has access to it'
+      summary: >-
+        Returns a BarTender template based on a single ID, if the user has
+        access to it
       operationId: findBartenderTemplateById
       tags:
         - bartender
@@ -363,7 +383,9 @@ paths:
                 $ref: '#/components/schemas/error'
   /bartender-print-configurations:
     get:
-      summary: Returns all BarTender print configurations from the system that the user has access to
+      summary: >-
+        Returns all BarTender print configurations from the system that the user
+        has access to
       operationId: findBartenderPrintConfigurations
       tags:
         - bartender
@@ -377,7 +399,9 @@ paths:
             format: int32
         - name: start
           in: query
-          description: offset to the first result to return.  Use negative numbers to offset from the end of the result list.
+          description: >-
+            offset to the first result to return.  Use negative numbers to
+            offset from the end of the result list.
           required: false
           schema:
             type: integer
@@ -387,7 +411,9 @@ paths:
           description: bartenderPrintConfiguration response
           headers:
             Count:
-              description: total number of matching results (how many you'd get if you could set an infinite `limit`)
+              description: >-
+                total number of matching results (how many you'd get if you
+                could set an infinite `limit`)
               schema:
                 type: integer
                 format: int32
@@ -431,7 +457,9 @@ paths:
         required: true
   '/bartender-print-configuration/{id}':
     get:
-      summary: 'Returns a BarTender print configuration based on a single ID, if the user has access to it'
+      summary: >-
+        Returns a BarTender print configuration based on a single ID, if the
+        user has access to it
       operationId: findBartenderPrintConfigurationById
       tags:
         - bartender
@@ -487,7 +515,9 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/bartenderPrintConfiguration'
-        description: Updated BarTender print configuration parameters (can optionally include 'id')
+        description: >-
+          Updated BarTender print configuration parameters (can optionally
+          include 'id')
         required: true
     delete:
       summary: Delete an existing BarTender print configuration
@@ -513,7 +543,10 @@ paths:
                 $ref: '#/components/schemas/error'
   '/bartender-print-configuration/{id}/actions/test-print':
     post:
-      summary: Create a test BarTender print request using this print configuration. The print request uses hard-coded dummy data if a stock ID is not provided.
+      summary: >-
+        Create a test BarTender print request using this print configuration.
+        The print request uses hard-coded dummy data if a stock ID is not
+        provided.
       operationId: actionTestBartenderPrintConfiguration
       tags:
         - bartender
@@ -543,7 +576,9 @@ paths:
                 stock:
                   type: integer
                   format: int64
-        description: 'Test data to use in the test print request.  The payload must be a JSON object, but the ''stock'' property is optional.'
+        description: >-
+          Test data to use in the test print request.  The payload must be a
+          JSON object, but the 'stock' property is optional.
         required: true
   /brands:
     get:
@@ -555,7 +590,9 @@ paths:
       parameters:
         - name: name
           in: query
-          description: Only return brands whose name contains this value (case insensitive).
+          description: >-
+            Only return brands whose name contains this value (case
+            insensitive).
           required: false
           schema:
             type: string
@@ -572,7 +609,9 @@ paths:
                   - none
         - name: start
           in: query
-          description: offset to the first result to return.  Use negative numbers to offset from the end of the result list.
+          description: >-
+            offset to the first result to return.  Use negative numbers to
+            offset from the end of the result list.
           required: false
           schema:
             type: integer
@@ -582,7 +621,9 @@ paths:
           description: brand response
           headers:
             Count:
-              description: Total number of matching results (how many you'd get if you set `limit` to `none`).
+              description: >-
+                Total number of matching results (how many you'd get if you set
+                `limit` to `none`).
               schema:
                 type: integer
                 format: int32
@@ -636,13 +677,20 @@ paths:
       parameters:
         - name: query
           in: query
-          description: Query to perform within the directory.  The use of a `*` at the beginning or end of the string is treated as a wildcard.  This parameter is case insensitive.
+          description: >-
+            Query to perform within the directory.  The use of a `*` at the
+            beginning or end of the string is treated as a wildcard.  This
+            parameter is case insensitive.
           required: false
           schema:
             type: string
         - name: query-field
           in: query
-          description: 'Fields to search.  Any property included in a companyDirectoryEntry response may be queried.  Defaults to `full-name`, `first-name`, `last-name`, `title`, `department.name`, `phone-number`, `phone-ext`, `mobile`, `email`, and `office`.'
+          description: >-
+            Fields to search.  Any property included in a companyDirectoryEntry
+            response may be queried.  Defaults to `full-name`, `first-name`,
+            `last-name`, `title`, `department.name`, `phone-number`,
+            `phone-ext`, `mobile`, `email`, and `office`.
           required: false
           style: form
           schema:
@@ -651,13 +699,19 @@ paths:
               type: string
         - name: department
           in: query
-          description: Filter by department.  If this parameter is used then department will be ignored in the query-field parameter.  This parameter is case insensitive.
+          description: >-
+            Filter by department.  If this parameter is used then department
+            will be ignored in the query-field parameter.  This parameter is
+            case insensitive.
           required: false
           schema:
             type: string
         - name: sort
           in: query
-          description: 'Order results by this field.  Any property included in a companyDirectoryEntry response may be used here.  Defaults to `department.name`, `first-name` and `last-name`.'
+          description: >-
+            Order results by this field.  Any property included in a
+            companyDirectoryEntry response may be used here.  Defaults to
+            `department.name`, `first-name` and `last-name`.
           required: false
           style: form
           schema:
@@ -673,7 +727,9 @@ paths:
             format: int32
         - name: start
           in: query
-          description: offset to the first result to return.  Use negative numbers to offset from the end of the result list.
+          description: >-
+            offset to the first result to return.  Use negative numbers to
+            offset from the end of the result list.
           required: false
           schema:
             type: integer
@@ -683,7 +739,9 @@ paths:
           description: companyDirectoryEntry response
           headers:
             Count:
-              description: Total number of matching results (how many you'd get if you could set an infinite `limit`)
+              description: >-
+                Total number of matching results (how many you'd get if you
+                could set an infinite `limit`)
               schema:
                 type: integer
                 format: int32
@@ -716,7 +774,9 @@ paths:
             format: int32
         - name: start
           in: query
-          description: Offset to the first result to return.  Use negative numbers to offset from the end of the result list.
+          description: >-
+            Offset to the first result to return.  Use negative numbers to
+            offset from the end of the result list.
           required: false
           schema:
             type: integer
@@ -726,7 +786,9 @@ paths:
           description: Department response
           headers:
             Count:
-              description: Total number of matching results (how many you'd get if you could set an infinite `limit`)
+              description: >-
+                Total number of matching results (how many you'd get if you
+                could set an infinite `limit`)
               schema:
                 type: integer
                 format: int32
@@ -758,7 +820,9 @@ paths:
             type: string
         - name: category
           in: query
-          description: Report category IDs to filter by.  `null` may be used to return reports that are uncategorized.
+          description: >-
+            Report category IDs to filter by.  `null` may be used to return
+            reports that are uncategorized.
           required: false
           style: form
           schema:
@@ -775,7 +839,9 @@ paths:
             format: int32
         - name: start
           in: query
-          description: offset to the first result to return.  Use negative numbers to offset from the end of the result list.
+          description: >-
+            offset to the first result to return.  Use negative numbers to
+            offset from the end of the result list.
           required: false
           schema:
             type: integer
@@ -785,7 +851,9 @@ paths:
           description: report response
           headers:
             Count:
-              description: total number of matching results (how many you'd get if you could set an infinite `limit`)
+              description: >-
+                total number of matching results (how many you'd get if you
+                could set an infinite `limit`)
               schema:
                 type: integer
                 format: int32
@@ -830,14 +898,18 @@ paths:
                 $ref: '#/components/schemas/error'
   /report-categories:
     get:
-      summary: Returns all report categories from the system that the user has access to
+      summary: >-
+        Returns all report categories from the system that the user has access
+        to
       operationId: findReportCategories
       tags:
         - report
       parameters:
         - name: customer-pricing
           in: query
-          description: Filter categories by whether or not they contain customer pricing groups
+          description: >-
+            Filter categories by whether or not they contain customer pricing
+            groups
           required: false
           schema:
             type: boolean
@@ -850,7 +922,9 @@ paths:
             format: int32
         - name: start
           in: query
-          description: offset to the first result to return.  Use negative numbers to offset from the end of the result list.
+          description: >-
+            offset to the first result to return.  Use negative numbers to
+            offset from the end of the result list.
           required: false
           schema:
             type: integer
@@ -860,7 +934,9 @@ paths:
           description: reportCategory response
           headers:
             Count:
-              description: total number of matching results (how many you'd get if you could set an infinite `limit`)
+              description: >-
+                total number of matching results (how many you'd get if you
+                could set an infinite `limit`)
               schema:
                 type: integer
                 format: int32
@@ -983,7 +1059,7 @@ paths:
                 $ref: '#/components/schemas/error'
   /drops:
     get:
-      summary: Get drops
+      summary: Returns all drops from the system that the user has access to
       operationId: findDrops
       tags:
         - drop
@@ -1038,7 +1114,10 @@ paths:
               format: int64
         - name: sort
           in: query
-          description: 'Order results by this field.  Only one special sort field is supported, distance(lat:45.45|lon:-121.13), which will sort drops by increasing distance from the lat and lon combination.'
+          description: >-
+            Order results by this field.  Only one special sort field is
+            supported, distance(lat:45.45|lon:-121.13), which will sort drops by
+            increasing distance from the lat and lon combination.
           required: false
           schema:
             type: string
@@ -1051,7 +1130,9 @@ paths:
             format: int32
         - name: start
           in: query
-          description: offset to the first result to return.  Use negative numbers to offset from the end of the result list.
+          description: >-
+            offset to the first result to return.  Use negative numbers to
+            offset from the end of the result list.
           required: false
           schema:
             type: integer
@@ -1061,7 +1142,9 @@ paths:
           description: drop response
           headers:
             Count:
-              description: total number of matching results (how many you'd get if you could set an infinite `limit`)
+              description: >-
+                total number of matching results (how many you'd get if you
+                could set an infinite `limit`)
               schema:
                 type: integer
                 format: int32
@@ -1078,7 +1161,6 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/error'
-      description: Will return all drops that the user has access to (some drops require specific permissions).
     post:
       summary: Create a new drop
       operationId: addDrop
@@ -1188,7 +1270,9 @@ paths:
                 $ref: '#/components/schemas/error'
   /drops/locations:
     get:
-      summary: Returns an array of locations for all active drops that the user has access to.
+      summary: >-
+        Returns an array of locations for all active drops that the user has
+        access to.
       description: 'For example, you can use this to draw markers on map.'
       operationId: findDropLocations
       tags:
@@ -1249,7 +1333,10 @@ paths:
             type: boolean
         - name: inline
           in: query
-          description: 'for convenience, include a full representation of the inlined property.  Currently supports "customer", "customer.email", "drop", and "gratitude-total".'
+          description: >-
+            for convenience, include a full representation of the inlined
+            property.  Currently supports "customer", "customer.email", "drop",
+            and "gratitude-total".
           required: false
           style: form
           schema:
@@ -1258,7 +1345,9 @@ paths:
               type: string
         - name: sort
           in: query
-          description: 'Order results by this field.  Supported fields: "customer.name", "drop.name".'
+          description: >-
+            Order results by this field.  Supported fields: "customer.name",
+            "drop.name".
           required: false
           schema:
             type: string
@@ -1271,7 +1360,9 @@ paths:
             format: int32
         - name: start
           in: query
-          description: offset to the first result to return.  Use negative numbers to offset from the end of the result list.
+          description: >-
+            offset to the first result to return.  Use negative numbers to
+            offset from the end of the result list.
           required: false
           schema:
             type: integer
@@ -1281,7 +1372,9 @@ paths:
           description: drop membership response
           headers:
             Count:
-              description: total number of matching results (how many you'd get if you could set an infinite `limit`)
+              description: >-
+                total number of matching results (how many you'd get if you
+                could set an infinite `limit`)
               schema:
                 type: integer
                 format: int32
@@ -1325,7 +1418,9 @@ paths:
         required: true
   '/drop-membership/{id}':
     get:
-      summary: 'Returns a drop membership based on a single membership ID, if the user has access.'
+      summary: >-
+        Returns a drop membership based on a single membership ID, if the user
+        has access.
       operationId: findDropMembershipById
       tags:
         - drop-membership
@@ -1339,7 +1434,10 @@ paths:
             format: int64
         - name: inline
           in: query
-          description: 'for convenience, include a full representation of the inlined property.  Currently supports "customer", "drop", and "gratitude-total".'
+          description: >-
+            for convenience, include a full representation of the inlined
+            property.  Currently supports "customer", "drop", and
+            "gratitude-total".
           required: false
           style: form
           schema:
@@ -1430,7 +1528,9 @@ paths:
             format: int32
         - name: start
           in: query
-          description: Offset to the first result to return.  Use negative numbers to offset from the end of the result list.
+          description: >-
+            Offset to the first result to return.  Use negative numbers to
+            offset from the end of the result list.
           required: false
           schema:
             type: integer
@@ -1440,7 +1540,9 @@ paths:
           description: File response.
           headers:
             Count:
-              description: Total number of matching results (how many you'd get if you didn't set `limit`).
+              description: >-
+                Total number of matching results (how many you'd get if you
+                didn't set `limit`).
               schema:
                 type: integer
                 format: int32
@@ -1483,7 +1585,9 @@ paths:
         description: 'File to add.  The payload is the raw content, not a JSON object.'
   '/file/{id}':
     delete:
-      summary: Delete an existing file.  This may fail if there are any internal references to the file.
+      summary: >-
+        Delete an existing file.  This may fail if there are any internal
+        references to the file.
       operationId: deleteFile
       tags:
         - file
@@ -1554,7 +1658,9 @@ paths:
             format: int32
         - name: start
           in: query
-          description: offset to the first result to return.  Use negative numbers to offset from the end of the result list.
+          description: >-
+            offset to the first result to return.  Use negative numbers to
+            offset from the end of the result list.
           required: false
           schema:
             type: integer
@@ -1564,7 +1670,9 @@ paths:
           description: pickup response
           headers:
             Count:
-              description: total number of matching results (how many you'd get if you didn't set `limit`)
+              description: >-
+                total number of matching results (how many you'd get if you
+                didn't set `limit`)
               schema:
                 type: integer
                 format: int32
@@ -1583,7 +1691,9 @@ paths:
                 $ref: '#/components/schemas/error'
   '/pickup/{id}':
     get:
-      summary: 'Returns a pickup based on a single ID, if the user has access to the pickup'
+      summary: >-
+        Returns a pickup based on a single ID, if the user has access to the
+        pickup
       operationId: findPickupById
       tags:
         - pickup
@@ -1634,7 +1744,9 @@ paths:
             format: int32
         - name: start
           in: query
-          description: offset to the first result to return.  Use negative numbers to offset from the end of the result list.
+          description: >-
+            offset to the first result to return.  Use negative numbers to
+            offset from the end of the result list.
           required: false
           schema:
             type: integer
@@ -1644,7 +1756,9 @@ paths:
           description: route response
           headers:
             Count:
-              description: total number of matching results (how many you'd get if you could set an infinite `limit`)
+              description: >-
+                total number of matching results (how many you'd get if you
+                could set an infinite `limit`)
               schema:
                 type: integer
                 format: int32
@@ -1688,7 +1802,9 @@ paths:
         required: true
   '/route/{name}':
     get:
-      summary: 'Returns a route based on a single ID, if the user has access to the route'
+      summary: >-
+        Returns a route based on a single ID, if the user has access to the
+        route
       operationId: findRouteById
       tags:
         - route
@@ -1831,7 +1947,9 @@ paths:
             format: int32
         - name: start
           in: query
-          description: offset to the first result to return.  Use negative numbers to offset from the end of the result list.
+          description: >-
+            offset to the first result to return.  Use negative numbers to
+            offset from the end of the result list.
           required: false
           schema:
             type: integer
@@ -1841,7 +1959,9 @@ paths:
           description: trip response
           headers:
             Count:
-              description: total number of matching results (how many you'd get if you could set an infinite `limit`)
+              description: >-
+                total number of matching results (how many you'd get if you
+                could set an infinite `limit`)
               schema:
                 type: integer
                 format: int32
@@ -1968,7 +2088,9 @@ paths:
   /route-stops:
     get:
       summary: Returns all route-stops from the system that the user has access to
-      description: Route-stops are ordered for increasing offset from the route's trip cutoff
+      description: >-
+        Route-stops are ordered for increasing offset from the route's trip
+        cutoff
       operationId: findRouteStops
       tags:
         - stop
@@ -2001,7 +2123,9 @@ paths:
             format: int32
         - name: start
           in: query
-          description: offset to the first result to return.  Use negative numbers to offset from the end of the result list.
+          description: >-
+            offset to the first result to return.  Use negative numbers to
+            offset from the end of the result list.
           required: false
           schema:
             type: integer
@@ -2011,7 +2135,9 @@ paths:
           description: route-stop response
           headers:
             Count:
-              description: total number of matching results (how many you'd get if you could set an infinite `limit`)
+              description: >-
+                total number of matching results (how many you'd get if you
+                could set an infinite `limit`)
               schema:
                 type: integer
                 format: int32
@@ -2030,7 +2156,9 @@ paths:
                 $ref: '#/components/schemas/error'
   '/route-stop/{id}':
     get:
-      summary: 'Returns a route-stop based on a single ID, if the user has access to the route-stop'
+      summary: >-
+        Returns a route-stop based on a single ID, if the user has access to the
+        route-stop
       operationId: findRouteStopById
       tags:
         - stop
@@ -2131,7 +2259,9 @@ paths:
             format: int32
         - name: start
           in: query
-          description: offset to the first result to return.  Use negative numbers to offset from the end of the result list.
+          description: >-
+            offset to the first result to return.  Use negative numbers to
+            offset from the end of the result list.
           required: false
           schema:
             type: integer
@@ -2141,7 +2271,9 @@ paths:
           description: stop response
           headers:
             Count:
-              description: total number of matching results (how many you'd get if you could set an infinite `limit`)
+              description: >-
+                total number of matching results (how many you'd get if you
+                could set an infinite `limit`)
               schema:
                 type: integer
                 format: int32
@@ -2166,7 +2298,19 @@ paths:
       parameters:
         - name: persist
           in: query
-          description: 'If true, calculate the offset between the trips''s delivery start and this stop''s estimated time. For any pre-cutoff trips associated with this stop''s trip''s route which cutoff later than this stop''s trip, create a stop for this location (drop or pickup) if it does not already exist and update that stop''s target and estimated times to have the same offset from that stops''s trip''s delivery start. Also create a route-stop association, if it does not already exist, for this location on this stop''s trip''s route and update that route-stop with the same delivery offset. API users should always pass  `persist=true` if there are estimated delivery changes. For finalized and/or  actual delivery changes, passing `persist=true` will not actually persist them but will slow down the response.'
+          description: >-
+            If true, calculate the offset between the trips's delivery start and
+            this stop's estimated time. For any pre-cutoff trips associated
+            with this stop's trip's route which cutoff later than this stop's
+            trip, create a stop for this location (drop or pickup) if it does
+            not already exist and update that stop's target and estimated times
+            to have the same offset from that stops's trip's delivery start.
+            Also create a route-stop association, if it does not already exist,
+            for this location on this stop's trip's route and update that
+            route-stop with the same delivery offset. API users should always pass 
+            `persist=true` if there are estimated delivery changes. For finalized and/or 
+            actual delivery changes, passing `persist=true` will not actually persist them
+            but will slow down the response.
           required: false
           schema:
             type: boolean
@@ -2232,13 +2376,29 @@ paths:
             format: int64
         - name: persist
           in: query
-          description: 'If true, calculate the offset between the trips''s delivery start and this stop''s estimated time. For any pre-cutoff trips associated with this stop''s trip''s route which cutoff later than this stop''s trip, create a stop for this location (drop or pickup) if it does not already exist and update that stop''s target and estimated times to have the same offset from that stops''s trip''s delivery start. Also create a route-stop association, if it does not already exist, for this location on this stop''s trip''s route and update that route-stop with the same delivery offset. If propagate is set, apply the persistance logic to the later stops on the trip as well. API users  should always pass `persist=true` if there are estimated delivery changes. For  finalized and/or actual delivery changes, passing `persist=true` will not actually  persist them but will slow down the response.'
+          description: >-
+            If true, calculate the offset between the trips's delivery start and
+            this stop's estimated time. For any pre-cutoff trips associated
+            with this stop's trip's route which cutoff later than this stop's
+            trip, create a stop for this location (drop or pickup) if it does
+            not already exist and update that stop's target and estimated times
+            to have the same offset from that stops's trip's delivery start.
+            Also create a route-stop association, if it does not already exist,
+            for this location on this stop's trip's route and update that
+            route-stop with the same delivery offset. If propagate is set,
+            apply the persistance logic to the later stops on the trip as well. API users 
+            should always pass `persist=true` if there are estimated delivery changes. For 
+            finalized and/or actual delivery changes, passing `persist=true` will not actually 
+            persist them but will slow down the response.
           required: false
           schema:
             type: boolean
         - name: propagate
           in: query
-          description: 'if true, calculate the change from the existing estimated time. Shift the estimated time of all later stops on the trip by the same amount.  For pre-cutoff trips, also shift the target times.'
+          description: >-
+            if true, calculate the change from the existing estimated time.
+            Shift the estimated time of all later stops on the trip by the same
+            amount.  For pre-cutoff trips, also shift the target times.
           required: false
           schema:
             type: boolean
@@ -2277,7 +2437,11 @@ paths:
             format: int64
         - name: persist
           in: query
-          description: 'if true, for any pre-cutoff trips associated with this stop''s trip''s route which cutoff later than this stop''s trip, delete any stops for this location (drop or pickup).  Also delete any route-stop associations for this location on this stop''s trip''s route.'
+          description: >-
+            if true, for any pre-cutoff trips associated with this stop's trip's
+            route which cutoff later than this stop's trip, delete any stops for
+            this location (drop or pickup).  Also delete any route-stop
+            associations for this location on this stop's trip's route.
           required: false
           schema:
             type: boolean
@@ -2300,13 +2464,20 @@ paths:
       parameters:
         - name: audited
           in: query
-          description: 'filter for products that have or haven''t been audited.  When set, only products that contain (un)audited packaging are returned, and their packaging array only contains (un)audited packaging.'
+          description: >-
+            filter for products that have or haven't been audited.  When set,
+            only products that contain (un)audited packaging are returned, and
+            their packaging array only contains (un)audited packaging.
           required: false
           schema:
             type: string
         - name: search
           in: query
-          description: 'search string for filtering products.  The logic behind this is left up to the implementation, but it should at least match words in the product name, and may optionally match the product description or other characteristics'
+          description: >-
+            search string for filtering products.  The logic behind this is left
+            up to the implementation, but it should at least match words in the
+            product name, and may optionally match the product description or
+            other characteristics
           required: false
           schema:
             type: string
@@ -2325,7 +2496,9 @@ paths:
             format: int32
         - name: start
           in: query
-          description: offset to the first result to return.  Use negative numbers to offset from the end of the result list.
+          description: >-
+            offset to the first result to return.  Use negative numbers to
+            offset from the end of the result list.
           required: false
           schema:
             type: integer
@@ -2335,7 +2508,9 @@ paths:
           description: product audit response
           headers:
             Count:
-              description: total number of matching results (how many you'd get if you could set an infinite `limit`)
+              description: >-
+                total number of matching results (how many you'd get if you
+                could set an infinite `limit`)
               schema:
                 type: integer
                 format: int32
@@ -2429,7 +2604,11 @@ paths:
       parameters:
         - name: search
           in: query
-          description: 'search string for filtering products.  The logic behind this is left up to the implementation, but it should at least match words in the product name, and may optionally match the product description or other characteristics'
+          description: >-
+            search string for filtering products.  The logic behind this is left
+            up to the implementation, but it should at least match words in the
+            product name, and may optionally match the product description or
+            other characteristics
           required: false
           schema:
             type: string
@@ -2455,7 +2634,9 @@ paths:
               format: int64
         - name: category
           in: query
-          description: category IDs to filter by (for products directly associated with the categories)
+          description: >-
+            category IDs to filter by (for products directly associated with the
+            categories)
           required: false
           style: form
           schema:
@@ -2465,7 +2646,9 @@ paths:
               format: int64
         - name: primary-category
           in: query
-          description: primary-category IDs to filter by (for products directly associated with the categories)
+          description: >-
+            primary-category IDs to filter by (for products directly associated
+            with the categories)
           required: false
           style: form
           schema:
@@ -2475,7 +2658,9 @@ paths:
               format: int64
         - name: ancestor-category
           in: query
-          description: category IDs to filter by (for products associated with the categories or their descendants)
+          description: >-
+            category IDs to filter by (for products associated with the
+            categories or their descendants)
           required: false
           style: form
           schema:
@@ -2513,14 +2698,21 @@ paths:
               format: int64
         - name: annotate-person
           in: query
-          description: 'person ID for associating additional metadata with results (e.g. whether this person has favorited a given packaged-product).  If unset and you''re authenticated, defaults to your authenticated ID'
+          description: >-
+            person ID for associating additional metadata with results (e.g.
+            whether this person has favorited a given packaged-product).  If
+            unset and you're authenticated, defaults to your authenticated ID
           required: false
           schema:
             type: integer
             format: int64
         - name: inline
           in: query
-          description: 'for convenience, include a full representation of the inlined property. Currently supports the local "description", "favorites", and "substitutions" as well as "brand", "packaging", "vendors", and descendants.'
+          description: >-
+            for convenience, include a full representation of the inlined
+            property. Currently supports the local "description", "favorites",
+            and "substitutions" as well as "brand", "packaging", "vendors", and
+            descendants.
           required: false
           style: form
           schema:
@@ -2536,7 +2728,9 @@ paths:
             format: int32
         - name: start
           in: query
-          description: offset to the first result to return.  Use negative numbers to offset from the end of the result list.
+          description: >-
+            offset to the first result to return.  Use negative numbers to
+            offset from the end of the result list.
           required: false
           schema:
             type: integer
@@ -2546,7 +2740,9 @@ paths:
           description: product response
           headers:
             Count:
-              description: total number of matching results (how many you'd get if you could set an infinite `limit`)
+              description: >-
+                total number of matching results (how many you'd get if you
+                could set an infinite `limit`)
               schema:
                 type: integer
                 format: int32
@@ -2565,7 +2761,9 @@ paths:
                 $ref: '#/components/schemas/error'
   '/product/{id}':
     get:
-      summary: 'Returns a product based on a single ID, if the user has access to the product'
+      summary: >-
+        Returns a product based on a single ID, if the user has access to the
+        product
       operationId: findProductById
       tags:
         - product
@@ -2578,7 +2776,11 @@ paths:
             type: string
         - name: inline
           in: query
-          description: 'for convenience, include a full representation of the inlined property. Currently supports the local "description", "favorites", and "substitutions" as well as "brand", "packaging", "vendors", and descendants.'
+          description: >-
+            for convenience, include a full representation of the inlined
+            property. Currently supports the local "description", "favorites",
+            and "substitutions" as well as "brand", "packaging", "vendors", and
+            descendants.
           required: false
           style: form
           schema:
@@ -2600,7 +2802,9 @@ paths:
                 $ref: '#/components/schemas/error'
   /packaged-products:
     get:
-      summary: Returns all packaged products from the system that the user has access to
+      summary: >-
+        Returns all packaged products from the system that the user has access
+        to
       operationId: findPackagedProduct
       tags:
         - product
@@ -2646,7 +2850,9 @@ paths:
               format: int64
         - name: category
           in: query
-          description: category IDs to filter by (for products directly associated with the categories)
+          description: >-
+            category IDs to filter by (for products directly associated with the
+            categories)
           required: false
           style: form
           schema:
@@ -2656,7 +2862,9 @@ paths:
               format: int64
         - name: primary-category
           in: query
-          description: primary-category IDs to filter by (for products directly associated with the categories)
+          description: >-
+            primary-category IDs to filter by (for products directly associated
+            with the categories)
           required: false
           style: form
           schema:
@@ -2666,7 +2874,9 @@ paths:
               format: int64
         - name: ancestor-category
           in: query
-          description: category IDs to filter by (for packaged products associated with the categories or their descendants)
+          description: >-
+            category IDs to filter by (for packaged products associated with the
+            categories or their descendants)
           required: false
           style: form
           schema:
@@ -2695,14 +2905,21 @@ paths:
               format: int64
         - name: annotate-person
           in: query
-          description: 'person ID for associating additional metadata with results (e.g. whether this person has favorited a given packaged-product).  If unset and you''re authenticated, defaults to your authenticated ID'
+          description: >-
+            person ID for associating additional metadata with results (e.g.
+            whether this person has favorited a given packaged-product).  If
+            unset and you're authenticated, defaults to your authenticated ID
           required: false
           schema:
             type: integer
             format: int64
         - name: inline
           in: query
-          description: 'for convenience, include a full representation of the inlined property. Currently supports the local "favorites", "next-purchase-arrival", and "quantity-on-next-purchase" as well as "image", "product", "vendors", and descendants.'
+          description: >-
+            for convenience, include a full representation of the inlined
+            property. Currently supports the local "favorites",
+            "next-purchase-arrival", and "quantity-on-next-purchase" as well as
+            "image", "product", "vendors", and descendants.
           required: false
           style: form
           schema:
@@ -2718,7 +2935,9 @@ paths:
             format: int32
         - name: start
           in: query
-          description: offset to the first result to return.  Use negative numbers to offset from the end of the result list.
+          description: >-
+            offset to the first result to return.  Use negative numbers to
+            offset from the end of the result list.
           required: false
           schema:
             type: integer
@@ -2728,7 +2947,9 @@ paths:
           description: packaged product response
           headers:
             Count:
-              description: total number of matching results (how many you'd get if you could set an infinite `limit`)
+              description: >-
+                total number of matching results (how many you'd get if you
+                could set an infinite `limit`)
               schema:
                 type: integer
                 format: int32
@@ -2747,7 +2968,9 @@ paths:
                 $ref: '#/components/schemas/error'
   '/packaged-product/{code}':
     get:
-      summary: 'Returns a packaged product based on a single ID, if the user has access to the packaged product'
+      summary: >-
+        Returns a packaged product based on a single ID, if the user has access
+        to the packaged product
       operationId: findPackagedProductById
       tags:
         - product
@@ -2760,7 +2983,11 @@ paths:
             type: string
         - name: inline
           in: query
-          description: 'for convenience, include a full representation of the inlined property. Currently supports the local "favorites", "next-purchase-arrival", and "quantity-on-next-purchase" as well as "image", "product", "vendors", and descendants.'
+          description: >-
+            for convenience, include a full representation of the inlined
+            property. Currently supports the local "favorites",
+            "next-purchase-arrival", and "quantity-on-next-purchase" as well as
+            "image", "product", "vendors", and descendants.
           required: false
           style: form
           schema:
@@ -2782,7 +3009,9 @@ paths:
                 $ref: '#/components/schemas/error'
   /packaged-product-images:
     get:
-      summary: Returns all packaged product images from the system that the user has access to
+      summary: >-
+        Returns all packaged product images from the system that the user has
+        access to
       operationId: findPackagedProductImages
       tags:
         - image
@@ -2806,7 +3035,9 @@ paths:
             format: int32
         - name: start
           in: query
-          description: Offset to the first result to return.  Use negative numbers to offset from the end of the result list.
+          description: >-
+            Offset to the first result to return.  Use negative numbers to
+            offset from the end of the result list.
           required: false
           schema:
             type: integer
@@ -2816,7 +3047,9 @@ paths:
           description: Packaged product image response.
           headers:
             Count:
-              description: Total number of matching results (how many you'd get if you could set an infinite `limit`).
+              description: >-
+                Total number of matching results (how many you'd get if you
+                could set an infinite `limit`).
               schema:
                 type: integer
                 format: int32
@@ -2861,7 +3094,9 @@ paths:
         required: true
   '/packaged-product-image/{id}':
     get:
-      summary: 'Returns a packaged product image based on a single ID, if the user has access to that object'
+      summary: >-
+        Returns a packaged product image based on a single ID, if the user has
+        access to that object
       operationId: findPackagedProductImageById
       tags:
         - image
@@ -2945,14 +3180,20 @@ paths:
                 $ref: '#/components/schemas/error'
   /packaged-product-tags:
     get:
-      summary: Returns all packaged product tags from the system that the user has access to
+      summary: >-
+        Returns all packaged product tags from the system that the user has
+        access to
       operationId: findPackagedProductTag
       tags:
         - packaged-product-tag
       parameters:
         - name: internal
           in: query
-          description: 'if true, only return internal tags (that the user has access to). If false, only return public tags (regardless of the user''s access to internal tags).  If unset, don''t filter based on the tag visibility'
+          description: >-
+            if true, only return internal tags (that the user has access to).
+            If false, only return public tags (regardless of the user's access
+            to internal tags).  If unset, don't filter based on the tag
+            visibility
           required: false
           schema:
             type: boolean
@@ -2974,7 +3215,9 @@ paths:
             format: int32
         - name: start
           in: query
-          description: offset to the first result to return.  Use negative numbers to offset from the end of the result list.
+          description: >-
+            offset to the first result to return.  Use negative numbers to
+            offset from the end of the result list.
           required: false
           schema:
             type: integer
@@ -2984,7 +3227,9 @@ paths:
           description: packaged product tag response
           headers:
             Count:
-              description: total number of matching results (how many you'd get if you could set an infinite `limit`)
+              description: >-
+                total number of matching results (how many you'd get if you
+                could set an infinite `limit`)
               schema:
                 type: integer
                 format: int32
@@ -3024,7 +3269,9 @@ paths:
             format: int32
         - name: start
           in: query
-          description: offset to the first result to return.  Use negative numbers to offset from the end of the result list.
+          description: >-
+            offset to the first result to return.  Use negative numbers to
+            offset from the end of the result list.
           required: false
           schema:
             type: integer
@@ -3034,7 +3281,9 @@ paths:
           description: packaged product tag association response
           headers:
             Count:
-              description: total number of matching results (how many you'd get if you could set an infinite `limit`)
+              description: >-
+                total number of matching results (how many you'd get if you
+                could set an infinite `limit`)
               schema:
                 type: integer
                 format: int32
@@ -3078,7 +3327,9 @@ paths:
         required: true
   '/packaged-product-tag-association/{id}':
     delete:
-      summary: Delete a packaged product tag association from a person's filter preferences
+      summary: >-
+        Delete a packaged product tag association from a person's filter
+        preferences
       operationId: deletePackagedProductTagAssociation
       tags:
         - packaged-product-tag
@@ -3101,7 +3352,9 @@ paths:
                 $ref: '#/components/schemas/error'
   /categories:
     get:
-      summary: 'Returns all categories from the system, ordered by decreasing ''featured'' values'
+      summary: >-
+        Returns all categories from the system, ordered by decreasing 'featured'
+        values
       operationId: findCategories
       tags:
         - category
@@ -3144,7 +3397,9 @@ paths:
               type: string
         - name: inline
           in: query
-          description: 'For convenience, include a full representation of the inlined property.  Currently supports "ancestors" and "depth".'
+          description: >-
+            For convenience, include a full representation of the inlined
+            property.  Currently supports "ancestors" and "depth".
           required: false
           style: form
           schema:
@@ -3160,7 +3415,9 @@ paths:
             format: int32
         - name: start
           in: query
-          description: offset to the first result to return.  Use negative numbers to offset from the end of the result list.
+          description: >-
+            offset to the first result to return.  Use negative numbers to
+            offset from the end of the result list.
           required: false
           schema:
             type: integer
@@ -3170,7 +3427,9 @@ paths:
           description: category response
           headers:
             Count:
-              description: total number of matching results (how many you'd get if you could set an infinite `limit`)
+              description: >-
+                total number of matching results (how many you'd get if you
+                could set an infinite `limit`)
               schema:
                 type: integer
                 format: int32
@@ -3229,7 +3488,9 @@ paths:
             format: int64
         - name: inline
           in: query
-          description: 'For convenience, include a full representation of the inlined property.  Currently supports "ancestors" and "depth".'
+          description: >-
+            For convenience, include a full representation of the inlined
+            property.  Currently supports "ancestors" and "depth".
           required: false
           style: form
           schema:
@@ -3346,7 +3607,9 @@ paths:
             format: int32
         - name: start
           in: query
-          description: offset to the first result to return.  Use negative numbers to offset from the end of the result list.
+          description: >-
+            offset to the first result to return.  Use negative numbers to
+            offset from the end of the result list.
           required: false
           schema:
             type: integer
@@ -3356,7 +3619,9 @@ paths:
           description: purchase response
           headers:
             Count:
-              description: total number of matching results (how many you'd get if you didn't set `limit`)
+              description: >-
+                total number of matching results (how many you'd get if you
+                didn't set `limit`)
               schema:
                 type: integer
                 format: int32
@@ -3499,14 +3764,18 @@ paths:
             format: int32
         - name: start
           in: query
-          description: offset to the first result to return.  Use negative numbers to offset from the end of the result list.
+          description: >-
+            offset to the first result to return.  Use negative numbers to
+            offset from the end of the result list.
           required: false
           schema:
             type: integer
             format: int32
         - name: inline
           in: query
-          description: 'for convenience, include a full representation of the inlined property. Currently supports "dropMembershipId".'
+          description: >-
+            for convenience, include a full representation of the inlined
+            property. Currently supports "dropMembershipId".
           required: false
           style: form
           schema:
@@ -3518,7 +3787,9 @@ paths:
           description: order response
           headers:
             Count:
-              description: total number of matching results (how many you'd get if you could set an infinite `limit`)
+              description: >-
+                total number of matching results (how many you'd get if you
+                could set an infinite `limit`)
               schema:
                 type: integer
                 format: int32
@@ -3576,13 +3847,17 @@ paths:
             format: int64
         - name: accept
           in: query
-          description: override the HTTP Accept header to chose the response type.  Empty and unrecognized values will result in application/json.
+          description: >-
+            override the HTTP Accept header to chose the response type.  Empty
+            and unrecognized values will result in application/json.
           required: false
           schema:
             type: string
         - name: inline
           in: query
-          description: 'for convenience, include a full representation of the inlined property. Currently supports "dropMembershipId".'
+          description: >-
+            for convenience, include a full representation of the inlined
+            property. Currently supports "dropMembershipId".
           required: false
           style: form
           schema:
@@ -3629,7 +3904,10 @@ paths:
             format: int64
         - name: save
           in: query
-          description: Whether to save the result of the PUT or not (defaults to true). Set to false if you want to preview the side-effects of a change before going through with an update
+          description: >-
+            Whether to save the result of the PUT or not (defaults to true).
+            Set to false if you want to preview the side-effects of a change
+            before going through with an update
           required: false
           schema:
             type: boolean
@@ -3720,7 +3998,9 @@ paths:
             format: int32
         - name: start
           in: query
-          description: offset to the first result to return.  Use negative numbers to offset from the end of the result list.
+          description: >-
+            offset to the first result to return.  Use negative numbers to
+            offset from the end of the result list.
           required: false
           schema:
             type: integer
@@ -3730,7 +4010,9 @@ paths:
           description: order-line response
           headers:
             Count:
-              description: total number of matching results (how many you'd get if you could set an infinite `limit`)
+              description: >-
+                total number of matching results (how many you'd get if you
+                could set an infinite `limit`)
               schema:
                 type: integer
                 format: int32
@@ -3880,7 +4162,9 @@ paths:
             format: int32
         - name: start
           in: query
-          description: offset to the first result to return.  Use negative numbers to offset from the end of the result list.
+          description: >-
+            offset to the first result to return.  Use negative numbers to
+            offset from the end of the result list.
           required: false
           schema:
             type: integer
@@ -3890,7 +4174,9 @@ paths:
           description: order fee response
           headers:
             Count:
-              description: total number of matching results (how many you'd get if you could set an infinite `limit`)
+              description: >-
+                total number of matching results (how many you'd get if you
+                could set an infinite `limit`)
               schema:
                 type: integer
                 format: int32
@@ -3936,7 +4222,9 @@ paths:
                 $ref: '#/components/schemas/error'
   '/order/{id}/parcel-carrier-fee-estimates':
     get:
-      summary: Returns all parcel carrier shipping options and their costs for an order ID
+      summary: >-
+        Returns all parcel carrier shipping options and their costs for an order
+        ID
       operationId: listOrderParcelCarrier
       tags:
         - order
@@ -3980,7 +4268,9 @@ paths:
             type: boolean
         - name: manager
           in: query
-          description: 'person IDs to filter by, selecting vendors that these vendor employees manage'
+          description: >-
+            person IDs to filter by, selecting vendors that these vendor
+            employees manage
           required: false
           style: form
           schema:
@@ -3990,7 +4280,9 @@ paths:
               format: int64
         - name: buyer
           in: query
-          description: 'person IDs to filter by, selecting vendors that these Azure employees buy from'
+          description: >-
+            person IDs to filter by, selecting vendors that these Azure
+            employees buy from
           required: false
           style: form
           schema:
@@ -4007,7 +4299,9 @@ paths:
             format: int32
         - name: start
           in: query
-          description: offset to the first result to return.  Use negative numbers to offset from the end of the result list.
+          description: >-
+            offset to the first result to return.  Use negative numbers to
+            offset from the end of the result list.
           required: false
           schema:
             type: integer
@@ -4017,7 +4311,9 @@ paths:
           description: vendor response
           headers:
             Count:
-              description: total number of matching results (how many you'd get if you didn't set `limit`)
+              description: >-
+                total number of matching results (how many you'd get if you
+                didn't set `limit`)
               schema:
                 type: integer
                 format: int32
@@ -4063,7 +4359,10 @@ paths:
                 $ref: '#/components/schemas/error'
   /account-entries:
     get:
-      summary: 'Returns all dollar credits and debits from the system that the user has access to.  Results are ordered by increasing settled dates, falling back to IDs when multiple entries settled on the same day.'
+      summary: >-
+        Returns all dollar credits and debits from the system that the user has
+        access to.  Results are ordered by increasing settled dates, falling
+        back to IDs when multiple entries settled on the same day.
       operationId: findAccountEntries
       tags:
         - account
@@ -4118,7 +4417,9 @@ paths:
             format: int32
         - name: start
           in: query
-          description: offset to the first result to return.  Use negative numbers to offset from the end of the result list.
+          description: >-
+            offset to the first result to return.  Use negative numbers to
+            offset from the end of the result list.
           required: false
           schema:
             type: integer
@@ -4128,7 +4429,9 @@ paths:
           description: account entry response
           headers:
             Count:
-              description: total number of matching results (how many you'd get if you could set an infinite `limit`)
+              description: >-
+                total number of matching results (how many you'd get if you
+                could set an infinite `limit`)
               schema:
                 type: integer
                 format: int32
@@ -4201,7 +4504,10 @@ paths:
   /payment-methods:
     get:
       summary: Returns all payment methods from the system that the user has access to
-      description: Methods associated with a person are ordered by decreasing preference. The ordering between methods associated with different people is undefined.
+      description: >-
+        Methods associated with a person are ordered by decreasing preference.
+        The ordering between methods associated with different people is
+        undefined.
       operationId: findPayments
       tags:
         - payment
@@ -4231,7 +4537,9 @@ paths:
             format: int32
         - name: start
           in: query
-          description: offset to the first result to return.  Use negative numbers to offset from the end of the result list.
+          description: >-
+            offset to the first result to return.  Use negative numbers to
+            offset from the end of the result list.
           required: false
           schema:
             type: integer
@@ -4241,7 +4549,9 @@ paths:
           description: payment method response
           headers:
             Count:
-              description: total number of matching results (how many you'd get if you could set an infinite `limit`)
+              description: >-
+                total number of matching results (how many you'd get if you
+                could set an infinite `limit`)
               schema:
                 type: integer
                 format: int32
@@ -4334,7 +4644,10 @@ paths:
                 $ref: '#/components/schemas/error'
   /rewards:
     get:
-      summary: 'Returns all reward credits and debits from the system that the user has access to.  Results are ordered by increasing settled times, falling back to ID for pending debits.'
+      summary: >-
+        Returns all reward credits and debits from the system that the user has
+        access to.  Results are ordered by increasing settled times, falling
+        back to ID for pending debits.
       operationId: findRewards
       tags:
         - account
@@ -4387,7 +4700,9 @@ paths:
               format: int64
         - name: totals
           in: query
-          description: 'Add the `total-credit`, `total-debit`, and `total-pending` properties to returned entries.'
+          description: >-
+            Add the `total-credit`, `total-debit`, and `total-pending`
+            properties to returned entries.
           required: false
           schema:
             type: boolean
@@ -4400,7 +4715,9 @@ paths:
             format: int32
         - name: start
           in: query
-          description: Offset to the first result to return.  Use negative numbers to offset from the end of the result list.
+          description: >-
+            Offset to the first result to return.  Use negative numbers to
+            offset from the end of the result list.
           required: false
           schema:
             type: integer
@@ -4410,7 +4727,9 @@ paths:
           description: Reward response.
           headers:
             Count:
-              description: Total number of matching results (how many you'd get if you could set an infinite `limit`).
+              description: >-
+                Total number of matching results (how many you'd get if you
+                could set an infinite `limit`).
               schema:
                 type: integer
                 format: int32
@@ -4457,7 +4776,11 @@ paths:
   /addresses:
     get:
       summary: Returns all addresses from the system that the user has access to
-      description: Addresses associated with a person are ordered by decreasing preference.  The ordering between addresses associated with different people or (for the same person) with the same preference value is undefined.
+      description: >-
+        Addresses associated with a person are ordered by decreasing
+        preference.  The ordering between addresses associated with different
+        people or (for the same person) with the same preference value is
+        undefined.
       operationId: findAddresses
       tags:
         - address
@@ -4474,7 +4797,9 @@ paths:
               format: int64
         - name: inline
           in: query
-          description: 'for convenience, include a full representation of the inlined property.  Currently supports "country", "person", and descendants.'
+          description: >-
+            for convenience, include a full representation of the inlined
+            property.  Currently supports "country", "person", and descendants.
           required: false
           style: form
           schema:
@@ -4490,7 +4815,9 @@ paths:
             format: int32
         - name: start
           in: query
-          description: offset to the first result to return.  Use negative numbers to offset from the end of the result list.
+          description: >-
+            offset to the first result to return.  Use negative numbers to
+            offset from the end of the result list.
           required: false
           schema:
             type: integer
@@ -4500,7 +4827,9 @@ paths:
           description: address response
           headers:
             Count:
-              description: total number of matching results (how many you'd get if you could set an infinite `limit`)
+              description: >-
+                total number of matching results (how many you'd get if you
+                could set an infinite `limit`)
               schema:
                 type: integer
                 format: int32
@@ -4525,7 +4854,9 @@ paths:
       parameters:
         - name: inline
           in: query
-          description: 'for convenience, include a full representation of the inlined property.  Currently supports "country", "person", and descendants.'
+          description: >-
+            for convenience, include a full representation of the inlined
+            property.  Currently supports "country", "person", and descendants.
           required: false
           style: form
           schema:
@@ -4568,7 +4899,9 @@ paths:
             format: int64
         - name: inline
           in: query
-          description: 'for convenience, include a full representation of the inlined property.  Currently supports "country", "person", and descendants.'
+          description: >-
+            for convenience, include a full representation of the inlined
+            property.  Currently supports "country", "person", and descendants.
           required: false
           style: form
           schema:
@@ -4603,7 +4936,9 @@ paths:
             format: int64
         - name: inline
           in: query
-          description: 'for convenience, include a full representation of the inlined property.  Currently supports "country", "person", and descendants.'
+          description: >-
+            for convenience, include a full representation of the inlined
+            property.  Currently supports "country", "person", and descendants.
           required: false
           style: form
           schema:
@@ -4669,7 +5004,9 @@ paths:
             format: int32
         - name: start
           in: query
-          description: offset to the first result to return.  Use negative numbers to offset from the end of the result list.
+          description: >-
+            offset to the first result to return.  Use negative numbers to
+            offset from the end of the result list.
           required: false
           schema:
             type: integer
@@ -4679,7 +5016,9 @@ paths:
           description: country response
           headers:
             Count:
-              description: total number of matching results (how many you'd get if you could set an infinite `limit`)
+              description: >-
+                total number of matching results (how many you'd get if you
+                could set an infinite `limit`)
               schema:
                 type: integer
                 format: int32
@@ -4699,7 +5038,10 @@ paths:
   /regions:
     get:
       summary: Returns all country regions from the system
-      description: 'Regions that are allowed to be used with addresses in the United States and Canada, ordered alphabetically.  Other countries may use any string values for their regions.'
+      description: >-
+        Regions that are allowed to be used with addresses in the United States
+        and Canada, ordered alphabetically.  Other countries may use any string
+        values for their regions.
       operationId: findRegions
       tags:
         - region
@@ -4719,7 +5061,9 @@ paths:
             format: int32
         - name: start
           in: query
-          description: offset to the first result to return.  Use negative numbers to offset from the end of the result list.
+          description: >-
+            offset to the first result to return.  Use negative numbers to
+            offset from the end of the result list.
           required: false
           schema:
             type: integer
@@ -4729,7 +5073,9 @@ paths:
           description: country region response
           headers:
             Count:
-              description: total number of matching results (how many you'd get if you could set an infinite `limit`)
+              description: >-
+                total number of matching results (how many you'd get if you
+                could set an infinite `limit`)
               schema:
                 type: integer
                 format: int32
@@ -4749,7 +5095,10 @@ paths:
   /emails:
     get:
       summary: Returns all emails from the system that the user has access to.
-      description: Emails associated with a person are ordered by decreasing preference. The ordering between emails associated with different people or (for the same person) with the same preference value is undefined.
+      description: >-
+        Emails associated with a person are ordered by decreasing preference.
+        The ordering between emails associated with different people or (for the
+        same person) with the same preference value is undefined.
       operationId: findEmails
       tags:
         - email
@@ -4773,7 +5122,9 @@ paths:
             format: int32
         - name: start
           in: query
-          description: Offset to the first result to return.  Use negative numbers to offset from the end of the result list.
+          description: >-
+            Offset to the first result to return.  Use negative numbers to
+            offset from the end of the result list.
           required: false
           schema:
             type: integer
@@ -4783,7 +5134,9 @@ paths:
           description: Email response.
           headers:
             Count:
-              description: Total number of matching results (how many you'd get if you could set an infinite `limit`).
+              description: >-
+                Total number of matching results (how many you'd get if you
+                could set an infinite `limit`).
               schema:
                 type: integer
                 format: int32
@@ -4926,7 +5279,10 @@ paths:
               format: int64
         - name: inline
           in: query
-          description: 'for convenience, include additional information.  Currently supports "email" as described in the email model, "order-place-issue", and "is-drop-coordinator".'
+          description: >-
+            for convenience, include additional information.  Currently supports
+            "email" as described in the email model, "order-place-issue", and
+            "is-drop-coordinator".
           required: false
           style: form
           schema:
@@ -4942,7 +5298,9 @@ paths:
             format: int32
         - name: start
           in: query
-          description: offset to the first result to return.  Use negative numbers to offset from the end of the result list.
+          description: >-
+            offset to the first result to return.  Use negative numbers to
+            offset from the end of the result list.
           required: false
           schema:
             type: integer
@@ -4952,7 +5310,9 @@ paths:
           description: person response
           headers:
             Count:
-              description: total number of matching results (how many you'd get if you could set an infinite `limit`)
+              description: >-
+                total number of matching results (how many you'd get if you
+                could set an infinite `limit`)
               schema:
                 type: integer
                 format: int32
@@ -4971,7 +5331,9 @@ paths:
                 $ref: '#/components/schemas/error'
   '/people/actions/find-affiliate-code-by-marketing-slug/{marketing-slug}':
     get:
-      summary: Returns an affiliate code based on a marketing slug (no authorization required)
+      summary: >-
+        Returns an affiliate code based on a marketing slug (no authorization
+        required)
       operationId: findAffiliateCodeByMarketingSlug
       tags:
         - person
@@ -4997,7 +5359,9 @@ paths:
                 $ref: '#/components/schemas/error'
   '/person/{id}':
     get:
-      summary: 'Returns a person based on a single ID, if the user has access to the person'
+      summary: >-
+        Returns a person based on a single ID, if the user has access to the
+        person
       operationId: findPersonById
       tags:
         - person
@@ -5011,7 +5375,10 @@ paths:
             format: int64
         - name: inline
           in: query
-          description: 'for convenience, include additional information.  Currently supports "email" as described in the email model, "order-place-issue", and "is-drop-coordinator".'
+          description: >-
+            for convenience, include additional information.  Currently supports
+            "email" as described in the email model, "order-place-issue", and
+            "is-drop-coordinator".
           required: false
           style: form
           schema:
@@ -5068,7 +5435,9 @@ paths:
       parameters:
         - name: inline
           in: query
-          description: 'for convenience, include additional information.  Currently supports "email" as described in the email model and "order-place-issue".'
+          description: >-
+            for convenience, include additional information.  Currently supports
+            "email" as described in the email model and "order-place-issue".
           required: false
           style: form
           schema:
@@ -5179,21 +5548,34 @@ paths:
   /registration/register:
     post:
       summary: Register a new person
-      description: |-
-        When the user provides an email address, check for existing accounts which use that email address.
+      description: >-
+        When the user provides an email address, check for existing accounts
+        which use that email address.
 
-        * If an inactive account using the email address is found, send an inactive-member email pointing the user at customer service.  Do not authenticate the user.
 
-        * If an active account using the email address is found, send an active-member email with an authenticating URL with an authentication token.  Following that URL will (possibly indirectly) send the token to this API's login endpoint to authenticate the bearer.
+        * If an inactive account using the email address is found, send an
+        inactive-member email pointing the user at customer service.  Do not
+        authenticate the user.
 
-        * If no account using that email address is found, create a new account and immediately authenticate the user.  If they provided an email address or SMS number, potentially send a welcome-aboard notification.
+
+        * If an active account using the email address is found, send an
+        active-member email with an authenticating URL with an authentication
+        token.  Following that URL will (possibly indirectly) send the token to
+        this API's login endpoint to authenticate the bearer.
+
+
+        * If no account using that email address is found, create a new account
+        and immediately authenticate the user.  If they provided an email
+        address or SMS number, potentially send a welcome-aboard notification.
       operationId: registerPerson
       tags:
         - registration
       parameters:
         - name: inline
           in: query
-          description: 'for convenience, include a full representation of the inlined property. Currently supports "session.person" and descendants.'
+          description: >-
+            for convenience, include a full representation of the inlined
+            property. Currently supports "session.person" and descendants.
           required: false
           style: form
           schema:
@@ -5245,13 +5627,18 @@ paths:
         required: true
   /password/reset:
     post:
-      summary: 'Initiate a password reset, to be completed by a call to /password/confirm'
+      summary: >-
+        Initiate a password reset, to be completed by a call to
+        /password/confirm
       operationId: resetPasswordRequest
       tags:
         - password
       responses:
         '204':
-          description: 'Password-reset email sent (if the registration email corresponded to an existing person.  Otherwise, you''ll still get a 204 to avoid leaking information about member email addresses)'
+          description: >-
+            Password-reset email sent (if the registration email corresponded to
+            an existing person.  Otherwise, you'll still get a 204 to avoid
+            leaking information about member email addresses)
         default:
           description: unexpected error
           content:
@@ -5315,14 +5702,19 @@ paths:
               format: int64
         - name: annotate-person
           in: query
-          description: 'add a boolean dismissed field to the results with whether or not the annotate-person has dismissed this notification, required with dismissed'
+          description: >-
+            add a boolean dismissed field to the results with whether or not the
+            annotate-person has dismissed this notification, required with
+            dismissed
           required: false
           schema:
             type: integer
             format: int64
         - name: dismissed
           in: query
-          description: only return notifications that are (not) dismissed by the annotate-person
+          description: >-
+            only return notifications that are (not) dismissed by the
+            annotate-person
           required: false
           schema:
             type: boolean
@@ -5331,7 +5723,9 @@ paths:
           description: notification response
           headers:
             Count:
-              description: total number of matching results (how many you'd get if you could set an infinite `limit`)
+              description: >-
+                total number of matching results (how many you'd get if you
+                could set an infinite `limit`)
               schema:
                 type: integer
                 format: int32
@@ -5350,7 +5744,9 @@ paths:
                 $ref: '#/components/schemas/error'
   /notification-dismissals:
     post:
-      summary: Create a notification dismissal (a user may only dismiss notifications for himself)
+      summary: >-
+        Create a notification dismissal (a user may only dismiss notifications
+        for himself)
       operationId: addNotificationDismissal
       tags:
         - notification
@@ -5393,13 +5789,19 @@ paths:
               format: int64
         - name: active
           in: query
-          description: 'only return favorites associated with (in)active packaged products. For example, we sometimes discontinue products and then pick them back up later.  In this context, "active" means "for sale to at least some customers".'
+          description: >-
+            only return favorites associated with (in)active packaged products.
+            For example, we sometimes discontinue products and then pick them
+            back up later.  In this context, "active" means "for sale to at
+            least some customers".
           required: false
           schema:
             type: boolean
         - name: inline
           in: query
-          description: 'for convenience, include a full representation of the inlined property. Currently supports "packaged-product" and descendants.'
+          description: >-
+            for convenience, include a full representation of the inlined
+            property. Currently supports "packaged-product" and descendants.
           required: false
           style: form
           schema:
@@ -5415,7 +5817,9 @@ paths:
             format: int32
         - name: start
           in: query
-          description: offset to the first result to return.  Use negative numbers to offset from the end of the result list.
+          description: >-
+            offset to the first result to return.  Use negative numbers to
+            offset from the end of the result list.
           required: false
           schema:
             type: integer
@@ -5425,7 +5829,9 @@ paths:
           description: array of favorites response
           headers:
             Count:
-              description: total number of matching results (how many you'd get if you could set an infinite `limit`)
+              description: >-
+                total number of matching results (how many you'd get if you
+                could set an infinite `limit`)
               schema:
                 type: integer
                 format: int32
@@ -5483,7 +5889,9 @@ paths:
             format: int64
         - name: inline
           in: query
-          description: 'for convenience, include a full representation of the inlined property. Currently supports "packaged-product" and descendants.'
+          description: >-
+            for convenience, include a full representation of the inlined
+            property. Currently supports "packaged-product" and descendants.
           required: false
           style: form
           schema:
@@ -5574,7 +5982,9 @@ paths:
             format: int32
         - name: start
           in: query
-          description: offset to the first result to return.  Use negative numbers to offset from the end of the result list.
+          description: >-
+            offset to the first result to return.  Use negative numbers to
+            offset from the end of the result list.
           required: false
           schema:
             type: integer
@@ -5743,7 +6153,9 @@ paths:
             format: int32
         - name: start
           in: query
-          description: offset to the first result to return.  Use negative numbers to offset from the end of the result list.
+          description: >-
+            offset to the first result to return.  Use negative numbers to
+            offset from the end of the result list.
           required: false
           schema:
             type: integer
@@ -5753,7 +6165,9 @@ paths:
           description: printer response
           headers:
             Count:
-              description: total number of matching results (how many you'd get if you could set an infinite `limit`)
+              description: >-
+                total number of matching results (how many you'd get if you
+                could set an infinite `limit`)
               schema:
                 type: integer
                 format: int32
@@ -5813,7 +6227,9 @@ paths:
             format: int32
         - name: start
           in: query
-          description: offset to the first result to return.  Use negative numbers to offset from the end of the result list.
+          description: >-
+            offset to the first result to return.  Use negative numbers to
+            offset from the end of the result list.
           required: false
           schema:
             type: integer
@@ -5823,7 +6239,9 @@ paths:
           description: warehouse response
           headers:
             Count:
-              description: total number of matching results (how many you'd get if you could set an infinite `limit`)
+              description: >-
+                total number of matching results (how many you'd get if you
+                could set an infinite `limit`)
               schema:
                 type: integer
                 format: int32
@@ -5873,7 +6291,9 @@ paths:
       parameters:
         - name: inline
           in: query
-          description: 'for convenience, include a full representation of the inlined property.  Currently supports "address.country".'
+          description: >-
+            for convenience, include a full representation of the inlined
+            property.  Currently supports "address.country".
           required: false
           style: form
           schema:
@@ -5895,7 +6315,11 @@ paths:
                 $ref: '#/components/schemas/error'
   /order-frequency-segment:
     get:
-      summary: 'Returns "active" if the customer has ordered within the last 120 days, "activeag" (for "active aging") if they''ve ordered before but not within 120 days, "activereg" if they''ve never ordered. If no customer exists, returns "new".'
+      summary: >-
+        Returns "active" if the customer has ordered within the last 120 days,
+        "activeag" (for "active aging") if they've ordered before but not within
+        120 days, "activereg" if they've never ordered. If no customer exists,
+        returns "new".
       operationId: orderFrequencySegment
       parameters:
         - name: email
@@ -5906,7 +6330,11 @@ paths:
             type: string
       responses:
         '200':
-          description: 'Returns "active" if the customer has ordered within the last 120 days, "activeag" (for "active aging") if they''ve ordered before but not within 120 days, "activereg" if they''ve never ordered. If no customer exists, returns "new".'
+          description: >-
+            Returns "active" if the customer has ordered within the last 120
+            days, "activeag" (for "active aging") if they've ordered before but
+            not within 120 days, "activereg" if they've never ordered. If no
+            customer exists, returns "new".
           content:
             application/json:
               schema:
@@ -5975,7 +6403,9 @@ components:
           description: name of the person referred
           type: string
         amount-earned:
-          description: dollar value for the sum of account credits to the referrer that were caused by this referral
+          description: >-
+            dollar value for the sum of account credits to the referrer that
+            were caused by this referral
           type: number
           format: float
       required:
@@ -6009,7 +6439,13 @@ components:
         - id
         - path
     bartenderPrintConfiguration:
-      description: A BarTender print configuration for BarTender print requests.  These configurations are added to warehouse pieces (which are related to individual stock) in Beehive and are used to route print requests and to tell BarTender which template should be used.  A print request will be created for each print configuration associated with a stock location's warehouse.
+      description: >-
+        A BarTender print configuration for BarTender print requests.  These
+        configurations are added to warehouse pieces (which are related to
+        individual stock) in Beehive and are used to route print requests and to
+        tell BarTender which template should be used.  A print request will be
+        created for each print configuration associated with a stock location's
+        warehouse.
       type: object
       properties:
         id:
@@ -6019,7 +6455,9 @@ components:
           description: the BarTender host's code
           type: string
         printer:
-          description: The printer ID. The referenced printer must support the `bartender` format and delivery methods.
+          description: >-
+            The printer ID. The referenced printer must support the `bartender`
+            format and delivery methods.
           type: integer
           format: int64
         template:
@@ -6101,7 +6539,9 @@ components:
           description: The category name.
           type: string
         customer-pricing:
-          description: Whether or not reports in this category are customer pricing groups (for use in the pricing module).
+          description: >-
+            Whether or not reports in this category are customer pricing groups
+            (for use in the pricing module).
           type: boolean
       required:
         - id
@@ -6131,13 +6571,19 @@ components:
           description: whether or not this drop is actively ordering
           type: boolean
         accounts-payable-contact:
-          description: 'name of the drop employee Azure''s accounts-payable should contact, if different from the primary contact'
+          description: >-
+            name of the drop employee Azure's accounts-payable should contact,
+            if different from the primary contact
           type: string
         after-hours-phone:
-          description: E.123 telephone number Azure should call if we need to contact the drop after business hours
+          description: >-
+            E.123 telephone number Azure should call if we need to contact the
+            drop after business hours
           type: string
         business-hours:
-          description: 'regular business hours for the drop (e.g. "8:30-6 Mon-Fri, 9-5 Sat, closed Sun")'
+          description: >-
+            regular business hours for the drop (e.g. "8:30-6 Mon-Fri, 9-5 Sat,
+            closed Sun")
           type: string
         business-type:
           description: what type of business do you run?
@@ -6153,10 +6599,15 @@ components:
               - seasonal
               - wholesale-distributor
         buyer:
-          description: 'name of the drop employee who usually places orders for this drop, if different from the primary contact'
+          description: >-
+            name of the drop employee who usually places orders for this drop,
+            if different from the primary contact
           type: string
         pickup-contact:
-          description: do customers need to contact you to pick up their orders?  Retail preference.  Only available when how-members-receive is "can-hold-sometimes" or "can-hold"
+          description: >-
+            do customers need to contact you to pick up their orders?  Retail
+            preference.  Only available when how-members-receive is
+            "can-hold-sometimes" or "can-hold"
           type: string
           enum:
             - 'yes'
@@ -6174,13 +6625,19 @@ components:
               - email
               - other
         contact-type-other-notes:
-          description: description of the alternative contact method.  Available when contact-type includes "other"
+          description: >-
+            description of the alternative contact method.  Available when
+            contact-type includes "other"
           type: string
         contact-type-phone:
-          description: E.123 telephone number customers should call to contact this drop. Available when contact-type includes "phone"
+          description: >-
+            E.123 telephone number customers should call to contact this drop.
+            Available when contact-type includes "phone"
           type: string
         directions:
-          description: 'driving directions for a truck approaching this drop (e.g. avoiding low bridges, tight turns, etc. on more obvious routes)'
+          description: >-
+            driving directions for a truck approaching this drop (e.g. avoiding
+            low bridges, tight turns, etc. on more obvious routes)
           type: string
         driver-callable-phone:
           description: E.123 telephone number for a driver approaching this drop
@@ -6199,10 +6656,16 @@ components:
             - 'no'
             - limited
         food-stamps-limited-notes:
-          description: description of limited food-stamp acceptance.  Business preference. Only available when food-stamps is "limited"
+          description: >-
+            description of limited food-stamp acceptance.  Business preference.
+            Only available when food-stamps is "limited"
           type: string
         hold-time:
-          description: 'how long will you hold a customer''s order?  For example, "24 hours", "three days for dry, frozen by arrangement", etc.  Retail preference.  Only available when how-members-receive is "can-hold-sometimes" or "can-hold"'
+          description: >-
+            how long will you hold a customer's order?  For example, "24 hours",
+            "three days for dry, frozen by arrangement", etc.  Retail
+            preference.  Only available when how-members-receive is
+            "can-hold-sometimes" or "can-hold"
           type: string
         how-members-receive:
           description: how do your members receive their items?  Retail preference
@@ -6212,7 +6675,9 @@ components:
             - can-hold-sometimes
             - can-hold
         invoice-always:
-          description: 'always print paper invoices, regardless of the customer''s invoice-delivery preference'
+          description: >-
+            always print paper invoices, regardless of the customer's
+            invoice-delivery preference
           type: boolean
         okay-to-text-phone:
           description: can the driver send text messages to the driver-callable phone?
@@ -6227,7 +6692,9 @@ components:
             - public
             - other-building
         special-orders:
-          description: do you take special orders for Azure products from customers? Wholesale preference
+          description: >-
+            do you take special orders for Azure products from customers?
+            Wholesale preference
           type: boolean
         storage:
           description: storage environments available at this drop
@@ -6237,7 +6704,13 @@ components:
         fees:
           $ref: '#/components/schemas/dropFees'
         order-minimum:
-          description: 'the minimum total order value (in dollars) required to ship a particular trip to this drop.  For example, if the minimum is $400 and there are three $100 orders placed for a stop, that stop will be under-minimum, and the orders will not be shipped.  If, on the other hand, there were four $100 orders placed for a stop, that stop would be (just) over-minimum, and the orders would be shipped.'
+          description: >-
+            the minimum total order value (in dollars) required to ship a
+            particular trip to this drop.  For example, if the minimum is $400
+            and there are three $100 orders placed for a stop, that stop will be
+            under-minimum, and the orders will not be shipped.  If, on the other
+            hand, there were four $100 orders placed for a stop, that stop would
+            be (just) over-minimum, and the orders would be shipped.
           type: number
           format: float
         members:
@@ -6257,13 +6730,21 @@ components:
               type: string
               format: date
         notes:
-          description: 'free-form Markdown notes for any member-oriented drop information that doesn''t fit into an existing field.  This information is public for open and semi-open drops, and visible to all members for closed drops'
+          description: >-
+            free-form Markdown notes for any member-oriented drop information
+            that doesn't fit into an existing field.  This information is public
+            for open and semi-open drops, and visible to all members for closed
+            drops
           type: string
         sells-finished-goods-to-azure:
-          description: do you also sell your finished good to Azure?  Only available if business-type includes "manufacturing-business"
+          description: >-
+            do you also sell your finished good to Azure?  Only available if
+            business-type includes "manufacturing-business"
           type: boolean
         uses-azure-to-drop-ship:
-          description: Do you drop ship Azure orders (have Azure ship directly to your customers)?  Only available if business-type includes "online-store"
+          description: >-
+            Do you drop ship Azure orders (have Azure ship directly to your
+            customers)?  Only available if business-type includes "online-store"
           type: boolean
       required:
         - id
@@ -6306,7 +6787,11 @@ components:
         fees:
           $ref: '#/components/schemas/dropFees'
         notes:
-          description: 'free-form Markdown notes for any member-oriented drop information that doesn''t fit into an existing field.  This information is public for open and semi-open drops, and visible to all members for closed drops'
+          description: >-
+            free-form Markdown notes for any member-oriented drop information
+            that doesn't fit into an existing field.  This information is public
+            for open and semi-open drops, and visible to all members for closed
+            drops
           type: string
       required:
         - name
@@ -6346,7 +6831,11 @@ components:
           type: integer
           format: int64
         active:
-          description: 'whether or not this membership is active.  Pending memberships are active, and the usual flow for semi-open drops is (active true, pending true) -> (active true, pending false) -> (active false, pending false).'
+          description: >-
+            whether or not this membership is active.  Pending memberships are
+            active, and the usual flow for semi-open drops is (active true,
+            pending true) -> (active true, pending false) -> (active false,
+            pending false).
           type: boolean
         pending:
           description: whether the membership is pending (true) or accepted (false).
@@ -6356,12 +6845,17 @@ components:
           type: string
           format: date-time
         heavy:
-          description: 'whether the member can get pallets, totes, barrels, and other heavy objects off a truck (defaults to false).'
+          description: >-
+            whether the member can get pallets, totes, barrels, and other heavy
+            objects off a truck (defaults to false).
           type: boolean
         notifications:
           $ref: '#/components/schemas/dropMembershipNotifications'
         gratitude-total:
-          description: total "Azure Gratitude" (monetary incentive for hosting a drop) received from being this drop's coordinator. Only set if the "inline" query parameter contains "gratitude-total".
+          description: >-
+            total "Azure Gratitude" (monetary incentive for hosting a drop)
+            received from being this drop's coordinator. Only set if the
+            "inline" query parameter contains "gratitude-total".
           type: number
           format: float
           minimum: 0
@@ -6400,7 +6894,9 @@ components:
           description: whether the membership is pending (true) or accepted (false).
           type: boolean
         heavy:
-          description: 'whether the member can get pallets, totes, barrels, and other heavy objects off a truck (defaults to false).'
+          description: >-
+            whether the member can get pallets, totes, barrels, and other heavy
+            objects off a truck (defaults to false).
           type: boolean
         notifications:
           $ref: '#/components/schemas/dropMembershipNotifications'
@@ -6420,11 +6916,15 @@ components:
           items:
             $ref: '#/components/schemas/notificationChannel'
     file:
-      description: 'An opaque file.  This is usually used for product and category images, but could also be used for other content.'
+      description: >-
+        An opaque file.  This is usually used for product and category images,
+        but could also be used for other content.
       type: object
       properties:
         id:
-          description: 'The identifier for this file.  This is generated by the server, but will be a UUID as defined by RFC 4122.'
+          description: >-
+            The identifier for this file.  This is generated by the server, but
+            will be a UUID as defined by RFC 4122.
           type: string
       required:
         - id
@@ -6452,7 +6952,9 @@ components:
           description: whether or not this pickup is actively supplying purchases
           type: boolean
         notes:
-          description: free-form Markdown notes for any pickup information that doesn't fit into an existing field
+          description: >-
+            free-form Markdown notes for any pickup information that doesn't fit
+            into an existing field
           type: string
       required:
         - id
@@ -6481,7 +6983,9 @@ components:
           type: integer
           format: int32
         internal:
-          description: Is the route for internal use? This controls whether customers can access the route via the API (they can't if internal is true).
+          description: >-
+            Is the route for internal use? This controls whether customers can
+            access the route via the API (they can't if internal is true).
           type: boolean
         backhaul-cost-per-pound:
           description: route backhaul cost per pound
@@ -6492,7 +6996,14 @@ components:
           type: number
           format: float
         hub:
-          description: 'A hub route is a delivery route that occurs after we ship an entire route to a distribution hub (such as a big loading dock in Kansas City). The route is unloaded at the hub and reloaded onto another carrier''s truck for actual delivery. In terms of Customer Care, It is a one-way route; the truck, trailer, and any shipped goods refused by a customer never return to the warehouse.'
+          description: >-
+            A hub route is a delivery route that occurs after we ship
+            an entire route to a distribution hub (such as a big
+            loading dock in Kansas City). The route is unloaded at the
+            hub and reloaded onto another carrier's truck for actual
+            delivery. In terms of Customer Care, It is a one-way route;
+            the truck, trailer, and any shipped goods refused by a
+            customer never return to the warehouse.
           type: boolean
         driverName:
           description: Truck drivers name
@@ -6527,7 +7038,9 @@ components:
           type: integer
           format: int32
         internal:
-          description: Is the route for internal use? This controls whether customers can access the route via the API (they can't if internal is true).
+          description: >-
+            Is the route for internal use? This controls whether customers can
+            access the route via the API (they can't if internal is true).
           type: boolean
         backhaul-cost-per-pound:
           description: route backhaul cost per pound
@@ -6538,7 +7051,14 @@ components:
           type: number
           format: float
         hub:
-          description: 'A hub route is a delivery route that occurs after we ship an entire route to a distribution hub (such as a big loading dock in Kansas City). The route is unloaded at the hub and reloaded onto another carrier''s truck for actual delivery. In terms of Customer Care, It is a one-way route; the truck, trailer, and any shipped goods refused by a customer never return to the warehouse.'
+          description: >-
+            A hub route is a delivery route that occurs after we ship
+            an entire route to a distribution hub (such as a big
+            loading dock in Kansas City). The route is unloaded at the
+            hub and reloaded onto another carrier's truck for actual
+            delivery. In terms of Customer Care, It is a one-way route;
+            the truck, trailer, and any shipped goods refused by a
+            customer never return to the warehouse.
           type: boolean
         driverName:
           description: Truck drivers name
@@ -6570,7 +7090,13 @@ components:
           type: string
           format: date-time
         confirmed:
-          description: 'when the trip was reviewed and orders were either accepted or (for short drops) bumped to the next trip.  This will always be set before the trip is confirmed, and will be unset until then. Customer service and customers who have received a short-drop notification can continue to manipulate placed orders in the window between cutoff and confirmation.'
+          description: >-
+            when the trip was reviewed and orders were either accepted or (for
+            short drops) bumped to the next trip.  This will always be set
+            before the trip is confirmed, and will be unset until then.
+            Customer service and customers who have received a short-drop
+            notification can continue to manipulate placed orders in the window
+            between cutoff and confirmation.
           type: string
           format: date-time
         pick-date:
@@ -6578,7 +7104,9 @@ components:
           type: string
           format: date-time
         shipped:
-          description: 'approximately when the truck left the warehouse.  This will always be set after the truck has left, and will be unset until then.'
+          description: >-
+            approximately when the truck left the warehouse.  This will always
+            be set after the truck has left, and will be unset until then.
           type: string
           format: date-time
         delivery-start:
@@ -6602,9 +7130,12 @@ components:
           type: string
           format: date-time
         notes:
-          description: free-form Markdown notes for additional trip information.  We expect this will mostly be for delay causes (e.g. "High winds in Laramie" or "The truck broke down")
+          description: >-
+            free-form Markdown notes for additional trip information.  We expect
+            this will mostly be for delay causes (e.g. "High winds in Laramie"
+            or "The truck broke down")
           type: string
-        status:
+        status: 
           description: current stage of a trip's lifecycle
           type: string
           enum:
@@ -6671,7 +7202,9 @@ components:
           type: integer
           format: int64
         delivery-offset:
-          description: offset from midnight on the morning of the trips's delivery start until the usual delivery time for this drop
+          description: >-
+            offset from midnight on the morning of the trips's delivery start
+            until the usual delivery time for this drop
           type: string
           format: duration
         drop-shipping-fee:
@@ -6682,7 +7215,11 @@ components:
         - drop
         - delivery-offset
     stop:
-      description: 'a trip stop or waypoint.  Stops are created for all route-stops when a trip is created for that route.  At confirmation time, stops that will not be visited (e.g. because they missed their order-minimum) are deleted'
+      description: >-
+        a trip stop or waypoint.  Stops are created for all route-stops when a
+        trip is created for that route.  At confirmation time, stops that will
+        not be visited (e.g. because they missed their order-minimum) are
+        deleted
       type: object
       properties:
         id:
@@ -6697,14 +7234,19 @@ components:
           type: integer
           format: int64
         short-drop:
-          description: 'whether short-drop warnings were sent out for this stop.  If they were, customers can manipulate placed orders after cutoff time, although nobody can edit orders after the trip is confirmed.'
+          description: >-
+            whether short-drop warnings were sent out for this stop.  If they
+            were, customers can manipulate placed orders after cutoff time,
+            although nobody can edit orders after the trip is confirmed.
           type: boolean
         pickup:
           description: pickup ID for the stop
           type: integer
           format: int64
         timezone:
-          description: 'IANA time zone location (https://www.iana.org/time-zones, e.g. America/Los_Angeles)'
+          description: >-
+            IANA time zone location (https://www.iana.org/time-zones, e.g.
+            America/Los_Angeles)
           type: string
         estimatedDelivery:
           description: editable until verification
@@ -6758,7 +7300,9 @@ components:
         - estimatedDelivery
         - finalizedDelivery
     shippingService:
-      description: A parcel-carrier service.  The listing below is ordered by carrier and then by increasing duration.
+      description: >-
+        A parcel-carrier service.  The listing below is ordered by carrier and
+        then by increasing duration.
       type: string
       enum:
         - UPS 2nd Day Air
@@ -6766,14 +7310,21 @@ components:
         - USPS Priority Mail Express
         - USPS Priority Mail
     shippingClimate:
-      description: An environment for shipping products.  'all' is a shipping climate for products of all types.  'dry' includes both 'dry' and 'greenhouse' storage environments.  'chilled/frozen' includes both 'chilled' and 'frozen' storage environments.
+      description: >-
+        An environment for shipping products.  'all' is a shipping climate for
+        products of all types.  'dry' includes both 'dry' and 'greenhouse'
+        storage environments.  'chilled/frozen' includes both 'chilled' and
+        'frozen' storage environments.
       type: string
       enum:
         - all
         - dry
         - chilled/frozen
     storage:
-      description: 'An environment for storing products.  The related to shippingClimate is less detailed, because stock is generally in transit for less time than it is in storage.'
+      description: >-
+        An environment for storing products.  The related to shippingClimate is
+        less detailed, because stock is generally in transit for less time than
+        it is in storage.
       type: string
       enum:
         - dry
@@ -6807,11 +7358,18 @@ components:
         price:
           $ref: '#/components/schemas/price'
         stock:
-          description: 'Amount of stock available for purchase.  This includes breakdown ancestors.  For example, if we have a single 4 x 6 x 14 oz case in the warehouse, the 4 x 6 x 14 oz packaging will have 1 stock, the 6 x 14 oz packagaging will have 4 stock, and the 14 oz packaging will have 24 stock.'
+          description: >-
+            Amount of stock available for purchase.  This includes breakdown
+            ancestors.  For example, if we have a single 4 x 6 x 14 oz case in
+            the warehouse, the 4 x 6 x 14 oz packaging will have 1 stock, the 6
+            x 14 oz packagaging will have 4 stock, and the 14 oz packaging will
+            have 24 stock.
           type: integer
           format: int32
         favorite:
-          description: If the annotate-person you associated with the request has favorited this packaged product.
+          description: >-
+            If the annotate-person you associated with the request has favorited
+            this packaged product.
           type: boolean
         favorites:
           description: Number of people who've marked this packaged product as a favorite.
@@ -6829,7 +7387,13 @@ components:
           description: Reason this packaged product is in its current status.
           type: string
         servings-per-container:
-          description: 'Servings per container.  The rest of the nutrition information is in product.nutrition-facts, but the number of servings per container depends on the packaging size.  For composite packaging (e.g. a 12 x 6 x 2 oz case), the value applies to the smallest component with a nutrition label (e.g. the 2 oz items, if they''re labeled, or the 6 x 2 oz boxes, if they''re labeled and the 2 oz items are not).'
+          description: >-
+            Servings per container.  The rest of the nutrition information is in
+            product.nutrition-facts, but the number of servings per container
+            depends on the packaging size.  For composite packaging (e.g. a 12 x
+            6 x 2 oz case), the value applies to the smallest component with a
+            nutrition label (e.g. the 2 oz items, if they're labeled, or the 6 x
+            2 oz boxes, if they're labeled and the 2 oz items are not).
           type: string
         product:
           description: The product that this packaging packages.
@@ -6859,7 +7423,9 @@ components:
           description: File ID for the associated image.
           type: string
         order:
-          description: Ordering precedence among other entries associated with this packaged product.  Defaults to zero.
+          description: >-
+            Ordering precedence among other entries associated with this
+            packaged product.  Defaults to zero.
           type: integer
           format: int32
       required:
@@ -6910,19 +7476,35 @@ components:
           description: sentence-length product name
           type: string
         seo-name:
-          description: 'An SEO-optimized name.  A lengthened version of the full name that includes additional keywords or rephrasing, suitable for use in a title tag.  When this is unset, the name is a reasonable fallback.'
+          description: >-
+            An SEO-optimized name.  A lengthened version of the full name that
+            includes additional keywords or rephrasing, suitable for use in a
+            title tag.  When this is unset, the name is a reasonable fallback.
           type: string
         treatAsActive:
-          description: 'If true, this product will be published to search engines even when it is inactive (out for season, out long term, or discontinued).'
+          description: If true, this product will be published to search engines
+            even when it is inactive (out for season, out long term, or
+            discontinued).
           type: boolean
         inactiveDescription:
-          description: 'HTML description applicable only when the product is inactive (out for season, out long term, or discontinued). It should contain specific information pertinent to the inactive status of the product (e.g. details about why it is inactive and what similar products are available instead). It should not duplicate information in short-description or description.'
+          description: >-
+            HTML description applicable only when the product is inactive (out
+            for season, out long term, or discontinued). It should contain
+            specific information pertinent to the inactive status of the product
+            (e.g. details about why it is inactive and what similar products
+            are available instead). It should not duplicate information in
+            short-description or description.
           type: string
         short-description:
           description: 'paragraph-length, stand-alone, plain-text product description'
           type: string
         description:
-          description: 'long-form, HTML product description.  When short-description is set, this value is for additional information which did not fit into short-description.  Displaying both short-description and description is not redundant.  Displaying only description may be confusing when short-description is available.'
+          description: >-
+            long-form, HTML product description.  When short-description is set,
+            this value is for additional information which did not fit into
+            short-description.  Displaying both short-description and
+            description is not redundant.  Displaying only description may be
+            confusing when short-description is available.
           type: string
         brand:
           description: the brand associated with this product
@@ -6936,7 +7518,9 @@ components:
           type: integer
           format: int32
         ingredients:
-          description: 'ingredients used in this product (e.g., "dried cranberries (organic cranberries, organic cane sugar, organic sunflower oil)")'
+          description: >-
+            ingredients used in this product (e.g., "dried cranberries (organic
+            cranberries, organic cane sugar, organic sunflower oil)")
           type: string
         nutrition-facts:
           $ref: '#/components/schemas/nutritionFacts'
@@ -6951,13 +7535,17 @@ components:
           type: object
           properties:
             by-category:
-              description: Suggested substitute product IDs which belong to related categories.
+              description: >-
+                Suggested substitute product IDs which belong to related
+                categories.
               type: array
               items:
                 type: integer
                 format: int64
             staff-picks:
-              description: Suggested substitute product IDs which were chosen by staff members.
+              description: >-
+                Suggested substitute product IDs which were chosen by staff
+                members.
               type: array
               items:
                 type: integer
@@ -6978,7 +7566,9 @@ components:
       type: object
       properties:
         headers:
-          description: nutrition-fact headers (e.g. "Serving Size 1 cake (19g)" or "Calories 60")
+          description: >-
+            nutrition-fact headers (e.g. "Serving Size 1 cake (19g)" or
+            "Calories 60")
           type: array
           items:
             type: string
@@ -6992,7 +7582,9 @@ components:
       type: object
       properties:
         indent:
-          description: 'if true, this label should be indented (e.g. an indented "Dietary Fiber" entry might follow a non-indented "Total Carbohydrate" entry)'
+          description: >-
+            if true, this label should be indented (e.g. an indented "Dietary
+            Fiber" entry might follow a non-indented "Total Carbohydrate" entry)
           type: boolean
         label:
           description: 'daily value label (e.g. "Total Carbohydrate 14g", "Calcium")'
@@ -7044,12 +7636,20 @@ components:
           format: float
           minimum: 0
         rewards-rate:
-          description: 'Rewards rate (as a percentage) earned for this packaging.  This will only be set for packaging with a fixed rewards rate.  The rewards earned for this product will be the price (after sales) * min(max(`person.rewards-rate`, `product.rewards-rate`), `product.maxRewardsRate`) / 100, rounded to the nearest cent, rounding half to even.'
+          description: >-
+            Rewards rate (as a percentage) earned for this packaging.  This will
+            only be set for packaging with a fixed rewards rate.  The rewards
+            earned for this product will be the price (after sales) *
+            min(max(`person.rewards-rate`, `product.rewards-rate`),
+            `product.maxRewardsRate`) / 100, rounded to the nearest cent,
+            rounding half to even.
           type: integer
           format: int32
           minimum: 0
         maxRewardsRate:
-          description: The maximum rewards rate that could be earned for this product.  A value of 0 means that no rewards will be earned.
+          description: >-
+            The maximum rewards rate that could be earned for this product.  A
+            value of 0 means that no rewards will be earned.
           type: integer
           format: int32
           minimum: 0
@@ -7090,31 +7690,55 @@ components:
           type: integer
           format: int64
         name:
-          description: A phrase naming the category.  This should be understandable (but not necessarily unique) without any further context.  It must be unique for categories sharing a given parent.
+          description: >-
+            A phrase naming the category.  This should be understandable (but
+            not necessarily unique) without any further context.  It must be
+            unique for categories sharing a given parent.
           type: string
         short-name:
-          description: 'A word or two naming the category.  A shortened version of the full name that drops any words already contained in the category''s ancestors'' short names.  This will be used in places where the ancestor short names are in close proximity (e.g. URL slugs) to avoid having the same word many times.  When this is unset, the name is a reasonable fallback'
+          description: >-
+            A word or two naming the category.  A shortened version of the full
+            name that drops any words already contained in the category's
+            ancestors' short names.  This will be used in places where the
+            ancestor short names are in close proximity (e.g. URL slugs) to
+            avoid having the same word many times.  When this is unset, the name
+            is a reasonable fallback
           type: string
         seo-name:
-          description: 'An SEO-optimized name for the category.  A lengthened version of the full name that includes additional keywords or rephrasing, suitable for use in a title tag.  When this is unset, the name is a reasonable fallback.'
+          description: >-
+            An SEO-optimized name for the category.  A lengthened version of the
+            full name that includes additional keywords or rephrasing, suitable
+            for use in a title tag.  When this is unset, the name is a
+            reasonable fallback.
           type: string
         description:
-          description: 'A sentence or two with a stand-alone category description.  When this is unset, the nearest ancestor description is a reasonable fallback.'
+          description: >-
+            A sentence or two with a stand-alone category description.  When
+            this is unset, the nearest ancestor description is a reasonable
+            fallback.
           type: string
         image:
-          description: 'A picture of this category.  When set for a fetched category, the value will be a URL.  When set for an uploaded category, file IDs and media URLs can be used interchangeably.'
+          description: >-
+            A picture of this category.  When set for a fetched category, the
+            value will be a URL.  When set for an uploaded category, file IDs
+            and media URLs can be used interchangeably.
           type: string
         parent:
           description: Category ID for the parent category.
           type: integer
           format: int64
         ancestors:
-          description: 'Ancestor categories.  If set, `ancestors[0]` is the parent category and the final `ancestors` entry is the root category.  Include "ancestors" in the `inline` query parameter if you need this.'
+          description: >-
+            Ancestor categories.  If set, `ancestors[0]` is the parent category
+            and the final `ancestors` entry is the root category.  Include
+            "ancestors" in the `inline` query parameter if you need this.
           type: array
           items:
             $ref: '#/components/schemas/category'
         depth:
-          description: The number of ancestor categories.  Include "depth" in the `inline` query parameter if you need this.
+          description: >-
+            The number of ancestor categories.  Include "depth" in the `inline`
+            query parameter if you need this.
           type: integer
           format: int32
         primary:
@@ -7133,7 +7757,9 @@ components:
           type: integer
           format: int32
         slug:
-          description: A slug generated from the category short-name (or name if short-name is not defined).
+          description: >-
+            A slug generated from the category short-name (or name if short-name
+            is not defined).
           type: string
       required:
         - id
@@ -7143,19 +7769,38 @@ components:
       type: object
       properties:
         name:
-          description: A phrase naming the category.  This should be understandable (but not necessarily unique) without any further context.  It must be unique for categories sharing a given parent.
+          description: >-
+            A phrase naming the category.  This should be understandable (but
+            not necessarily unique) without any further context.  It must be
+            unique for categories sharing a given parent.
           type: string
         short-name:
-          description: 'A word or two naming the category.  A shortened version of the full name that drops any words already contained in the category''s ancestors'' short names.  This will be used in places where the ancestor short names are in close proximity (e.g. URL slugs) to avoid having the same word many times.  When this is unset, the name is a reasonable fallback'
+          description: >-
+            A word or two naming the category.  A shortened version of the full
+            name that drops any words already contained in the category's
+            ancestors' short names.  This will be used in places where the
+            ancestor short names are in close proximity (e.g. URL slugs) to
+            avoid having the same word many times.  When this is unset, the name
+            is a reasonable fallback
           type: string
         seo-name:
-          description: 'An SEO-optimized name for the category.  A lengthened version of the full name that includes additional keywords or rephrasing, suitable for use in a title tag.  When this is unset, the name is a reasonable fallback.'
+          description: >-
+            An SEO-optimized name for the category.  A lengthened version of the
+            full name that includes additional keywords or rephrasing, suitable
+            for use in a title tag.  When this is unset, the name is a
+            reasonable fallback.
           type: string
         description:
-          description: 'A sentence or two with a stand-alone category description.  When this is unset, the nearest ancestor description is a reasonable fallback.'
+          description: >-
+            A sentence or two with a stand-alone category description.  When
+            this is unset, the nearest ancestor description is a reasonable
+            fallback.
           type: string
         image:
-          description: 'A picture of this category.  When set for a fetched category, the value will be a URL.  When set for an uploaded category, file IDs and media URLs can be used interchangeably.'
+          description: >-
+            A picture of this category.  When set for a fetched category, the
+            value will be a URL.  When set for an uploaded category, file IDs
+            and media URLs can be used interchangeably.
           type: string
         parent:
           description: Category ID for the parent category.
@@ -7177,7 +7822,9 @@ components:
           type: integer
           format: int32
         slug:
-          description: A slug generated from the category short-name (or name if short-name is not defined).
+          description: >-
+            A slug generated from the category short-name (or name if short-name
+            is not defined).
           type: string
       required:
         - name
@@ -7229,7 +7876,9 @@ components:
           type: integer
           format: int64
         notes:
-          description: free-form Markdown notes for any purchase information that doesn't fit into an existing field
+          description: >-
+            free-form Markdown notes for any purchase information that doesn't
+            fit into an existing field
           type: string
       required:
         - id
@@ -7251,7 +7900,9 @@ components:
           type: object
           properties:
             dropMembershipId:
-              description: The membership ID of the customer making the order. Only included if the request includes the inlined "dropMembershipId".
+              description: >-
+                The membership ID of the customer making the order. Only
+                included if the request includes the inlined "dropMembershipId".
               type: integer
               format: int64
         status:
@@ -7272,11 +7923,15 @@ components:
           type: string
           format: date-time
         target-delivery:
-          description: 'planned delivery time (fixed before the trip starts, and unset for parcel-carrier orders)'
+          description: >-
+            planned delivery time (fixed before the trip starts, and unset for
+            parcel-carrier orders)
           type: string
           format: date-time
         estimated-delivery:
-          description: 'estimated delivery time (updated after the trip starts until the order is delivered, and unset for parcel-carrier orders)'
+          description: >-
+            estimated delivery time (updated after the trip starts until the
+            order is delivered, and unset for parcel-carrier orders)
           type: string
           format: date-time
         delivered:
@@ -7286,7 +7941,16 @@ components:
         checkout-payment:
           $ref: '#/components/schemas/payment'
         rewards-allocation:
-          description: 'Rewards allocated for this order.  For open orders, this value has no side-effects.  For placed orders that are not yet shipped, this value will match the associated pending rewards debit amount.  When the order ships, this value does not change, but the associated rewards debit will have its amount reduced if the allocated rewards exceed the dollar balance.  If, instead of shipping, the placed order returns to open status, the associated pending rewards debit is deleted, releasing those rewards to be allocated towards other orders.'
+          description: >-
+            Rewards allocated for this order.  For open orders, this value has
+            no side-effects.  For placed orders that are not yet shipped, this
+            value will match the associated pending rewards debit amount.  When
+            the order ships, this value does not change, but the associated
+            rewards debit will have its amount reduced if the allocated rewards
+            exceed the dollar balance.  If, instead of shipping, the placed
+            order returns to open status, the associated pending rewards debit
+            is deleted, releasing those rewards to be allocated towards other
+            orders.
           type: number
           format: float
         drop:
@@ -7294,7 +7958,9 @@ components:
           type: integer
           format: int64
         trip:
-          description: trip delivering the order (automatically populated for parcel-carrier orders)
+          description: >-
+            trip delivering the order (automatically populated for
+            parcel-carrier orders)
           type: integer
           format: int64
         address:
@@ -7302,7 +7968,9 @@ components:
         parcel-carrier-services:
           $ref: '#/components/schemas/orderParcelCarrierServices'
         perishable-shipping-warning-accepted:
-          description: 'If true, the customer has accepted the warning regarding shipping perishable product.'
+          description: >-
+            If true, the customer has accepted the warning regarding shipping
+            perishable product.
           type: boolean
         cases-shipped:
           description: Total quantity of shipped boxes and bulk stock
@@ -7314,25 +7982,35 @@ components:
           description: Warehouse packing instructions
           type: string
         lastApiUpdate:
-          description: a datetime denoting when the order or its order-lines were last updated via the API
+          description: >-
+            a datetime denoting when the order or its order-lines were last
+            updated via the API
           type: string
         holdShipmentUntilStockAvailable:
-          description: 'If true, the customer has requested to hold shipment of the order until all requested stock is available.'
+          description: >-
+            If true, the customer has requested to hold shipment of the order
+            until all requested stock is available.
           type: boolean
         computed:
           description: Optional computed properties included via the "computed" parameter.
           type: object
           properties:
             totalPriceOrdered:
-              description: Dollar value for the sum of all ordered products (does not include potential fees).
+              description: >-
+                Dollar value for the sum of all ordered products (does not
+                include potential fees).
               type: number
               format: float
             totalPriceShipped:
-              description: Dollar value for the sum of all shipped products (does not include potential fees).
+              description: >-
+                Dollar value for the sum of all shipped products (does not
+                include potential fees).
               type: number
               format: float
             totalFees:
-              description: 'Dollar value for the sum of all order fees (pre or post shipment, dependent on order status).'
+              description: >-
+                Dollar value for the sum of all order fees (pre or post
+                shipment, dependent on order status).
               type: number
               format: float
             cases:
@@ -7343,7 +8021,9 @@ components:
                   type: integer
                   format: int64
                 refrigeratedAndRoomTemp:
-                  description: Count of cases shipped with refrigerated/room-temperature products.
+                  description: >-
+                    Count of cases shipped with refrigerated/room-temperature
+                    products.
                   type: integer
                   format: int64
                 greenhouse:
@@ -7412,7 +8092,9 @@ components:
                   type: number
                   format: float
                 roomTemp:
-                  description: Total weight (in pounds) of room temperature products ordered.
+                  description: >-
+                    Total weight (in pounds) of room temperature products
+                    ordered.
                   type: number
                   format: float
                 greenhouse:
@@ -7435,7 +8117,9 @@ components:
                   type: number
                   format: float
                 roomTemp:
-                  description: Total weight (in pounds) of room temperature products shipped.
+                  description: >-
+                    Total weight (in pounds) of room temperature products
+                    shipped.
                   type: number
                   format: float
                 greenhouse:
@@ -7454,11 +8138,15 @@ components:
                   type: number
                   format: float
                 refrigerated:
-                  description: Total volume (in cubic feet) of refrigerated products ordered.
+                  description: >-
+                    Total volume (in cubic feet) of refrigerated products
+                    ordered.
                   type: number
                   format: float
                 roomTemp:
-                  description: Total volume (in cubic feet) of room temperature products ordered.
+                  description: >-
+                    Total volume (in cubic feet) of room temperature products
+                    ordered.
                   type: number
                   format: float
                 greenhouse:
@@ -7477,11 +8165,15 @@ components:
                   type: number
                   format: float
                 refrigerated:
-                  description: Total volume (in cubic feet) of refrigerated products shipped.
+                  description: >-
+                    Total volume (in cubic feet) of refrigerated products
+                    shipped.
                   type: number
                   format: float
                 roomTemp:
-                  description: Total volume (in cubic feet) of room temperature products shipped.
+                  description: >-
+                    Total volume (in cubic feet) of room temperature products
+                    shipped.
                   type: number
                   format: float
                 greenhouse:
@@ -7519,7 +8211,9 @@ components:
           type: integer
           format: int64
         trip:
-          description: trip delivering the order (automatically populated for parcel-carrier orders)
+          description: >-
+            trip delivering the order (automatically populated for
+            parcel-carrier orders)
           type: integer
           format: int64
         address:
@@ -7527,13 +8221,19 @@ components:
         parcel-carrier-services:
           $ref: '#/components/schemas/orderParcelCarrierServices'
         perishable-shipping-warning-accepted:
-          description: 'If true, the customer has accepted the warning regarding shipping perishable product.'
+          description: >-
+            If true, the customer has accepted the warning regarding shipping
+            perishable product.
           type: boolean
         notes:
-          description: 'Additional information about the order, including special instructions for Azure''s pickers'
+          description: >-
+            Additional information about the order, including special
+            instructions for Azure's pickers
           type: string
         holdShipmentUntilStockAvailable:
-          description: 'If true, the customer has requested to hold shipment of the order until all requested stock is available.'
+          description: >-
+            If true, the customer has requested to hold shipment of the order
+            until all requested stock is available.
           type: boolean
       required:
         - customer
@@ -7545,7 +8245,9 @@ components:
         order:
           $ref: '#/components/schemas/order'
         changes:
-          description: An array of side-effects.  Will be set if there were side-effects and unset if there were none
+          description: >-
+            An array of side-effects.  Will be set if there were side-effects
+            and unset if there were none
           type: array
           items:
             $ref: '#/components/schemas/orderChange'
@@ -7577,11 +8279,15 @@ components:
           type: integer
           format: int32
         refrigerated:
-          description: Quantity of shipped boxes and bulk stock with the refrigerated climate
+          description: >-
+            Quantity of shipped boxes and bulk stock with the refrigerated
+            climate
           type: integer
           format: int32
         roomTemp:
-          description: Quantity of shipped boxes and bulk stock with the room temperature climate
+          description: >-
+            Quantity of shipped boxes and bulk stock with the room temperature
+            climate
           type: integer
           format: int32
     orderLine:
@@ -7603,7 +8309,11 @@ components:
           type: integer
           format: int64
         name:
-          description: 'most order lines are for packaged products, but Azure sometimes bills for less concrete items like catalog ads.  This field holds a brief description of the line, and should be used for invoices instead of following packaged-product (which may not be set).'
+          description: >-
+            most order lines are for packaged products, but Azure sometimes
+            bills for less concrete items like catalog ads.  This field holds a
+            brief description of the line, and should be used for invoices
+            instead of following packaged-product (which may not be set).
           type: string
         quantity-ordered:
           description: number of product instances requested
@@ -7614,26 +8324,39 @@ components:
           type: number
           format: float
         weight:
-          description: weight of the shipped products in pounds (estimated until picking time)
+          description: >-
+            weight of the shipped products in pounds (estimated until picking
+            time)
           type: number
           format: float
         volume:
-          description: volume of the shipped products in cubic feet (estimated until picking time)
+          description: >-
+            volume of the shipped products in cubic feet (estimated until
+            picking time)
           type: number
           format: float
         price:
-          description: the total price for this line in dollars (estimated until picking time).  The per-unit price used to calculate this total is currently locked in when you place the order.
+          description: >-
+            the total price for this line in dollars (estimated until picking
+            time).  The per-unit price used to calculate this total is currently
+            locked in when you place the order.
           type: number
           format: float
         rewards:
-          description: The total rewards earned by this line (estimated until picking time).  The per-unit rewards used to calculate this total are currently locked in when you place the order.
+          description: >-
+            The total rewards earned by this line (estimated until picking
+            time).  The per-unit rewards used to calculate this total are
+            currently locked in when you place the order.
           type: number
           format: float
         warnings:
           description: An array of warnings about this product.
           type: array
           items:
-            description: 'Warnings about products that a customer can associate with this order, but maybe should not (e.g. that is is likely to expire before reaching the customer)'
+            description: >-
+              Warnings about products that a customer can associate with this
+              order, but maybe should not (e.g. that is is likely to expire
+              before reaching the customer)
             type: string
       required:
         - id
@@ -7654,7 +8377,11 @@ components:
           description: packaged product code that is being ordered
           type: string
         name:
-          description: 'most order lines are for packaged products, but Azure sometimes bills for less concrete items like catalog ads.  This field holds a brief description of the line, and should be used for invoices instead of following packaged-product (which may not be set).'
+          description: >-
+            most order lines are for packaged products, but Azure sometimes
+            bills for less concrete items like catalog ads.  This field holds a
+            brief description of the line, and should be used for invoices
+            instead of following packaged-product (which may not be set).
           type: string
         quantity-ordered:
           description: number of product instances requested
@@ -7664,7 +8391,9 @@ components:
         - order
         - quantity-ordered
     orderFee:
-      description: An additional charge associated with an order (estimated until picking time).
+      description: >-
+        An additional charge associated with an order (estimated until picking
+        time).
       type: object
       properties:
         id:
@@ -7698,15 +8427,22 @@ components:
         - shipping
         - small-order
     dropShippingFee:
-      description: information for calculating shipping costs for orders delivered to a stop
+      description: >-
+        information for calculating shipping costs for orders delivered to a
+        stop
       type: object
       properties:
         percent:
-          description: 'the `shipping` order fee is the total order-line price over all lines on the order, multiplied by this percentage, and then rounded to the nearest cent.'
+          description: >-
+            the `shipping` order fee is the total order-line price over all
+            lines on the order, multiplied by this percentage, and then rounded
+            to the nearest cent.
           type: number
           format: float
     orderParcelCarrierEstimate:
-      description: A parcel carrier shipping estimate for a given order or portion of order.
+      description: >-
+        A parcel carrier shipping estimate for a given order or portion of
+        order.
       type: object
       properties:
         cost:
@@ -7721,7 +8457,10 @@ components:
           items:
             $ref: '#/components/schemas/shippingService'
         expires:
-          description: The date-time when this estimate expires.  Orders placed for this climate/service after that expiration may have a different fee or delivery estimates.
+          description: >-
+            The date-time when this estimate expires.  Orders placed for this
+            climate/service after that expiration may have a different fee or
+            delivery estimates.
           type: string
           format: date-time
         shipping-date:
@@ -7729,15 +8468,21 @@ components:
           type: string
           format: date
         earliest-delivery:
-          description: The estimated earliest delivery date (inclusive) for the covered order-lines.
+          description: >-
+            The estimated earliest delivery date (inclusive) for the covered
+            order-lines.
           type: string
           format: date
         latest-delivery:
-          description: The estimated latest delivery date (inclusive) for the covered order-lines.
+          description: >-
+            The estimated latest delivery date (inclusive) for the covered
+            order-lines.
           type: string
           format: date
         contact-for-quote:
-          description: The customer should contact this person or team for a personalized shipping quote for this service.
+          description: >-
+            The customer should contact this person or team for a personalized
+            shipping quote for this service.
           type: object
           properties:
             name:
@@ -7802,7 +8547,9 @@ components:
           type: integer
           format: int64
         amount:
-          description: 'dollar value for the entry (positive for credits like customer payments, negative for debits like order charges)'
+          description: >-
+            dollar value for the entry (positive for credits like customer
+            payments, negative for debits like order charges)
           type: number
           format: float
         date:
@@ -7810,7 +8557,9 @@ components:
           type: string
           format: date
         notes:
-          description: a line of Markdown identifying the entry (e.g. "charge for order 123" or "payed with card ending in 0123").
+          description: >-
+            a line of Markdown identifying the entry (e.g. "charge for order
+            123" or "payed with card ending in 0123").
           type: string
         balance:
           description: account balance after this account entry
@@ -7846,13 +8595,17 @@ components:
         address:
           $ref: '#/components/schemas/address'
         issuer:
-          description: 'provider network.  You can determine this from the leading digits of the card number, but we don''t store those digits'
+          description: >-
+            provider network.  You can determine this from the leading digits of
+            the card number, but we don't store those digits
           type: string
         last-four:
           description: last four digits of the card number for identification
           type: string
         expiration:
-          description: expiration date.  We only use the month and year; the day will always be '01'.
+          description: >-
+            expiration date.  We only use the month and year; the day will
+            always be '01'.
           type: string
           format: date
       required:
@@ -7865,7 +8618,10 @@ components:
         - last-four
         - expiration
     newCreditCard:
-      description: 'Azure does not store much credit card information internally (we use an external card processor), but we do need all of the information for the initial upload so we can pass it along to the external processor.'
+      description: >-
+        Azure does not store much credit card information internally (we use an
+        external card processor), but we do need all of the information for the
+        initial upload so we can pass it along to the external processor.
       type: object
       properties:
         type:
@@ -7874,7 +8630,9 @@ components:
           enum:
             - credit-card
         active:
-          description: whether or not this payment method is available for further activity.  Defaults to true
+          description: >-
+            whether or not this payment method is available for further
+            activity.  Defaults to true
           type: boolean
         person:
           description: person associated with this payment method
@@ -7894,7 +8652,9 @@ components:
           description: security code (also known as the verification value)
           type: string
         expiration:
-          description: expiration date.  We only use the month and year and ignore the day (which you should set to '01').
+          description: >-
+            expiration date.  We only use the month and year and ignore the day
+            (which you should set to '01').
           type: string
           format: date
       required:
@@ -7906,14 +8666,22 @@ components:
         - security-code
         - expiration
     genericPaymentMethod:
-      description: one of our supported payment methods that does not have properties beyond the generic payment-method properties
+      description: >-
+        one of our supported payment methods that does not have properties
+        beyond the generic payment-method properties
       type: object
       properties:
         id:
           type: integer
           format: int64
         type:
-          description: string identifying this payment method.  cash-on-delivery means customers must pay for their order in cash to pick up the order. hold-for-payment means customers must pay for the order before Azure will ship it.  net-N means the order must be paid for within N days.  payroll-deduction means the invoiced price will be deducted from the customer's (an Azure employee) next paycheck.
+          description: >-
+            string identifying this payment method.  cash-on-delivery means
+            customers must pay for their order in cash to pick up the order.
+            hold-for-payment means customers must pay for the order before Azure
+            will ship it.  net-N means the order must be paid for within N
+            days.  payroll-deduction means the invoiced price will be deducted
+            from the customer's (an Azure employee) next paycheck.
           type: string
           enum:
             - cash-on-delivery
@@ -7941,7 +8709,9 @@ components:
       anyOf:
         - $ref: '#/components/schemas/newCreditCard'
     payment:
-      description: A payment instance where an amount will be (or has been) charged via a payment-method.
+      description: >-
+        A payment instance where an amount will be (or has been) charged via a
+        payment-method.
       type: object
       properties:
         payment-method:
@@ -7952,7 +8722,9 @@ components:
           description: The type of payment used
           type: string
         last-four:
-          description: The last four digits of the credit card used. Only included if the payment type is Credit Card
+          description: >-
+            The last four digits of the credit card used. Only included if the
+            payment type is Credit Card
           type: string
         amount:
           description: Amount to charge (or which was charged) in dollars
@@ -7975,11 +8747,15 @@ components:
         address:
           $ref: '#/components/schemas/address'
         email:
-          description: The registrant's primary email address.  Will have a preference level of 100.
+          description: >-
+            The registrant's primary email address.  Will have a preference
+            level of 100.
           type: string
           format: email
         telephone:
-          description: The registrant's telephone numbers (currently only supports 'voice' and 'text' types)
+          description: >-
+            The registrant's telephone numbers (currently only supports 'voice'
+            and 'text' types)
           type: array
           items:
             $ref: '#/components/schemas/telephone'
@@ -7990,7 +8766,11 @@ components:
         context:
           $ref: '#/components/schemas/registrationContext'
         authentication-base-url:
-          description: 'Redirect URL for the authentication UI.  The authentication notification points customers at {authentication-base-url}{authentication-token} to authenticate a new session.'
+          description: >-
+            Redirect URL for the authentication UI.  The authentication
+            notification points customers at
+            {authentication-base-url}{authentication-token} to authenticate a
+            new session.
           type: string
           format: url
         post-affiliate-pro:
@@ -8000,7 +8780,9 @@ components:
         - email
         - authentication-base-url
     registrationContext:
-      description: The context in which the registration request is being made (to select between available notification templates).  Defaults to "registration".
+      description: >-
+        The context in which the registration request is being made (to select
+        between available notification templates).  Defaults to "registration".
       type: string
       enum:
         - registration
@@ -8018,7 +8800,9 @@ components:
           type: integer
           format: int64
         amount:
-          description: 'Reward value for the entry (positive for credits, negative for debits).'
+          description: >-
+            Reward value for the entry (positive for credits, negative for
+            debits).
           type: number
           format: float
         type:
@@ -8030,15 +8814,22 @@ components:
             - expired
             - promotion
         settled:
-          description: 'When the entry was settled.  This will be unset for pending debits, and will be set for all settled debits.'
+          description: >-
+            When the entry was settled.  This will be unset for pending debits,
+            and will be set for all settled debits.
           type: string
           format: date-time
         order:
-          description: The order which produced (for credits) or consumed (for debits) this entry.
+          description: >-
+            The order which produced (for credits) or consumed (for debits) this
+            entry.
           type: integer
           format: int64
         account-entry:
-          description: The account-entry credit created by this entry.  This will be set for rewards debits where the referenced account-entry credit shows the dollar increase associated with this rewards decrease.
+          description: >-
+            The account-entry credit created by this entry.  This will be set
+            for rewards debits where the referenced account-entry credit shows
+            the dollar increase associated with this rewards decrease.
           type: integer
           format: int64
         total-credit:
@@ -8062,7 +8853,10 @@ components:
         - amount
         - order
     postAffiliatePro:
-      description: Business logic around the affiliate program is handled by Beehive.  If Beehive determines the referrer is due credit then this information is passed on to Post Affiliate Pro as a sale.
+      description: >-
+        Business logic around the affiliate program is handled by Beehive.  If
+        Beehive determines the referrer is due credit then this information is
+        passed on to Post Affiliate Pro as a sale.
       type: object
       properties:
         referrer:
@@ -8072,7 +8866,9 @@ components:
           description: Post Affiliate Pro visitor id.  This information is opaque to Azure.
           type: string
         banner:
-          description: Post Affiliate Pro banner ad id.  This information is opaque to Azure.
+          description: >-
+            Post Affiliate Pro banner ad id.  This information is opaque to
+            Azure.
           type: string
       required:
         - referrer
@@ -8087,7 +8883,9 @@ components:
           description: Auth token.  Can be sent to login to authenticate a new session.
           type: string
         resend-token:
-          description: Resend token.  Can be sent to resendRegistrationNotification to trigger a new registration notification.
+          description: >-
+            Resend token.  Can be sent to resendRegistrationNotification to
+            trigger a new registration notification.
           type: string
       required:
         - session
@@ -8099,7 +8897,11 @@ components:
         context:
           $ref: '#/components/schemas/registrationContext'
         authentication-base-url:
-          description: 'Redirect URL for the authentication UI.  The authentication notification points customers at {authentication-base-url}{authentication-token} to authenticate a new session.'
+          description: >-
+            Redirect URL for the authentication UI.  The authentication
+            notification points customers at
+            {authentication-base-url}{authentication-token} to authenticate a
+            new session.
           type: string
           format: url
         token:
@@ -8122,7 +8924,9 @@ components:
       type: object
       properties:
         username:
-          description: 'Username for authentication.  Instead of your username, you could also use your primary email address or your person ID here'
+          description: >-
+            Username for authentication.  Instead of your username, you could
+            also use your primary email address or your person ID here
           type: string
         password:
           description: Password for authentication
@@ -8135,11 +8939,17 @@ components:
       type: object
       properties:
         base-url:
-          description: 'Redirect URL for the password reset UI.  The password reset email points customers at {base-url}{confirmation-token} to confirm their password reset.'
+          description: >-
+            Redirect URL for the password reset UI.  The password reset email
+            points customers at {base-url}{confirmation-token} to confirm their
+            password reset.
           type: string
           format: url
         email:
-          description: 'The email address for the person whose password will be reset. Instead of the email address, you may also use your username or person ID here'
+          description: >-
+            The email address for the person whose password will be reset.
+            Instead of the email address, you may also use your username or
+            person ID here
           type: string
       required:
         - base-url
@@ -8198,13 +9008,17 @@ components:
         name:
           type: string
         active:
-          description: Whether or not this account is active.  Inactive users cannot log in.
+          description: >-
+            Whether or not this account is active.  Inactive users cannot log
+            in.
           type: boolean
         password-usable:
           description: Whether or not this account has a usable password.
           type: boolean
         email:
-          description: 'The person''s preferred, error-less email address (set if the "inline" query parameter contains "email").'
+          description: >-
+            The person's preferred, error-less email address (set if the
+            "inline" query parameter contains "email").
           type: string
           format: email
         can-email:
@@ -8222,7 +9036,12 @@ components:
         price-level:
           $ref: '#/components/schemas/priceLevel'
         rewards-rate:
-          description: 'Rewards rate (as a percentage) for this customer.  The rewards earned for a product will be the price (after sales) * min(max(`person.rewards-rate`, `product.rewards-rate`), `product.maxRewardsRate`) / 100, rounded to the nearest cent, rounding half to even.'
+          description: >-
+            Rewards rate (as a percentage) for this customer.  The rewards
+            earned for a product will be the price (after sales) *
+            min(max(`person.rewards-rate`, `product.rewards-rate`),
+            `product.maxRewardsRate`) / 100, rounded to the nearest cent,
+            rounding half to even.
           type: integer
           format: int32
           minimum: 0
@@ -8234,14 +9053,22 @@ components:
           items:
             $ref: '#/components/schemas/permission'
         order-place-issue:
-          description: 'If the person should be warned or blocked from placing orders, this property will be set with a slugged reason and recommended action. Only set if the "inline" query parameter contains "order-place-issue".'
+          description: >-
+            If the person should be warned or blocked from placing orders, this
+            property will be set with a slugged reason and recommended action.
+            Only set if the "inline" query parameter contains
+            "order-place-issue".
           type: string
           enum:
             - outstanding-balance-contact
             - outstanding-balance-pay
             - outstanding-balance-warn
         internal-notes:
-          description: 'free-form Markdown notes for any internal information that doesn''t fit into an existing field.  Only Azure employees can view or edit this information, although it may be passed into the registerPerson endpoint when registering new people.'
+          description: >-
+            free-form Markdown notes for any internal information that doesn't
+            fit into an existing field.  Only Azure employees can view or edit
+            this information, although it may be passed into the registerPerson
+            endpoint when registering new people.
           type: string
         affiliate-code:
           description: Affiliate code to be used with URL shares.
@@ -8260,36 +9087,53 @@ components:
             - lead
             - community
         marketing-slug:
-          description: 'A person''s unique, primary marketing slug used, e.g., for the Azure Share program.'
+          description: >-
+            A person's unique, primary marketing slug used, e.g., for the Azure
+            Share program.
           type: string
         recency:
-          description: Order recency ranking.  Higher rankings for customers with more recent orders.
+          description: >-
+            Order recency ranking.  Higher rankings for customers with more
+            recent orders.
           type: integer
           format: int32
           minimum: 1
           maximum: 5
         frequency:
-          description: Order frequency ranking.  Higher rankings for customers with more frequent orders.
+          description: >-
+            Order frequency ranking.  Higher rankings for customers with more
+            frequent orders.
           type: integer
           format: int32
           minimum: 1
           maximum: 5
         monetary:
-          description: Order value ranking.  Higher rankings for customers with larger orders.
+          description: >-
+            Order value ranking.  Higher rankings for customers with larger
+            orders.
           type: integer
           format: int32
           minimum: 1
           maximum: 5
         first-order-placed:
-          description: 'When this customer''s first order was placed.  This timestamp does not change once set, even if the initial order is subsequently deleted.'
+          description: >-
+            When this customer's first order was placed.  This timestamp does
+            not change once set, even if the initial order is subsequently
+            deleted.
           type: string
           format: date-time
         last-order-placed:
-          description: 'When this customer''s most recent order was placed.  This timestamp includes all open-to-placed transitions, regardless of whether the related order is subsequently deleted.'
+          description: >-
+            When this customer's most recent order was placed.  This timestamp
+            includes all open-to-placed transitions, regardless of whether the
+            related order is subsequently deleted.
           type: string
           format: date-time
         is-drop-coordinator:
-          description: Is a drop coordinator (inclusive of both primary contact and managers). Only set if the "inline" query parameter contains "is-drop-coordinator".
+          description: >-
+            Is a drop coordinator (inclusive of both primary contact and
+            managers). Only set if the "inline" query parameter contains
+            "is-drop-coordinator".
           type: boolean
       required:
         - id
@@ -8305,27 +9149,39 @@ components:
           description: Password for authentication
           type: string
         can-email:
-          description: Can Azure contact this person for reasons other than registration? Defaults to true when creating a person
+          description: >-
+            Can Azure contact this person for reasons other than registration?
+            Defaults to true when creating a person
           type: boolean
         sale-magazine:
-          description: Subscribed to receive the sale magazine?  Defaults to false when creating a person
+          description: >-
+            Subscribed to receive the sale magazine?  Defaults to false when
+            creating a person
           type: boolean
         company:
           description: Employer name
           type: string
         allow-social-media:
-          description: Does this person want social media links to display?  Defaults to true when creating a person
+          description: >-
+            Does this person want social media links to display?  Defaults to
+            true when creating a person
           type: boolean
         notifications:
           $ref: '#/components/schemas/personNotifications'
         affiliate-code:
-          description: Affiliate code to be used with URL shares.  Only users with the update-person permission can edit this information.
+          description: >-
+            Affiliate code to be used with URL shares.  Only users with the
+            update-person permission can edit this information.
           type: string
         is-allowed-to-be-affiliate:
-          description: Is allowed to be an affiliate.  Only users with the update-person permission can edit this information.
+          description: >-
+            Is allowed to be an affiliate.  Only users with the update-person
+            permission can edit this information.
           type: boolean
     updatePersonUserPassword:
-      description: 'a person (customer, vendor, employee, ...) with the logged in user''s password'
+      description: >-
+        a person (customer, vendor, employee, ...) with the logged in user's
+        password
       type: object
       properties:
         name:
@@ -8346,7 +9202,9 @@ components:
           description: Does this person want social media links to display
           type: boolean
         user-password:
-          description: The authenticated person's password.  Required when changing password for users with a usable password.
+          description: >-
+            The authenticated person's password.  Required when changing
+            password for users with a usable password.
           type: string
         notifications:
           $ref: '#/components/schemas/personNotifications'
@@ -8383,7 +9241,11 @@ components:
               - paper
               - email
     address:
-      description: 'an address following the convention of http://microformats.org/wiki/h-adr and https://tools.ietf.org/html/rfc6350#section-6.3.1, with an additional "name" property'
+      description: >-
+        an address following the convention of
+        http://microformats.org/wiki/h-adr and
+        https://tools.ietf.org/html/rfc6350#section-6.3.1, with an additional
+        "name" property
       type: object
       properties:
         name:
@@ -8398,12 +9260,17 @@ components:
         locality:
           type: string
         region:
-          description: 'required for the United States and Canada, optional for other countries'
+          description: >-
+            required for the United States and Canada, optional for other
+            countries
           type: string
         postal-code:
           type: string
         country:
-          description: 'ISO 3166-1 alpha-3 code for the country.  On push, you can set the alpha-2 code or case-insensitve name instead, or you can use an inline country object.'
+          description: >-
+            ISO 3166-1 alpha-3 code for the country.  On push, you can set the
+            alpha-2 code or case-insensitve name instead, or you can use an
+            inline country object.
           type: string
         preference:
           description: ordering precedence for the findAddresses.  Defaults to zero.
@@ -8485,7 +9352,9 @@ components:
           type: integer
           format: int64
         error:
-          description: Reason for not using this address (e.g. "email bounced on 2016-08-15").
+          description: >-
+            Reason for not using this address (e.g. "email bounced on
+            2016-08-15").
           type: string
         preference:
           description: Ordering precedence for the findEmails.
@@ -8496,13 +9365,17 @@ components:
         - address
         - person
     updateEmailUserPassword:
-      description: A request for adding or updating an email address with the logged in user's password
+      description: >-
+        A request for adding or updating an email address with the logged in
+        user's password
       type: object
       properties:
         email:
           $ref: '#/components/schemas/email'
         user-password:
-          description: The authenticated person's password.  Required for users with a usable password.
+          description: >-
+            The authenticated person's password.  Required for users with a
+            usable password.
           type: string
       required:
         - email
@@ -8595,7 +9468,11 @@ components:
           type: integer
           format: int64
         expires:
-          description: 'current expiration date-time for this session (http://tools.ietf.org/html/rfc6265#section-5.3, covering both Max-Age and Expires representations, unset if the session expires at browser-close)'
+          description: >-
+            current expiration date-time for this session
+            (http://tools.ietf.org/html/rfc6265#section-5.3, covering both
+            Max-Age and Expires representations, unset if the session expires at
+            browser-close)
           type: string
           format: date-time
     notification:
@@ -8611,7 +9488,9 @@ components:
           type: boolean
         dismissed:
           type: boolean
-          description: 'if annotate-person is specified in the request, this field will note if the notification has been dismissed'
+          description: >-
+            if annotate-person is specified in the request, this field will note
+            if the notification has been dismissed
       required:
         - id
         - message
@@ -8640,10 +9519,14 @@ components:
           type: integer
           format: int64
         name:
-          description: sentence-length product name.  Copied from `#definitions/product` for easier UI development
+          description: >-
+            sentence-length product name.  Copied from `#definitions/product`
+            for easier UI development
           type: string
         packaging:
-          description: all related audited and/or non-audited packaged versions of this product
+          description: >-
+            all related audited and/or non-audited packaged versions of this
+            product
           type: array
           items:
             $ref: '#/components/schemas/packagedProductAudit'
@@ -8662,13 +9545,22 @@ components:
           description: the old size of the product (e.g. "12 oz." or "6x12 oz.")
           type: string
         packs:
-          description: 'the new dimensions of package sizes (e.g. "4", "4x32.5", or "2x4x32.5")'
+          description: >-
+            the new dimensions of package sizes (e.g. "4", "4x32.5", or
+            "2x4x32.5")
           type: string
         unit:
-          description: 'the new unit of measurement.  You can use any string, but the backend will only be able to make automatic comparisons if you use SI prefixes (e.g. "mm" for millimeters) and stick to the following base units: pound, ounce, gram, gallon, liter, quart, pint, cup, fluid ounce, yard, and count'
+          description: >-
+            the new unit of measurement.  You can use any string, but the
+            backend will only be able to make automatic comparisons if you use
+            SI prefixes (e.g. "mm" for millimeters) and stick to the following
+            base units: pound, ounce, gram, gallon, liter, quart, pint, cup,
+            fluid ounce, yard, and count
           type: string
         audited:
-          description: a datetime denoting if and when the packaged-product was last audited
+          description: >-
+            a datetime denoting if and when the packaged-product was last
+            audited
           type: string
       required:
         - id
@@ -8681,16 +9573,26 @@ components:
       type: object
       properties:
         packs:
-          description: 'the new dimensions of package sizes (e.g. "4", "4x32.5", or "2x4x32.5")'
+          description: >-
+            the new dimensions of package sizes (e.g. "4", "4x32.5", or
+            "2x4x32.5")
           type: string
         unit:
-          description: 'the new unit of measurement.  Ideally one of "", or "", but you can use another unit if none of those fit.'
+          description: >-
+            the new unit of measurement.  Ideally one of "", or "", but you can
+            use another unit if none of those fit.
           type: string
         size:
-          description: override the auto-generated size (based on packs and unit) with a custom name.  This can be useful for adding packaging information (e.g. "32 floz glass" to distinguish glass from plastic vinegar bottles).
+          description: >-
+            override the auto-generated size (based on packs and unit) with a
+            custom name.  This can be useful for adding packaging information
+            (e.g. "32 floz glass" to distinguish glass from plastic vinegar
+            bottles).
           type: string
         clear-audited:
-          description: 'If true, clear the audited date-time for this packaged-product.  If false (the default), set the audited date-time to the current time.'
+          description: >-
+            If true, clear the audited date-time for this packaged-product.  If
+            false (the default), set the audited date-time to the current time.
           type: boolean
       required:
         - packs
