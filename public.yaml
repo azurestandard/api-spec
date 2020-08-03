@@ -6357,7 +6357,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/error'
 servers:
-  - url: 'https://api.azurestandard.com/'
+  - url: 'https://api.azurestandard.com'
 components:
   requestBodies:
     updatePersonUserPassword:
@@ -6754,7 +6754,7 @@ components:
         - exclusivity
         - members
     newDrop:
-      $ref: drop
+      $ref: '#/components/schemas/drop'
     updateDrop:
       description: an order-delivery location
       type: object
@@ -6905,7 +6905,7 @@ components:
         - drop
         - active
     newDropMembership:
-      $ref: updateDropMembership
+      $ref: '#/components/schemas/updateDropMembership'
     dropMembershipNotifications:
       description: configure if and how a user receives per-drop notifications
       type: object
@@ -7074,7 +7074,7 @@ components:
         - delivery-offset
         - internal
     newRoute:
-      $ref: route
+      $ref: '#/components/schemas/route'
     trip:
       description: a truck delivering orders along a route
       type: object
