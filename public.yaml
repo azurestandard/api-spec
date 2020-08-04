@@ -574,7 +574,8 @@ paths:
                 $ref: '#/components/schemas/error'
   '/bartender-print-configuration/{id}/actions/test-print':
     post:
-      summary: Create a test BarTender print request using this print configuration. The print request uses hard-coded dummy data if a stock ID is not provided.
+      summary: Create a test BarTender print request
+      description: Create a test BarTender print request using this print configuration. The print request uses hard-coded dummy data if a stock ID is not provided.
       operationId: actionTestBartenderPrintConfiguration
       tags:
         - bartender
