@@ -6475,7 +6475,7 @@ components:
           format: int64
         name:
           type: string
-        description:.
+        description:
           type: string
         cutoff-frequency:
           description: Number of days between cutoffs.
@@ -6521,7 +6521,7 @@ components:
       description: An order-delivery truck route's updated values.
       type: object
       properties:
-        description:.
+        description:
           type: string
         cutoff-frequency:
           description: Number of days between cutoffs.
@@ -6920,13 +6920,13 @@ components:
         treatAsActive:
           description: If true, this product will be published to search engines even when it is inactive (out for season, out long term, or discontinued).
           type: boolean
-        inactiveDescription:.
+        inactiveDescription:
           description: HTML description applicable only when the product is inactive (out for season, out long term, or discontinued). It should contain specific information pertinent to the inactive status of the product (e.g. details about why it is inactive and what similar products are available instead). It should not duplicate information in short-description or description.
           type: string
-        short-description:.
+        short-description:
           description: Paragraph-length, stand-alone, plain-text product description.
           type: string
-        description:.
+        description:
           description: Long-form, HTML product description. When short-description is set, this value is for additional information which did not fit into short-description. Displaying both short-description and description is not redundant. Displaying only description may be confusing when short-description is available.
           type: string
         brand:
@@ -7103,7 +7103,7 @@ components:
         seo-name:
           description: An SEO-optimized name for the category. A lengthened version of the full name that includes additional keywords or rephrasing, suitable for use in a title tag. When this is unset, the name is a reasonable fallback.
           type: string
-        description:.
+        description:
           description: A sentence or two with a stand-alone category description. When this is unset, the nearest ancestor description is a reasonable fallback.
           type: string
         image:
@@ -7156,7 +7156,7 @@ components:
         seo-name:
           description: An SEO-optimized name for the category. A lengthened version of the full name that includes additional keywords or rephrasing, suitable for use in a title tag. When this is unset, the name is a reasonable fallback.
           type: string
-        description:.
+        description:
           description: A sentence or two with a stand-alone category description. When this is unset, the nearest ancestor description is a reasonable fallback.
           type: string
         image:
