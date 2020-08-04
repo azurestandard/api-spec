@@ -1328,7 +1328,7 @@ paths:
                 $ref: '#/components/schemas/error'
   /drops/locations:
     get:
-      summary: Returns an array of locations for all active drops that the user has access to.
+      summary: Returns an array of locations for all active drops that the user has access to
       description: |-
         For example, you can use this to draw markers on map.
       operationId: findDropLocations
@@ -4544,7 +4544,7 @@ paths:
                 $ref: '#/components/schemas/error'
   /account-entries:
     get:
-      summary: Returns all dollar credits and debits from the system that the user has access to. 
+      summary: Returns all dollar credits and debits from the system that the user has access to
       description: |-
         Results are ordered by increasing settled dates, falling back to IDs when multiple entries settled on the same day.
       operationId: findAccountEntries
@@ -4850,7 +4850,7 @@ paths:
                 $ref: '#/components/schemas/error'
   /rewards:
     get:
-      summary: Returns all reward credits and debits from the system that the user has access to. 
+      summary: Returns all reward credits and debits from the system that the user has access to
       description: |-
         Results are ordered by increasing settled times, falling back to ID for pending debits.
       operationId: findRewards
