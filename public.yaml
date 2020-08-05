@@ -3809,7 +3809,8 @@ paths:
                 $ref: '#/components/schemas/error'
   /orders:
     get:
-      summary: Returns all orders from the system that the user has access to
+      summary: Get all orders
+      description: Only returns orders that the user has access to.
       operationId: findOrders
       tags:
         - order
@@ -3921,16 +3922,7 @@ paths:
           schema:
             type: integer
             format: int32
-        - name: inline
-          in: query
-          description: |-
-            For convenience, include a full representation of the inlined property. Currently supports "dropMembershipId" and "customer".
-          required: false
-          style: form
-          schema:
-            type: array
-            items:
-              type: string
+        - $ref: '#/components/parameters/orderInline'
       responses:
         '200':
           description: |-
@@ -3986,7 +3978,7 @@ paths:
         required: true
   '/order/{id}':
     get:
-      summary: Returns an order based on a single ID
+      summary: Get single order by ID
       operationId: findOrderById
       tags:
         - order
@@ -4006,16 +3998,7 @@ paths:
           required: false
           schema:
             type: string
-        - name: inline
-          in: query
-          description: |-
-            For convenience, include a full representation of the inlined property. Currently supports "dropMembershipId" and "customer".
-          required: false
-          style: form
-          schema:
-            type: array
-            items:
-              type: string
+        - $ref: '#/components/parameters/orderInline'
       responses:
         '200':
           description: |-
@@ -6656,6 +6639,25 @@ components:
       name: cookie
       description: |-
         Session cookie (http://tools.ietf.org/html/rfc6265).
+  parameters:
+    orderInline:
+      name: inline
+      in: query
+      description: |-
+        Optional properties returned if specified in the request.
+      required: false
+      style: form
+      schema:
+        type: array
+        items:
+          type: string
+          enum:
+            - "dropMembershipId"
+            - "customer.id"
+            - "customer.name"
+            - "customer.email"
+            - "address.phone"
+            - "address.text"
   schemas:
     affiliateCode:
       description: |-
