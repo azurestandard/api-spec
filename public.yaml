@@ -8222,7 +8222,33 @@ components:
               type: integer
               format: int64
             customer: 
-              $ref: '#/components/schemas/person'
+              description: |-
+                Each property is only returned if the request includes the lookup (e.g. `customer.id`).
+              type: object
+              properties:
+                id: 
+                  type: integer
+                  format: int64
+                name: 
+                  type: string
+                email: 
+                  type: string
+                  format: email
+            address: 
+              description: |-
+                Each property is only returned if the request includes the lookup (e.g. `address.phone`).
+              type: object
+              properties:
+                phone: 
+                  description: |-
+                    Phone number to use if there's no text number returned.
+                  type: string
+                  format: telephone
+                text: 
+                  description: |-
+                    Phone number where the user has indicated they may receive SMS messages. Prefer this number if returned.
+                  type: string
+                  format: telephone
         status:
           description: |-
             Order's lifecycle stage.
@@ -9615,6 +9641,16 @@ components:
             Ordering precedence for the findAddresses. Defaults to zero.
           type: integer
           format: int32
+        phone: 
+          description: |-
+            Phone number to use if there's no text number returned.
+          type: string
+          format: telephone
+        text: 
+          description: |-
+            Phone number where the user has indicated they may receive SMS messages. Prefer this number if returned.
+          type: string
+          format: telephone
       required:
         - locality
         - country
