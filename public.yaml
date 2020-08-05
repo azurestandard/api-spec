@@ -3924,7 +3924,7 @@ paths:
         - name: inline
           in: query
           description: |-
-            For convenience, include a full representation of the inlined property. Currently supports "dropMembershipId".
+            For convenience, include a full representation of the inlined property. Currently supports "dropMembershipId" and "customer".
           required: false
           style: form
           schema:
@@ -4009,7 +4009,7 @@ paths:
         - name: inline
           in: query
           description: |-
-            For convenience, include a full representation of the inlined property. Currently supports "dropMembershipId".
+            For convenience, include a full representation of the inlined property. Currently supports "dropMembershipId" and "customer".
           required: false
           style: form
           schema:
@@ -8219,6 +8219,8 @@ components:
                 The membership ID of the customer making the order. Only included if the request includes the inlined "dropMembershipId".
               type: integer
               format: int64
+            customer: 
+               $ref: '#/components/schemas/person'
         status:
           description: |-
             Order's lifecycle stage.
