@@ -8220,7 +8220,7 @@ components:
               type: integer
               format: int64
             customer: 
-               $ref: '#/components/schemas/person'
+              $ref: '#/components/schemas/person'
         status:
           description: |-
             Order's lifecycle stage.
