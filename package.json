@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "OpenAPI 3.0 Specification for Azure Standard's API.",
   "scripts": {
-    "build": "redoc-cli bundle spec.json -t index.hbs -o index.html --options.pathInMiddlePanel --options.requiredPropsFirst --options.sortPropsAlphabetically"
+    "buildDocs": "redoc-cli bundle spec.json -t index.hbs -o index.html --options.pathInMiddlePanel --options.requiredPropsFirst --options.sortPropsAlphabetically"
   },
   "repository": {
     "type": "git",
