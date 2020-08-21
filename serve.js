@@ -9,14 +9,14 @@ const path = require('path')
 // Allow passing args (currently only supports `--port=`)
 let envs = {}
 process.argv.slice(2).forEach(arg => {
-   const [key, value] = arg.split("=")
+   const [key, value] = arg.split('=')
    envs[key] = value
 })
 const port = envs['--port'] || 8080
 
 const server = http.createServer()
 
-server.on("request", (request, response) => {
+server.on('request', (request, response) => {
    let filePath = '.' + request.url
    if (filePath === './') {
       filePath = './index.html'
@@ -46,17 +46,13 @@ server.on("request", (request, response) => {
    fs.readFile(filePath, function (error, content) {
       if (error) {
          if (error.code == 'ENOENT') {
-            fs.readFile('./404.html', function (error, content) {
-               response.writeHead(404, { 'Content-Type': 'text/html' })
-               response.end(content, 'utf-8')
-            })
-         }
-         else {
+            response.writeHead(404)
+            response.end('404, not found', 'utf-8')
+         } else {
             response.writeHead(500)
             response.end('Sorry, check with the site admin for error: ' + error.code + ' ..\n')
          }
-      }
-      else {
+      } else {
          response.writeHead(200, { 'Content-Type': contentType })
          response.end(content, 'utf-8')
       }
