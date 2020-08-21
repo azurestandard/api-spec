@@ -10879,8 +10879,11 @@
                },
                "customer": {
                   "description": "The person making the order, if the request includes the inlined value \"customer\". Otherwise, for historical reasons, the customer ID.",
-                  "type": "object",
-                  "$ref": "#/components/schemas/person"
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/person"
+                    }
+                  ]
                },
                "dropMembershipId": {
                   "description": "The membership ID of the customer making the order. Only included if the request includes the inlined value \"dropMembershipId\".",
