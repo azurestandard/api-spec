@@ -11,13 +11,3 @@ OpenAPI 3.0 Specification for Azure Standard's API.
 URL: https://azure-api-docs.netlify.app/
 
 Uses [Redoc](https://github.com/Redocly/redoc).
-
-### Run it locally
-
-Via Node.js (with zero dependencies, so no `npm install` necessary):
-
-```sh
-$ node serve.js # Use `--port=` for a non-default port (e.g. `--port=9999`).
-```
-
-Via other languages: use a [one-liner in your choice language](https://gist.github.com/willurd/5720255).
