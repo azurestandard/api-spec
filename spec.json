@@ -10181,7 +10181,7 @@
           },
           "actualDeliveryBackdated": {
             "type": "boolean",
-            "description": "The acutal delivery was manually set to a datetime in the \npast."
+            "description": "The acutal delivery was manually set to a datetime in the past."
           }
         },
         "required": [
