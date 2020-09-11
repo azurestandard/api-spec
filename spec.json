@@ -10178,17 +10178,22 @@
           },
           "drop-shipping-fee": {
             "$ref": "#/components/schemas/dropShippingFee"
+          },
+          "actualDeliveryBackdated": {
+            "type": "boolean",
+            "description": "The acutal delivery was manually set to a datetime in the past."
           }
         },
         "required": [
           "id",
           "trip",
           "estimatedDelivery",
-          "finalizedDelivery"
+          "finalizedDelivery",
+          "actualDeliveryBackdated"
         ]
       },
       "updateStop": {
-        "description": "An update to a trip stop or waypoint. TESTing.",
+        "description": "An update to a trip stop or waypoint.",
         "type": "object",
         "properties": {
           "trip": {
@@ -10220,12 +10225,17 @@
             "description": "When the stop is actually reached.",
             "type": "string",
             "format": "date-time"
+          },
+          "actualDeliveryBackdated": {
+            "type": "boolean",
+            "description": "The acutal delivery was manually set to a datetime in the past."
           }
         },
         "required": [
           "trip",
           "estimatedDelivery",
-          "finalizedDelivery"
+          "finalizedDelivery",
+          "actualDeliveryBackdated"
         ]
       },
       "shippingService": {
