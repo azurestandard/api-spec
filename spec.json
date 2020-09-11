@@ -10188,7 +10188,7 @@
             ]
          },
          "updateStop": {
-            "description": "An update to a trip stop or waypoint.",
+            "description": "An update to a trip stop or waypoint. TEST.",
             "type": "object",
             "properties": {
                "trip": {
