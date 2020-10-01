@@ -3048,143 +3048,6 @@
         }
       }
     },
-    "/route-stops": {
-      "get": {
-        "summary": "Returns all route-stops from the system that the user has access to",
-        "description": "Route-stops are ordered for increasing offset from the route's trip cutoff.",
-        "operationId": "findRouteStops",
-        "tags": [
-          "stop"
-        ],
-        "parameters": [
-          {
-            "name": "route",
-            "in": "query",
-            "description": "Route names to filter by.",
-            "required": false,
-            "style": "form",
-            "schema": {
-              "type": "array",
-              "items": {
-                "type": "string"
-              }
-            }
-          },
-          {
-            "name": "drop",
-            "in": "query",
-            "description": "Drop IDs to filter by.",
-            "required": false,
-            "style": "form",
-            "schema": {
-              "type": "array",
-              "items": {
-                "type": "integer",
-                "format": "int64"
-              }
-            }
-          },
-          {
-            "name": "limit",
-            "in": "query",
-            "description": "Maximum number of results to return.",
-            "required": false,
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          },
-          {
-            "name": "start",
-            "in": "query",
-            "description": "Offset to the first result to return. Use negative numbers to offset from the end of the result list.",
-            "required": false,
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Route-stop response.",
-            "headers": {
-              "Count": {
-                "description": "Total number of matching results (how many you'd get if you could set an infinite `limit`).",
-                "schema": {
-                  "type": "integer",
-                  "format": "int32",
-                  "minimum": 0
-                }
-              }
-            },
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/routeStop"
-                  }
-                }
-              }
-            }
-          },
-          "default": {
-            "description": "Unexpected error.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/error"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/route-stop/{id}": {
-      "get": {
-        "summary": "Returns a route-stop based on a single ID, if the user has access to the route-stop",
-        "operationId": "findRouteStopById",
-        "tags": [
-          "stop"
-        ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "description": "ID of route-stop to fetch.",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int64"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Route-stop response.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/routeStop"
-                }
-              }
-            }
-          },
-          "default": {
-            "description": "Unexpected error.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/error"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
     "/stops": {
       "get": {
         "summary": "Returns all stops from the system that the user has access to",
@@ -9848,6 +9711,7 @@
       "route": {
         "description": "An order-delivery truck route.",
         "type": "object",
+        "x-examples": {},
         "properties": {
           "id": {
             "type": "integer",
@@ -9870,7 +9734,7 @@
             "format": "int32"
           },
           "internal": {
-            "description": "Is the route for internal use? This controls whether customers can access the route via the API (they can't if internal is true).",
+            "description": "Is the route for internal use? This controls whether customers can access the route via the API (they can't if this is `true`).",
             "type": "boolean"
           },
           "backhaul-cost-per-pound": {
@@ -9884,20 +9748,27 @@
             "format": "float"
           },
           "hub": {
-            "description": "A hub route is a delivery route that occurs after we ship an entire route to a distribution hub (such as a big loading dock in Kansas City). The route is unloaded at the hub and reloaded onto another carrier's truck for actual delivery. In terms of Customer Care, It is a one-way route; the truck, trailer, and any shipped goods refused by a customer never return to the warehouse.",
+            "description": "A hub route is one that occurs after we ship an entire route to a distribution hub (such as a big loading dock in Kansas City). The route is unloaded at the hub and reloaded onto another carrier's truck for actual delivery. \n\nIn terms of Customer Care, it is a one-way route; the truck, trailer, and any shipped goods refused by a customer never return to the warehouse.",
             "type": "boolean"
           },
           "driverName": {
-            "description": "Truck drivers name.",
+            "description": "Truck driver's name.",
             "type": "string"
           },
           "driverPhone": {
-            "description": "Truck drivers phone.",
+            "description": "Truck driver's phone.",
             "type": "string"
           },
           "notes": {
             "description": "General notes about the route.",
             "type": "string"
+          },
+          "isActive": {
+            "type": "boolean"
+          },
+          "isDrivable": {
+            "type": "boolean",
+            "description": "This is `true` for most routes. Routes that are *not* drivable are essentially ones that use the route construct in ways contrary to the intended purpose of a route (e.g. the \"H\" (parcel carrier) route, will-call routes, the \"Glyphosate Free Living\" route, etc)."
           }
         },
         "required": [
@@ -9908,7 +9779,9 @@
           "hub",
           "driverName",
           "driverPhone",
-          "notes"
+          "notes",
+          "isActive",
+          "isDrivable"
         ]
       },
       "updateRoute": {
