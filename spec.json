@@ -9901,13 +9901,21 @@
               "sequenced",
               "shipped"
             ]
+          },
+          "truckloadIds": {
+            "type": "array",
+            "description": "Array of truck  ID's. ",
+            "items": {
+              "type": "integer"
+            }
           }
         },
         "required": [
           "id",
           "route",
           "cutoff",
-          "delivery-start"
+          "delivery-start",
+          "truckloadIds"
         ]
       },
       "updateTrip": {
