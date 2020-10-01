@@ -10045,6 +10045,10 @@
           "actualDeliveryBackdated": {
             "type": "boolean",
             "description": "The acutal delivery was manually set to a datetime in the past."
+          },
+          "truckloadId": {
+            "type": "integer",
+            "description": "ID of the truck (pickset)."
           }
         },
         "required": [
@@ -10052,7 +10056,8 @@
           "trip",
           "estimatedDelivery",
           "finalizedDelivery",
-          "actualDeliveryBackdated"
+          "actualDeliveryBackdated",
+          "truckloadId"
         ]
       },
       "updateStop": {
