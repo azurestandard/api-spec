@@ -9711,7 +9711,6 @@
       "route": {
         "description": "An order-delivery truck route.",
         "type": "object",
-        "x-examples": {},
         "properties": {
           "id": {
             "type": "integer",
