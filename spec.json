@@ -9904,14 +9904,14 @@
           },
           "truckloadIds": {
             "type": "array",
-            "description": "Array of truckload ID's. ",
+            "description": "Array of truckload (pickset) ID's.",
             "items": {
               "type": "integer"
             }
           },
           "truckloads": {
             "type": "array",
-            "description": "Array of truckloads. This will only be included if the `inline` query parameter includes `truckloads`.",
+            "description": "Array of truckloads (picksets). This will only be included if the `inline` query parameter includes `truckloads`.",
             "items": {
               "$ref": "#/components/schemas/truckload"
             }
