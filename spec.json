@@ -9904,9 +9904,16 @@
           },
           "truckloadIds": {
             "type": "array",
-            "description": "Array of truck  ID's. ",
+            "description": "Array of truckload ID's. ",
             "items": {
               "type": "integer"
+            }
+          },
+          "truckloads": {
+            "type": "array",
+            "description": "Array of truckloads. This will only be included if the `inline` query parameter includes `truckloads`.",
+            "items": {
+              "$ref": "#/components/schemas/truckload"
             }
           }
         },
@@ -10056,7 +10063,7 @@
           },
           "truckloadId": {
             "type": "integer",
-            "description": "ID of the truck (pickset)."
+            "description": "ID of the truckload (pickset)."
           }
         },
         "required": [
@@ -12830,6 +12837,25 @@
             "type": "string"
           }
         }
+      },
+      "truckload": {
+        "title": "truckload",
+        "type": "object",
+        "description": "A truck making stops on a trip. There can be multiple truckloads per trip. There is no truckload associated with a trip until it is verified.",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "ID of the truckload (pickset)."
+          },
+          "truckNumber": {
+            "type": "integer",
+            "description": "Number of the truck on the trip. This is not necessarily sequential."
+          }
+        },
+        "required": [
+          "id",
+          "truckNumber"
+        ]
       }
     }
   }
