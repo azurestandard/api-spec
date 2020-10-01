@@ -3208,7 +3208,7 @@
           {
             "name": "persist",
             "in": "query",
-            "description": "If true, calculate the offset between the trips's delivery start and this stop's estimated time. For any pre-cutoff trips associated with this stop's trip's route which cutoff later than this stop's trip, create a stop for this location (drop or pickup) if it does not already exist and update that stop's target and estimated times to have the same offset from that stops's trip's delivery start. Also create a route-stop association, if it does not already exist, for this location on this stop's trip's route and update that route-stop with the same delivery offset. API users should always pass  `persist=true` if there are estimated delivery changes. For finalized and/or  actual delivery changes, passing `persist=true` will not actually persist them but will slow down the response.",
+            "description": "If true, calculate the offset between the trip's delivery start and this stop's estimated time. For any pre-cutoff trips associated with this stop's trip's route which cutoff later than this stop's trip, create a stop for this location (drop or pickup) if it does not already exist and update that stop's target and estimated times to have the same offset from that stop's trip's delivery start. Also create a route-stop association, if it does not already exist, for this location on this stop's trip's route and update that route-stop with the same delivery offset. API users should always pass `persist=true` if there are estimated delivery changes. For finalized and/or actual delivery changes, passing `persist=true` will not actually persist them but will slow down the response.",
             "required": false,
             "schema": {
               "type": "boolean"
@@ -10051,17 +10051,22 @@
           },
           "drop-shipping-fee": {
             "$ref": "#/components/schemas/dropShippingFee"
+          },
+          "actualDeliveryBackdated": {
+            "type": "boolean",
+            "description": "The acutal delivery was manually set to a datetime in the past."
           }
         },
         "required": [
           "id",
           "trip",
           "estimatedDelivery",
-          "finalizedDelivery"
+          "finalizedDelivery",
+          "actualDeliveryBackdated"
         ]
       },
       "updateStop": {
-        "description": "An update to a trip stop or waypoint. TESTing.",
+        "description": "An update to a trip stop or waypoint.",
         "type": "object",
         "properties": {
           "trip": {
@@ -10093,12 +10098,17 @@
             "description": "When the stop is actually reached.",
             "type": "string",
             "format": "date-time"
+          },
+          "actualDeliveryBackdated": {
+            "type": "boolean",
+            "description": "The acutal delivery was manually set to a datetime in the past."
           }
         },
         "required": [
           "trip",
           "estimatedDelivery",
-          "finalizedDelivery"
+          "finalizedDelivery",
+          "actualDeliveryBackdated"
         ]
       },
       "shippingService": {
