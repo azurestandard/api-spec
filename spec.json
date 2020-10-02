@@ -9904,14 +9904,14 @@
           },
           "truckloadIds": {
             "type": "array",
-            "description": "Array of truckload (pickset) ID's.",
+            "description": "Array of truckload (pickset) ID's. This is only included if the trip is verified.",
             "items": {
               "type": "integer"
             }
           },
           "truckloads": {
             "type": "array",
-            "description": "Array of truckloads (picksets). This will only be included if the `inline` query parameter includes `truckloads`.",
+            "description": "Array of truckloads (picksets). This will only be included if the `inline` query parameter includes `truckloads` and the trip is verified.",
             "items": {
               "$ref": "#/components/schemas/truckload"
             }
@@ -9921,8 +9921,7 @@
           "id",
           "route",
           "cutoff",
-          "delivery-start",
-          "truckloadIds"
+          "delivery-start"
         ]
       },
       "updateTrip": {
@@ -10063,7 +10062,7 @@
           },
           "truckloadId": {
             "type": "integer",
-            "description": "ID of the truckload (pickset)."
+            "description": "ID of the truckload (pickset). This is only included if the trip is verified."
           }
         },
         "required": [
@@ -10071,8 +10070,7 @@
           "trip",
           "estimatedDelivery",
           "finalizedDelivery",
-          "actualDeliveryBackdated",
-          "truckloadId"
+          "actualDeliveryBackdated"
         ]
       },
       "updateStop": {
