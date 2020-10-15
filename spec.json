@@ -2840,6 +2840,12 @@
               "type": "integer",
               "format": "int32"
             }
+          },
+          {
+            "schema": {},
+            "in": "query",
+            "name": "inline",
+            "description": "For convenience, include additional information. Currently supports \"truckloadIds\" as described in the trip model."
           }
         ],
         "responses": {
@@ -2936,6 +2942,14 @@
               "type": "integer",
               "format": "int64"
             }
+          },
+          {
+            "schema": {
+              "type": "array"
+            },
+            "in": "query",
+            "name": "inline",
+            "description": "For convenience, include additional information. Currently supports \"truckloadIds\" as described in the trip model."
           }
         ],
         "responses": {
