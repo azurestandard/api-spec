@@ -2845,7 +2845,7 @@
             "schema": {},
             "in": "query",
             "name": "inline",
-            "description": "For convenience, include additional information. Currently supports \"truckloadIds\" as described in the trip model."
+            "description": "For convenience, include additional information. Currently supports \"truckloads\" as described in the trip model."
           }
         ],
         "responses": {
@@ -2949,7 +2949,7 @@
             },
             "in": "query",
             "name": "inline",
-            "description": "For convenience, include additional information. Currently supports \"truckloadIds\" as described in the trip model."
+            "description": "For convenience, include additional information. Currently supports \"truckloads\" as described in the trip model."
           }
         ],
         "responses": {
@@ -3174,6 +3174,14 @@
               "type": "integer",
               "format": "int32"
             }
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "inline",
+            "description": "For convenience, include additional information. Currently supports \"truckloadId\", \"drop\", and \"pickup\"."
           }
         ],
         "responses": {
@@ -3281,6 +3289,14 @@
               "type": "integer",
               "format": "int64"
             }
+          },
+          {
+            "schema": {
+              "type": "array"
+            },
+            "in": "query",
+            "name": "inline",
+            "description": "For convenience, include additional information. Currently supports \"truckloadId\", \"drop\", and \"pickup\"."
           }
         ],
         "responses": {
@@ -9915,13 +9931,6 @@
               "sequenced",
               "shipped"
             ]
-          },
-          "truckloadIds": {
-            "type": "array",
-            "description": "Array of truckload (pickset) ID's. This is only included if the trip is verified.",
-            "items": {
-              "type": "integer"
-            }
           },
           "truckloads": {
             "type": "array",
