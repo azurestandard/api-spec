@@ -14,7 +14,7 @@ Uses [Redoc](https://github.com/Redocly/redoc).
 
 ## Stoplight Studio
 
-We have an account at stoplight.io, which includes their "Studio" (a visual OpenAPI editor).
+We have an account at [stoplight.io](https://stoplight.io/) which includes their "Studio" (a visual OpenAPI editor).
 
-Stoplight account: https://azurestandard.stoplight.io/
+Stoplight account: https://azurestandard.stoplight.io/  
 Stoplight Studio: https://azurestandard.stoplight.io/studio/api-spec/edit
