@@ -10085,7 +10085,7 @@
           },
           "truckloadId": {
             "type": "integer",
-            "description": "ID of the truckload (pickset). This is only included if the trip is verified."
+            "description": "ID of the truckload (pickset). This will only be included if the inline query parameter includes truckloadId and the trip is verified."
           }
         },
         "required": [
