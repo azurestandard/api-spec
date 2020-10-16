@@ -12,6 +12,9 @@ URL: https://azure-api-docs.netlify.app/
 
 Uses [Redoc](https://github.com/Redocly/redoc).
 
-## Development site
+## Stoplight Studio
 
-URL: https://azurestandard.stoplight.io/
+We have an account at stoplight.io, which includes their "Studio" (a visual OpenAPI editor).
+
+Stoplight account: https://azurestandard.stoplight.io/
+Stoplight Studio: https://azurestandard.stoplight.io/studio/api-spec/edit
