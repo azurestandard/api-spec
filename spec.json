@@ -3160,6 +3160,9 @@
               "type": "integer",
               "format": "int32"
             }
+          },
+          {
+            "$ref": "#/components/parameters/stopInline"
           }
         ],
         "responses": {
@@ -3267,6 +3270,9 @@
               "type": "integer",
               "format": "int64"
             }
+          },
+          {
+            "$ref": "#/components/parameters/stopInline"
           }
         ],
         "responses": {
@@ -9015,6 +9021,23 @@
             ]
           }
         }
+      },
+      "stopInline": {
+        "name": "inline",
+        "in": "query",
+        "description": "Optional properties returned if specified in the request.",
+        "required": false,
+        "style": "form",
+        "schema": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "drop",
+              "pickup"
+            ]
+          }
+        }
       }
     },
     "schemas": {
@@ -10003,7 +10026,7 @@
         ]
       },
       "stop": {
-        "description": "A trip stop or waypoint. Stops are created for all route-stops when a trip is created for that route. At confirmation time, stops that will not be visited (e.g. because they missed their order-minimum) are deleted.",
+        "description": "A trip stop or waypoint. Stops are created for all route-stops when a trip is created for that route. At confirmation time, stops that will not be visited (e.g. because they missed their order-minimum) are deleted. Stops are always either a drop or pickup.",
         "type": "object",
         "properties": {
           "id": {
@@ -10015,8 +10038,8 @@
             "type": "integer",
             "format": "int64"
           },
-          "drop": {
-            "description": "Drop ID for the stop.",
+          "dropId": {
+            "description": "Always returned if the stop is a drop.",
             "type": "integer",
             "format": "int64"
           },
@@ -10024,8 +10047,8 @@
             "description": "Whether short-drop warnings were sent out for this stop. If they were, customers can manipulate placed orders after cutoff time, although nobody can edit orders after the trip is confirmed.",
             "type": "boolean"
           },
-          "pickup": {
-            "description": "Pickup ID for the stop.",
+          "pickupId": {
+            "description": "Always returned if the stop is a pickup.",
             "type": "integer",
             "format": "int64"
           },
@@ -10054,6 +10077,22 @@
           "actualDeliveryBackdated": {
             "type": "boolean",
             "description": "The acutal delivery was manually set to a datetime in the past."
+          },
+          "drop": {
+            "description": "Only returned if the stop is a drop and the `inline` query parameter contains `drop`",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/drop"
+              }
+            ]
+          },
+          "pickup": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/pickup"
+              }
+            ],
+            "description": "Only returned if the stop is a pickup and the `inline` query parameter contains `pickup`"
           }
         },
         "required": [
@@ -10062,7 +10101,8 @@
           "estimatedDelivery",
           "finalizedDelivery",
           "actualDeliveryBackdated"
-        ]
+        ],
+        "title": ""
       },
       "updateStop": {
         "description": "An update to a trip stop or waypoint.",
