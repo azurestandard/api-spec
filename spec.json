@@ -10101,8 +10101,7 @@
           "estimatedDelivery",
           "finalizedDelivery",
           "actualDeliveryBackdated"
-        ],
-        "title": ""
+        ]
       },
       "updateStop": {
         "description": "An update to a trip stop or waypoint.",
