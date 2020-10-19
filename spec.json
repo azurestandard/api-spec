@@ -9733,7 +9733,7 @@
             "format": "int32"
           },
           "internal": {
-            "description": "Is the route for internal use? This controls whether customers can access the route via the API (they can't if internal is true).",
+            "description": "Is the route for internal use? This controls whether customers can access the route via the API (they can't if this is `true`).",
             "type": "boolean"
           },
           "backhaul-cost-per-pound": {
@@ -9747,20 +9747,27 @@
             "format": "float"
           },
           "hub": {
-            "description": "A hub route is a delivery route that occurs after we ship an entire route to a distribution hub (such as a big loading dock in Kansas City). The route is unloaded at the hub and reloaded onto another carrier's truck for actual delivery. In terms of Customer Care, It is a one-way route; the truck, trailer, and any shipped goods refused by a customer never return to the warehouse.",
+            "description": "A hub route is one that occurs after we ship an entire route to a distribution hub (such as a big loading dock in Kansas City). The route is unloaded at the hub and reloaded onto another carrier's truck for actual delivery. \n\nIn terms of Customer Care, it is a one-way route; the truck, trailer, and any shipped goods refused by a customer never return to the warehouse.",
             "type": "boolean"
           },
           "driverName": {
-            "description": "Truck drivers name.",
+            "description": "Truck driver's name.",
             "type": "string"
           },
           "driverPhone": {
-            "description": "Truck drivers phone.",
+            "description": "Truck driver's phone.",
             "type": "string"
           },
           "notes": {
             "description": "General notes about the route.",
             "type": "string"
+          },
+          "isActive": {
+            "type": "boolean"
+          },
+          "isDrivable": {
+            "type": "boolean",
+            "description": "This is `true` for most routes. Routes that are *not* drivable are essentially ones that use the route construct in ways contrary to the intended purpose of a route (e.g. the \"H\" (parcel carrier) route, will-call routes, the \"Glyphosate Free Living\" route, etc)."
           }
         },
         "required": [
@@ -9771,7 +9778,9 @@
           "hub",
           "driverName",
           "driverPhone",
-          "notes"
+          "notes",
+          "isActive",
+          "isDrivable"
         ]
       },
       "updateRoute": {
