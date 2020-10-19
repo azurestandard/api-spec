@@ -10079,7 +10079,7 @@
             "description": "The acutal delivery was manually set to a datetime in the past."
           },
           "drop": {
-            "description": "Only returned if the stop is a drop and the `inline` query parameter contains `drop`",
+            "description": "Only returned if the stop is a drop and the `inline` query parameter contains `drop`.",
             "allOf": [
               {
                 "$ref": "#/components/schemas/drop"
@@ -10092,7 +10092,7 @@
                 "$ref": "#/components/schemas/pickup"
               }
             ],
-            "description": "Only returned if the stop is a pickup and the `inline` query parameter contains `pickup`"
+            "description": "Only returned if the stop is a pickup and the `inline` query parameter contains `pickup`."
           }
         },
         "required": [
