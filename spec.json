@@ -2840,6 +2840,12 @@
               "type": "integer",
               "format": "int32"
             }
+          },
+          {
+            "schema": {},
+            "in": "query",
+            "name": "inline",
+            "description": "For convenience, include additional information. Currently supports \"truckloads\" as described in the trip model."
           }
         ],
         "responses": {
@@ -2936,6 +2942,14 @@
               "type": "integer",
               "format": "int64"
             }
+          },
+          {
+            "schema": {
+              "type": "array"
+            },
+            "in": "query",
+            "name": "inline",
+            "description": "For convenience, include additional information. Currently supports \"truckloads\" as described in the trip model."
           }
         ],
         "responses": {
@@ -9034,7 +9048,8 @@
             "type": "string",
             "enum": [
               "drop",
-              "pickup"
+              "pickup",
+              "truckloadId"
             ]
           }
         }
@@ -9933,6 +9948,13 @@
               "sequenced",
               "shipped"
             ]
+          },
+          "truckloads": {
+            "type": "array",
+            "description": "Array of truckloads (picksets). This will only be included if the `inline` query parameter includes `truckloads` and the trip is verified.",
+            "items": {
+              "$ref": "#/components/schemas/truckload"
+            }
           }
         },
         "required": [
@@ -10093,6 +10115,10 @@
               }
             ],
             "description": "Only returned if the stop is a pickup and the `inline` query parameter contains `pickup`."
+          },
+          "truckloadId": {
+            "type": "integer",
+            "description": "ID of the truckload (pickset). This will only be included if the inline query parameter includes `truckloadId` and the trip is verified."
           }
         },
         "required": [
@@ -12865,6 +12891,25 @@
             "type": "string"
           }
         }
+      },
+      "truckload": {
+        "title": "truckload",
+        "type": "object",
+        "description": "A truck making stops on a trip. There can be multiple truckloads per trip. There is no truckload associated with a trip until it is verified.",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "ID of the truckload (pickset)."
+          },
+          "truckNumber": {
+            "type": "integer",
+            "description": "Number of the truck on the trip. This is not necessarily sequential."
+          }
+        },
+        "required": [
+          "id",
+          "truckNumber"
+        ]
       }
     }
   }
