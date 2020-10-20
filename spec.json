@@ -9117,7 +9117,7 @@
         },
         "in": "query",
         "name": "message",
-        "description": "The conent of the email."
+        "description": "The content of the email."
       },
       "mailSubject": {
         "schema": {
@@ -9133,7 +9133,7 @@
         },
         "in": "query",
         "name": "target",
-        "description": "A comma-separated list of emails to send the *test* message to (for previewing). Including this parameter will prevent the email being sent to the intended recipients."
+        "description": "A comma-separated list of emails to send the *test* message to (for previewing). Including this parameter will prevent the email from being sent to the intended recipients."
       }
     },
     "schemas": {
@@ -10293,7 +10293,7 @@
             "$ref": "#/components/schemas/price"
           },
           "stock": {
-            "description": "Amount of stock available for purchase. This includes breakdown ancestors. For example, if we have a single 4 x 6 x 14 oz case in the warehouse, the 4 x 6 x 14 oz packaging will have 1 stock, the 6 x 14 oz packagaging will have 4 stock, and the 14 oz packaging will have 24 stock.",
+            "description": "Amount of stock available for purchase. This includes breakdown ancestors. For example, if we have a single 4 x 6 x 14 oz case in the warehouse, the 4 x 6 x 14 oz packaging will have 1 stock, the 6 x 14 oz packaging will have 4 stock, and the 14 oz packaging will have 24 stock.",
             "type": "integer",
             "format": "int32"
           },
@@ -12425,7 +12425,7 @@
             "type": "string"
           },
           "country": {
-            "description": "ISO 3166-1 alpha-3 code for the country. On push, you can set the alpha-2 code or case-insensitve name instead, or you can use an inline country object.",
+            "description": "ISO 3166-1 alpha-3 code for the country. On push, you can set the alpha-2 code or case-insensitive name instead, or you can use an inline country object.",
             "type": "string"
           },
           "preference": {
