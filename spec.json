@@ -9049,7 +9049,7 @@
             "enum": [
               "drop",
               "pickup",
-              "stopInline"
+              "truckloadId"
             ]
           }
         }
