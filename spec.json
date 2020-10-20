@@ -9143,11 +9143,14 @@
       },
       "mailDrop": {
         "schema": {
-          "type": "string"
+          "type": "array",
+          "items": {
+            "type": "int"
+          }
         },
         "in": "query",
         "name": "drop",
-        "description": "A comma-separated list of dropIds of the drops that should receive the email."
+        "description": "The dropIds of the drops that should receive the email."
       },
       "mailMessage": {
         "schema": {
@@ -9167,11 +9170,14 @@
       },
       "mailTarget": {
         "schema": {
-          "type": "string"
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
         },
         "in": "query",
         "name": "target",
-        "description": "A comma-separated list of emails to send the *test* message to (for previewing). Including this parameter will prevent the email from being sent to the intended recipients."
+        "description": "The emails addresses to send the *test* message to (for previewing). Including this parameter will prevent the email from being sent to the intended recipients (its intended use is for sending previews)."
       }
     },
     "schemas": {
