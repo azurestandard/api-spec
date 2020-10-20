@@ -8967,7 +8967,7 @@
     },
     "/drops/actions/convert-route": {
       "post": {
-        "summary": "Move",
+        "summary": "Move drop(s) to different route",
         "operationId": "post-drops-actions-convert-route",
         "responses": {
           "200": {
