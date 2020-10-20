@@ -8967,7 +8967,7 @@
     },
     "/drops/actions/convert-route": {
       "post": {
-        "summary": "Move drop(s) to different route",
+        "summary": "Move drop(s) to a different route",
         "operationId": "post-drops-actions-convert-route",
         "responses": {
           "200": {
@@ -8981,7 +8981,7 @@
             },
             "in": "query",
             "name": "sourceRouteId",
-            "description": "The ID of the route that the drop(s) are being moved from."
+            "description": "The ID of the route that the drop(s) are currently on."
           },
           {
             "schema": {
