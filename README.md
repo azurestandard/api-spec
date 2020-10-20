@@ -11,3 +11,10 @@ OpenAPI 3.0 Specification for Azure Standard's API.
 URL: https://azure-api-docs.netlify.app/
 
 Uses [Redoc](https://github.com/Redocly/redoc).
+
+## Stoplight Studio
+
+We have an account at [stoplight.io](https://stoplight.io/), which includes their "Studio" (a visual OpenAPI editor).
+
+Stoplight account: https://azurestandard.stoplight.io/  
+Stoplight Studio: https://azurestandard.stoplight.io/studio/api-spec/edit
