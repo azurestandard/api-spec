@@ -7488,7 +7488,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "/refs.json/affiliateCode"
+                  "$ref": "#/components/schemas/affiliateCode"
                 }
               }
             }
@@ -8966,6 +8966,17 @@
       }
     },
     "/mail/trip/{tripId}": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "tripId",
+          "in": "path",
+          "required": true,
+          "description": ""
+        }
+      ],
       "post": {
         "summary": "Email drops on a specific trip",
         "operationId": "post-mail-trip-tripId",
@@ -8974,10 +8985,8 @@
             "description": "OK"
           }
         },
-        "description": "Sends one or more emails to the drop coordinators an (optionally) customers of one or more drops on a specific trip.\n\nNotes: \n- This requires that the trip not have a status of `future`.",
+        "description": "Sends one or more emails to the drop coordinators and (optionally) customers of one or more drops on a specific trip.\n\nNotes: \n- This requires that the trip not have a status of `future`.",
         "parameters": [
-          null,
-          null,
           {
             "$ref": "#/components/parameters/mailCustomers"
           },
@@ -8994,18 +9003,7 @@
             "$ref": "#/components/parameters/mailTarget"
           }
         ]
-      },
-      "parameters": [
-        {
-          "schema": {
-            "type": "string"
-          },
-          "name": "tripId",
-          "in": "path",
-          "required": true,
-          "description": ""
-        }
-      ]
+      }
     },
     "/mail/route/{routeName}": {
       "parameters": [
@@ -9019,13 +9017,14 @@
         }
       ],
       "post": {
-        "summary": "",
+        "summary": "Email drops on a specific route",
         "operationId": "post-mail-route-routeName",
         "responses": {
           "200": {
             "description": "OK"
           }
         },
+        "description": "Sends one or more emails to the drop coordinators and (optionally) members of one or more drops on a specific route.",
         "parameters": [
           {
             "$ref": "#/components/parameters/mailCustomers"
@@ -9042,8 +9041,7 @@
           {
             "$ref": "#/components/parameters/mailTarget"
           }
-        ],
-        "description": "Sends one or more emails to the drop coordinators an (optionally) members of one or more drops on a specific route."
+        ]
       }
     }
   },
