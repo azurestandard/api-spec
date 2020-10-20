@@ -8978,7 +8978,7 @@
         }
       ],
       "post": {
-        "summary": "Email drops on a specific trip",
+        "summary": "Email drops on a trip",
         "operationId": "post-mail-trip-tripId",
         "responses": {
           "200": {
@@ -9017,7 +9017,7 @@
         }
       ],
       "post": {
-        "summary": "Email drops on a specific route",
+        "summary": "Email drops on a route",
         "operationId": "post-mail-route-routeName",
         "responses": {
           "200": {
