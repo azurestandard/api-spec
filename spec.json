@@ -3,7 +3,7 @@
   "info": {
     "version": "1.0.0-oas3",
     "title": "Azure Standard Public API",
-    "description": "The public API behind Azure's website.\n\nNotes: \n\n- Query parameter arrays should be formatted as a comma-separated list. Example:\n  ```\n  https://api.azurestandard.com/stops?inline=drop,pickup,truckloadId\n  ```\n",
+    "description": "The public API behind Azure's website.\n\nNotes: \n\n- Query parameter arrays should be formatted as comma-separated lists. Example:\n  ```\n  https://api.azurestandard.com/stops?inline=drop,pickup,truckloadId\n  ```\n",
     "contact": {
       "name": "Azure Standard Customer Service",
       "email": "info@azurestandard.com",
