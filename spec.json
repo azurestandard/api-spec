@@ -8985,7 +8985,7 @@
             "description": "OK"
           }
         },
-        "description": "Sends one or more emails to the drop coordinators and (optionally) customers of one or more drops on a specific trip.\n\nNotes: \n- This requires that the trip not have a status of `future`.",
+        "description": "Sends one or more emails to the drop coordinators (and customers, optionally) of one or more drops on a specific trip.\n\nNotes: \n- This requires that the trip not have a status of `future`.",
         "parameters": [
           {
             "$ref": "#/components/parameters/mailCustomers"
@@ -9024,7 +9024,7 @@
             "description": "OK"
           }
         },
-        "description": "Sends one or more emails to the drop coordinators and (optionally) members of one or more drops on a specific route.",
+        "description": "Sends one or more emails to the drop coordinators (and members, optionally) of one or more drops on a specific route.",
         "parameters": [
           {
             "$ref": "#/components/parameters/mailCustomers"
@@ -9101,7 +9101,7 @@
         },
         "in": "query",
         "name": "customers",
-        "description": "By default, each drop's coordinator(s) is emailed. If this is true, the email is also sent to all customers of each drop. "
+        "description": "By default, an email is sent to the coordinator(s) of each drop. If this is `true`, the email is also sent to the customers of each drop."
       },
       "mailDrop": {
         "schema": {
@@ -9109,7 +9109,7 @@
         },
         "in": "query",
         "name": "drop",
-        "description": "A comma-separated list of dropIds of the drops that should receive the message."
+        "description": "A comma-separated list of dropIds of the drops that should receive the email."
       },
       "mailMessage": {
         "schema": {
@@ -9117,7 +9117,7 @@
         },
         "in": "query",
         "name": "message",
-        "description": "The content of the email."
+        "description": "The email's content."
       },
       "mailSubject": {
         "schema": {
