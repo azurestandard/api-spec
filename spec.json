@@ -8984,6 +8984,85 @@
           }
         }
       }
+    },
+    "/mail/trip/{tripId}": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "tripId",
+          "in": "path",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "post": {
+        "summary": "Email drops on a trip",
+        "operationId": "post-mail-trip-tripId",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "description": "Sends one or more emails to the drop coordinators (and customers, optionally) of one or more drops on a specific trip.\n\nNotes: \n- This requires that the trip not have a status of `future`.",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/mailCustomers"
+          },
+          {
+            "$ref": "#/components/parameters/mailDrop"
+          },
+          {
+            "$ref": "#/components/parameters/mailMessage"
+          },
+          {
+            "$ref": "#/components/parameters/mailSubject"
+          },
+          {
+            "$ref": "#/components/parameters/mailTarget"
+          }
+        ]
+      }
+    },
+    "/mail/route/{routeName}": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "routeName",
+          "in": "path",
+          "required": true
+        }
+      ],
+      "post": {
+        "summary": "Email drops on a route",
+        "operationId": "post-mail-route-routeName",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "description": "Sends one or more emails to the drop coordinators (and members, optionally) of one or more drops on a specific route.",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/mailCustomers"
+          },
+          {
+            "$ref": "#/components/parameters/mailDrop"
+          },
+          {
+            "$ref": "#/components/parameters/mailMessage"
+          },
+          {
+            "$ref": "#/components/parameters/mailSubject"
+          },
+          {
+            "$ref": "#/components/parameters/mailTarget"
+          }
+        ]
+      }
     }
   },
   "servers": [
@@ -9053,6 +9132,49 @@
             ]
           }
         }
+      },
+      "mailCustomers": {
+        "schema": {
+          "type": "boolean"
+        },
+        "in": "query",
+        "name": "customers",
+        "description": "By default, an email is sent to the coordinator(s) of each drop. If this is `true`, the email is also sent to the customers of each drop."
+      },
+      "mailDrop": {
+        "schema": {
+          "type": "array",
+          "items": {
+            "type": "int"
+          }
+        },
+        "in": "query",
+        "name": "drop",
+        "description": "The dropIds of the drops that should receive the email."
+      },
+      "mailMessage": {
+        "schema": {
+          "type": "string"
+        },
+        "in": "query",
+        "name": "message",
+        "description": "The email's content."
+      },
+      "mailSubject": {
+        "schema": {
+          "type": "string"
+        },
+        "in": "query",
+        "name": "subject",
+        "description": "The email's subject."
+      },
+      "mailTarget": {
+        "schema": {
+          "type": "string"
+        },
+        "in": "query",
+        "name": "target",
+        "description": "The email addresses to send the *test* message to (for previewing). Including this parameter will prevent the email from being sent to the intended recipients (its intended use is for sending previews)."
       }
     },
     "schemas": {
@@ -10239,7 +10361,7 @@
             "$ref": "#/components/schemas/price"
           },
           "stock": {
-            "description": "Amount of stock available for purchase. This includes breakdown ancestors. For example, if we have a single 4 x 6 x 14 oz case in the warehouse, the 4 x 6 x 14 oz packaging will have 1 stock, the 6 x 14 oz packagaging will have 4 stock, and the 14 oz packaging will have 24 stock.",
+            "description": "Amount of stock available for purchase. This includes breakdown ancestors. For example, if we have a single 4 x 6 x 14 oz case in the warehouse, the 4 x 6 x 14 oz packaging will have 1 stock, the 6 x 14 oz packaging will have 4 stock, and the 14 oz packaging will have 24 stock.",
             "type": "integer",
             "format": "int32"
           },
@@ -12371,7 +12493,7 @@
             "type": "string"
           },
           "country": {
-            "description": "ISO 3166-1 alpha-3 code for the country. On push, you can set the alpha-2 code or case-insensitve name instead, or you can use an inline country object.",
+            "description": "ISO 3166-1 alpha-3 code for the country. On push, you can set the alpha-2 code or case-insensitive name instead, or you can use an inline country object.",
             "type": "string"
           },
           "preference": {
