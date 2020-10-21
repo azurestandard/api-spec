@@ -3,7 +3,7 @@
   "info": {
     "version": "1.0.0-oas3",
     "title": "Azure Standard Public API",
-    "description": "The public API behind Azure's website.",
+    "description": "The public API behind Azure's website.\n\nNotes: \n\n- Query parameter arrays should be formatted as comma-separated lists. Example:\n  ```\n  https://api.azurestandard.com/stops?inline=drop,pickup,truckloadId\n  ```\n",
     "contact": {
       "name": "Azure Standard Customer Service",
       "email": "info@azurestandard.com",
@@ -2840,6 +2840,12 @@
               "type": "integer",
               "format": "int32"
             }
+          },
+          {
+            "schema": {},
+            "in": "query",
+            "name": "inline",
+            "description": "For convenience, include additional information. Currently supports \"truckloads\" as described in the trip model."
           }
         ],
         "responses": {
@@ -2936,6 +2942,14 @@
               "type": "integer",
               "format": "int64"
             }
+          },
+          {
+            "schema": {
+              "type": "array"
+            },
+            "in": "query",
+            "name": "inline",
+            "description": "For convenience, include additional information. Currently supports \"truckloads\" as described in the trip model."
           }
         ],
         "responses": {
@@ -3160,6 +3174,9 @@
               "type": "integer",
               "format": "int32"
             }
+          },
+          {
+            "$ref": "#/components/parameters/stopInline"
           }
         ],
         "responses": {
@@ -3267,6 +3284,9 @@
               "type": "integer",
               "format": "int64"
             }
+          },
+          {
+            "$ref": "#/components/parameters/stopInline"
           }
         ],
         "responses": {
@@ -8969,11 +8989,6 @@
       "post": {
         "summary": "Move drop(s) to a different route",
         "operationId": "post-drops-actions-convert-route",
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        },
         "parameters": [],
         "description": "Move one or more drops from one route to another.",
         "requestBody": {
@@ -9002,6 +9017,85 @@
             }
           }
         }
+      }
+    },
+    "/mail/trip/{tripId}": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "tripId",
+          "in": "path",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "post": {
+        "summary": "Email drops on a trip",
+        "operationId": "post-mail-trip-tripId",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "description": "Sends one or more emails to the drop coordinators (and customers, optionally) of one or more drops on a specific trip.\n\nNotes: \n- This requires that the trip not have a status of `future`.",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/mailCustomers"
+          },
+          {
+            "$ref": "#/components/parameters/mailDrop"
+          },
+          {
+            "$ref": "#/components/parameters/mailMessage"
+          },
+          {
+            "$ref": "#/components/parameters/mailSubject"
+          },
+          {
+            "$ref": "#/components/parameters/mailTarget"
+          }
+        ]
+      }
+    },
+    "/mail/route/{routeName}": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "routeName",
+          "in": "path",
+          "required": true
+        }
+      ],
+      "post": {
+        "summary": "Email drops on a route",
+        "operationId": "post-mail-route-routeName",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "description": "Sends one or more emails to the drop coordinators (and members, optionally) of one or more drops on a specific route.",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/mailCustomers"
+          },
+          {
+            "$ref": "#/components/parameters/mailDrop"
+          },
+          {
+            "$ref": "#/components/parameters/mailMessage"
+          },
+          {
+            "$ref": "#/components/parameters/mailSubject"
+          },
+          {
+            "$ref": "#/components/parameters/mailTarget"
+          }
+        ]
       }
     }
   },
@@ -9054,6 +9148,67 @@
             ]
           }
         }
+      },
+      "stopInline": {
+        "name": "inline",
+        "in": "query",
+        "description": "Optional properties returned if specified in the request.",
+        "required": false,
+        "style": "form",
+        "schema": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "drop",
+              "pickup",
+              "truckloadId"
+            ]
+          }
+        }
+      },
+      "mailCustomers": {
+        "schema": {
+          "type": "boolean"
+        },
+        "in": "query",
+        "name": "customers",
+        "description": "By default, an email is sent to the coordinator(s) of each drop. If this is `true`, the email is also sent to the customers of each drop."
+      },
+      "mailDrop": {
+        "schema": {
+          "type": "array",
+          "items": {
+            "type": "int"
+          }
+        },
+        "in": "query",
+        "name": "drop",
+        "description": "The dropIds of the drops that should receive the email."
+      },
+      "mailMessage": {
+        "schema": {
+          "type": "string"
+        },
+        "in": "query",
+        "name": "message",
+        "description": "The email's content."
+      },
+      "mailSubject": {
+        "schema": {
+          "type": "string"
+        },
+        "in": "query",
+        "name": "subject",
+        "description": "The email's subject."
+      },
+      "mailTarget": {
+        "schema": {
+          "type": "string"
+        },
+        "in": "query",
+        "name": "target",
+        "description": "The email addresses to send the *test* message to (for previewing). Including this parameter will prevent the email from being sent to the intended recipients (its intended use is for sending previews)."
       }
     },
     "schemas": {
@@ -9949,6 +10104,13 @@
               "sequenced",
               "shipped"
             ]
+          },
+          "truckloads": {
+            "type": "array",
+            "description": "Array of truckloads (picksets). This will only be included if the `inline` query parameter includes `truckloads` and the trip is verified.",
+            "items": {
+              "$ref": "#/components/schemas/truckload"
+            }
           }
         },
         "required": [
@@ -10042,7 +10204,7 @@
         ]
       },
       "stop": {
-        "description": "A trip stop or waypoint. Stops are created for all route-stops when a trip is created for that route. At confirmation time, stops that will not be visited (e.g. because they missed their order-minimum) are deleted.",
+        "description": "A trip stop or waypoint. Stops are created for all route-stops when a trip is created for that route. At confirmation time, stops that will not be visited (e.g. because they missed their order-minimum) are deleted. Stops are always either a drop or pickup.",
         "type": "object",
         "properties": {
           "id": {
@@ -10054,8 +10216,8 @@
             "type": "integer",
             "format": "int64"
           },
-          "drop": {
-            "description": "Drop ID for the stop.",
+          "dropId": {
+            "description": "Always returned if the stop is a drop.",
             "type": "integer",
             "format": "int64"
           },
@@ -10063,8 +10225,8 @@
             "description": "Whether short-drop warnings were sent out for this stop. If they were, customers can manipulate placed orders after cutoff time, although nobody can edit orders after the trip is confirmed.",
             "type": "boolean"
           },
-          "pickup": {
-            "description": "Pickup ID for the stop.",
+          "pickupId": {
+            "description": "Always returned if the stop is a pickup.",
             "type": "integer",
             "format": "int64"
           },
@@ -10093,6 +10255,26 @@
           "actualDeliveryBackdated": {
             "type": "boolean",
             "description": "The acutal delivery was manually set to a datetime in the past."
+          },
+          "drop": {
+            "description": "Only returned if the stop is a drop and the `inline` query parameter contains `drop`.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/drop"
+              }
+            ]
+          },
+          "pickup": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/pickup"
+              }
+            ],
+            "description": "Only returned if the stop is a pickup and the `inline` query parameter contains `pickup`."
+          },
+          "truckloadId": {
+            "type": "integer",
+            "description": "ID of the truckload (pickset). This will only be included if the inline query parameter includes `truckloadId` and the trip is verified."
           }
         },
         "required": [
@@ -10213,7 +10395,7 @@
             "$ref": "#/components/schemas/price"
           },
           "stock": {
-            "description": "Amount of stock available for purchase. This includes breakdown ancestors. For example, if we have a single 4 x 6 x 14 oz case in the warehouse, the 4 x 6 x 14 oz packaging will have 1 stock, the 6 x 14 oz packagaging will have 4 stock, and the 14 oz packaging will have 24 stock.",
+            "description": "Amount of stock available for purchase. This includes breakdown ancestors. For example, if we have a single 4 x 6 x 14 oz case in the warehouse, the 4 x 6 x 14 oz packaging will have 1 stock, the 6 x 14 oz packaging will have 4 stock, and the 14 oz packaging will have 24 stock.",
             "type": "integer",
             "format": "int32"
           },
@@ -12345,7 +12527,7 @@
             "type": "string"
           },
           "country": {
-            "description": "ISO 3166-1 alpha-3 code for the country. On push, you can set the alpha-2 code or case-insensitve name instead, or you can use an inline country object.",
+            "description": "ISO 3166-1 alpha-3 code for the country. On push, you can set the alpha-2 code or case-insensitive name instead, or you can use an inline country object.",
             "type": "string"
           },
           "preference": {
@@ -12865,6 +13047,25 @@
             "type": "string"
           }
         }
+      },
+      "truckload": {
+        "title": "truckload",
+        "type": "object",
+        "description": "A truck making stops on a trip. There can be multiple truckloads per trip. There is no truckload associated with a trip until it is verified.",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "ID of the truckload (pickset)."
+          },
+          "truckNumber": {
+            "type": "integer",
+            "description": "Number of the truck on the trip. This is not necessarily sequential."
+          }
+        },
+        "required": [
+          "id",
+          "truckNumber"
+        ]
       }
     }
   }
