@@ -8974,36 +8974,34 @@
             "description": "OK"
           }
         },
-        "parameters": [
-          {
-            "schema": {
-              "type": "integer"
-            },
-            "in": "query",
-            "name": "sourceRouteId",
-            "description": "The ID of the route that the drop(s) are currently on."
-          },
-          {
-            "schema": {
-              "type": "integer"
-            },
-            "in": "query",
-            "name": "targetRouteId",
-            "description": "The ID of the route that the drop(s) should be moved to."
-          },
-          {
-            "schema": {
-              "type": "array",
-              "items": {
-                "type": "integer"
+        "parameters": [],
+        "description": "Move one or more drops from one route to another.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "sourceRouteId": {
+                    "type": "integer",
+                    "description": "The ID of the route that the drop(s) are currently on."
+                  },
+                  "targetRouteId": {
+                    "type": "integer",
+                    "description": "The ID of the route that the drop(s) should be moved to."
+                  },
+                  "dropIds": {
+                    "type": "array",
+                    "description": "The IDs of drops to be moved.",
+                    "items": {
+                      "type": "integer"
+                    }
+                  }
+                }
               }
-            },
-            "in": "query",
-            "name": "dropIds",
-            "description": "The IDs of drops to be moved."
+            }
           }
-        ],
-        "description": "Move one or more drops from one route to another."
+        }
       }
     }
   },
