@@ -10166,6 +10166,10 @@
           "actualDeliveryBackdated": {
             "type": "boolean",
             "description": "The acutal delivery was manually set to a datetime in the past."
+          },
+          "truckNumber": {
+            "type": "number",
+            "description": "The truck number this stop is being added to."
           }
         },
         "required": [
