@@ -9170,14 +9170,11 @@
       },
       "mailTarget": {
         "schema": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
+          "type": "string"
         },
         "in": "query",
         "name": "target",
-        "description": "The emails addresses to send the *test* message to (for previewing). Including this parameter will prevent the email from being sent to the intended recipients (its intended use is for sending previews)."
+        "description": "The email addresses to send the *test* message to (for previewing). Including this parameter will prevent the email from being sent to the intended recipients (its intended use is for sending previews)."
       }
     },
     "schemas": {
