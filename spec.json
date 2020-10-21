@@ -8985,6 +8985,40 @@
         }
       }
     },
+    "/drops/actions/convert-route": {
+      "post": {
+        "summary": "Move drop(s) to a different route",
+        "operationId": "post-drops-actions-convert-route",
+        "parameters": [],
+        "description": "Move one or more drops from one route to another.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "sourceRouteId": {
+                    "type": "integer",
+                    "description": "The ID of the route that the drop(s) are currently on."
+                  },
+                  "targetRouteId": {
+                    "type": "integer",
+                    "description": "The ID of the route that the drop(s) should be moved to."
+                  },
+                  "dropIds": {
+                    "type": "array",
+                    "description": "The IDs of drops to be moved.",
+                    "items": {
+                      "type": "integer"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/mail/trip/{tripId}": {
       "parameters": [
         {
