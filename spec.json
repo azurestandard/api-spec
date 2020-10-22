@@ -3177,6 +3177,14 @@
           },
           {
             "$ref": "#/components/parameters/stopInline"
+          },
+          {
+            "schema": {
+              "type": "array"
+            },
+            "in": "query",
+            "name": "truckloadId",
+            "description": "Truckload IDs to filter by."
           }
         ],
         "responses": {
