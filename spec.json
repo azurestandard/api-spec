@@ -3180,7 +3180,11 @@
           },
           {
             "schema": {
-              "type": "array"
+              "type": "array",
+              "items": {
+                "type": "integer",
+                "format": "int64"
+              }
             },
             "in": "query",
             "name": "truckloadId",
