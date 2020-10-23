@@ -3156,6 +3156,9 @@
             }
           },
           {
+            "$ref": "#/components/parameters/truckloadIdFilter"
+          },
+          {
             "name": "limit",
             "in": "query",
             "description": "Maximum number of results to return.",
@@ -3177,18 +3180,6 @@
           },
           {
             "$ref": "#/components/parameters/stopInline"
-          },
-          {
-            "schema": {
-              "type": "array",
-              "items": {
-                "type": "integer",
-                "format": "int64"
-              }
-            },
-            "in": "query",
-            "name": "truckloadId",
-            "description": "Truckload IDs to filter by."
           }
         ],
         "responses": {
@@ -5264,16 +5255,7 @@
             "$ref": "#/components/parameters/orderInline"
           },
           {
-            "schema": {
-              "type": "array",
-              "items": {
-                "type": "integer",
-                "format": "int64"
-              }
-            },
-            "in": "query",
-            "name": "truckloadId",
-            "description": "Truckload IDs to filter by."
+            "$ref": "#/components/parameters/truckloadIdFilter"
           }
         ],
         "responses": {
@@ -9233,6 +9215,18 @@
         "in": "query",
         "name": "target",
         "description": "The email addresses to send the *test* message to (for previewing). Including this parameter will prevent the email from being sent to the intended recipients (its intended use is for sending previews)."
+      },
+      "truckloadIdFilter": {
+        "schema": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "format": "int64"
+          }
+        },
+        "in": "query",
+        "name": "truckloadId",
+        "description": "Truckload IDs to filter by."
       }
     },
     "schemas": {
