@@ -5258,6 +5258,18 @@
           },
           {
             "$ref": "#/components/parameters/orderInline"
+          },
+          {
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "integer",
+                "format": "int64"
+              }
+            },
+            "in": "query",
+            "name": "truckloadId",
+            "description": "Truckload IDs to filter by."
           }
         ],
         "responses": {
