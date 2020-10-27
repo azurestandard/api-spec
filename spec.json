@@ -9636,6 +9636,10 @@
           "uses-azure-to-drop-ship": {
             "description": "Do you drop ship Azure orders (have Azure ship directly to your customers)?  Only available if business-type includes \"online-store\".",
             "type": "boolean"
+          },
+          "timezone": {
+            "type": "string",
+            "description": "The drop's timezone (e.g. America/Los_Angeles)."
           }
         },
         "required": [
@@ -9644,7 +9648,8 @@
           "geo",
           "active",
           "exclusivity",
-          "members"
+          "members",
+          "timezone"
         ]
       },
       "newDrop": {
@@ -9891,6 +9896,10 @@
           "notes": {
             "description": "Free-form Markdown notes for any pickup information that doesn't fit into an existing field.",
             "type": "string"
+          },
+          "timezone": {
+            "type": "string",
+            "description": "The pickup's timezone (e.g. America/Los_Angeles)."
           }
         },
         "required": [
@@ -9899,7 +9908,8 @@
           "vendors",
           "address",
           "geo",
-          "active"
+          "active",
+          "timezone"
         ]
       },
       "route": {
