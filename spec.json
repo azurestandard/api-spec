@@ -1975,6 +1975,14 @@
               "type": "integer",
               "format": "int32"
             }
+          },
+          {
+            "schema": {
+              "type": "boolean"
+            },
+            "in": "query",
+            "name": "customerHasPlacedOrderOnDrop",
+            "description": "Return only drop memberships where the customer has placed an order on the drop. \n\nNotes: \n- Only supported when filtering for a single drop.\n- Does not support passing `false` (value must be `true`)."
           }
         ],
         "responses": {
