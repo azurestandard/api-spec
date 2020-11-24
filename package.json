@@ -1,6 +1,10 @@
 {
   "name": "api-spec",
   "version": "1.0.0",
+  "engines": {
+    "node": "14.x.x",
+    "npm": "6.x.x"
+  },
   "description": "OpenAPI 3.0 Specification for Azure Standard's API.",
   "scripts": {
     "buildDocs": "redoc-cli bundle spec.json -t index.hbs -o index.html --options.pathInMiddlePanel --options.requiredPropsFirst --options.sortPropsAlphabetically"
@@ -19,6 +23,6 @@
   },
   "homepage": "https://github.com/azurestandard/api-spec#readme",
   "devDependencies": {
-    "redoc-cli": "^0.9.11"
+    "redoc-cli": "^0.9.13"
   }
 }
