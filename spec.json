@@ -9109,7 +9109,9 @@
     "/worldship/{order_id}": {
       "get": {
         "summary": "Worldship Export Endpoint",
-        "tags": [],
+        "tags": [
+          "worldship"
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -9168,7 +9170,10 @@
             }
           }
         },
-        "description": "Import data from WorldShip into Beehive."
+        "description": "Import data from WorldShip into Beehive.",
+        "tags": [
+          "worldship"
+        ]
       }
     }
   },
@@ -13253,5 +13258,10 @@
         }
       }
     }
-  }
+  },
+  "tags": [
+    {
+      "name": "worldship"
+    }
+  ]
 }
