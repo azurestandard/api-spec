@@ -9141,8 +9141,8 @@
         "summary": "Worldship Import Endpoint",
         "operationId": "put-worldship-import-order_shipment_id",
         "responses": {
-          "201": {
-            "description": "Created"
+          "204": {
+            "description": "No Content"
           }
         },
         "requestBody": {
