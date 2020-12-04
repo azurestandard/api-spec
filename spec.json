@@ -9105,6 +9105,77 @@
           }
         ]
       }
+    },
+    "/worldship/{order_id}": {
+      "get": {
+        "summary": "Worldship Export Endpoint",
+        "tags": [
+          "worldship"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "An array of shipments for the order. Azure allows customers to split orders between dry and frozen items.",
+                  "minItems": 1,
+                  "uniqueItems": true,
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/worldship"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "get-worldship",
+        "description": "Gets all the shipments for a specific order for Worldship to process and ship. Note: An Azure order can be split into multiple shipments (by climate type), so this endpoint always returns an array of shipments (rather than a single shipment)."
+      },
+      "parameters": []
+    },
+    "/worldship/import/{order_shipment_id}": {
+      "parameters": [],
+      "put": {
+        "summary": "Worldship Import Endpoint",
+        "operationId": "put-worldship-import-order_shipment_id",
+        "responses": {
+          "204": {
+            "description": "No Content"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "description": "",
+                "type": "object",
+                "properties": {
+                  "actual_amount": {
+                    "type": "number",
+                    "description": "Amount charged via Worldship for the UPS shipping amount.",
+                    "format": "float"
+                  },
+                  "tracking_code": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "List of tracking codes separated by spaces."
+                  }
+                },
+                "required": [
+                  "actual_amount",
+                  "tracking_code"
+                ]
+              }
+            }
+          }
+        },
+        "description": "Import data from WorldShip into Beehive.",
+        "tags": [
+          "worldship"
+        ]
+      }
     }
   },
   "servers": [
@@ -13084,7 +13155,124 @@
           "id",
           "truckNumber"
         ]
+      },
+      "worldship": {
+        "description": "Data for the UPS Worldship application.",
+        "type": "object",
+        "properties": {
+          "profile": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Worldship profile name."
+          },
+          "order_id": {
+            "type": "integer",
+            "description": "Beehive order id.",
+            "format": "int64"
+          },
+          "reason": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Reason for split shippment.",
+            "enum": [
+              "DRY",
+              "FROZEN",
+              "ALL"
+            ]
+          },
+          "shipping_service": {
+            "type": "string",
+            "minLength": 1,
+            "description": "UPS shipping service for Worldship to use.",
+            "enum": [
+              "UPS Ground",
+              "UPS 2nd Day Air"
+            ]
+          },
+          "customer": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Name of the customer."
+          },
+          "city": {
+            "type": "string",
+            "minLength": 1,
+            "description": "City to ship to."
+          },
+          "shipper": {
+            "type": "string",
+            "minLength": 1,
+            "description": "UPS shipping account id to use in Worldship."
+          },
+          "zip": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Zipcode to ship to."
+          },
+          "box_weights": {
+            "$ref": "#/components/schemas/boxWeights"
+          },
+          "country": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Country to ship to."
+          },
+          "state": {
+            "type": "string",
+            "minLength": 1,
+            "description": "State to ship to."
+          },
+          "bill_to": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Account to bill to in Worldship."
+          },
+          "order_shipment_id": {
+            "type": "integer",
+            "description": "The id of the shipment this applies to (needed because Azure allows customers to split an order into multiple shipments by climate type).",
+            "format": "int64"
+          },
+          "address_1": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Address line one to ship to."
+          },
+          "address_2": {
+            "type": "string",
+            "description": "Address line two to ship to."
+          }
+        },
+        "required": [
+          "profile",
+          "order_id",
+          "reason",
+          "shipping_service",
+          "customer",
+          "city",
+          "shipper",
+          "zip",
+          "box_weights",
+          "state",
+          "bill_to",
+          "order_shipment_id",
+          "address_1"
+        ]
+      },
+      "boxWeights": {
+        "title": "boxWeights",
+        "type": "array",
+        "x-examples": {},
+        "description": "Array of numbers for multiple box weights.",
+        "items": {
+          "type": "number",
+          "format": "float"
+        }
       }
     }
-  }
+  },
+  "tags": [
+    {
+      "name": "worldship"
+    }
+  ]
 }
