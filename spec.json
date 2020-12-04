@@ -9118,7 +9118,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "description": "An array of shippments for the order. Azure allows customers to split orders between dry and frozen items.",
+                  "description": "An array of shipments for the order. Azure allows customers to split orders between dry and frozen items.",
                   "minItems": 1,
                   "uniqueItems": true,
                   "type": "array",
@@ -9131,7 +9131,7 @@
           }
         },
         "operationId": "get-worldship",
-        "description": "Get all the shippments for a specific order for Worldship to process and ship. Azure allows customers to split orders between dry and frozen items. As such this endpoint will return an array of shippments."
+        "description": "Gets all the shipments for a specific order for Worldship to process and ship. Note: An Azure order can be split into multiple shipments (by climate type), so this endpoint always returns an array of shipments (rather than a single shipment)."
       },
       "parameters": []
     },
@@ -9160,7 +9160,7 @@
                   "tracking_code": {
                     "type": "string",
                     "minLength": 1,
-                    "description": "List of tracking codes sepparated by spaces."
+                    "description": "List of tracking codes separated by spaces."
                   }
                 },
                 "required": [
@@ -13215,7 +13215,7 @@
           "country": {
             "type": "string",
             "minLength": 1,
-            "description": "Country to ship to"
+            "description": "Country to ship to."
           },
           "state": {
             "type": "string",
@@ -13229,17 +13229,17 @@
           },
           "order_shipment_id": {
             "type": "integer",
-            "description": "The id of the shippment this applies to in. Azure allows customers to split orders between dry and frozen items.",
+            "description": "The id of the shipment this applies to (needed because Azure allows customers to split an order into multiple shipments by climate type).",
             "format": "int64"
           },
           "address_1": {
             "type": "string",
             "minLength": 1,
-            "description": "Address to ship to."
+            "description": "Address line one to ship to."
           },
           "address_2": {
             "type": "string",
-            "description": "Address to ship to."
+            "description": "Address line two to ship to."
           }
         },
         "required": [
@@ -13252,7 +13252,6 @@
           "shipper",
           "zip",
           "box_weights",
-          "country",
           "state",
           "bill_to",
           "order_shipment_id",
