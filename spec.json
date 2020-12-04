@@ -9118,7 +9118,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "description": "An array of shippments for the order. Azure allows customers to split there order between dry and frozen items.",
+                  "description": "An array of shippments for the order. Azure allows customers to split orders between dry and frozen items.",
                   "minItems": 1,
                   "uniqueItems": true,
                   "type": "array",
@@ -9131,7 +9131,7 @@
           }
         },
         "operationId": "get-worldship",
-        "description": "Get all the shippments for a specific order for Worldship to process and ship. Azure allows customers to split there order between dry and frozen items. As such this endpoint will return an array of shippments."
+        "description": "Get all the shippments for a specific order for Worldship to process and ship. Azure allows customers to split orders between dry and frozen items. As such this endpoint will return an array of shippments."
       },
       "parameters": []
     },
@@ -9154,7 +9154,8 @@
                 "properties": {
                   "actual_amount": {
                     "type": "number",
-                    "description": "Amount charged via Worldship for the UPS shipping amount."
+                    "description": "Amount charged via Worldship for the UPS shipping amount.",
+                    "format": "float"
                   },
                   "tracking_code": {
                     "type": "string",
@@ -13162,41 +13163,51 @@
           "profile": {
             "type": "string",
             "minLength": 1,
-            "description": "Worldship profile name"
+            "description": "Worldship profile name."
           },
           "order_id": {
-            "type": "number",
-            "description": "Beehive order id"
+            "type": "integer",
+            "description": "Beehive order id.",
+            "format": "int64"
           },
           "reason": {
             "type": "string",
             "minLength": 1,
-            "description": "Reason for split shippment.  Can be one of the following choices.\n\n- DRY\n- FROZEN\n- ALL"
+            "description": "Reason for split shippment.",
+            "enum": [
+              "DRY",
+              "FROZEN",
+              "ALL"
+            ]
           },
           "shipping_service": {
             "type": "string",
             "minLength": 1,
-            "description": "UPS shipping service for Worldship to use.  Can be one of the following choices.\n\n- UPS Ground\n- UPS 2nd Day Air"
+            "description": "UPS shipping service for Worldship to use.",
+            "enum": [
+              "UPS Ground",
+              "UPS 2nd Day Air"
+            ]
           },
           "customer": {
             "type": "string",
             "minLength": 1,
-            "description": "Name of the customer"
+            "description": "Name of the customer."
           },
           "city": {
             "type": "string",
             "minLength": 1,
-            "description": "City to ship to"
+            "description": "City to ship to."
           },
           "shipper": {
             "type": "string",
             "minLength": 1,
-            "description": "UPS shipping account id to use in Worldship"
+            "description": "UPS shipping account id to use in Worldship."
           },
           "zip": {
             "type": "string",
             "minLength": 1,
-            "description": "Zipcode to ship to"
+            "description": "Zipcode to ship to."
           },
           "box_weights": {
             "$ref": "#/components/schemas/boxWeights"
@@ -13209,25 +13220,26 @@
           "state": {
             "type": "string",
             "minLength": 1,
-            "description": "State to ship to"
+            "description": "State to ship to."
           },
           "bill_to": {
             "type": "string",
             "minLength": 1,
-            "description": "Account to bill to in Worldship"
+            "description": "Account to bill to in Worldship."
           },
           "order_shipment_id": {
-            "type": "number",
-            "description": "The id of the shippment this applies to in. Azure allows customers to split there order between dry and frozen items."
+            "type": "integer",
+            "description": "The id of the shippment this applies to in. Azure allows customers to split orders between dry and frozen items.",
+            "format": "int64"
           },
           "address_1": {
             "type": "string",
             "minLength": 1,
-            "description": "Address to ship to"
+            "description": "Address to ship to."
           },
           "address_2": {
             "type": "string",
-            "description": "Address to ship to"
+            "description": "Address to ship to."
           }
         },
         "required": [
@@ -13252,9 +13264,10 @@
         "title": "boxWeights",
         "type": "array",
         "x-examples": {},
-        "description": "Array of numbers for multiple box weights",
+        "description": "Array of numbers for multiple box weights.",
         "items": {
-          "type": "number"
+          "type": "number",
+          "format": "float"
         }
       }
     }
