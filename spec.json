@@ -9108,7 +9108,7 @@
     },
     "/worldship/{order_id}": {
       "get": {
-        "summary": "Your GET endpoint",
+        "summary": "Worldship Export Endpoint",
         "tags": [],
         "responses": {
           "200": {
@@ -9129,30 +9129,14 @@
           }
         },
         "operationId": "get-worldship",
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "properties": {}
-              }
-            }
-          }
-        },
         "description": "Get all the shippments for a specific order for Worldship to process and ship. Azure allows customers to split there order between dry and frozen items. As such this endpoint will return an array of shippments."
       },
       "parameters": []
     },
     "/worldship/import/{order_shipment_id}": {
-      "get": {
-        "summary": "Your GET endpoint",
-        "tags": [],
-        "responses": {},
-        "operationId": "get-worldship-import"
-      },
       "parameters": [],
       "put": {
-        "summary": "",
+        "summary": "Worldship Import Endpoint",
         "operationId": "put-worldship-import-order_shipment_id",
         "responses": {
           "201": {
