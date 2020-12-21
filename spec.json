@@ -11377,6 +11377,11 @@
           "holdShipmentUntilStockAvailable": {
             "description": "If true, the customer has requested to hold shipment of the order until all requested stock is available.",
             "type": "boolean"
+          },
+          "parcelCarrierShipByDate": {
+            "description": "For parcel carrier orders, this is the date the order needs to ship by.",
+            "type": "string",
+            "format": "date"
           }
         },
         "required": [
