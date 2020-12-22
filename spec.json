@@ -4041,17 +4041,7 @@
             }
           },
           {
-            "name": "inline",
-            "in": "query",
-            "description": "For convenience, include a full representation of the inlined property. Currently supports the local \"favorites\", \"next-purchase-arrival\", and \"quantity-on-next-purchase\" as well as \"image\", \"product\", \"vendors\", and descendants.",
-            "required": false,
-            "style": "form",
-            "schema": {
-              "type": "array",
-              "items": {
-                "type": "string"
-              }
-            }
+            "$ref": "#/components/parameters/packagedProductInline"
           },
           {
             "name": "limit",
@@ -9144,7 +9134,6 @@
         "name": "inline",
         "in": "query",
         "description": "Optional properties returned if specified in the request.",
-        "required": false,
         "style": "form",
         "schema": {
           "type": "array",
@@ -9217,6 +9206,27 @@
         "in": "query",
         "name": "target",
         "description": "The email addresses to send the *test* message to (for previewing). Including this parameter will prevent the email from being sent to the intended recipients (its intended use is for sending previews)."
+      },
+      "packagedProductInline": {
+        "name": "inline",
+        "in": "query",
+        "description": "For convenience, include a full representation of the inlined property.",
+        "required": false,
+        "style": "form",
+        "schema": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "favorites",
+              "next-purchase-arrival",
+              "quantity-on-next-purchase",
+              "image",
+              "product",
+              "vendors"
+            ]
+          }
+        }
       }
     },
     "schemas": {
