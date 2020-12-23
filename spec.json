@@ -11095,6 +11095,11 @@
             "description": "If true, the customer has requested to hold shipment of the order until all requested stock is available.",
             "type": "boolean"
           },
+          "parcelCarrierShipByDate": {
+            "description": "For parcel carrier orders, this is the date the order needs to ship by. Since we are using ISO format, the string can either be a date or datetime but it will be stored on the backend as a date.",
+            "type": "string",
+            "format": "date"
+          },
           "computed": {
             "description": "Optional computed properties included via the \"computed\" parameter.",
             "type": "object",
@@ -11377,6 +11382,11 @@
           "holdShipmentUntilStockAvailable": {
             "description": "If true, the customer has requested to hold shipment of the order until all requested stock is available.",
             "type": "boolean"
+          },
+          "parcelCarrierShipByDate": {
+            "description": "For parcel carrier orders, this is the date the order needs to ship by. Since we are using ISO format, the string can either be a date or datetime but it will be stored on the backend as a date.",
+            "type": "string",
+            "format": "date"
           }
         },
         "required": [
