@@ -10293,6 +10293,10 @@
           "truckloadId": {
             "type": "integer",
             "description": "ID of the truckload (pickset). This will only be included if the inline query parameter includes `truckloadId` and the trip is verified."
+          },
+          "truckNumber": {
+            "type": "integer",
+            "description": "The truck_number (Pickset.truck_number). Only returned if the inline query parameter includes `truckloadId` and the trip is verified."
           }
         },
         "required": [
