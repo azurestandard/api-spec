@@ -9170,7 +9170,7 @@
             "enum": [
               "drop",
               "pickup",
-              "truckloadId"
+              "truckload"
             ]
           }
         }
@@ -10290,9 +10290,13 @@
             ],
             "description": "Only returned if the stop is a pickup and the `inline` query parameter contains `pickup`."
           },
-          "truckloadId": {
-            "type": "integer",
-            "description": "ID of the truckload (pickset). This will only be included if the inline query parameter includes `truckloadId` and the trip is verified."
+          "truckload": {
+            "description": "ID of the truckload (pickset). This will only be included if the inline query parameter includes `truckloadId` and the trip is verified.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/truckload"
+              }
+            ]
           }
         },
         "required": [
@@ -13079,7 +13083,6 @@
       "truckload": {
         "title": "truckload",
         "type": "object",
-        "description": "A truck making stops on a trip. There can be multiple truckloads per trip. There is no truckload associated with a trip until it is verified.",
         "properties": {
           "id": {
             "type": "integer",
