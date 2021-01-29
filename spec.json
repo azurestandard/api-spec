@@ -10291,7 +10291,7 @@
             "description": "Only returned if the stop is a pickup and the `inline` query parameter contains `pickup`."
           },
           "truckload": {
-            "description": "ID of the truckload (pickset). This will only be included if the inline query parameter includes `truckloadId` and the trip is verified.",
+            "description": "The truckload (pickset) with this stop's orders. This will only be included if the inline query parameter includes `truckload` and the trip is verified.",
             "allOf": [
               {
                 "$ref": "#/components/schemas/truckload"
