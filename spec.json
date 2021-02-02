@@ -10332,7 +10332,7 @@
           },
           "actualDeliveryBackdated": {
             "type": "boolean",
-            "description": "The acutal delivery was manually set to a datetime in the past."
+            "description": "The actual delivery was manually set to a datetime in the past."
           },
           "drop": {
             "description": "Only returned if the stop is a drop and the `inline` query parameter contains `drop`.",
@@ -10403,7 +10403,7 @@
           },
           "actualDeliveryBackdated": {
             "type": "boolean",
-            "description": "The acutal delivery was manually set to a datetime in the past."
+            "description": "The actual delivery was manually set to a datetime in the past."
           }
         },
         "required": [
@@ -10428,7 +10428,7 @@
             "format": "date-time"
           },
           "actualDelivery": {
-            "description": "Set or update the stop's actual delivery datetime. The API only allows this before the deliveryEnd of the stop's trip.",
+            "description": "Set or update the stop's actual delivery datetime. The API only allows this before the `deliveryEnd` of the stop's trip.",
             "type": "string",
             "format": "date-time"
           },
@@ -10439,7 +10439,7 @@
           "truckloadId": {
             "type": "integer",
             "format": "int64",
-            "description": "Update the stop's truckload (pickset) by passing the ID of the truckload to change it to. This works with pickups or drops"
+            "description": "Update the stop's truckload (pickset) by passing the ID of the truckload to change it to. This works regardless of whether the stop is a pickup or a drop."
           }
         }
       },
