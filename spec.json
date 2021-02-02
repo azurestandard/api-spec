@@ -3432,6 +3432,66 @@
             }
           }
         }
+      },
+      "patch": {
+        "summary": "Partially update an existing stop.",
+        "operationId": "partiallyUpdateStop",
+        "tags": [
+          "stop"
+        ],
+        "description": "The stop to partially update.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of the stop to update.",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "in": "query",
+            "name": "persist",
+            "description": "If true, calculate the offset between the trip's delivery start and this stop's estimated time. For any pre-cutoff trips associated with this stop's trip's route which cutoff later than this stop's trip, create a stop for this location (drop or pickup) if it does not already exist and update that stop's target and estimated times to have the same offset from that stops's trip's delivery start. Also create a route-stop association, if it does not already exist, for this location on this stop's trip's route and update that route-stop with the same delivery offset. If propagate is set, apply the persistence logic to the later stops on the trip as well. API users  should always pass `persist=true` if there are estimated delivery changes. For  finalized and/or actual delivery changes, passing `persist=true` will not actually  persist them but will slow down the response.",
+            "required": false,
+            "schema": {
+              "type": "boolean"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/stop"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Unexpected error.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/error"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/partiallyUpdateStop"
+              }
+            }
+          }
+        }
       }
     },
     "/audit/products": {
@@ -10272,7 +10332,7 @@
           },
           "actualDeliveryBackdated": {
             "type": "boolean",
-            "description": "The acutal delivery was manually set to a datetime in the past."
+            "description": "The actual delivery was manually set to a datetime in the past."
           },
           "drop": {
             "description": "Only returned if the stop is a drop and the `inline` query parameter contains `drop`.",
@@ -10343,7 +10403,7 @@
           },
           "actualDeliveryBackdated": {
             "type": "boolean",
-            "description": "The acutal delivery was manually set to a datetime in the past."
+            "description": "The actual delivery was manually set to a datetime in the past."
           }
         },
         "required": [
@@ -10352,6 +10412,36 @@
           "finalizedDelivery",
           "actualDeliveryBackdated"
         ]
+      },
+      "partiallyUpdateStop": {
+        "description": "A partial update to a trip stop or waypoint.",
+        "type": "object",
+        "properties": {
+          "estimatedDelivery": {
+            "description": "Set or update the stop's estimated delivery datetime. This is editable until verification.",
+            "type": "string",
+            "format": "date-time"
+          },
+          "finalizedDelivery": {
+            "description": "Set or update the stop's finalized delivery datetime. This is editable between verification and delivery.",
+            "type": "string",
+            "format": "date-time"
+          },
+          "actualDelivery": {
+            "description": "Set or update the stop's actual delivery datetime. The API only allows this before the `deliveryEnd` of the stop's trip.",
+            "type": "string",
+            "format": "date-time"
+          },
+          "actualDeliveryBackdated": {
+            "type": "boolean",
+            "description": "Set or update whether the stop's actual delivery time was manually set to a datetime in the past."
+          },
+          "truckloadId": {
+            "type": "integer",
+            "format": "int64",
+            "description": "Update the stop's truckload (pickset) by passing the ID of the truckload to change it to. This works regardless of whether the stop is a pickup or a drop."
+          }
+        }
       },
       "shippingService": {
         "description": "A parcel-carrier service. The listing below is ordered by carrier and then by increasing duration.",
