@@ -3184,6 +3184,16 @@
             }
           },
           {
+            "name": "truckloadId",
+            "in": "query",
+            "description": "Truckload (pickset) ID to filter by.",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
             "$ref": "#/components/parameters/stopInline"
           }
         ],
