@@ -3434,24 +3434,64 @@
         }
       },
       "patch": {
-        "summary": "",
-        "operationId": "patch-stop-id",
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        },
-        "description": "Partially Update a Stop",
+        "summary": "PATCH update for an existing stop",
+        "operationId": "partiallyUpdateStop",
+        "tags": [
+          "stop"
+        ],
+        "description": "Stop to partially update",
         "parameters": [
           {
+            "name": "id",
+            "in": "path",
+            "description": "ID of stop to update.",
+            "required": true,
             "schema": {
-              "type": "string"
-            },
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
             "in": "query",
             "name": "persist",
-            "description": "If true, calculate the offset between the trips's delivery start and this stop's estimated time. For any pre-cutoff trips associated with this stop's trip's route which cutoff later than this stop's trip, create a stop for this location (drop or pickup) if it does not already exist and update that stop's target and estimated times to have the same offset from that stops's trip's delivery start. Also create a route-stop association, if it does not already exist, for this location on this stop's trip's route and update that route-stop with the same delivery offset. If propagate is set, apply the persistance logic to the later stops on the trip as well. API users  should always pass `persist=true` if there are estimated delivery changes. For  finalized and/or actual delivery changes, passing `persist=true` will not actually  persist them but will slow down the response."
+            "description": "If true, calculate the offset between the trip's delivery start and this stop's estimated time. For any pre-cutoff trips associated with this stop's trip's route which cutoff later than this stop's trip, create a stop for this location (drop or pickup) if it does not already exist and update that stop's target and estimated times to have the same offset from that stops's trip's delivery start. Also create a route-stop association, if it does not already exist, for this location on this stop's trip's route and update that route-stop with the same delivery offset. If propagate is set, apply the persistence logic to the later stops on the trip as well. API users  should always pass `persist=true` if there are estimated delivery changes. For  finalized and/or actual delivery changes, passing `persist=true` will not actually  persist them but will slow down the response.",
+            "required": false,
+            "schema": {
+              "type": "boolean"
+            }
           }
-        ]
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/stop"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Unexpected error.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/error"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/partiallyUpdateStop"
+              }
+            }
+          }
+        }
       }
     },
     "/audit/products": {
@@ -10372,6 +10412,35 @@
           "finalizedDelivery",
           "actualDeliveryBackdated"
         ]
+      },
+      "partiallyUpdateStop": {
+        "description": "A partial update to a trip stop or waypoint.",
+        "type": "object",
+        "properties": {
+          "estimatedDelivery": {
+            "description": "Editable until verification.",
+            "type": "string",
+            "format": "date-time"
+          },
+          "finalizedDelivery": {
+            "description": "Editable between verification and delivery.",
+            "type": "string",
+            "format": "date-time"
+          },
+          "actualDelivery": {
+            "description": "When the stop is actually reached.",
+            "type": "string",
+            "format": "date-time"
+          },
+          "actualDeliveryBackdated": {
+            "type": "boolean",
+            "description": "The acutal delivery was manually set to a datetime in the past."
+          },
+          "truckloadId": {
+            "type": "integer",
+            "format": "int64"
+          }
+        }
       },
       "shippingService": {
         "description": "A parcel-carrier service. The listing below is ordered by carrier and then by increasing duration.",
