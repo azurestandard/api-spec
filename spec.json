@@ -3184,6 +3184,16 @@
             }
           },
           {
+            "name": "truckloadId",
+            "in": "query",
+            "description": "Truckload (pickset) ID to filter by.",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
             "$ref": "#/components/parameters/stopInline"
           }
         ],
@@ -5310,6 +5320,16 @@
             "name": "start",
             "in": "query",
             "description": "Offset to the first result to return. Use negative numbers to offset from the end of the result list.",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "truckloadId",
+            "in": "query",
+            "description": "Truckload (pickset) ID to filter by.",
             "required": false,
             "schema": {
               "type": "integer",
