@@ -3432,6 +3432,26 @@
             }
           }
         }
+      },
+      "patch": {
+        "summary": "",
+        "operationId": "patch-stop-id",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "description": "Partially Update a Stop",
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "persist",
+            "description": "If true, calculate the offset between the trips's delivery start and this stop's estimated time. For any pre-cutoff trips associated with this stop's trip's route which cutoff later than this stop's trip, create a stop for this location (drop or pickup) if it does not already exist and update that stop's target and estimated times to have the same offset from that stops's trip's delivery start. Also create a route-stop association, if it does not already exist, for this location on this stop's trip's route and update that route-stop with the same delivery offset. If propagate is set, apply the persistance logic to the later stops on the trip as well. API users  should always pass `persist=true` if there are estimated delivery changes. For  finalized and/or actual delivery changes, passing `persist=true` will not actually  persist them but will slow down the response."
+          }
+        ]
       }
     },
     "/audit/products": {
