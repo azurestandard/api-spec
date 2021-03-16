@@ -13269,17 +13269,17 @@
             "format": "int64"
           },
           "orderCount": {
-            "description": "The number of this customer's unique shipped orders that this packaged-product was ordered on (invoiced within the last two years).",
+            "description": "The number of this customer's unique shipped orders that this packaged product was ordered on (invoiced within the last two years).",
             "type": "integer",
             "format": "int64"
           },
           "lastOrderInvoiceDate": {
-            "description": "The invoice date of the most recent order containing the packaged-product.",
+            "description": "The invoice date of the most recent order containing the packaged product.",
             "type": "string",
             "format": "date"
           },
           "lastOrderId": {
-            "description": "The ID of the most recent order containing the packaged-product.",
+            "description": "The ID of the most recent order containing the packaged product.",
             "type": "integer",
             "format": "int64"
           }
