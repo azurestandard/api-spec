@@ -7794,7 +7794,7 @@
     },
     "/person/{id}/ordered-packaged-products": {
       "get": {
-        "summary": "Returns aggregated information about packaged-products ordered by the given customer within the last two years",
+        "summary": "Returns aggregated information about packaged products ordered by the given customer within the last two years",
         "operationId": "listOrderedPackagedProducts",
         "tags": [
           "person",
@@ -13256,7 +13256,7 @@
         ]
       },
       "orderedPackagedProduct": {
-        "description": "Aggregated information about packaged-products ordered by a customer within the last two years.",
+        "description": "Aggregated information about packaged products ordered by a customer within the last two years.",
         "type": "object",
         "properties": {
           "code": {
