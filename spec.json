@@ -7804,7 +7804,7 @@
           {
             "name": "id",
             "in": "path",
-            "description": "The ID of the person whose ordered packaged products to fetch.",
+            "description": "The ID of the person whose ordered packaged products should be fetched.",
             "required": true,
             "schema": {
               "type": "integer",
