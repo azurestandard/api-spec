@@ -7792,6 +7792,53 @@
         }
       }
     },
+    "/person/{id}/ordered-packaged-products": {
+      "get": {
+        "summary": "Returns aggregated information about packaged-products ordered by the given customer within the last two years",
+        "operationId": "listOrderedPackagedProducts",
+        "tags": [
+          "person",
+          "product"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of person whose ordered packaged products to fetch.",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Ordered packaged products response.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/orderedPackagedProduct"
+                  }
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Unexpected error.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/session": {
       "get": {
         "summary": "Returns information about the current cookie-based session",
@@ -13206,6 +13253,43 @@
         "required": [
           "id",
           "truckNumber"
+        ]
+      },
+      "orderedPackagedProduct": {
+        "description": "Aggregated information about packaged-products ordered by a customer within the last two years.",
+        "type": "object",
+        "properties": {
+          "code": {
+            "description": "Packaged product code that was ordered.",
+            "type": "string"
+          },
+          "productId": {
+            "description": "Product ID of the packaged product that was ordered.",
+            "type": "integer",
+            "format": "int64"
+          },
+          "orderCount": {
+            "description": "The number of this customer's unique shipped orders that this packaged-product was ordered on (invoiced within the last two years).",
+            "type": "integer",
+            "format": "int64"
+          },
+          "lastOrderInvoiceDate": {
+            "description": "The invoice date of the most recent order containing the packaged-product.",
+            "type": "string",
+            "format": "date"
+          },
+          "lastOrderId": {
+            "description": "The id of the most recent order containing the packaged-product.",
+            "type": "integer",
+            "format": "int64"
+          }
+        },
+        "required": [
+          "code",
+          "productId",
+          "orderCount",
+          "lastOrderInvoiceDate",
+          "lastOrderId"
         ]
       }
     }
