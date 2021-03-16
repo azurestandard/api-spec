@@ -13279,7 +13279,7 @@
             "format": "date"
           },
           "lastOrderId": {
-            "description": "The id of the most recent order containing the packaged-product.",
+            "description": "The ID of the most recent order containing the packaged-product.",
             "type": "integer",
             "format": "int64"
           }
