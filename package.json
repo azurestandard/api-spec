@@ -23,6 +23,6 @@
   },
   "homepage": "https://github.com/azurestandard/api-spec#readme",
   "devDependencies": {
-    "redoc-cli": "^0.9.13"
+    "redoc-cli": "^0.10.x"
   }
 }
