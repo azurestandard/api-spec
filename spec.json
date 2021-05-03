@@ -10424,6 +10424,20 @@
                 "$ref": "#/components/schemas/truckload"
               }
             ]
+          },
+          "finalizedDeliveryState": {
+            "oneOf": [
+              {
+                "enum": [
+                  "confirmed",
+                  "driverWillCall",
+                  "toBeDetermined",
+                  "unknownDelay"
+                ],
+                "description": "The state of the stop's finalized delivery. This is always returned if a `finalizedDelivery` value is returned."
+              }
+            ],
+            "type": "string"
           }
         },
         "required": [
