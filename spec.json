@@ -10425,16 +10425,15 @@
               }
             ]
           },
-          "finalizedDeliveryState": {
+          "finalizedDeliveryFlag": {
             "oneOf": [
               {
                 "enum": [
-                  "confirmed",
                   "driverWillCall",
                   "toBeDetermined",
                   "unknownDelay"
                 ],
-                "description": "The state of the stop's finalized delivery. This is always returned if a `finalizedDelivery` value is returned."
+                "description": "This is used to indicate an exception-state for the finalized delivery. This is always returned if the trip's status is not `new`."
               }
             ],
             "type": "string"
