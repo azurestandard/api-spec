@@ -10602,6 +10602,11 @@
             "description": "Reason this packaged product is in its current status.",
             "type": "string"
           },
+          "limitPerOrder": {
+            "description": "Customers are limited to this quantity of this packaged product per order.",
+            "type": "integer",
+            "format": "int32"
+          },
           "servings-per-container": {
             "description": "Servings per container. The rest of the nutrition information is in product.nutrition-facts, but the number of servings per container depends on the packaging size. For composite packaging (e.g. a 12 x 6 x 2 oz case), the value applies to the smallest component with a nutrition label (e.g. the 2 oz items, if they're labeled, or the 6 x 2 oz boxes, if they're labeled and the 2 oz items are not).",
             "type": "string"
