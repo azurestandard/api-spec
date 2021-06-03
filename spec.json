@@ -3184,6 +3184,16 @@
             }
           },
           {
+            "name": "truckloadId",
+            "in": "query",
+            "description": "Truckload (pickset) ID to filter by.",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
             "$ref": "#/components/parameters/stopInline"
           }
         ],
@@ -3340,7 +3350,7 @@
           {
             "name": "persist",
             "in": "query",
-            "description": "If true, calculate the offset between the trips's delivery start and this stop's estimated time. For any pre-cutoff trips associated with this stop's trip's route which cutoff later than this stop's trip, create a stop for this location (drop or pickup) if it does not already exist and update that stop's target and estimated times to have the same offset from that stops's trip's delivery start. Also create a route-stop association, if it does not already exist, for this location on this stop's trip's route and update that route-stop with the same delivery offset. If propagate is set, apply the persistance logic to the later stops on the trip as well. API users  should always pass `persist=true` if there are estimated delivery changes. For  finalized and/or actual delivery changes, passing `persist=true` will not actually  persist them but will slow down the response.",
+            "description": "This option is only relevant for estimated delivery changes on future trips. If true, calculate the offset between the trips's delivery start and this stop's estimated time. For any pre-cutoff trips associated with this stop's trip's route which cutoff later than this stop's trip, create a stop for this location (drop or pickup) if it does not already exist and update that stop's target and estimated times to have the same offset from that stops's trip's delivery start. Also create a route-stop association, if it does not already exist, for this location on this stop's trip's route and update that route-stop with the same delivery offset. If propagate is set, apply the persistance logic to the later stops on the trip as well. For finalized and/or actual delivery changes, passing `persist=true` will not actually persist them but will slow down the response.",
             "required": false,
             "schema": {
               "type": "boolean"
@@ -3428,6 +3438,66 @@
                 "schema": {
                   "$ref": "#/components/schemas/error"
                 }
+              }
+            }
+          }
+        }
+      },
+      "patch": {
+        "summary": "Partially update an existing stop.",
+        "operationId": "partiallyUpdateStop",
+        "tags": [
+          "stop"
+        ],
+        "description": "The stop to partially update.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of the stop to update.",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "in": "query",
+            "name": "persist",
+            "description": "If true, calculate the offset between the trip's delivery start and this stop's estimated time. For any pre-cutoff trips associated with this stop's trip's route which cutoff later than this stop's trip, create a stop for this location (drop or pickup) if it does not already exist and update that stop's target and estimated times to have the same offset from that stops's trip's delivery start. Also create a route-stop association, if it does not already exist, for this location on this stop's trip's route and update that route-stop with the same delivery offset. If propagate is set, apply the persistence logic to the later stops on the trip as well. API users  should always pass `persist=true` if there are estimated delivery changes. For  finalized and/or actual delivery changes, passing `persist=true` will not actually  persist them but will slow down the response.",
+            "required": false,
+            "schema": {
+              "type": "boolean"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/stop"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Unexpected error.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/error"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/partiallyUpdateStop"
               }
             }
           }
@@ -5222,6 +5292,16 @@
             "name": "start",
             "in": "query",
             "description": "Offset to the first result to return. Use negative numbers to offset from the end of the result list.",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "truckloadId",
+            "in": "query",
+            "description": "Truckload (pickset) ID to filter by.",
             "required": false,
             "schema": {
               "type": "integer",
@@ -7684,6 +7764,53 @@
         }
       }
     },
+    "/person/{id}/ordered-packaged-products": {
+      "get": {
+        "summary": "Returns aggregated information about packaged products ordered by the given customer within the last two years",
+        "operationId": "listOrderedPackagedProducts",
+        "tags": [
+          "person",
+          "product"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "The ID of the person whose ordered packaged products should be fetched.",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The ordered packaged products response.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/orderedPackagedProduct"
+                  }
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Unexpected error.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/session": {
       "get": {
         "summary": "Returns information about the current cookie-based session",
@@ -8389,231 +8516,6 @@
         }
       }
     },
-    "/faqs": {
-      "get": {
-        "summary": "Returns a list of frequently asked questions and answers",
-        "operationId": "getFaqs",
-        "tags": [
-          "faq"
-        ],
-        "parameters": [
-          {
-            "name": "limit",
-            "in": "query",
-            "description": "Maximum number of results to return.",
-            "required": false,
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          },
-          {
-            "name": "start",
-            "in": "query",
-            "description": "Offset to the first result to return. Use negative numbers to offset from the end of the result list.",
-            "required": false,
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Array of faq response.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/faq"
-                  }
-                }
-              }
-            }
-          },
-          "default": {
-            "description": "Unexpected error.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/error"
-                }
-              }
-            }
-          }
-        }
-      },
-      "post": {
-        "summary": "Creates and returns a faq",
-        "operationId": "addFaq",
-        "tags": [
-          "faq"
-        ],
-        "responses": {
-          "200": {
-            "description": "Faq response.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/faq"
-                }
-              }
-            }
-          },
-          "default": {
-            "description": "Unexpected error.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/error"
-                }
-              }
-            }
-          }
-        },
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/updateFaq"
-              }
-            }
-          },
-          "description": "Faq to create.",
-          "required": true
-        }
-      }
-    },
-    "/faq/{id}": {
-      "get": {
-        "summary": "Returns a single faq",
-        "operationId": "getFaqById",
-        "tags": [
-          "faq"
-        ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "description": "ID of faq to fetch.",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int64"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Faq response.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/faq"
-                }
-              }
-            }
-          },
-          "default": {
-            "description": "Unexpected error.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/error"
-                }
-              }
-            }
-          }
-        }
-      },
-      "put": {
-        "summary": "Updates and returns a faq",
-        "operationId": "updateFaq",
-        "tags": [
-          "faq"
-        ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "description": "ID of faq to update.",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int64"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Faq response.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/faq"
-                }
-              }
-            }
-          },
-          "default": {
-            "description": "Unexpected error.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/error"
-                }
-              }
-            }
-          }
-        },
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/updateFaq"
-              }
-            }
-          },
-          "description": "Faq to update.",
-          "required": true
-        }
-      },
-      "delete": {
-        "summary": "Deletes a faq",
-        "operationId": "deleteFaq",
-        "tags": [
-          "faq"
-        ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "description": "ID of faq to delete.",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int64"
-            }
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "Delete successful."
-          },
-          "default": {
-            "description": "Unexpected error.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/error"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
     "/printers": {
       "get": {
         "summary": "Returns all printers from the system that the user has access to",
@@ -9141,7 +9043,7 @@
             "enum": [
               "drop",
               "pickup",
-              "truckloadId"
+              "truckload"
             ]
           }
         }
@@ -10264,7 +10166,7 @@
           },
           "actualDeliveryBackdated": {
             "type": "boolean",
-            "description": "The acutal delivery was manually set to a datetime in the past."
+            "description": "The actual delivery was manually set to a datetime in the past."
           },
           "drop": {
             "description": "Only returned if the stop is a drop and the `inline` query parameter contains `drop`.",
@@ -10282,9 +10184,26 @@
             ],
             "description": "Only returned if the stop is a pickup and the `inline` query parameter contains `pickup`."
           },
-          "truckloadId": {
-            "type": "integer",
-            "description": "ID of the truckload (pickset). This will only be included if the inline query parameter includes `truckloadId` and the trip is verified."
+          "truckload": {
+            "description": "The truckload (pickset) with this stop's orders. This will only be included if the inline query parameter includes `truckload` and the trip is verified.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/truckload"
+              }
+            ]
+          },
+          "finalizedDeliveryFlag": {
+            "oneOf": [
+              {
+                "enum": [
+                  "driverWillCall",
+                  "toBeDetermined",
+                  "unknownDelay"
+                ],
+                "description": "This is used to indicate an exception-state for the finalized delivery. This is always returned if the trip's status is not `new`."
+              }
+            ],
+            "type": "string"
           }
         },
         "required": [
@@ -10331,7 +10250,7 @@
           },
           "actualDeliveryBackdated": {
             "type": "boolean",
-            "description": "The acutal delivery was manually set to a datetime in the past."
+            "description": "The actual delivery was manually set to a datetime in the past."
           }
         },
         "required": [
@@ -10340,6 +10259,36 @@
           "finalizedDelivery",
           "actualDeliveryBackdated"
         ]
+      },
+      "partiallyUpdateStop": {
+        "description": "A partial update to a trip stop or waypoint.",
+        "type": "object",
+        "properties": {
+          "estimatedDelivery": {
+            "description": "Set or update the stop's estimated delivery datetime. This is editable until verification.",
+            "type": "string",
+            "format": "date-time"
+          },
+          "finalizedDelivery": {
+            "description": "Set or update the stop's finalized delivery datetime. This is editable between verification and delivery.",
+            "type": "string",
+            "format": "date-time"
+          },
+          "actualDelivery": {
+            "description": "Set or update the stop's actual delivery datetime. The API only allows this before the `deliveryEnd` of the stop's trip.",
+            "type": "string",
+            "format": "date-time"
+          },
+          "actualDeliveryBackdated": {
+            "type": "boolean",
+            "description": "Set or update whether the stop's actual delivery time was manually set to a datetime in the past."
+          },
+          "truckloadId": {
+            "type": "integer",
+            "format": "int64",
+            "description": "Update the stop's truckload (pickset) by passing the ID of the truckload to change it to. This works regardless of whether the stop is a pickup or a drop."
+          }
+        }
       },
       "shippingService": {
         "description": "A parcel-carrier service. The listing below is ordered by carrier and then by increasing duration.",
@@ -10432,6 +10381,11 @@
           "statusReason": {
             "description": "Reason this packaged product is in its current status.",
             "type": "string"
+          },
+          "limitPerOrder": {
+            "description": "Customers are limited to this quantity of this packaged product per order.",
+            "type": "integer",
+            "format": "int32"
           },
           "servings-per-container": {
             "description": "Servings per container. The rest of the nutrition information is in product.nutrition-facts, but the number of servings per container depends on the packaging size. For composite packaging (e.g. a 12 x 6 x 2 oz case), the value applies to the smallest component with a nutrition label (e.g. the 2 oz items, if they're labeled, or the 6 x 2 oz boxes, if they're labeled and the 2 oz items are not).",
@@ -11111,6 +11065,11 @@
             "description": "If true, the customer has requested to hold shipment of the order until all requested stock is available.",
             "type": "boolean"
           },
+          "parcelCarrierShipByDate": {
+            "description": "For parcel carrier orders, this is the date the order needs to ship by. Since we are using ISO format, the string can either be a date or datetime but it will be stored on the backend as a date.",
+            "type": "string",
+            "format": "date"
+          },
           "computed": {
             "description": "Optional computed properties included via the \"computed\" parameter.",
             "type": "object",
@@ -11393,6 +11352,11 @@
           "holdShipmentUntilStockAvailable": {
             "description": "If true, the customer has requested to hold shipment of the order until all requested stock is available.",
             "type": "boolean"
+          },
+          "parcelCarrierShipByDate": {
+            "description": "For parcel carrier orders, this is the date the order needs to ship by. Since we are using ISO format, the string can either be a date or datetime but it will be stored on the backend as a date.",
+            "type": "string",
+            "format": "date"
           }
         },
         "required": [
@@ -12758,61 +12722,6 @@
           "customer"
         ]
       },
-      "faq": {
-        "description": "Frequently asked question.",
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "integer",
-            "format": "int64"
-          },
-          "question": {
-            "description": "A frequently asked question in plain text.",
-            "type": "string"
-          },
-          "answer": {
-            "description": "The answer to the associated question in plain text.",
-            "type": "string"
-          },
-          "order": {
-            "type": "integer",
-            "format": "int64"
-          }
-        },
-        "required": [
-          "id",
-          "question",
-          "answer",
-          "order"
-        ]
-      },
-      "updateFaq": {
-        "description": "Frequently asked question.",
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "integer",
-            "format": "int64"
-          },
-          "question": {
-            "description": "A frequently asked question in plain text.",
-            "type": "string"
-          },
-          "answer": {
-            "description": "The answer to the associated question in plain text.",
-            "type": "string"
-          },
-          "order": {
-            "type": "integer",
-            "format": "int64"
-          }
-        },
-        "required": [
-          "question",
-          "answer",
-          "order"
-        ]
-      },
       "session": {
         "description": "Session cookie information.",
         "type": "object",
@@ -13085,7 +12994,6 @@
       "truckload": {
         "title": "truckload",
         "type": "object",
-        "description": "A truck making stops on a trip. There can be multiple truckloads per trip. There is no truckload associated with a trip until it is verified.",
         "properties": {
           "id": {
             "type": "integer",
@@ -13099,6 +13007,43 @@
         "required": [
           "id",
           "truckNumber"
+        ]
+      },
+      "orderedPackagedProduct": {
+        "description": "Aggregated information about packaged products ordered by a customer within the last two years.",
+        "type": "object",
+        "properties": {
+          "code": {
+            "description": "The packaged product code that was ordered.",
+            "type": "string"
+          },
+          "productId": {
+            "description": "The product ID of the packaged product that was ordered.",
+            "type": "integer",
+            "format": "int64"
+          },
+          "orderCount": {
+            "description": "The number of this customer's unique shipped orders that this packaged product was ordered on (invoiced within the last two years).",
+            "type": "integer",
+            "format": "int64"
+          },
+          "lastOrderInvoiceDate": {
+            "description": "The invoice date of the most recent order containing the packaged product.",
+            "type": "string",
+            "format": "date"
+          },
+          "lastOrderId": {
+            "description": "The ID of the most recent order containing the packaged product.",
+            "type": "integer",
+            "format": "int64"
+          }
+        },
+        "required": [
+          "code",
+          "productId",
+          "orderCount",
+          "lastOrderInvoiceDate",
+          "lastOrderId"
         ]
       }
     }
