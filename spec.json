@@ -10401,12 +10401,12 @@
             "format": "int64"
           },
           "next-purchase-arrival": {
-            "description": "When the next stock of this packaged is expected to arrive at the warehouse. This will only be included if the `inline` query parameter includes `next-purchase-arrival`.",
+            "description": "When the next stock of this packaged is expected to arrive at the warehouse. This will only be included if the `inline` query parameter includes `next-purchase-arrival` or `quantity-on-next-purchase`.",
             "type": "string",
             "format": "date-time"
           },
           "quantity-on-next-purchase": {
-            "description": "Package quantity arriving on the next-purchase-arrival. This will only be included if the `inline` query parameter includes `quantity-on-next-purchase`.",
+            "description": "Package quantity arriving on the next-purchase-arrival. This will only be included if the `inline` query parameter includes `next-purchase-arrival` or `quantity-on-next-purchase`.",
             "type": "number",
             "format": "float"
           },
