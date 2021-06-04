@@ -9105,7 +9105,6 @@
               "favorites",
               "next-purchase-arrival",
               "quantity-on-next-purchase",
-              "image",
               "product",
               "vendors"
             ]
@@ -10411,8 +10410,8 @@
             "type": "number",
             "format": "float"
           },
-          "image": {
-            "description": "Image URLs of for this package. This will only be included if the `inline` query parameter includes `image`.",
+          "images": {
+            "description": "Image URLs of for this package.",
             "type": "array",
             "items": {
               "type": "string"
