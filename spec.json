@@ -3506,11 +3506,10 @@
     },
     "/audit/products": {
       "get": {
-        "summary": "Returns all products and their packaging from the system",
+        "summary": "Returns all products and their packaging from the system (for audit)",
         "operationId": "findProductAudits",
         "tags": [
-          "audit",
-          "product"
+          "audit"
         ],
         "parameters": [
           {
@@ -3600,11 +3599,10 @@
     },
     "/audit/product/{id}": {
       "get": {
-        "summary": "Returns a product based on a single ID",
+        "summary": "Returns a product based on a single ID (for audit)",
         "operationId": "findProductAuditById",
         "tags": [
-          "audit",
-          "product"
+          "audit"
         ],
         "parameters": [
           {
@@ -3655,8 +3653,7 @@
         "summary": "Audit an existing packaged-product",
         "operationId": "updatePackagedProductAudit",
         "tags": [
-          "audit",
-          "product"
+          "audit"
         ],
         "parameters": [
           {
@@ -3973,7 +3970,7 @@
         "summary": "Returns all packaged products from the system that the user has access to",
         "operationId": "findPackagedProduct",
         "tags": [
-          "product"
+          "packaged-product"
         ],
         "parameters": [
           {
@@ -4111,17 +4108,7 @@
             }
           },
           {
-            "name": "inline",
-            "in": "query",
-            "description": "For convenience, include a full representation of the inlined property. Currently supports the local \"favorites\", \"next-purchase-arrival\", and \"quantity-on-next-purchase\" as well as \"image\", \"product\", \"vendors\", and descendants.",
-            "required": false,
-            "style": "form",
-            "schema": {
-              "type": "array",
-              "items": {
-                "type": "string"
-              }
-            }
+            "$ref": "#/components/parameters/packagedProductInline"
           },
           {
             "name": "limit",
@@ -4186,7 +4173,7 @@
         "summary": "Returns a packaged product based on a single ID, if the user has access to the packaged product",
         "operationId": "findPackagedProductById",
         "tags": [
-          "product"
+          "packaged-product"
         ],
         "parameters": [
           {
@@ -4199,17 +4186,7 @@
             }
           },
           {
-            "name": "inline",
-            "in": "query",
-            "description": "For convenience, include a full representation of the inlined property. Currently supports the local \"favorites\", \"next-purchase-arrival\", and \"quantity-on-next-purchase\" as well as \"image\", \"product\", \"vendors\", and descendants.",
-            "required": false,
-            "style": "form",
-            "schema": {
-              "type": "array",
-              "items": {
-                "type": "string"
-              }
-            }
+            "$ref": "#/components/parameters/packagedProductInline"
           }
         ],
         "responses": {
@@ -4241,8 +4218,7 @@
         "summary": "Returns all packaged product images from the system that the user has access to",
         "operationId": "findPackagedProductImages",
         "tags": [
-          "image",
-          "product"
+          "packaged-product-image"
         ],
         "parameters": [
           {
@@ -4319,8 +4295,7 @@
         "summary": "Add a packaged product image",
         "operationId": "addPackagedProductImage",
         "tags": [
-          "image",
-          "product"
+          "packaged-product-image"
         ],
         "responses": {
           "200": {
@@ -4362,8 +4337,7 @@
         "summary": "Returns a packaged product image based on a single ID, if the user has access to that object",
         "operationId": "findPackagedProductImageById",
         "tags": [
-          "image",
-          "product"
+          "packaged-product-image"
         ],
         "parameters": [
           {
@@ -4403,8 +4377,7 @@
         "summary": "Update a packaged product image",
         "operationId": "updatePackagedProductImage",
         "tags": [
-          "image",
-          "product"
+          "packaged-product-image"
         ],
         "parameters": [
           {
@@ -4456,8 +4429,7 @@
         "summary": "Delete a packaged product image",
         "operationId": "deletePackagedProductImage",
         "tags": [
-          "image",
-          "product"
+          "packaged-product-image"
         ],
         "parameters": [
           {
@@ -9046,7 +9018,6 @@
         "name": "inline",
         "in": "query",
         "description": "Optional properties returned if specified in the request.",
-        "required": false,
         "style": "form",
         "schema": {
           "type": "array",
@@ -9119,6 +9090,26 @@
         "in": "query",
         "name": "target",
         "description": "The email addresses to send the *test* message to (for previewing). Including this parameter will prevent the email from being sent to the intended recipients (its intended use is for sending previews)."
+      },
+      "packagedProductInline": {
+        "name": "inline",
+        "in": "query",
+        "description": "For convenience, include a full representation of the inlined property.",
+        "required": false,
+        "style": "form",
+        "schema": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "favorites",
+              "next-purchase-arrival",
+              "quantity-on-next-purchase",
+              "product",
+              "vendors"
+            ]
+          }
+        }
       }
     },
     "schemas": {
@@ -10371,7 +10362,7 @@
             "type": "boolean"
           },
           "favorites": {
-            "description": "Number of people who've marked this packaged product as a favorite.",
+            "description": "Number of people who've marked this packaged product as a favorite. This will only be included if the `inline` query parameter includes `favorites`.",
             "type": "integer",
             "format": "int32"
           },
@@ -10400,7 +10391,7 @@
             "type": "string"
           },
           "product": {
-            "description": "The product that this packaging packages.",
+            "description": "The product's ID, unless the `inline` query parameter includes `product`, in which case this is a product object (though it doesn't currently return the whole product response).",
             "type": "integer",
             "format": "int64"
           },
@@ -10408,6 +10399,30 @@
             "description": "The id of the primary category for this packaged product.",
             "type": "integer",
             "format": "int64"
+          },
+          "next-purchase-arrival": {
+            "description": "When the next stock of this packaged is expected to arrive at the warehouse. This will only be included if the `inline` query parameter includes `next-purchase-arrival` or `quantity-on-next-purchase`.",
+            "type": "string",
+            "format": "date-time"
+          },
+          "quantity-on-next-purchase": {
+            "description": "Package quantity arriving on the next-purchase-arrival. This will only be included if the `inline` query parameter includes `next-purchase-arrival` or `quantity-on-next-purchase`.",
+            "type": "number",
+            "format": "float"
+          },
+          "images": {
+            "description": "Image URLs of for this package.",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "vendors": {
+            "description": "This will only be included if the `inline` query parameter includes `vendors`.",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/vendor"
+            }
           }
         },
         "required": [
