@@ -3593,16 +3593,16 @@
         }
       },
       "put": {
-        "summary": "Updates a pick set / truck, if the user has permissions",
-        "operationId": "updateTruck",
+        "summary": "Updates a truckload (pickset), if the user has permissions",
+        "operationId": "updateTruckload",
         "tags": [
-          "truck"
+          "truckload"
         ],
         "parameters": [
           {
             "name": "id",
             "in": "path",
-            "description": "ID of pick set / truck to update.",
+            "description": "ID of truckload (pickset) to update.",
             "required": true,
             "schema": {
               "type": "integer",
@@ -3612,11 +3612,11 @@
         ],
         "responses": {
           "200": {
-            "description": "Truck response.",
+            "description": "Truckload response.",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/pickSet"
+                  "$ref": "#/components/schemas/truckload"
                 }
               }
             }
@@ -3636,11 +3636,11 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/updateTruck"
+                "$ref": "#/components/schemas/updateTruckload"
               }
             }
           },
-          "description": "Truck to update.",
+          "description": "Truckload to update.",
           "required": true
         }
       }
