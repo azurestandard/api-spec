@@ -3504,38 +3504,15 @@
         }
       }
     },
-    "/trucks": {
+    "/truckloads": {
       "get": {
-        "summary": "Returns all pick-sets / trucks from the system that the user has access to",
-        "description": "Trips are ordered by truck number.",
-        "operationId": "findTrucks",
+        "summary": "Returns all truckloads (picksets) from the system that the user has access to",
+        "description": "Truckloads (picksets) are ordered by truck number.",
+        "operationId": "findTruckloads",
         "tags": [
-          "truck"
+          "truckload"
         ],
-        "parameters": [
-          {
-            "name": "truckNumber",
-            "in": "query",
-            "description": "Only return trucks with this truck number.",
-            "required": false,
-            "style": "form",
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          },
-          {
-            "name": "truckDriver",
-            "in": "query",
-            "description": "Only return trucks with this truck driver id.",
-            "required": false,
-            "style": "form",
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          }
-        ],
+        "parameters": [],
         "responses": {
           "200": {
             "description": "Truck response.",
@@ -3554,7 +3531,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/pickSet"
+                    "$ref": "#/components/schemas/truckload"
                   }
                 }
               }
