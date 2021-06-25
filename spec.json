@@ -10234,8 +10234,8 @@
           "delivery-start"
         ]
       },
-      "updateTruck": {
-        "description": "A truck delivering on a route trip to be updated.",
+      "updateTruckload": {
+        "description": "A truckload to be updated.",
         "type": "object",
         "properties": {
           "id": {
@@ -10250,7 +10250,7 @@
             "description": "Truck Number of truck.",
             "type": "int32"
           },
-          "truck-drvier": {
+          "truckDriverId": {
             "description": "Truck Driver id of truck.",
             "type": "int64"
           },
@@ -10261,8 +10261,8 @@
           }
         },
         "required": [
-          "route_trip",
-          "truck_number"
+          "id",
+          "truckDriverId"
         ]
       },
       "routeStop": {
