@@ -3507,7 +3507,7 @@
     "/truckloads": {
       "get": {
         "summary": "Returns all truckloads (picksets) from the system that the user has access to",
-        "description": "Truckloads (picksets) are ordered by truck number.",
+        "description": "Truckloads (picksets) are ordered by the associated trip's pick date and then truck number.",
         "operationId": "findTruckloads",
         "tags": [
           "truckload"
