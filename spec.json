@@ -7648,7 +7648,7 @@
             }
           },
           {
-            "name": "customerTypes",
+            "name": "customerType",
             "in": "query",
             "description": "Customer types of the customers.",
             "required": false,
