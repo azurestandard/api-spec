@@ -10242,22 +10242,9 @@
             "type": "integer",
             "format": "int64"
           },
-          "route-trip": {
-            "description": "Route Trip id of truck.",
-            "type": "int64"
-          },
-          "truck-number": {
-            "description": "Truck Number of truck.",
-            "type": "int32"
-          },
           "truckDriverId": {
             "description": "Truck Driver id of truck.",
             "type": "int64"
-          },
-          "pick-date": {
-            "description": "Date-time that orders for this truck should be picked.",
-            "type": "string",
-            "format": "date-time"
           }
         },
         "required": [
