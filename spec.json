@@ -3515,7 +3515,7 @@
         "parameters": [],
         "responses": {
           "200": {
-            "description": "Truck response.",
+            "description": "Truckload response.",
             "headers": {
               "Count": {
                 "description": "Total number of matching results (how many you'd get if you could set an infinite `limit`).",
@@ -3550,18 +3550,18 @@
         }
       }
     },
-    "/truck/{id}": {
+    "/truckload/{id}": {
       "get": {
-        "summary": "Returns a pick set / truck based on a single ID, if the user has access to the truck",
-        "operationId": "findTruckById",
+        "summary": "Returns a truckload (pickset) based on a single ID, if the user has access to it",
+        "operationId": "findTruckloadById",
         "tags": [
-          "truck"
+          "truckload"
         ],
         "parameters": [
           {
             "name": "id",
             "in": "path",
-            "description": "ID of pick set / truck to fetch.",
+            "description": "ID of truckload (pickset) to fetch.",
             "required": true,
             "schema": {
               "type": "integer",
@@ -3571,11 +3571,11 @@
         ],
         "responses": {
           "200": {
-            "description": "Truck response.",
+            "description": "Truckload response.",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/pickSet"
+                  "$ref": "#/components/schemas/truckload"
                 }
               }
             }
@@ -13185,6 +13185,10 @@
           "truckNumber": {
             "type": "integer",
             "description": "Number of the truck on the trip. This is not necessarily sequential."
+          },
+          "truckDriverId": {
+            "type": "integer",
+            "description": "ID of the truck driver on the trip."
           }
         },
         "required": [
