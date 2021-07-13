@@ -10690,12 +10690,11 @@
             "type": "string"
           },
           "allergens": {
-            "description": "Allergen IDs used for labeling of this product.",
+            "description": "The names of the Allergens used for labeling of this product.",
             "type": "array",
             "items": {
-              "description": "The ID of the Allergen.",
-              "type": "integer",
-              "format": "int64"
+              "description": "The Allergen name.",
+              "type": "string"
             }
           },
           "seo-name": {
