@@ -10723,7 +10723,7 @@
             "type": "string"
           },
           "packaging": {
-            "description": "Packaged versions of this product.",
+            "description": "Packaged versions of this product. This will only be included if the `inline` query parameter includes `packaging`.",
             "type": "array",
             "items": {
               "type": "integer",
@@ -10731,39 +10731,40 @@
             }
           },
           "brand": {
-            "description": "The brand associated with this product.",
+            "description": "The brand associated with this product. This will only be included if the `inline` query parameter includes `brand`.",
             "type": "integer",
             "format": "int64"
           },
           "keywords": {
-            "description": "Comma-separated list of keywords that will be used in Google web search for this specific product.",
+            "description": "Comma-separated list of keywords that will be used in Google web search for this specific product. This will only be included if the `inline` query parameter includes `keywords`.",
             "type": "string"
           },
           "description": {
-            "description": "Long-form, HTML product description. When short-description is set, this value is for additional information which did not fit into short-description. Displaying both short-description and description is not redundant. Displaying only description may be confusing when short-description is available.",
+            "description": "Long-form, HTML product description. When short-description is set, this value is for additional information which did not fit into short-description. Displaying both short-description and description is not redundant. Displaying only description may be confusing when short-description is available. This will only be included if the `inline` query parameter includes `description`.",
             "type": "string"
           },
           "shortDescription": {
-            "description": "Paragraph-length, stand-alone, plain-text product description.",
+            "description": "Paragraph-length, stand-alone, plain-text product description. This will only be included if the `inline` query parameter includes `description`.",
             "type": "string"
           },
           "inactiveDescription": {
-            "description": "HTML description applicable only when the product is inactive (out for season, out long term, or discontinued). It should contain specific information pertinent to the inactive status of the product (e.g. details about why it is inactive and what similar products are available instead). It should not duplicate information in short-description or description.",
+            "description": "HTML description applicable only when the product is inactive (out for season, out long term, or discontinued). It should contain specific information pertinent to the inactive status of the product (e.g. details about why it is inactive and what similar products are available instead). It should not duplicate information in short-description or description. This will only be included if the `inline` query parameter includes `description`.",
             "type": "string"
           },
           "directions": {
-            "description": "Product use directions (e.g., cooking suggestions).",
+            "description": "Product use directions (e.g., cooking suggestions). This will only be included if the `inline` query parameter includes `description`.",
             "type": "string"
           },
           "ingredients": {
-            "description": "Ingredients used in this product (e.g., \"dried cranberries (organic cranberries, organic cane sugar, organic sunflower oil)\").",
+            "description": "Ingredients used in this product (e.g., \"dried cranberries (organic cranberries, organic cane sugar, organic sunflower oil)\"). This will only be included if the `inline` query parameter includes `description`.",
             "type": "string"
           },
           "nutritionFacts": {
+            "description": "This will only be included if the `inline` query parameter includes `description`.",
             "$ref": "#/components/schemas/nutritionFacts"
           },
           "substitutions": {
-            "description": "Suggested in-stock substitutions. This will only be included if the `inline` query parameter includes `substitutions`",
+            "description": "Suggested in-stock substitutions. This will only be included if the `inline` query parameter includes `substitutions`.",
             "type": "object",
             "properties": {
               "by-category": {
