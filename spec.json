@@ -10686,7 +10686,7 @@
             "format": "int64"
           },
           "name": {
-            "description": "Sentence-length product name (either its given name or marketing name).",
+            "description": "Sentence-length product name.",
             "type": "string"
           },
           "slug": {
@@ -10702,7 +10702,7 @@
             "type": "string"
           },
           "isShippableUps": {
-            "description": "If true, this product will can be shipped by UPS.",
+            "description": "If true, this product can be shipped by parcel carrier.",
             "type": "boolean"
           },
           "maxStorageDays": {
@@ -10726,21 +10726,20 @@
             "description": "Packaged versions of this product. This will only be included if the `inline` query parameter includes `packaging`.",
             "type": "array",
             "items": {
-              "type": "integer",
-              "format": "int64"
+              "$ref": "#/components/schemas/packagedProduct"
             }
           },
           "brand": {
-            "description": "The brand associated with this product. This will only be included if the `inline` query parameter includes `brand`.",
+            "description": "The brand associated with this product.",
             "type": "integer",
             "format": "int64"
           },
           "keywords": {
-            "description": "Comma-separated list of keywords that will be used in Google web search for this specific product. This will only be included if the `inline` query parameter includes `keywords`.",
+            "description": "Comma-separated list of keywords for this product. This will only be included if the `inline` query parameter includes `keywords`.",
             "type": "string"
           },
           "description": {
-            "description": "Long-form, HTML product description. When short-description is set, this value is for additional information which did not fit into short-description. Displaying both short-description and description is not redundant. Displaying only description may be confusing when short-description is available. This will only be included if the `inline` query parameter includes `description`.",
+            "description": "Long-form, HTML product description. When shortDescription is set, this value is for additional information which did not fit into shortDescription. Displaying both shortDescription and description is not redundant. Displaying only description may be confusing when shortDescription is available. This will only be included if the `inline` query parameter includes `description`.",
             "type": "string"
           },
           "shortDescription": {
@@ -10748,7 +10747,7 @@
             "type": "string"
           },
           "inactiveDescription": {
-            "description": "HTML description applicable only when the product is inactive (out for season, out long term, or discontinued). It should contain specific information pertinent to the inactive status of the product (e.g. details about why it is inactive and what similar products are available instead). It should not duplicate information in short-description or description. This will only be included if the `inline` query parameter includes `description`.",
+            "description": "HTML description applicable only when the product is inactive (out for season, out long term, or discontinued). It should contain specific information pertinent to the inactive status of the product (e.g. details about why it is inactive and what similar products are available instead). It should not duplicate information in shortDescription or description. This will only be included if the `inline` query parameter includes `description`.",
             "type": "string"
           },
           "directions": {
@@ -10794,39 +10793,7 @@
             "description": "Vendors of the product. This will only be included if the `inline` query parameter includes `vendors`.",
             "type": "array",
             "items": {
-              "type": "object",
-              "properties": {
-                "id": {
-                  "type": "integer",
-                  "format": "int64"
-                },
-                "name": {
-                  "type": "string"
-                },
-                "active": {
-                  "type": "boolean"
-                },
-                "url": {
-                  "description": "Homepage for the vendor.",
-                  "type": "string",
-                  "format": "url"
-                },
-                "account": {
-                  "type": "int64"
-                },
-                "manager": {
-                  "description": "Customer ID (number) for the vendor's manager.",
-                  "type": "int64"
-                },
-                "buyer": {
-                  "description": "Customer ID (number) for the vendor's buyer.",
-                  "type": "int64"
-                },
-                "indie": {
-                  "description": "If true, the vendor is a privately held company.",
-                  "type": "boolean"
-                }
-              }
+              "$ref": "#/components/schemas/vendor"
             }
           },
           "countryOfOrigin": {
