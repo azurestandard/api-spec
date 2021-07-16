@@ -10717,6 +10717,14 @@
             "description": "If true, this product has been genetically modified.",
             "type": "boolean"
           },
+          "allergens": {
+            "description": "The names of the Allergens used for labeling of this product.",
+            "type": "array",
+            "items": {
+              "description": "The Allergen name.",
+              "type": "string"
+            }
+          },
           "seoName": {
             "description": "An SEO-optimized name. A lengthened version of the full name that includes additional keywords or rephrasing, suitable for use in a title tag. When this is unset, the name is a reasonable fallback.",
             "type": "string"
