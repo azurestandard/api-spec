@@ -10689,57 +10689,80 @@
             "description": "Sentence-length product name.",
             "type": "string"
           },
-          "seo-name": {
-            "description": "An SEO-optimized name. A lengthened version of the full name that includes additional keywords or rephrasing, suitable for use in a title tag. When this is unset, the name is a reasonable fallback.",
+          "slug": {
+            "description": "A slug generated from the product name.",
             "type": "string"
           },
           "treatAsActive": {
             "description": "If true, this product will be published to search engines even when it is inactive (out for season, out long term, or discontinued).",
             "type": "boolean"
           },
-          "inactiveDescription": {
-            "description": "HTML description applicable only when the product is inactive (out for season, out long term, or discontinued). It should contain specific information pertinent to the inactive status of the product (e.g. details about why it is inactive and what similar products are available instead). It should not duplicate information in short-description or description.",
+          "storageClimate": {
+            "$ref": "#/components/schemas/storage"
+          },
+          "isShippableUps": {
+            "description": "If true, this product can be shipped by parcel carrier.",
+            "type": "boolean"
+          },
+          "maxStorageDays": {
+            "description": "Number of days product can be stored.",
+            "type": "integer",
+            "format": "int32"
+          },
+          "isOrganic": {
+            "description": "If true, this product is certified organic.",
+            "type": "boolean"
+          },
+          "isGeneticallyModified": {
+            "description": "If true, this product has been genetically modified.",
+            "type": "boolean"
+          },
+          "seoName": {
+            "description": "An SEO-optimized name. A lengthened version of the full name that includes additional keywords or rephrasing, suitable for use in a title tag. When this is unset, the name is a reasonable fallback.",
             "type": "string"
           },
-          "short-description": {
-            "description": "Paragraph-length, stand-alone, plain-text product description.",
-            "type": "string"
-          },
-          "description": {
-            "description": "Long-form, HTML product description. When short-description is set, this value is for additional information which did not fit into short-description. Displaying both short-description and description is not redundant. Displaying only description may be confusing when short-description is available.",
-            "type": "string"
+          "packaging": {
+            "description": "Packaged versions of this product. This will only be included if the `inline` query parameter includes `packaging`.",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/packagedProduct"
+            }
           },
           "brand": {
             "description": "The brand associated with this product.",
             "type": "integer",
             "format": "int64"
           },
-          "directions": {
-            "description": "Product use directions (e.g., cooking suggestions).",
+          "keywords": {
+            "description": "Comma-separated list of keywords for this product. This will only be included if the `inline` query parameter includes `keywords`.",
             "type": "string"
           },
-          "favorites": {
-            "description": "Number of people who've marked this product as a favorite.",
-            "type": "integer",
-            "format": "int32"
+          "description": {
+            "description": "Long-form, HTML product description. When `shortDescription` is set, this value is for additional information which did not fit into `shortDescription`. Displaying both `shortDescription` and description is not redundant. Displaying only description may be confusing when `shortDescription` is available. This will only be included if the `inline` query parameter includes `description`.",
+            "type": "string"
+          },
+          "shortDescription": {
+            "description": "Paragraph-length, stand-alone, plain-text product description. This will only be included if the `inline` query parameter includes `description`.",
+            "type": "string"
+          },
+          "inactiveDescription": {
+            "description": "HTML description applicable only when the product is inactive (out for season, out long term, or discontinued). It should contain specific information pertinent to the inactive status of the product (e.g. details about why it is inactive and what similar products are available instead). It should not duplicate information in `shortDescription` or description. This will only be included if the `inline` query parameter includes `description`.",
+            "type": "string"
+          },
+          "directions": {
+            "description": "Product use directions (e.g., cooking suggestions). This will only be included if the `inline` query parameter includes `description`.",
+            "type": "string"
           },
           "ingredients": {
-            "description": "Ingredients used in this product (e.g., \"dried cranberries (organic cranberries, organic cane sugar, organic sunflower oil)\").",
+            "description": "Ingredients used in this product (e.g., \"dried cranberries (organic cranberries, organic cane sugar, organic sunflower oil)\"). This will only be included if the `inline` query parameter includes `description`.",
             "type": "string"
           },
-          "nutrition-facts": {
+          "nutritionFacts": {
+            "description": "This will only be included if the `inline` query parameter includes `description`.",
             "$ref": "#/components/schemas/nutritionFacts"
           },
-          "packaging": {
-            "description": "Packaged versions of this product.",
-            "type": "array",
-            "items": {
-              "type": "integer",
-              "format": "int64"
-            }
-          },
           "substitutions": {
-            "description": "Suggested in-stock substitutions.",
+            "description": "Suggested in-stock substitutions. This will only be included if the `inline` query parameter includes `substitutions`.",
             "type": "object",
             "properties": {
               "by-category": {
@@ -10760,15 +10783,20 @@
               }
             }
           },
-          "country-of-origin": {
+          "favorites": {
+            "description": "Number of people who've marked this product as a favorite. This will only be included if the `inline` query parameter includes `favorites`.",
+            "type": "integer",
+            "format": "int32"
+          },
+          "vendors": {
+            "description": "Vendors of the product. This will only be included if the `inline` query parameter includes `vendors`.",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/vendor"
+            }
+          },
+          "countryOfOrigin": {
             "description": "Country of origin for this product.",
-            "type": "string"
-          },
-          "storage": {
-            "$ref": "#/components/schemas/storage"
-          },
-          "slug": {
-            "description": "A slug generated from the product name.",
             "type": "string"
           }
         },
