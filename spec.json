@@ -10699,7 +10699,10 @@
           },
           "storageClimate": {
             "description": "The description of the product's storage climate.",
-            "type": "string"
+            "type": "string",
+            "items": {
+              "$ref": "#/components/schemas/storage"
+            }
           },
           "isShippableUps": {
             "description": "If true, this product can be shipped by parcel carrier.",
@@ -10739,7 +10742,7 @@
             "type": "string"
           },
           "description": {
-            "description": "Long-form, HTML product description. When shortDescription is set, this value is for additional information which did not fit into shortDescription. Displaying both shortDescription and description is not redundant. Displaying only description may be confusing when shortDescription is available. This will only be included if the `inline` query parameter includes `description`.",
+            "description": "Long-form, HTML product description. When `shortDescription` is set, this value is for additional information which did not fit into `shortDescription`. Displaying both `shortDescription` and description is not redundant. Displaying only description may be confusing when `shortDescription` is available. This will only be included if the `inline` query parameter includes `description`.",
             "type": "string"
           },
           "shortDescription": {
@@ -10747,7 +10750,7 @@
             "type": "string"
           },
           "inactiveDescription": {
-            "description": "HTML description applicable only when the product is inactive (out for season, out long term, or discontinued). It should contain specific information pertinent to the inactive status of the product (e.g. details about why it is inactive and what similar products are available instead). It should not duplicate information in shortDescription or description. This will only be included if the `inline` query parameter includes `description`.",
+            "description": "HTML description applicable only when the product is inactive (out for season, out long term, or discontinued). It should contain specific information pertinent to the inactive status of the product (e.g. details about why it is inactive and what similar products are available instead). It should not duplicate information in `shortDescription` or description. This will only be included if the `inline` query parameter includes `description`.",
             "type": "string"
           },
           "directions": {
