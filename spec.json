@@ -10699,10 +10699,7 @@
           },
           "storageClimate": {
             "description": "The description of the product's storage climate.",
-            "type": "string",
-            "items": {
-              "$ref": "#/components/schemas/storage"
-            }
+            "$ref": "#/components/schemas/storage"
           },
           "isShippableUps": {
             "description": "If true, this product can be shipped by parcel carrier.",
