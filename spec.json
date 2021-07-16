@@ -10698,7 +10698,6 @@
             "type": "boolean"
           },
           "storageClimate": {
-            "description": "The description of the product's storage climate.",
             "$ref": "#/components/schemas/storage"
           },
           "isShippableUps": {
