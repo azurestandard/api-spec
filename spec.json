@@ -11698,11 +11698,11 @@
               "type": "string"
             }
           },
-          "customer-note": {
+          "customerNote": {
             "description": "A string of text concerning the customer to whom the order-line is associated.",
             "type": "string"
           },
-          "internal-note": {
+          "internalNote": {
             "description": "A string of text concerning the customer to whom the order-line is associated entered internally by a superuser.",
             "type": "string"
           }
@@ -11713,9 +11713,7 @@
           "name",
           "quantity-ordered",
           "weight",
-          "volume",
-          "customer-note",
-          "internal-note"
+          "volume"
         ]
       },
       "updateOrderLine": {
@@ -11740,11 +11738,11 @@
             "type": "integer",
             "format": "int32"
           },
-          "customer-note": {
+          "customerNote": {
             "description": "A string of text concerning the customer to whom the order-line is associated.",
             "type": "string"
           },
-          "internal-note": {
+          "internalNote": {
             "description": "A string of text concerning the customer to whom the order-line is associated entered internally by a superuser.",
             "type": "string"
           }
