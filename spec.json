@@ -11697,6 +11697,14 @@
               "description": "Warnings about products that a customer can associate with this order, but maybe should not (e.g. that is is likely to expire before reaching the customer).",
               "type": "string"
             }
+          },
+          "customer-note": {
+            "description": "A string of text concerning the customer to whom the order-line is associated.",
+            "type": "string"
+          },
+          "internal-note": {
+            "description": "A string of text concerning the customer to whom the order-line is associated entered internally by a superuser.",
+            "type": "string"
           }
         },
         "required": [
@@ -11705,7 +11713,9 @@
           "name",
           "quantity-ordered",
           "weight",
-          "volume"
+          "volume",
+          "customer-note",
+          "internal-note"
         ]
       },
       "updateOrderLine": {
@@ -11729,6 +11739,14 @@
             "description": "Number of product instances requested.",
             "type": "integer",
             "format": "int32"
+          },
+          "customer-note": {
+            "description": "A string of text concerning the customer to whom the order-line is associated.",
+            "type": "string"
+          },
+          "internal-note": {
+            "description": "A string of text concerning the customer to whom the order-line is associated entered internally by a superuser.",
+            "type": "string"
           }
         },
         "required": [
