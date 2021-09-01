@@ -6254,7 +6254,7 @@
         }
       }
     },
-    "/order-promo-codes/{id}": {
+    "/order-promo-code/{id}": {
       "get": {
         "summary": "Returns a promo code based on a single ID",
         "operationId": "findPromoCodeById",
@@ -6296,7 +6296,40 @@
           }
         }
       },
-
+      "delete": {
+        "summary": "Delete a promo code from an order",
+        "operationId": "deleteOrderPromoCode",
+        "tags": [
+          "order-promo-code"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of promo code to delete.",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Delete successful."
+          },
+          "default": {
+            "description": "Unexpected error.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/error"
+                }
+              }
+            }
+          }
+        }
+      }
     },
 
     "/vendors": {
