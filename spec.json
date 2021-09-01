@@ -6146,6 +6146,158 @@
         }
       }
     },
+    "/order-promo-codes": {
+      "get": {
+        "summary": "Returns all order promo codes from the system that the customer has access to",
+        "operationId": "findPromoCodes",
+        "tags": [
+          "order-promo-code"
+        ],
+        "parameters": [
+          {
+            "name": "orderId",
+            "in": "query",
+            "description": "Order ID to filter by.",
+            "required": true,
+            "style": "form",
+            "schema": {
+              "items": {
+                "type": "integer",
+                "format": "int64"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Order promo code response.",
+            "headers": {
+              "Count": {
+                "description": "Total number of matching results (how many you'd get if you could set an infinite `limit`).",
+                "schema": {
+                  "type": "integer",
+                  "format": "int32",
+                  "minimum": 0
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/orderPromoCode"
+                  }
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Unexpected error.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/order-promo-codes/{id}": {
+      "get": {
+        "summary": "Returns a promo code based on a single ID",
+        "operationId": "findPromoCodeById",
+        "tags": [
+          "order-promo-code"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of promo code.",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Promo code response.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/orderPromoCode"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Unexpected error.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/error"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Add a promo code to an order",
+        "operationId": "addOrderPromoCode",
+        "tags": [
+          "order-promo-code"
+        ],
+        "responses": {
+          "200": {
+            "description": "Promo code response.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/orderPromoCode"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Unexpected error.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/error"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "orderId": {
+                    "type": "integer",
+                    "format": "int64"
+                  },
+                  "promoCode": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          },
+          "description": "Order Promo Code to add.",
+          "required": true
+        }
+      }
+    },
+
     "/vendors": {
       "get": {
         "summary": "Returns all vendors from the system that the user has access to",
