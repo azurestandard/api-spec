@@ -6203,49 +6203,6 @@
             }
           }
         }
-      }
-    },
-    "/order-promo-codes/{id}": {
-      "get": {
-        "summary": "Returns a promo code based on a single ID",
-        "operationId": "findPromoCodeById",
-        "tags": [
-          "order-promo-code"
-        ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "description": "ID of promo code.",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int64"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Promo code response.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/orderPromoCode"
-                }
-              }
-            }
-          },
-          "default": {
-            "description": "Unexpected error.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/error"
-                }
-              }
-            }
-          }
-        }
       },
       "post": {
         "summary": "Add a promo code to an order",
@@ -6296,6 +6253,50 @@
           "required": true
         }
       }
+    },
+    "/order-promo-codes/{id}": {
+      "get": {
+        "summary": "Returns a promo code based on a single ID",
+        "operationId": "findPromoCodeById",
+        "tags": [
+          "order-promo-code"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of promo code.",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Promo code response.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/orderPromoCode"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Unexpected error.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/error"
+                }
+              }
+            }
+          }
+        }
+      },
+
     },
 
     "/vendors": {
