@@ -6146,10 +6146,154 @@
         }
       }
     },
+    "promoCode": {
+      "description": "A promo code.",
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "internal_note": {
+          "type": "string"
+        },
+        "applies_to_all_products": {
+          "description": "Whether or not the promo code can be applied to all products.",
+          "type": "boolean"
+        },
+        "promo_code_type": {
+          "$ref": "#/components/schemas/promoCodeType"
+        },
+        "minimum_purchase_amount": {
+          "description": "This is the minimum amount that must be purchaed to allow the promo code to be used.",
+          "type": "number",
+          "format": "float"
+        },
+        "promo_code_value": {
+          "type": "number",
+          "format": "float"
+        },
+        "products": {
+          "description": "Products IDs available for the promo code.",
+          "type": "array",
+          "items": {
+            "$ref": "#/components/schemas/product"
+          }
+        },
+        "product_categories": {
+          "description": "Category IDs available for the promo code.",
+          "type": "array",
+          "items": {
+            "$ref": "#/components/schemas/category"
+          }
+        },
+        "customers": {
+          "description": "Customer IDs available for the promo code.",
+          "type": "array",
+          "items": {
+            "$ref": "#/components/schemas/customer"
+          }
+        },
+        "routes": {
+          "description": "Route IDs available for the promo code.",
+          "type": "array",
+          "items": {
+            "$ref": "#/components/schemas/route"
+          }
+        },
+        "customer_elegibility_type": {
+          "$ref": "#/components/schemas/PromoCodeCustomerElegibilityType"
+        },
+        "usage_limit_type": {
+          "$ref": "#/components/schemas/PromoCodeUsageLimitType"
+        },
+        "usage_limit_value": {
+          "type": "integer",
+          "format": "int32",
+          "minimum": 1
+        },
+        "start_date": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "expiration_date": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "code",
+        "description",
+        "applies_to_all_products",
+        "promo_code_type",
+        "promo_code_type",
+        "promo_code_value",
+        "customer_elegibility_type",
+        "usage_limit_type",
+        "start_date",
+        "expiration_date"
+      ]
+    },
+    "promoCodeType": {
+      "description": "A promo code type.",
+      "type": "object",
+      "properties": {
+        "slug": {
+          "description": "Unique slug generated for the promo code type name.",
+          "type": "string"
+        },
+        "name": {
+          "description": "Unique name for the promo code type.",
+          "type": "string"
+        }
+      },
+      "required": [
+        "slug",
+        "name"
+      ]
+    },
+    "promoCodeCustomerElegibilityType": {
+      "description": "A promo code customer elegibility type.",
+      "type": "object",
+      "properties": {
+        "slug": {
+          "description": "Unique slug generated for the promo code customer elegibility type name.",
+          "type": "string"
+        },
+        "name": {
+          "description": "Unique name for the promo code customer elegibility type.",
+          "type": "string"
+        }
+      },
+      "required": [
+        "slug",
+        "name"
+      ]
+    },
+    "promoCodeUsageLimitType": {
+      "description": "A promo code usage limit type.",
+      "type": "object",
+      "properties": {
+        "slug": {
+          "description": "Unique slug generated for the promo code usage limit type name.",
+          "type": "string"
+        },
+        "name": {
+          "description": "Unique name for the promo code usage limit type.",
+          "type": "string"
+        }
+      },
+      "required": [
+        "slug",
+        "name"
+      ]
+    },
     "/order-promo-codes": {
       "get": {
         "summary": "Returns all order promo codes from the system that the customer has access to",
-        "operationId": "findPromoCodes",
+        "operationId": "findOrderPromoCodes",
         "tags": [
           "order-promo-code"
         ],
@@ -6252,12 +6396,55 @@
           "description": "Order Promo Code to add.",
           "required": true
         }
+      },
+      "orderPromoCode": {
+        "description": "A order promo code.",
+        "type": "object",
+        "properties": {
+          "promo_code": {
+            "$ref": "#/components/schemas/promoCode"
+          },
+          "order": {
+            "$ref": "#/components/schemas/order"
+          },
+          "invalid_reason_type": {
+            "$ref": "#/components/schemas/orderPromoCodeInvalidReasonType"
+          },
+          "discount_amount": {
+            "description": "Dollar value for the sum of order's discount amount from promo codes.",
+            "type": "number",
+            "format": "float"
+          }
+        },
+        "required": [
+          "promo_code",
+          "order",
+          "discount_amount"
+        ]
+      },
+      "orderPromoCodeInvalidReasonType": {
+        "description": "An order promo code invalid reason type.",
+        "type": "object",
+        "properties": {
+          "slug": {
+            "description": "Unique slug generated for the order promo code invalid reason type name.",
+            "type": "string"
+          },
+          "description": {
+            "description": "Description for the order promo code invalid reason type.",
+            "type": "string"
+          }
+        },
+        "required": [
+          "slug",
+          "description"
+        ]
       }
     },
     "/order-promo-code/{id}": {
       "get": {
-        "summary": "Returns a promo code based on a single ID",
-        "operationId": "findPromoCodeById",
+        "summary": "Returns an order promo code based on a single ID",
+        "operationId": "findOrderPromoCodeById",
         "tags": [
           "order-promo-code"
         ],
@@ -6265,7 +6452,7 @@
           {
             "name": "id",
             "in": "path",
-            "description": "ID of promo code.",
+            "description": "ID of order promo code.",
             "required": true,
             "schema": {
               "type": "integer",
@@ -6275,7 +6462,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Promo code response.",
+            "description": "Order promo code response.",
             "content": {
               "application/json": {
                 "schema": {
@@ -6306,7 +6493,7 @@
           {
             "name": "id",
             "in": "path",
-            "description": "ID of promo code to delete.",
+            "description": "ID of order promo code to delete.",
             "required": true,
             "schema": {
               "type": "integer",
