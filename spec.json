@@ -6271,7 +6271,7 @@
         }
       },
       "orderPromoCode": {
-        "description": "A order promo code.",
+        "description": "A promo code applied to an order.",
         "type": "object",
         "properties": {
           "promoCode": {
