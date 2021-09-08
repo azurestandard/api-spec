@@ -6151,7 +6151,7 @@
         "summary": "Returns all order promo codes from the system that the customer has access to",
         "operationId": "findOrderPromoCodes",
         "tags": [
-          "order-promo-code"
+          "order"
         ],
         "parameters": [
           {
@@ -6208,11 +6208,11 @@
         "summary": "Add a promo code to an order",
         "operationId": "addOrderPromoCode",
         "tags": [
-          "order-promo-code"
+          "order"
         ],
         "responses": {
           "200": {
-            "description": "Promo code response.",
+            "description": "Order promo code response.",
             "content": {
               "application/json": {
                 "schema": {
@@ -6259,7 +6259,7 @@
         "summary": "Returns an order promo code based on a single ID",
         "operationId": "findOrderPromoCodeById",
         "tags": [
-          "order-promo-code"
+          "order"
         ],
         "parameters": [
           {
@@ -6300,7 +6300,7 @@
         "summary": "Delete a promo code from an order",
         "operationId": "deleteOrderPromoCode",
         "tags": [
-          "order-promo-code"
+          "order"
         ],
         "parameters": [
           {
@@ -11985,7 +11985,7 @@
             "$ref": "#/components/schemas/orderPromoCodeInvalidReasonType"
           },
           "discountAmount": {
-            "description": "Dollar value for the sum of order's discount amount from promo codes.",
+            "description": "Dollar value for the sum of order's discount amount from this promo code.",
             "type": "number",
             "format": "float"
           }
