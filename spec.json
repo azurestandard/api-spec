@@ -6242,7 +6242,7 @@
                     "type": "integer",
                     "format": "int64"
                   },
-                  "promoCode": {
+                  "code": {
                     "type": "string"
                   }
                 }
