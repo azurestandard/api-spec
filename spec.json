@@ -6146,22 +6146,6 @@
         }
       }
     },
-    "promoCode": {
-      "description": "A promo code.",
-      "type": "object",
-      "properties": {
-        "code": {
-          "type": "string"
-        },
-        "description": {
-          "type": "string"
-        }
-      },
-      "required": [
-        "code",
-        "description"
-      ]
-    },
     "/order-promo-codes": {
       "get": {
         "summary": "Returns all order promo codes from the system that the customer has access to",
@@ -6274,8 +6258,11 @@
         "description": "A promo code applied to an order.",
         "type": "object",
         "properties": {
-          "promoCode": {
-            "$ref": "#/components/schemas/promoCode"
+          "code": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
           },
           "orderId": {
             "type": "integer",
@@ -6291,8 +6278,9 @@
           }
         },
         "required": [
-          "promoCode",
-          "order",
+          "code",
+          "description",
+          "orderId",
           "discountAmount"
         ]
       },
