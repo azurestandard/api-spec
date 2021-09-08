@@ -6252,54 +6252,6 @@
           "description": "Order Promo Code to add.",
           "required": true
         }
-      },
-      "orderPromoCode": {
-        "description": "A promo code applied to an order.",
-        "type": "object",
-        "properties": {
-          "code": {
-            "type": "string"
-          },
-          "description": {
-            "type": "string"
-          },
-          "orderId": {
-            "type": "integer",
-            "format": "int64"
-          },
-          "invalidReasonType": {
-            "$ref": "#/components/schemas/orderPromoCodeInvalidReasonType"
-          },
-          "discountAmount": {
-            "description": "Dollar value for the sum of order's discount amount from promo codes.",
-            "type": "number",
-            "format": "float"
-          }
-        },
-        "required": [
-          "code",
-          "description",
-          "orderId",
-          "discountAmount"
-        ]
-      },
-      "orderPromoCodeInvalidReasonType": {
-        "description": "An order promo code invalid reason type.",
-        "type": "object",
-        "properties": {
-          "slug": {
-            "description": "Unique slug generated for the order promo code invalid reason type name.",
-            "type": "string"
-          },
-          "description": {
-            "description": "Description for the order promo code invalid reason type.",
-            "type": "string"
-          }
-        },
-        "required": [
-          "slug",
-          "description"
-        ]
       }
     },
     "/order-promo-code/{id}": {
@@ -6379,7 +6331,6 @@
         }
       }
     },
-
     "/vendors": {
       "get": {
         "summary": "Returns all vendors from the system that the user has access to",
@@ -12014,6 +11965,54 @@
         "enum": [
           "shipping",
           "small-order"
+        ]
+      },
+      "orderPromoCode": {
+        "description": "A promo code applied to an order.",
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "orderId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "invalidReasonType": {
+            "$ref": "#/components/schemas/orderPromoCodeInvalidReasonType"
+          },
+          "discountAmount": {
+            "description": "Dollar value for the sum of order's discount amount from promo codes.",
+            "type": "number",
+            "format": "float"
+          }
+        },
+        "required": [
+          "code",
+          "description",
+          "orderId",
+          "discountAmount"
+        ]
+      },
+      "orderPromoCodeInvalidReasonType": {
+        "description": "An order promo code invalid reason type.",
+        "type": "object",
+        "properties": {
+          "slug": {
+            "description": "Unique slug generated for the order promo code invalid reason type name.",
+            "type": "string"
+          },
+          "description": {
+            "description": "Description for the order promo code invalid reason type.",
+            "type": "string"
+          }
+        },
+        "required": [
+          "slug",
+          "description"
         ]
       },
       "dropShippingFee": {
