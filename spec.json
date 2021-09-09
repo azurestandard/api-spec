@@ -6148,23 +6148,44 @@
     },
     "/order-promo-codes": {
       "get": {
-        "summary": "Returns all order promo codes from the system that the customer has access to",
+        "summary": "Returns all order promo codes from the system that the user has access to",
         "operationId": "findOrderPromoCodes",
         "tags": [
           "order"
         ],
         "parameters": [
           {
-            "name": "orderId",
+            "name": "order",
             "in": "query",
-            "description": "Order ID to filter by.",
+            "description": "Order IDs to filter by.",
             "required": true,
             "style": "form",
             "schema": {
+              "type": "array",
               "items": {
                 "type": "integer",
                 "format": "int64"
               }
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "Maximum number of results to return.",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "start",
+            "in": "query",
+            "description": "Offset to the first result to return. Use negative numbers to offset from the end of the result list.",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
             }
           }
         ],
@@ -11972,12 +11993,15 @@
         "type": "object",
         "properties": {
           "code": {
+            "description": "Code for the promo code.",
             "type": "string"
           },
           "description": {
+            "description": "Description for the promo code.",
             "type": "string"
           },
           "orderId": {
+            "description": "Order ID for the order promo code.",
             "type": "integer",
             "format": "int64"
           },
