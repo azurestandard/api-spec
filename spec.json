@@ -6158,7 +6158,7 @@
             "name": "order",
             "in": "query",
             "description": "Order IDs to filter by.",
-            "required": true,
+            "required": false,
             "style": "form",
             "schema": {
               "type": "array",
