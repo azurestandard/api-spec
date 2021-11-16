@@ -1008,6 +1008,7 @@
             "description": "Fields to search. Any property included in a companyDirectoryEntry response may be queried. Defaults to `full-name`, `first-name`, `last-name`, `title`, `department.name`, `phone-number`, `phone-ext`, `mobile`, `email`, and `office`.",
             "required": false,
             "style": "form",
+            "explode": false,
             "schema": {
               "type": "array",
               "items": {
@@ -1030,6 +1031,7 @@
             "description": "Order results by this field. Any property included in a companyDirectoryEntry response may be used here. Defaults to `department.name`, `first-name` and `last-name`.",
             "required": false,
             "style": "form",
+            "explode": false,
             "schema": {
               "type": "array",
               "items": {
@@ -1184,6 +1186,7 @@
             "description": "Report category IDs to filter by. `null` may be used to return reports that are uncategorized.",
             "required": false,
             "style": "form",
+            "explode": false,
             "schema": {
               "type": "array",
               "items": {
@@ -1556,6 +1559,7 @@
             "description": "Types of exclusivity to filter by.",
             "required": false,
             "style": "form",
+            "explode": false,
             "schema": {
               "type": "array",
               "items": {
@@ -1574,6 +1578,7 @@
             "description": "Route names to filter by.",
             "required": false,
             "style": "form",
+            "explode": false,
             "schema": {
               "type": "array",
               "items": {
@@ -1587,6 +1592,7 @@
             "description": "Trip IDs to filter by.",
             "required": false,
             "style": "form",
+            "explode": false,
             "schema": {
               "type": "array",
               "items": {
@@ -1601,6 +1607,7 @@
             "description": "Person IDs to filter by.",
             "required": false,
             "style": "form",
+            "explode": false,
             "schema": {
               "type": "array",
               "items": {
@@ -1903,6 +1910,7 @@
             "description": "Drop IDs to filter by.",
             "required": false,
             "style": "form",
+            "explode": false,
             "schema": {
               "type": "array",
               "items": {
@@ -1917,6 +1925,7 @@
             "description": "Person IDs to filter by.",
             "required": false,
             "style": "form",
+            "explode": false,
             "schema": {
               "type": "array",
               "items": {
@@ -1940,6 +1949,7 @@
             "description": "For convenience, include a full representation of the inlined property. Currently supports \"customer\", \"customer.email\", \"drop\", and \"gratitude-total\".",
             "required": false,
             "style": "form",
+            "explode": false,
             "schema": {
               "type": "array",
               "items": {
@@ -2086,6 +2096,7 @@
             "description": "For convenience, include a full representation of the inlined property. Currently supports \"customer\", \"drop\", and \"gratitude-total\".",
             "required": false,
             "style": "form",
+            "explode": false,
             "schema": {
               "type": "array",
               "items": {
@@ -2368,6 +2379,7 @@
             "description": "Route names to filter by.",
             "required": false,
             "style": "form",
+            "explode": false,
             "schema": {
               "type": "array",
               "items": {
@@ -2381,6 +2393,7 @@
             "description": "Trip IDs to filter by.",
             "required": false,
             "style": "form",
+            "explode": false,
             "schema": {
               "type": "array",
               "items": {
@@ -2395,6 +2408,7 @@
             "description": "Vendor IDs to filter by.",
             "required": false,
             "style": "form",
+            "explode": false,
             "schema": {
               "type": "array",
               "items": {
@@ -2518,6 +2532,7 @@
             "description": "Drop IDs to filter by.",
             "required": false,
             "style": "form",
+            "explode": false,
             "schema": {
               "type": "array",
               "items": {
@@ -2765,6 +2780,7 @@
             "description": "Route names to filter by.",
             "required": false,
             "style": "form",
+            "explode": false,
             "schema": {
               "type": "array",
               "items": {
@@ -2778,6 +2794,7 @@
             "description": "Drop IDs to filter by.",
             "required": false,
             "style": "form",
+            "explode": false,
             "schema": {
               "type": "array",
               "items": {
@@ -2792,6 +2809,7 @@
             "description": "Stop IDs to filter by.",
             "required": false,
             "style": "form",
+            "explode": false,
             "schema": {
               "type": "array",
               "items": {
@@ -3085,6 +3103,7 @@
             "description": "Route names to filter by.",
             "required": false,
             "style": "form",
+            "explode": false,
             "schema": {
               "type": "array",
               "items": {
@@ -3098,6 +3117,7 @@
             "description": "Trip IDs names to filter by.",
             "required": false,
             "style": "form",
+            "explode": false,
             "schema": {
               "type": "array",
               "items": {
@@ -3112,6 +3132,7 @@
             "description": "Drop IDs to filter by.",
             "required": false,
             "style": "form",
+            "explode": false,
             "schema": {
               "type": "array",
               "items": {
@@ -3126,6 +3147,7 @@
             "description": "Pickup IDs to filter by.",
             "required": false,
             "style": "form",
+            "explode": false,
             "schema": {
               "type": "array",
               "items": {
@@ -3866,6 +3888,7 @@
             "description": "Packaged-product 13-digit Global Trade Item Numbers to filter by.",
             "required": false,
             "style": "form",
+            "explode": false,
             "schema": {
               "type": "array",
               "items": {
@@ -3880,6 +3903,7 @@
             "description": "Brand IDs to filter by.",
             "required": false,
             "style": "form",
+            "explode": false,
             "schema": {
               "type": "array",
               "items": {
@@ -3894,6 +3918,7 @@
             "description": "Category IDs to filter by (for products directly associated with the categories).",
             "required": false,
             "style": "form",
+            "explode": false,
             "schema": {
               "type": "array",
               "items": {
@@ -3908,6 +3933,7 @@
             "description": "Primary-category IDs to filter by (for products directly associated with the categories).",
             "required": false,
             "style": "form",
+            "explode": false,
             "schema": {
               "type": "array",
               "items": {
@@ -3922,6 +3948,7 @@
             "description": "Category IDs to filter by (for products associated with the categories or their descendants).",
             "required": false,
             "style": "form",
+            "explode": false,
             "schema": {
               "type": "array",
               "items": {
@@ -3936,6 +3963,7 @@
             "description": "Packaged product codes to filter by.",
             "required": false,
             "style": "form",
+            "explode": false,
             "schema": {
               "type": "array",
               "items": {
@@ -3949,6 +3977,7 @@
             "description": "Tags to filter by.",
             "required": false,
             "style": "form",
+            "explode": false,
             "schema": {
               "type": "array",
               "items": {
@@ -3962,6 +3991,7 @@
             "description": "Person IDs to filter by (selects their favorite products).",
             "required": false,
             "style": "form",
+            "explode": false,
             "schema": {
               "type": "array",
               "items": {
@@ -3986,6 +4016,7 @@
             "description": "For convenience, include a full representation of the inlined property. Currently supports the local \"description\", \"favorites\", and \"substitutions\" as well as \"brand\", \"packaging\", \"vendors\", and descendants.",
             "required": false,
             "style": "form",
+            "explode": false,
             "schema": {
               "type": "array",
               "items": {
@@ -4074,6 +4105,7 @@
             "description": "For convenience, include a full representation of the inlined property. Currently supports the local \"description\", \"favorites\", and \"substitutions\" as well as \"brand\", \"packaging\", \"vendors\", and descendants.",
             "required": false,
             "style": "form",
+            "explode": false,
             "schema": {
               "type": "array",
               "items": {
@@ -4120,6 +4152,7 @@
             "description": "Product IDs to filter by.",
             "required": false,
             "style": "form",
+            "explode": false,
             "schema": {
               "type": "array",
               "items": {
@@ -4134,6 +4167,7 @@
             "description": "Packaged product codes to filter by.",
             "required": false,
             "style": "form",
+            "explode": false,
             "schema": {
               "type": "array",
               "items": {
@@ -4147,6 +4181,7 @@
             "description": "13-digit Global Trade Item Numbers to filter by.",
             "required": false,
             "style": "form",
+            "explode": false,
             "schema": {
               "type": "array",
               "items": {
@@ -4161,6 +4196,7 @@
             "description": "Brand IDs to filter by.",
             "required": false,
             "style": "form",
+            "explode": false,
             "schema": {
               "type": "array",
               "items": {
@@ -4175,6 +4211,7 @@
             "description": "Category IDs to filter by (for products directly associated with the categories).",
             "required": false,
             "style": "form",
+            "explode": false,
             "schema": {
               "type": "array",
               "items": {
@@ -4189,6 +4226,7 @@
             "description": "Primary-category IDs to filter by (for products directly associated with the categories).",
             "required": false,
             "style": "form",
+            "explode": false,
             "schema": {
               "type": "array",
               "items": {
@@ -4203,6 +4241,7 @@
             "description": "Category IDs to filter by (for packaged products associated with the categories or their descendants).",
             "required": false,
             "style": "form",
+            "explode": false,
             "schema": {
               "type": "array",
               "items": {
@@ -4217,6 +4256,7 @@
             "description": "Tags to filter by.",
             "required": false,
             "style": "form",
+            "explode": false,
             "schema": {
               "type": "array",
               "items": {
@@ -4230,6 +4270,7 @@
             "description": "Person IDs to filter by (selects their favorite packaged products).",
             "required": false,
             "style": "form",
+            "explode": false,
             "schema": {
               "type": "array",
               "items": {
@@ -4368,6 +4409,7 @@
             "description": "Packaged product codes to filter by.",
             "required": false,
             "style": "form",
+            "explode": false,
             "schema": {
               "type": "array",
               "items": {
@@ -4624,6 +4666,7 @@
             "description": "Categories to filter by.",
             "required": false,
             "style": "form",
+            "explode": false,
             "schema": {
               "type": "array",
               "items": {
@@ -4856,6 +4899,7 @@
             "description": "Category IDs to filter by.",
             "required": false,
             "style": "form",
+            "explode": false,
             "schema": {
               "type": "array",
               "items": {
@@ -4879,6 +4923,7 @@
             "description": "Product IDs to filter by.",
             "required": false,
             "style": "form",
+            "explode": false,
             "schema": {
               "type": "array",
               "items": {
@@ -4893,6 +4938,7 @@
             "description": "Packaged product codes to filter by.",
             "required": false,
             "style": "form",
+            "explode": false,
             "schema": {
               "type": "array",
               "items": {
@@ -4906,6 +4952,7 @@
             "description": "For convenience, include a full representation of the inlined property. Currently supports `ancestors` and `depth`.",
             "required": false,
             "style": "form",
+            "explode": false,
             "schema": {
               "type": "array",
               "items": {
@@ -5036,6 +5083,7 @@
             "description": "For convenience, include a full representation of the inlined property. Currently supports \"ancestors\" and \"depth\".",
             "required": false,
             "style": "form",
+            "explode": false,
             "schema": {
               "type": "array",
               "items": {
@@ -5135,6 +5183,7 @@
             "description": "Vendor IDs to filter by.",
             "required": false,
             "style": "form",
+            "explode": false,
             "schema": {
               "type": "array",
               "items": {
@@ -5149,6 +5198,7 @@
             "description": "Pickup IDs to filter by.",
             "required": false,
             "style": "form",
+            "explode": false,
             "schema": {
               "type": "array",
               "items": {
@@ -5163,6 +5213,7 @@
             "description": "Trip IDs to filter by.",
             "required": false,
             "style": "form",
+            "explode": false,
             "schema": {
               "type": "array",
               "items": {
@@ -5177,6 +5228,7 @@
             "description": "Purchase-status string to filter by.",
             "required": false,
             "style": "form",
+            "explode": false,
             "schema": {
               "type": "array",
               "items": {
@@ -5309,6 +5361,7 @@
             "description": "Usernames to filter by.",
             "required": false,
             "style": "form",
+            "explode": false,
             "schema": {
               "type": "array",
               "items": {
@@ -5322,6 +5375,7 @@
             "description": "Email addresses to filter by.",
             "required": false,
             "style": "form",
+            "explode": false,
             "schema": {
               "type": "array",
               "items": {
@@ -5336,6 +5390,7 @@
             "description": "Drop IDs to filter by.",
             "required": false,
             "style": "form",
+            "explode": false,
             "schema": {
               "type": "array",
               "items": {
@@ -5350,6 +5405,7 @@
             "description": "Trip IDs to filter by.",
             "required": false,
             "style": "form",
+            "explode": false,
             "schema": {
               "type": "array",
               "items": {
@@ -5364,6 +5420,7 @@
             "description": "Product IDs to filter by.",
             "required": false,
             "style": "form",
+            "explode": false,
             "schema": {
               "type": "array",
               "items": {
@@ -5378,6 +5435,7 @@
             "description": "Packaged product codes to filter by.",
             "required": false,
             "style": "form",
+            "explode": false,
             "schema": {
               "type": "array",
               "items": {
@@ -5391,6 +5449,7 @@
             "description": "Person IDs to filter by.",
             "required": false,
             "style": "form",
+            "explode": false,
             "schema": {
               "type": "array",
               "items": {
@@ -5405,6 +5464,7 @@
             "description": "Order-status string to filter by.",
             "required": false,
             "style": "form",
+            "explode": false,
             "schema": {
               "type": "array",
               "items": {
@@ -5714,6 +5774,7 @@
             "description": "Order IDs to filter by.",
             "required": false,
             "style": "form",
+            "explode": false,
             "schema": {
               "type": "array",
               "items": {
@@ -5728,6 +5789,7 @@
             "description": "Product IDs to filter by.",
             "required": false,
             "style": "form",
+            "explode": false,
             "schema": {
               "type": "array",
               "items": {
@@ -5742,6 +5804,7 @@
             "description": "Packaged product codes to filter by.",
             "required": false,
             "style": "form",
+            "explode": false,
             "schema": {
               "type": "array",
               "items": {
@@ -5990,6 +6053,7 @@
             "description": "Order IDs to filter by.",
             "required": false,
             "style": "form",
+            "explode": false,
             "schema": {
               "type": "array",
               "items": {
@@ -6160,6 +6224,7 @@
             "description": "Order IDs to filter by.",
             "required": false,
             "style": "form",
+            "explode": false,
             "schema": {
               "type": "array",
               "items": {
@@ -6380,6 +6445,7 @@
             "description": "Person IDs to filter by, selecting vendors that these vendor employees manage.",
             "required": false,
             "style": "form",
+            "explode": false,
             "schema": {
               "type": "array",
               "items": {
@@ -6394,6 +6460,7 @@
             "description": "Person IDs to filter by, selecting vendors that these Azure employees buy from.",
             "required": false,
             "style": "form",
+            "explode": false,
             "schema": {
               "type": "array",
               "items": {
@@ -6518,6 +6585,7 @@
             "description": "Person IDs to filter by.",
             "required": false,
             "style": "form",
+            "explode": false,
             "schema": {
               "type": "array",
               "items": {
@@ -6561,6 +6629,7 @@
             "description": "The reason slugs to filter by.",
             "required": false,
             "style": "form",
+            "explode": false,
             "schema": {
               "type": "array",
               "items": {
@@ -6738,6 +6807,7 @@
             "description": "Person IDs to filter by.",
             "required": false,
             "style": "form",
+            "explode": false,
             "schema": {
               "type": "array",
               "items": {
@@ -6936,6 +7006,7 @@
             "description": "Person IDs to filter by.",
             "required": false,
             "style": "form",
+            "explode": false,
             "schema": {
               "type": "array",
               "items": {
@@ -6970,6 +7041,7 @@
             "description": "Reward status to filter by.",
             "required": false,
             "style": "form",
+            "explode": false,
             "schema": {
               "type": "array",
               "items": {
@@ -6987,6 +7059,7 @@
             "description": "Order IDs to filter by.",
             "required": false,
             "style": "form",
+            "explode": false,
             "schema": {
               "type": "array",
               "items": {
@@ -7120,6 +7193,7 @@
             "description": "Person IDs to filter by.",
             "required": false,
             "style": "form",
+            "explode": false,
             "schema": {
               "type": "array",
               "items": {
@@ -7134,6 +7208,7 @@
             "description": "For convenience, include a full representation of the inlined property. Currently supports \"country\", \"person\", and descendants.",
             "required": false,
             "style": "form",
+            "explode": false,
             "schema": {
               "type": "array",
               "items": {
@@ -7211,6 +7286,7 @@
             "description": "For convenience, include a full representation of the inlined property. Currently supports \"country\", \"person\", and descendants.",
             "required": false,
             "style": "form",
+            "explode": false,
             "schema": {
               "type": "array",
               "items": {
@@ -7278,6 +7354,7 @@
             "description": "For convenience, include a full representation of the inlined property. Currently supports \"country\", \"person\", and descendants.",
             "required": false,
             "style": "form",
+            "explode": false,
             "schema": {
               "type": "array",
               "items": {
@@ -7332,6 +7409,7 @@
             "description": "For convenience, include a full representation of the inlined property. Currently supports \"country\", \"person\", and descendants.",
             "required": false,
             "style": "form",
+            "explode": false,
             "schema": {
               "type": "array",
               "items": {
@@ -7567,6 +7645,7 @@
             "description": "Person IDs to filter by.",
             "required": false,
             "style": "form",
+            "explode": false,
             "schema": {
               "type": "array",
               "items": {
@@ -7816,6 +7895,7 @@
             "description": "Drop IDs to filter by.",
             "required": false,
             "style": "form",
+            "explode": false,
             "schema": {
               "type": "array",
               "items": {
@@ -7830,6 +7910,7 @@
             "description": "For convenience, include additional information. Currently supports \"email\" as described in the email model, \"order-place-issue\", and \"is-drop-coordinator\".",
             "required": false,
             "style": "form",
+            "explode": false,
             "schema": {
               "type": "array",
               "items": {
@@ -7973,6 +8054,7 @@
             "description": "For convenience, include additional information. Currently supports \"email\" as described in the email model, \"order-place-issue\", and \"is-drop-coordinator\".",
             "required": false,
             "style": "form",
+            "explode": false,
             "schema": {
               "type": "array",
               "items": {
@@ -8063,6 +8145,7 @@
             "description": "For convenience, include additional information. Currently supports \"email\" as described in the email model and \"order-place-issue\".",
             "required": false,
             "style": "form",
+            "explode": false,
             "schema": {
               "type": "array",
               "items": {
@@ -8308,6 +8391,7 @@
             "description": "For convenience, include a full representation of the inlined property. Currently supports \"session.person\" and descendants.",
             "required": false,
             "style": "form",
+            "explode": false,
             "schema": {
               "type": "array",
               "items": {
@@ -8488,6 +8572,7 @@
             "description": "Person IDs to filter by.",
             "required": false,
             "style": "form",
+            "explode": false,
             "schema": {
               "type": "array",
               "items": {
@@ -8609,6 +8694,7 @@
             "description": "Person IDs to filter by.",
             "required": false,
             "style": "form",
+            "explode": false,
             "schema": {
               "type": "array",
               "items": {
@@ -8632,6 +8718,7 @@
             "description": "For convenience, include a full representation of the inlined property. Currently supports \"packaged-product\" and descendants.",
             "required": false,
             "style": "form",
+            "explode": false,
             "schema": {
               "type": "array",
               "items": {
@@ -8761,6 +8848,7 @@
             "description": "For convenience, include a full representation of the inlined property. Currently supports \"packaged-product\" and descendants.",
             "required": false,
             "style": "form",
+            "explode": false,
             "schema": {
               "type": "array",
               "items": {
@@ -8893,6 +8981,7 @@
             "description": "Printer delivery method.",
             "required": false,
             "style": "form",
+            "explode": false,
             "schema": {
               "type": "array",
               "items": {
@@ -8911,6 +9000,7 @@
             "description": "Printer format.",
             "required": false,
             "style": "form",
+            "explode": false,
             "schema": {
               "type": "array",
               "items": {
@@ -9143,6 +9233,7 @@
             "description": "For convenience, include a full representation of the inlined property. Currently supports \"address.country\".",
             "required": false,
             "style": "form",
+            "explode": false,
             "schema": {
               "type": "array",
               "items": {
@@ -9382,6 +9473,7 @@
         "in": "query",
         "description": "Optional properties returned if specified in the request.",
         "style": "form",
+        "explode": false,
         "schema": {
           "type": "array",
           "items": {
@@ -9399,6 +9491,7 @@
         "description": "Optional properties returned if specified in the request.",
         "required": false,
         "style": "form",
+        "explode": false,
         "schema": {
           "type": "array",
           "items": {
@@ -9460,6 +9553,7 @@
         "description": "For convenience, include a full representation of the inlined property.",
         "required": false,
         "style": "form",
+        "explode": false,
         "schema": {
           "type": "array",
           "items": {
