@@ -12122,7 +12122,8 @@
         "type": "object",
         "properties": {
           "id": {
-            "type": "string",
+            "type": "integer",
+            "format": "int64",
             "description": "The promo code's ID."
           },
           "code": {
