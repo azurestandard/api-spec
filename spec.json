@@ -12121,6 +12121,10 @@
         "description": "A promo code applied to an order.",
         "type": "object",
         "properties": {
+          "id": {
+            "type": "string",
+            "description": "The promo code's ID."
+          },
           "code": {
             "description": "Code for the promo code.",
             "type": "string"
@@ -12144,6 +12148,7 @@
           }
         },
         "required": [
+          "id",
           "code",
           "description",
           "orderId",
