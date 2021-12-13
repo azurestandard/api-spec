@@ -11037,7 +11037,7 @@
             "type": "boolean"
           },
           "allergens": {
-            "description": "The names of the Allergens used for labeling of this product.",
+            "description": "The names of the Allergens used for labeling of this product. This will only be included if the `inline` query parameter includes `allergens`.",
             "type": "array",
             "items": {
               "description": "The Allergen name.",
@@ -11122,8 +11122,8 @@
               "$ref": "#/components/schemas/vendor"
             }
           },
-          "pieceMetaLinks": {
-            "description": "The piece meta links of this product. This will only be included if the `inline` query parameter includes `pieceMetaLinks`.",
+          "links": {
+            "description": "The links of this product. This will only be included if the `inline` query parameter includes `links`.",
             "type": "array",
             "items": {
               "url": "string",
