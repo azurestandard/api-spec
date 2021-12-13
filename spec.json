@@ -11122,6 +11122,14 @@
               "$ref": "#/components/schemas/vendor"
             }
           },
+          "pieceMetaLinks": {
+            "description": "The piece meta links of this product.",
+            "type": "array",
+            "items": {
+              "url": "string",
+              "title": "string"
+            }
+          },
           "countryOfOrigin": {
             "description": "Country of origin for this product.",
             "type": "string"
