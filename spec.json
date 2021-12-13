@@ -11123,7 +11123,7 @@
             }
           },
           "pieceMetaLinks": {
-            "description": "The piece meta links of this product.",
+            "description": "The piece meta links of this product. This will only be included if the `inline` query parameter includes `pieceMetaLinks`.",
             "type": "array",
             "items": {
               "url": "string",
