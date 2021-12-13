@@ -11126,8 +11126,7 @@
             "description": "The links of this product. This will only be included if the `inline` query parameter includes `links`.",
             "type": "array",
             "items": {
-              "url": "string",
-              "title": "string"
+              "$ref": "#/components/schemas/link"
             }
           },
           "countryOfOrigin": {
@@ -13255,6 +13254,29 @@
             "description": "Ordering precedence for the findEmails.",
             "type": "integer",
             "format": "int32"
+          }
+        },
+        "required": [
+          "id",
+          "address",
+          "person"
+        ]
+      },
+      "link": {
+        "description": "A URL link.",
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "url": {
+            "description": "The URL of the link",
+            "type": "string"
+          },
+          "title": {
+            "description": "The title of the link.",
+            "type": "string"
           }
         },
         "required": [
