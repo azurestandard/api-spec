@@ -13266,10 +13266,6 @@
         "description": "A URL link.",
         "type": "object",
         "properties": {
-          "id": {
-            "type": "integer",
-            "format": "int64"
-          },
           "url": {
             "description": "The URL of the link",
             "type": "string"
@@ -13280,7 +13276,6 @@
           }
         },
         "required": [
-          "id",
           "url"
         ]
       },
