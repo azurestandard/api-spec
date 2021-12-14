@@ -11037,7 +11037,7 @@
             "type": "boolean"
           },
           "allergens": {
-            "description": "The names of the Allergens used for labeling of this product.",
+            "description": "The names of the Allergens used for labeling of this product. This will only be included if the `inline` query parameter includes `allergens`.",
             "type": "array",
             "items": {
               "description": "The Allergen name.",
@@ -11120,6 +11120,13 @@
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/vendor"
+            }
+          },
+          "links": {
+            "description": "The links of this product. This will only be included if the `inline` query parameter includes `links`.",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/link"
             }
           },
           "countryOfOrigin": {
@@ -13253,6 +13260,23 @@
           "id",
           "address",
           "person"
+        ]
+      },
+      "link": {
+        "description": "A URL link.",
+        "type": "object",
+        "properties": {
+          "url": {
+            "description": "The URL of the link",
+            "type": "string"
+          },
+          "title": {
+            "description": "The title of the link.",
+            "type": "string"
+          }
+        },
+        "required": [
+          "url"
         ]
       },
       "updateEmailUserPassword": {
