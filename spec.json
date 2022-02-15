@@ -12172,21 +12172,7 @@
           "description",
           "orderId",
           "discountAmount"
-        ],
-        "x-examples": {
-          "example-1": {
-            "id": -9223372036854776000,
-            "code": "string",
-            "description": "string",
-            "orderId": -9223372036854776000,
-            "invalidReasonType": {
-              "slug": "string",
-              "description": "string"
-            },
-            "discountAmount": -3.402823669209385e+38
-          }
-        },
-        "title": ""
+        ]
       },
       "orderPromoCodeInvalidReasonType": {
         "description": "An order promo code invalid reason type.",
