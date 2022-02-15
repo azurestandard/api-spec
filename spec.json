@@ -6356,7 +6356,18 @@
           },
           "description": "Order Promo Code to add.",
           "required": true
-        }
+        },
+        "description": "Adds a promo code to an order. Can also be used to replace an order's existing promo code.",
+        "parameters": [
+          {
+            "schema": {
+              "type": "boolean"
+            },
+            "in": "query",
+            "name": "replace",
+            "description": "Used for replacing the order's promo code with the one passed in the request."
+          }
+        ]
       }
     },
     "/order-promo-code/{id}": {
@@ -12161,7 +12172,21 @@
           "description",
           "orderId",
           "discountAmount"
-        ]
+        ],
+        "x-examples": {
+          "example-1": {
+            "id": -9223372036854776000,
+            "code": "string",
+            "description": "string",
+            "orderId": -9223372036854776000,
+            "invalidReasonType": {
+              "slug": "string",
+              "description": "string"
+            },
+            "discountAmount": -3.402823669209385e+38
+          }
+        },
+        "title": ""
       },
       "orderPromoCodeInvalidReasonType": {
         "description": "An order promo code invalid reason type.",
