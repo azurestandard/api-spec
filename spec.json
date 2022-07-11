@@ -11233,16 +11233,14 @@
             "minimum": 0
           },
           "rewards-rate": {
-            "description": "Rewards rate (as a percentage) earned for this packaging. This will only be set for packaging with a fixed rewards rate. The rewards earned for this product will be the price (after sales) * min(max(`person.rewards-rate`, `product.rewards-rate`), `product.maxRewardsRate`) / 100, rounded to the nearest cent, rounding half to even.",
+            "description": "Rewards rate (as a percentage) earned for this packaging. This will only be set for packaging with a fixed rewards rate. The rewards earned for this product will be the price (after sales) * max(`person.rewards-rate`, `product.rewards-rate`) / 100, rounded to the nearest cent, rounding half to even.",
             "type": "integer",
             "format": "int32",
             "minimum": 0
           },
-          "maxRewardsRate": {
-            "description": "The maximum rewards rate that could be earned for this product. A value of 0 means that no rewards will be earned.",
-            "type": "integer",
-            "format": "int32",
-            "minimum": 0
+          "rewardsEnabled": {
+            "description": "Indicates whether or not this product is eligible for rewards.",
+            "type": "boolean"
           },
           "unit": {
             "description": "The unit for `dollars-per-unit`.",
@@ -11250,7 +11248,7 @@
           }
         },
         "required": [
-          "maxRewardsRate",
+          "rewardsEnabled",
           "dollars"
         ]
       },
@@ -12886,7 +12884,7 @@
             "$ref": "#/components/schemas/priceLevel"
           },
           "rewards-rate": {
-            "description": "Rewards rate (as a percentage) for this customer. The rewards earned for a product will be the price (after sales) * min(max(`person.rewards-rate`, `product.rewards-rate`), `product.maxRewardsRate`) / 100, rounded to the nearest cent, rounding half to even.",
+            "description": "Rewards rate (as a percentage) for this customer. The rewards earned for a product will be the price (after sales) * max(`person.rewards-rate`, `product.rewards-rate`) / 100, rounded to the nearest cent, rounding half to even.",
             "type": "integer",
             "format": "int32",
             "minimum": 0
