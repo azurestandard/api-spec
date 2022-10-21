@@ -9525,7 +9525,8 @@
             "enum": [
               "drop",
               "pickup",
-              "truckload"
+              "truckload",
+              "truckDriver"
             ]
           }
         }
@@ -10689,6 +10690,20 @@
             "allOf": [
               {
                 "$ref": "#/components/schemas/truckload"
+              },
+              {
+                "type": "object"
+              }
+            ]
+          },
+          "truckDriver": {
+            "description": "The truck driver for this stop. This is only returned if the inline query parameter includes `truckDriver` and a driver has been assigned.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/truckDriver"
+              },
+              {
+                "type": "object"
               }
             ]
           },
@@ -13647,6 +13662,24 @@
           "id",
           "truckNumber"
         ]
+      },
+      "truckDriver": {
+        "title": "truckDriver",
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "The truck driver's ID."
+          },
+          "name": {
+            "type": "string",
+            "description": "The truck driver's name."
+          },
+          "phone": {
+            "type": "string",
+            "description": "The truck driver's phone number."
+          }
+        }
       },
       "orderedPackagedProduct": {
         "description": "Aggregated information about packaged products ordered by a customer within the last two years.",
