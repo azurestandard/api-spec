@@ -11545,6 +11545,7 @@
               "placed",
               "confirmed",
               "shipped",
+              "delivered-to-drop",
               "lost"
             ]
           },
