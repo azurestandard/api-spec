@@ -5489,6 +5489,7 @@
                   "placed",
                   "confirmed",
                   "shipped",
+                  "delivered-to-drop",
                   "lost"
                 ]
               }
@@ -11876,6 +11877,7 @@
               "open",
               "placed",
               "shipped",
+              "delivered-to-drop",
               "lost"
             ]
           },
