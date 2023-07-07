@@ -5490,6 +5490,8 @@
                   "confirmed",
                   "shipped",
                   "delivered-to-drop",
+                  "out-with-delivery-driver",
+                  "delivered-to-home",
                   "lost"
                 ]
               }
@@ -11547,6 +11549,8 @@
               "confirmed",
               "shipped",
               "delivered-to-drop",
+              "out-with-delivery-driver",
+              "delivered-to-home",
               "lost"
             ]
           },
@@ -11878,6 +11882,8 @@
               "placed",
               "shipped",
               "delivered-to-drop",
+              "out-with-delivery-driver",
+              "delivered-to-home",
               "lost"
             ]
           },
