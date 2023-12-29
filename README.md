@@ -8,7 +8,7 @@ OpenAPI 3.0 Specification for Azure Standard's API.
 
 ## Docs site
 
-URL: https://azure-api-docs.netlify.app/
+URL: https://api-spec-2at.pages.dev
 
 Uses [Redoc](https://github.com/Redocly/redoc).
 
