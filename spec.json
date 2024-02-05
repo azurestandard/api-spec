@@ -6435,6 +6435,16 @@
           "204": {
             "description": "Delete successful."
           },
+          "200": {
+            "description": "Order response.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/changedOrder"
+                }
+              }
+            }
+          },
           "default": {
             "description": "Unexpected error.",
             "content": {
@@ -11628,6 +11638,18 @@
             "type": "string",
             "format": "date"
           },
+          "orderPromoCodeId": {
+            "description": "Order Promo Code ID for the order.",
+            "type": "integer",
+            "format": "int64"
+          },
+          "orderPromoCodeIds": {
+            "type": "array",
+            "description": "The IDs of Order Promo Codes for the order.",
+            "items": {
+              "type": "integer"
+            }
+          },
           "computed": {
             "description": "Optional computed properties included via the \"computed\" parameter.",
             "type": "object",
@@ -11959,6 +11981,14 @@
           },
           "order-line": {
             "$ref": "#/components/schemas/orderLine"
+          },
+          "orderPromoCodeId": {
+            "description": "An order promo code id.",
+            "type": "string"
+          },
+          "promoCode": {
+            "description": "A promo code.",
+            "type": "string"
           }
         },
         "required": [
